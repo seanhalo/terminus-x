@@ -1,0 +1,1681 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>晨昏线 Terminus X</title>
+    <style>
+        :root {
+            --bg-color: #F5F5F7;
+            --card-bg: #FFFFFF;
+            --text-main: #1D1D1F;
+            --text-sub: #86868B;
+            --accent-color: #0071E3;
+            --danger-color: #FF3B30;
+            --warning-color: #FF9500;
+            --status-green: #34C759;
+            --status-yellow: #FF9500;
+            --status-red: #FF3B30;
+        }
+
+        body.dark-mode {
+            --bg-color: #0B0C10;
+            --card-bg: rgba(26, 28, 35, 0.85);
+            --text-main: #E5E7EB;
+            --text-sub: #9CA3AF;
+            --accent-color: #5E9CFF;
+            --status-green: #30D158;
+            --status-yellow: #FF9F0A;
+            --status-red: #FF453A;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif; -webkit-tap-highlight-color: transparent; }
+
+        body { background-color: var(--bg-color); color: var(--text-main); display: flex; justify-content: center; padding: 20px; transition: background-color 0.3s ease, color 0.3s ease; }
+
+        .app-container { width: 100%; max-width: 400px; display: flex; flex-direction: column; gap: 16px; }
+
+        .header { display: flex; justify-content: space-between; align-items: center; padding: 10px 5px; font-size: 16px; font-weight: 600; }
+        .header-brand { display: flex; align-items: baseline; gap: 8px; }
+        .header-title { font-size: 16px; font-weight: 600; }
+        .header-sub { font-size: 10px; color: var(--text-sub); font-weight: 400; letter-spacing: 0.5px; }
+        .settings-icon { color: var(--text-sub); cursor: pointer; display: flex; align-items: center; transition: color 0.2s, transform 0.3s; }
+        .settings-icon:hover { color: var(--text-main); }
+        .settings-icon:active { transform: rotate(45deg); }
+        .header-actions { display: flex; align-items: center; gap: 14px; }
+        .info-icon { color: var(--text-sub); cursor: pointer; display: flex; align-items: center; transition: color 0.2s, transform 0.3s; }
+        .info-icon:hover { color: var(--text-main); }
+        .info-icon:active { transform: rotate(45deg); }
+
+        .date-row { display: flex; align-items: center; justify-content: space-between; padding: 0 5px; margin-top: -8px; }
+        .date-line { font-size: 13px; color: var(--text-sub); }
+        .day-toggle { display: flex; gap: 4px; }
+        .day-btn { padding: 3px 10px; border-radius: 10px; border: 1px solid #E5E5EA; background: #F5F5F7; color: var(--text-sub); font-size: 11px; cursor: pointer; transition: background 0.15s, color 0.15s, border-color 0.15s; }
+        .day-btn.active { background: var(--text-main); color: #FFF; border-color: var(--text-main); }
+
+        .section-title { font-size: 12px; color: var(--text-sub); font-weight: 600; letter-spacing: 0.3px; padding-left: 8px; margin-bottom: -8px; }
+
+        .card { background-color: var(--card-bg); border-radius: 20px; padding: 24px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03); }
+
+        .hero-card { text-align: center; }
+        .hero-title { font-size: 14px; color: var(--text-sub); margin-bottom: 8px; }
+        .hero-time { font-size: 72px; font-weight: 700; line-height: 1; letter-spacing: -2px; margin-bottom: 12px; color: var(--text-main); transition: opacity 0.35s ease, transform 0.35s ease; }
+        .hero-time.fade { opacity: 0; transform: translateY(6px); }
+        .hero-time.checkin-mode { font-size: 36px !important; letter-spacing: 0 !important; white-space: nowrap; margin-top: 16px; margin-bottom: 16px; }
+        .action-card { display: block; width: 100%; padding: 14px; margin-bottom: 8px; border-radius: 12px; border: 1px solid rgba(150, 150, 150, 0.2); background: rgba(150, 150, 150, 0.05); color: var(--text-main); font-size: 14px; font-weight: 600; cursor: pointer; transition: opacity 0.15s; text-align: center; }
+        .action-card:active { opacity: 0.6; }
+        .action-card.secondary { background: transparent; border: none; color: var(--text-sub); font-size: 12px; font-weight: 400; margin-top: -4px; padding: 8px; }
+        body.dark-mode .action-card { border-color: rgba(255, 255, 255, 0.1); background: rgba(255, 255, 255, 0.05); }
+        .hero-time.late { color: var(--danger-color); }
+        .hero-time.warning { color: var(--warning-color); }
+        .hero-sub { font-size: 13px; color: var(--text-sub); display: flex; justify-content: center; align-items: center; gap: 6px; }
+
+        .status-dot { width: 10px; height: 10px; border-radius: 50%; background: #D1D1D6; display: inline-block; flex-shrink: 0; }
+        .status-dot.green { background: var(--status-green); }
+        .status-dot.yellow { background: var(--status-yellow); }
+        .status-dot.red { background: var(--status-red); }
+        .status-dot.gray { background: #D1D1D6; }
+
+        .holiday-card { display: flex; align-items: center; gap: 12px; padding: 16px 20px; }
+        .holiday-icon { color: var(--text-sub); display: flex; align-items: center; }
+        .holiday-text { flex: 1; font-size: 14px; font-weight: 600; }
+        .holiday-hint { font-size: 10px; color: var(--text-sub); padding: 0 8px; opacity: 0.7; line-height: 1.5; margin-top: -8px; }
+
+        .port-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .port-card { padding: 18px 16px; text-align: center; }
+        .port-name { font-size: 14px; font-weight: 600; margin-bottom: 10px; }
+        .port-status { display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 15px; font-weight: 600; }
+
+        .weather-card { padding: 18px 24px; }
+        .weather-row { display: flex; align-items: center; }
+        .weather-city { flex: 1; text-align: center; }
+        .weather-city-name { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+        .weather-temp { font-size: 32px; font-weight: 700; letter-spacing: -1px; }
+        .weather-temp span { font-size: 18px; font-weight: 500; color: var(--text-sub); }
+        .weather-desc { font-size: 12px; color: var(--text-sub); margin-top: 4px; }
+        .weather-desc.rain { color: var(--warning-color); }
+        .weather-divider { width: 1px; height: 48px; background: #E5E5EA; }
+        .weather-tip { margin-top: 14px; padding-top: 12px; border-top: 1px solid #F0F0F2; font-size: 12px; text-align: center; color: var(--text-sub); }
+        .weather-tip.rain { color: var(--warning-color); font-weight: 600; }
+
+        .nav-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .nav-btn { background-color: var(--card-bg); border-radius: 16px; padding: 16px; text-align: center; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02); cursor: pointer; transition: transform 0.1s; text-decoration: none; color: var(--text-main); display: block; }
+        .nav-btn:active { transform: scale(0.96); background-color: #E5E5EA; }
+        .nav-btn-main { font-size: 15px; font-weight: 600; }
+
+        .sz-port-link { background-color: var(--card-bg); border-radius: 16px; padding: 16px; text-align: center; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02); cursor: pointer; text-decoration: none; color: var(--text-main); display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 14px; font-weight: 600; transition: transform 0.1s; }
+        .sz-port-link:active { transform: scale(0.98); }
+        .sz-port-link-row { display: flex; align-items: center; justify-content: center; gap: 6px; }
+        .sz-port-link-row svg { color: var(--accent-color); }
+        .sz-port-link-sub { font-size: 11px; color: var(--text-sub); font-weight: 400; }
+
+        .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.4); display: none; justify-content: center; align-items: center; padding: 20px; backdrop-filter: blur(5px); z-index: 100; }
+        .modal-overlay.active { display: flex; }
+        .modal-content { background: var(--card-bg); width: 100%; max-width: 340px; border-radius: 20px; padding: 24px; max-height: 90vh; overflow-y: auto; }
+        .modal-title { font-size: 18px; font-weight: 600; margin-bottom: 20px; text-align: center; }
+        .input-group { margin-bottom: 16px; }
+        .input-group label { display: block; font-size: 13px; color: var(--text-sub); margin-bottom: 6px; }
+        .input-group input { width: 100%; box-sizing: border-box; min-width: 0; padding: 12px; border-radius: 10px; border: 1px solid #E5E5EA; font-size: 16px; outline: none; background: #FFF; }
+        .input-group input:focus { border-color: var(--accent-color); }
+        input[type="time"] {
+            -webkit-appearance: none;
+            appearance: none;
+            text-align: left;
+            direction: ltr;
+        }
+        .input-error { display: none; font-size: 11px; color: var(--danger-color); margin-top: 4px; }
+        .input-error.show { display: block; }
+        .chip-group { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+        .chip { padding: 10px 8px; border-radius: 10px; border: 1px solid #E5E5EA; background: #F5F5F7; color: var(--text-main); font-size: 13px; font-weight: 500; cursor: pointer; transition: background 0.15s, color 0.15s, border-color 0.15s; }
+        .chip.selected { background: var(--text-main); color: #FFF; border-color: var(--text-main); }
+        .chip.disabled { opacity: 0.35; cursor: not-allowed; }
+        .btn-save { width: 100%; padding: 14px; border-radius: 10px; background: var(--accent-color); color: white; font-size: 16px; font-weight: 600; border: none; margin-top: 10px; cursor: pointer; }
+        .btn-save:active { opacity: 0.85; }
+        .btn-hint { font-size: 11px; color: var(--text-sub); text-align: center; margin-top: 8px; }
+        .version-text { font-size: 10px; color: var(--text-sub); text-align: center; margin-top: 16px; opacity: 0.6; }
+        .info-title { font-size: 18px; font-weight: 600; text-align: center; }
+        .info-version { font-size: 12px; color: var(--text-sub); text-align: center; margin-top: 4px; }
+        .info-divider { height: 1px; background: #E5E5EA; margin: 16px 0; }
+        .changelog-entry { margin-bottom: 18px; }
+        .changelog-entry:last-child { margin-bottom: 0; }
+        .changelog-version { font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+        .changelog-list { list-style: none; padding: 0; margin: 0; }
+        .changelog-list li { font-size: 12px; color: var(--text-sub); line-height: 1.7; padding-left: 12px; position: relative; }
+        .changelog-list li::before { content: "·"; position: absolute; left: 0; color: var(--text-sub); }
+        .info-data-note { font-size: 10px; color: var(--text-sub); text-align: center; line-height: 1.6; opacity: 0.6; }
+
+        /* ===== SPA 视图 ===== */
+        .view { display: flex; flex-direction: column; gap: 16px; }
+        .subview-header { display: flex; align-items: center; gap: 8px; padding: 6px 0; }
+        .back-btn { width: 32px; height: 32px; border-radius: 50%; border: none; background: transparent; color: var(--accent-color); font-size: 22px; cursor: pointer; display: flex; align-items: center; justify-content: center; line-height: 1; }
+        .back-btn:active { background: #E5E5EA; }
+        .subview-title { flex: 1; text-align: center; font-size: 16px; font-weight: 600; }
+        .back-btn-spacer { width: 32px; }
+
+        .transit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .transit-btn { background-color: var(--card-bg); border-radius: 16px; padding: 18px 16px; text-align: center; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02); cursor: pointer; border: none; font-size: 15px; font-weight: 600; color: var(--text-main); transition: transform 0.1s; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+        .transit-btn:active { transform: scale(0.96); background-color: #E5E5EA; }
+        .transit-btn svg { color: var(--accent-color); }
+
+        .card-title { font-size: 14px; font-weight: 600; margin-bottom: 12px; }
+        .mtr-line { display: flex; justify-content: space-between; align-items: center; padding: 4px 0; }
+        .mtr-dest { font-size: 14px; font-weight: 600; }
+        .mtr-eta { font-size: 15px; font-weight: 600; color: var(--accent-color); }
+        .mtr-eta.dim { color: var(--text-sub); font-weight: 400; }
+        .mtr-eta-wrap { display: flex; align-items: center; gap: 5px; }
+        .mtr-delay { font-size: 11px; color: var(--warning-color); font-weight: 500; }
+        #mtr-cards { display: flex; flex-direction: column; gap: 16px; }
+
+        .bus-line { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid #F0F0F2; }
+        .bus-line:last-child { border-bottom: none; }
+        .bus-route { font-weight: 700; font-size: 15px; min-width: 44px; }
+        .bus-dest { flex: 1; font-size: 13px; color: var(--text-sub); }
+        .bus-eta { font-size: 14px; font-weight: 600; color: var(--accent-color); }
+        .bus-etas { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }
+        .bus-eta.dim { color: var(--text-sub); font-weight: 400; }
+        .bus-remark { font-size: 11px; color: var(--text-sub); font-weight: 400; }
+        .bus-port-title { cursor: pointer; }
+        .bus-port-title::after { content: " ↗"; font-size: 11px; color: var(--text-sub); font-weight: 400; }
+        .bus-no-service { text-align: center; font-size: 13px; color: var(--text-sub); padding: 12px 0; }
+        #bus-cards { display: flex; flex-direction: column; gap: 16px; }
+        .bus-note { font-size: 11px; color: var(--text-sub); text-align: center; opacity: 0.7; }
+
+        .progress-container { width: 100%; height: 4px; background: #E5E5EA; border-radius: 2px; margin-bottom: 12px; overflow: hidden; }
+        .progress-bar { height: 100%; border-radius: 2px; width: 0%; background: var(--status-green); transition: width 0.4s ease, background-color 0.3s ease; }
+        .theme-hint { font-size: 11px; color: var(--text-sub); margin-bottom: 8px; line-height: 1.5; }
+
+        /* ===== 深色模式专属细节 ===== */
+        body.dark-mode .card {
+            box-shadow: none;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(10px);
+        }
+        body.dark-mode .nav-btn,
+        body.dark-mode .sz-port-link,
+        body.dark-mode .transit-btn {
+            box-shadow: none;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        body.dark-mode .progress-container { background: #333333; }
+        body.dark-mode .hero-time {
+            color: #FFFFFF;
+            text-shadow: 0 0 30px rgba(94, 156, 255, 0.4), 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+        body.dark-mode::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 300px;
+            background: radial-gradient(circle at 50% 0%, rgba(40, 60, 120, 0.25) 0%, transparent 50%), radial-gradient(circle at 50% 100%, rgba(30, 40, 80, 0.15) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* ===== 深色模式：切换按钮（今日/明日 + 外观） ===== */
+        body.dark-mode .day-btn,
+        body.dark-mode #theme-light,
+        body.dark-mode #theme-dark {
+            background: transparent;
+            border: 1px solid #3A3A3C;
+            color: #98989D;
+        }
+        body.dark-mode .day-btn.active,
+        body.dark-mode #theme-light.selected,
+        body.dark-mode #theme-dark.selected {
+            background: #3A3A3C;
+            color: #FFFFFF;
+            border-color: transparent;
+        }
+
+        /* ===== 深色模式：口岸 Chip ===== */
+        body.dark-mode .chip {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid #3A3A3C;
+            color: #FFFFFF;
+        }
+        body.dark-mode .chip.selected {
+            background: #5E9CFF;
+            color: #FFFFFF !important;
+            border-color: transparent;
+        }
+
+        /* ===== 深色模式：输入框 ===== */
+        body.dark-mode .input-group input {
+            background: rgba(0,0,0,0.3);
+            color: #FFFFFF;
+            border: 1px solid #3A3A3C;
+        }
+        body.dark-mode .input-group input:focus {
+            border-color: var(--accent-color);
+        }
+
+        /* ===== 深色模式：底部大按钮 ===== */
+        body.dark-mode .btn-save {
+            background: #5E9CFF;
+            color: #FFFFFF !important;
+        }
+    </style>
+</head>
+<body>
+
+<div class="app-container">
+    <div id="view-home" class="view">
+    <div class="header">
+        <div class="header-brand">
+            <span class="header-title">晨昏线</span>
+            <span class="header-sub">Terminus X</span>
+        </div>
+        <div class="header-actions">
+            <div class="settings-icon" onclick="manualRefresh()" title="刷新">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="23 4 23 10 17 10"></polyline>
+                    <polyline points="1 20 1 14 7 14"></polyline>
+                    <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                </svg>
+            </div>
+            <div class="settings-icon" onclick="openSettings()" title="设置">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                </svg>
+            </div>
+            <div class="info-icon" onclick="openInfo()" title="信息">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <div class="date-row">
+        <div class="date-line" id="date-line">加载日期…</div>
+        <div class="day-toggle">
+            <button type="button" class="day-btn" id="day-today" onclick="setDayMode('today')">今日</button>
+            <button type="button" class="day-btn" id="day-tomorrow" onclick="setDayMode('tomorrow')">明日</button>
+        </div>
+    </div>
+
+    <div class="card hero-card">
+        <div class="hero-title" id="hero-title-text">建议出门时间</div>
+        <div class="hero-time" id="suggested-time">--:--</div>
+        <div class="progress-container"><div id="progress-bar" class="progress-bar"></div></div>
+        <div id="checkin-action-area" style="display: none; width: 100%; margin-top: 16px;"></div>
+        <div class="hero-sub" id="status-text">
+            <span>请设置通勤参数</span>
+        </div>
+    </div>
+
+    <div class="card holiday-card">
+        <div class="holiday-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="3"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+        </div>
+        <div class="holiday-text" id="holiday-text">查询香港假期中…</div>
+        <div class="status-dot gray" id="holiday-dot"></div>
+    </div>
+
+    <div class="holiday-hint">假期识别范围：香港法定公众假期及周末。学校自定义活动日请参考官方校历。</div>
+
+    <div class="section-title">深圳端 · 出境状态</div>
+    <a class="sz-port-link" href="https://ka.sz.gov.cn/" target="_blank" rel="noopener">
+        <span class="sz-port-link-row">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+            </svg>
+            <span>查询深圳口岸出境状态</span>
+        </span>
+        <span class="sz-port-link-sub">或使用微信「i口岸」小程序</span>
+    </a>
+
+    <div class="section-title">香港端 · 入境輪候</div>
+    <div class="port-grid">
+        <div class="card port-card">
+            <div class="port-name" id="main-port-name">主口岸</div>
+            <div class="port-status">
+                <span class="status-dot gray" id="main-dot"></span>
+                <span id="main-status">加载中…</span>
+            </div>
+        </div>
+        <div class="card port-card">
+            <div class="port-name" id="backup-port-name">备选口岸</div>
+            <div class="port-status">
+                <span class="status-dot gray" id="backup-dot"></span>
+                <span id="backup-status">加载中…</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">今日天气</div>
+    <div class="card weather-card">
+        <div class="weather-row">
+            <div class="weather-city">
+                <div class="weather-city-name">深圳</div>
+                <div class="weather-temp" id="sz-temp">--<span>°</span></div>
+                <div class="weather-desc" id="sz-desc">加载中…</div>
+            </div>
+            <div class="weather-divider"></div>
+            <div class="weather-city">
+                <div class="weather-city-name">香港</div>
+                <div class="weather-temp" id="hk-temp">--<span>°</span></div>
+                <div class="weather-desc" id="hk-desc">加载中…</div>
+            </div>
+        </div>
+        <div class="weather-tip" id="weather-tip">天气加载中…</div>
+    </div>
+
+    <div class="section-title">路线导航</div>
+    <div class="nav-grid">
+        <a id="nav-szw" href="#" class="nav-btn">
+            <div class="nav-btn-main">经主口岸前往</div>
+        </a>
+        <a id="nav-ft" href="#" class="nav-btn">
+            <div class="nav-btn-main">经备选口岸前往</div>
+        </a>
+    </div>
+
+    <div class="section-title">公共交通时刻表</div>
+    <div class="transit-grid">
+        <button class="transit-btn" onclick="switchView('view-mtr')">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="5" y="3" width="14" height="13" rx="3"></rect>
+                <line x1="5" y1="9" x2="19" y2="9"></line>
+                <line x1="10" y1="3" x2="10" y2="9"></line>
+                <line x1="14" y1="3" x2="14" y2="9"></line>
+                <line x1="9" y1="16" x2="9" y2="20"></line>
+                <line x1="15" y1="16" x2="15" y2="20"></line>
+            </svg>
+            <span>港铁</span>
+        </button>
+        <button class="transit-btn" onclick="switchView('view-bus')">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="13" rx="3"></rect>
+                <line x1="3" y1="9" x2="21" y2="9"></line>
+                <line x1="7" y1="16" x2="7" y2="20"></line>
+                <line x1="17" y1="16" x2="17" y2="20"></line>
+            </svg>
+            <span>巴士</span>
+        </button>
+    </div>
+    </div>
+
+    <div id="view-mtr" class="view" style="display:none;">
+        <div class="subview-header">
+            <button class="back-btn" onclick="switchView('view-home')">&lt;</button>
+            <div class="subview-title">港铁东铁线</div>
+            <div class="back-btn-spacer"></div>
+        </div>
+        <div id="mtr-cards"></div>
+    </div>
+
+    <div id="view-bus" class="view" style="display:none;">
+        <div class="subview-header">
+            <button class="back-btn" onclick="switchView('view-home')">&lt;</button>
+            <div class="subview-title">口岸巴士</div>
+            <div class="back-btn-spacer"></div>
+        </div>
+        <div id="bus-cards"></div>
+        <div class="bus-note">* 显示时间为巴士预计到站时间｜数据来源：香港政府开放数据 (DATA.GOV.HK)</div>
+    </div>
+
+</div>
+
+<div class="modal-overlay" id="settings-modal">
+    <div class="modal-content">
+        <div class="modal-title">通勤设置</div>
+
+        <div class="input-group">
+            <label>住宅名称 (导航起点)</label>
+            <input type="text" id="input-origin" placeholder="例如：XX花园">
+            <div class="input-error" id="err-origin"></div>
+        </div>
+
+        <div class="input-group">
+            <label>学校名称 (导航终点)</label>
+            <input type="text" id="input-destination" placeholder="例如：XX学校">
+            <div class="input-error" id="err-destination"></div>
+        </div>
+
+        <div class="input-group">
+            <label>上课时间</label>
+            <input type="time" id="input-school-time">
+            <div class="input-error" id="err-school-time"></div>
+        </div>
+
+        <div class="input-group">
+            <label>保底通勤时间 (分钟)</label>
+            <input type="number" id="input-base-time" placeholder="例如: 95">
+            <div class="input-error" id="err-base-time"></div>
+        </div>
+
+        <div class="input-group">
+            <label>主口岸 (首选出境)</label>
+            <div class="chip-group" id="main-port-group">
+                <button type="button" class="chip" data-value="深圳湾口岸">深圳湾口岸</button>
+                <button type="button" class="chip" data-value="皇岗口岸">皇岗口岸</button>
+                <button type="button" class="chip" data-value="福田口岸/落马洲">福田口岸/落马洲</button>
+                <button type="button" class="chip" data-value="罗湖口岸">罗湖口岸</button>
+                <button type="button" class="chip" data-value="文锦渡口岸">文锦渡口岸</button>
+                <button type="button" class="chip" data-value="莲塘口岸">莲塘口岸</button>
+            </div>
+            <div class="input-error" id="err-main-port"></div>
+        </div>
+
+        <div class="input-group">
+            <label>备选口岸 (Plan B)</label>
+            <div class="chip-group" id="backup-port-group">
+                <button type="button" class="chip" data-value="深圳湾口岸">深圳湾口岸</button>
+                <button type="button" class="chip" data-value="皇岗口岸">皇岗口岸</button>
+                <button type="button" class="chip" data-value="福田口岸/落马洲">福田口岸/落马洲</button>
+                <button type="button" class="chip" data-value="罗湖口岸">罗湖口岸</button>
+                <button type="button" class="chip" data-value="文锦渡口岸">文锦渡口岸</button>
+                <button type="button" class="chip" data-value="莲塘口岸">莲塘口岸</button>
+            </div>
+            <div class="input-error" id="err-backup-port"></div>
+        </div>
+
+        <div class="input-group">
+            <label>外观</label>
+            <div class="theme-hint">深色模式专为晨昏通勤定制，暗光护眼，融入微光与玻璃质感。</div>
+            <div class="chip-group">
+                <button type="button" class="chip" id="theme-light">浅色</button>
+                <button type="button" class="chip" id="theme-dark">深色</button>
+            </div>
+        </div>
+
+        <button class="btn-save" onclick="saveSettings()">建立通勤协议</button>
+        <div class="btn-hint">将为你定制专属倒计时</div>
+        <div class="version-text">Version 1.4</div>
+    </div>
+</div>
+
+<div class="modal-overlay" id="info-modal">
+    <div class="modal-content">
+        <div class="info-title">晨昏线 Terminus X</div>
+        <div class="info-version">Version 1.4</div>
+        <div class="info-divider"></div>
+
+        <div class="changelog">
+            <div class="changelog-entry">
+                <div class="changelog-version">Version 1.4 · 进化与呼吸｜2026.10.25</div>
+                <ul class="changelog-list">
+                    <li>全新深色模式视觉，引入深空靛蓝、玻璃拟态与极光数字特效</li>
+                    <li>新增“通勤状态机”打卡功能，精准记录出门与到校时间</li>
+                    <li>新增全局手动刷新按钮，支持一键拉取最新天气、口岸及交通状态</li>
+                </ul>
+            </div>
+            <div class="changelog-entry">
+                <div class="changelog-version">Version 1.3 · 纯粹与呼吸｜2026.10.23</div>
+                <ul class="changelog-list">
+                    <li><b>全新外观系统</b><br>支持手动切换深色模式。暗夜下采用极深黑灰底色，顶部伴随微弱的深蓝紫渐变光晕，模拟晨昏交替的呼吸感；卡片采用发光玻璃边框，倒计时数字带有专属荧光效果，暗光护眼。</li>
+                    <li><b>离家进度可视化</b><br>在巨大的倒计时下方新增极细进度条，直观呈现剩余时间占比。时间充裕为绿色，临近出门15分钟内变黄，超时变红。</li>
+                    <li><b>性能与质感打磨</b><br>全局加入平滑主题过渡动画，无感切换明暗交替。</li>
+                    <li><b>设置体验优化</b><br>修复 iOS 端时间输入框原生样式导致的横向溢出问题，强制文字左对齐，页面更规整。</li>
+                </ul>
+            </div>
+            <div class="changelog-entry">
+                <div class="changelog-version">Version 1.2 Stable｜2026.10.23</div>
+                <ul class="changelog-list">
+                    <li>修复屿巴数据源请求错误，深圳湾B2、B2P、B2X可正常拉取预计到站时间</li>
+                    <li>界面文案优化，移除全部ETA缩写，统一使用易懂中文表述</li>
+                    <li>通勤规划逻辑重构，按时段自动切换今日/次日通勤，支持手动切换，修复休息日判断逻辑缺陷</li>
+                </ul>
+            </div>
+            <div class="changelog-entry">
+                <div class="changelog-version">Version 1.2 · 真实，才有意义｜2026.10.22</div>
+                <ul class="changelog-list">
+                    <li>新增更新日志：可在信息面板查看版本变更记录</li>
+                    <li>实时公共交通时刻：东铁线、九巴、城巴、屿巴接入官方实时到站数据</li>
+                    <li>口岸判断优化：切换居民通道等候分级，拥堵惩罚规则更贴合通勤节奏</li>
+                    <li>双源气象：香港天文台、Open-Meteo直连，两地天气更稳定可靠</li>
+                    <li>东铁延误提示：终点站显示中文，列车延误附带暖色标记</li>
+                    <li>休息日智能识别：自动识别周末与香港公众假期；明日休息时，自动停用通勤推算</li>
+                    <li>稳健降级机制：单一数据源获取失败，不会阻塞页面核心通勤计算</li>
+                </ul>
+            </div>
+            <div class="changelog-entry">
+                <div class="changelog-version">Version 1.1 · 晨昏线｜2026.10.21</div>
+                <ul class="changelog-list">
+                    <li>品牌与底层架构重构：项目更名晨昏线 Terminus X，重构为SPA多视图架构，搭建首页、港铁视图、巴士视图整套页面框架</li>
+                    <li>通勤协议系统上线：全新设置面板，支持自定义住址、学校、上课时间、保底通勤时长；支持自选主次出行口岸，配置本地持久保存</li>
+                    <li>公共交通视图就位：独立港铁、巴士页面搭建完成，UI与交互全部落地，为实时数据源预留完整接入接口</li>
+                    <li>口岸渲染逻辑升级：口岸不再硬编码，跟随用户配置动态渲染，配套导航链接动态生成</li>
+                    <li>UI体系统一：全套iOS极简视觉规范、状态圆点、动画过渡效果落地</li>
+                </ul>
+            </div>
+            <div class="changelog-entry">
+                <div class="changelog-version">Version 1.0 · Original 双城穿梭｜2026.10.20</div>
+                <ul class="changelog-list">
+                    <li>初代核心通勤底盘搭建：通勤时间倒推引擎，根据上课时间自动计算最晚出门时刻</li>
+                    <li>双城数据看板基础：深圳、香港两地天气面板、口岸等候状态面板</li>
+                    <li>假期基础识别能力：接入香港公众假期接口，基础假期判断逻辑</li>
+                    <li>口岸导航工具：固定口岸一键导航跳转，配套深圳出境查询入口</li>
+                    <li>基础本地存储：保存上课时间、保底通勤时长等基础设置</li>
+                    <li>基础页面框架：单页模式、设置弹窗、首页卡片布局，整套产品原型落地</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="info-divider"></div>
+        <div class="info-data-note">假期数据：优先接入香港政府在线假期日历。网络不可用时，自动启用本年度本地假期备份。本程序无法识别校内自定义假期。</div>
+    </div>
+</div>
+
+<script>
+    // ============ 常量 ============
+    const HOLIDAY_API = 'https://www.1823.gov.hk/common/ical/sc.json';
+    const HOLIDAY_FALLBACK = [
+        "2026-01-01",
+        "2026-02-17", "2026-02-18", "2026-02-19",
+        "2026-04-03", "2026-04-04", "2026-04-06", "2026-04-07",
+        "2026-05-01",
+        "2026-05-25",
+        "2026-06-19",
+        "2026-07-01",
+        "2026-09-26",
+        "2026-10-01",
+        "2026-10-19",
+        "2026-12-25", "2026-12-26"
+    ];
+    const RAIN_PENALTY_MINUTES = 10;
+
+    // 入境处「居民」口岸排队数据（全站唯一使用公共代理的地方）
+    const PORT_API_RESIDENT = 'https://secure1.info.gov.hk/immd/mobileapps/2bb9ae17/data/CPQueueTimeR.json';
+
+    // 口岸中文名 -> 入境处 API key（居民文件，官方字典）
+    const PORT_MAP = {
+        "深圳湾口岸": { apiKey: "SBC" },
+        "福田口岸/落马洲": { apiKey: "LSC" },
+        "罗湖口岸": { apiKey: "LWS" },
+        "皇岗口岸": { apiKey: "HGP" },
+        "莲塘口岸": { apiKey: "HYW" },
+        "文锦渡口岸": { apiKey: "MKT" }
+    };
+
+    // 口岸坐标（点击卡片头部跳转高德定位）
+    const PORT_COORDS = {
+        "深圳湾口岸": { lng: 113.9472, lat: 22.5028 },
+        "皇岗口岸": { lng: 114.0717, lat: 22.5248 },
+        "福田口岸/落马洲": { lng: 114.0704, lat: 22.5254 },
+        "罗湖口岸": { lng: 114.1136, lat: 22.5287 },
+        "文锦渡口岸": { lng: 114.1269, lat: 22.5440 },
+        "莲塘口岸": { lng: 114.1616, lat: 22.5545 }
+    };
+
+    // 东铁线目的地翻译
+    const MTR_DEST_MAP = { ADM: '金钟', TUM: '屯门', TUC: '屯门', TIS: '天水围', SHS: '上水', TAW: '大围' };
+    const MTR_STATIONS = [
+        { title: '落马洲站出发', sta: 'LMC' },
+        { title: '罗湖站出发', sta: 'LOW' }
+    ];
+
+    // 巴士站点线路配置（实测数据，来自 bus-constants-1.2.json）
+    const BUS_CONFIG = {
+        "深圳湾口岸": {
+            nlb: { stopId: 152, routes: [
+                { route: "B2P", routeId: 34, dest: "天水围 (天慈邨)", weekendOnly: false },
+                { route: "B2", routeId: 38, dest: "元朗港铁站", weekendOnly: false },
+                { route: "B2X", routeId: 36, dest: "天水围 (天耀邨)", weekendOnly: true }
+            ]},
+            ctb: { leaveDir: "I", routes: [
+                { route: "B3X", stopId: "003208", dest: "屯门市中心", weekendOnly: false },
+                { route: "B3", stopId: "003208", dest: "屯门码头", weekendOnly: false },
+                { route: "B3A", stopId: "003208", dest: "山景邨", weekendOnly: false }
+            ]},
+            kmb: null
+        },
+        "皇岗口岸": {
+            nlb: { stopId: 372, routes: [
+                { route: "B12", routeId: 118, dest: "乌溪沙站", weekendOnly: false }
+            ]},
+            ctb: { leaveDir: "O", routes: [
+                { route: "B13", stopId: "001382", dest: "小西湾蓝湾半岛", weekendOnly: false },
+                { route: "B14", stopId: "003934", dest: "启德世运道", weekendOnly: false },
+                { route: "B15", stopId: "003976", dest: "周末线", weekendOnly: true }
+            ]},
+            kmb: { routes: [
+                { route: "B11", stopId: "0E38C53383FCAC6C", dest: "天富 (天水围)", weekendOnly: false },
+                { route: "B10", stopId: "D7E9208A2B3A457A", dest: "葵芳 (葵翠邨)", weekendOnly: false }
+            ]}
+        },
+        "莲塘口岸": {
+            nlb: null,
+            ctb: { leaveDir: "I", routes: [
+                { route: "B7", stopId: "003714", dest: "粉岭站", weekendOnly: false },
+                { route: "B8", stopId: "003714", dest: "大围站", weekendOnly: false }
+            ]},
+            kmb: { routes: [
+                { route: "B9", stopId: "3ED28170B05A236E", dest: "屯门站 (另经元朗形点)", weekendOnly: false },
+                { route: "B9A", stopId: "3ED28170B05A236E", dest: "元朗 (西)", weekendOnly: true }
+            ]}
+        }
+    };
+
+    // Open-Meteo 有雨 WMO 码
+    const RAIN_CODES = [51, 53, 55, 56, 57, 61, 63, 65, 66, 67, 80, 81, 82, 85, 86, 95, 96, 99];
+
+    const defaultConfig = {
+        origin: "",
+        destination: "",
+        schoolTime: "",
+        baseTime: "",
+        mainPort: "",
+        backupPort: ""
+    };
+
+    let userConfig = { ...defaultConfig };
+
+    let weatherData = { loading: true, hasRain: false, shenzhen: { temp: null, error: false }, hongkong: { temp: null, error: false }, szRain: false, hkRain: false };
+    let holidayData = { loading: true, error: false, list: [] };
+    let portData = { loading: true, main: null, backup: null };
+    let busData = { loading: true, cards: null };
+    let mtrData = { loading: true, cards: null };
+    let dayMode = 'auto'; // 'auto' | 'today' | 'tomorrow'
+    let checkInData = JSON.parse(localStorage.getItem('terminus_checkin') || '{}');
+
+    // ============ 统一直连请求（公交/港铁/天气，无代理） ============
+    async function fetchJSON(url, options = {}, timeoutMs = 8000) {
+        const ctrl = new AbortController();
+        const timer = setTimeout(() => ctrl.abort(), timeoutMs);
+        try {
+            const res = await fetch(url, { ...options, signal: ctrl.signal });
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            return await res.json();
+        } finally {
+            clearTimeout(timer);
+        }
+    }
+
+    function minutesFromNow(dateOrString, hasTimezone) {
+        const d = hasTimezone ? new Date(dateOrString)
+            : new Date(String(dateOrString).replace(' ', 'T') + '+08:00');
+        return Math.round((d.getTime() - Date.now()) / 60000);
+    }
+
+    // ============ 初始化 ============
+    window.onload = function() {
+        const hasSaved = loadConfig();
+        applyTheme(localStorage.getItem('terminus_theme') === 'dark' ? 'dark' : 'light');
+        renderUI();
+        renderDate();
+        renderDayToggle();
+        fetchWeather();
+        fetchHoliday();
+        fetchPortQueue(); // 非阻塞，异步填充口岸卡片
+        if (!hasSaved) openSettings();
+        // 口岸数据每 5 分钟刷新一次（内部有 5 分钟缓存）
+        setInterval(fetchPortQueue, 5 * 60 * 1000);
+    };
+
+    function loadConfig() {
+        const saved = localStorage.getItem('terminus_config_v1_2');
+        if (saved) {
+            try {
+                const parsed = JSON.parse(saved);
+                userConfig = { ...defaultConfig, ...parsed };
+                return true;
+            } catch (e) {
+                userConfig = { ...defaultConfig };
+                return false;
+            }
+        }
+        return false;
+    }
+
+    // ============ 设置弹窗 ============
+    function openSettings() {
+        clearErrors();
+        document.getElementById('input-origin').value = userConfig.origin;
+        document.getElementById('input-destination').value = userConfig.destination;
+        document.getElementById('input-school-time').value = userConfig.schoolTime;
+        document.getElementById('input-base-time').value = userConfig.baseTime;
+        setSelectedPort('main', userConfig.mainPort);
+        setSelectedPort('backup', userConfig.backupPort);
+        syncPortChips();
+        document.getElementById('settings-modal').classList.add('active');
+    }
+
+    function closeSettings() {
+        document.getElementById('settings-modal').classList.remove('active');
+    }
+
+    function openInfo() {
+        document.getElementById('info-modal').classList.add('active');
+    }
+
+    function closeInfo() {
+        document.getElementById('info-modal').classList.remove('active');
+    }
+
+    function applyTheme(theme) {
+        document.body.classList.toggle('dark-mode', theme === 'dark');
+        localStorage.setItem('terminus_theme', theme);
+        const lightBtn = document.getElementById('theme-light');
+        const darkBtn = document.getElementById('theme-dark');
+        if (lightBtn) lightBtn.classList.toggle('selected', theme === 'light');
+        if (darkBtn) darkBtn.classList.toggle('selected', theme === 'dark');
+    }
+
+    (function initThemeButtons() {
+        const lightBtn = document.getElementById('theme-light');
+        const darkBtn = document.getElementById('theme-dark');
+        if (lightBtn) lightBtn.addEventListener('click', function() { applyTheme('light'); });
+        if (darkBtn) darkBtn.addEventListener('click', function() { applyTheme('dark'); });
+    })();
+
+    function showError(id, msg) {
+        const el = document.getElementById(id);
+        el.textContent = msg;
+        el.classList.add('show');
+    }
+
+    function clearErrors() {
+        document.querySelectorAll('.input-error').forEach(el => {
+            el.textContent = '';
+            el.classList.remove('show');
+        });
+    }
+
+    function getSelectedPort(groupId) {
+        const group = document.getElementById(groupId + '-port-group');
+        const selected = group.querySelector('.chip.selected');
+        return selected ? selected.dataset.value : '';
+    }
+
+    function setSelectedPort(groupId, value) {
+        const group = document.getElementById(groupId + '-port-group');
+        group.querySelectorAll('.chip').forEach(chip => {
+            chip.classList.toggle('selected', chip.dataset.value === value);
+        });
+    }
+
+    function syncPortChips() {
+        const mainVal = getSelectedPort('main');
+        document.querySelectorAll('#backup-port-group .chip').forEach(chip => {
+            const conflict = mainVal && chip.dataset.value === mainVal;
+            chip.classList.toggle('disabled', conflict);
+            if (conflict) chip.classList.remove('selected');
+        });
+    }
+
+    function initPortChips() {
+        document.querySelectorAll('.chip-group').forEach(group => {
+            group.addEventListener('click', function(e) {
+                const chip = e.target.closest('.chip');
+                if (!chip || chip.classList.contains('disabled')) return;
+                group.querySelectorAll('.chip').forEach(c => c.classList.remove('selected'));
+                chip.classList.add('selected');
+
+                const errId = group.id === 'main-port-group' ? 'err-main-port' : 'err-backup-port';
+                const errEl = document.getElementById(errId);
+                errEl.textContent = '';
+                errEl.classList.remove('show');
+
+                syncPortChips();
+            });
+        });
+    }
+
+    function saveSettings() {
+        const origin = document.getElementById('input-origin').value.trim();
+        const destination = document.getElementById('input-destination').value.trim();
+        const schoolTime = document.getElementById('input-school-time').value;
+        const baseTimeRaw = document.getElementById('input-base-time').value.trim();
+        const baseTime = parseInt(baseTimeRaw, 10);
+        const mainPort = getSelectedPort('main');
+        const backupPort = getSelectedPort('backup');
+
+        clearErrors();
+
+        const errors = [];
+        if (!origin) { showError('err-origin', '请输入住宅名称'); errors.push('请输入住宅名称'); }
+        if (!destination) { showError('err-destination', '请输入学校名称'); errors.push('请输入学校名称'); }
+        if (!schoolTime) { showError('err-school-time', '请选择上课时间'); errors.push('请选择上课时间'); }
+        if (!baseTimeRaw || isNaN(baseTime) || baseTime < 10) { showError('err-base-time', '请输入合理的通勤时间'); errors.push('请输入合理的通勤时间'); }
+        if (!mainPort) { showError('err-main-port', '请选择主口岸'); errors.push('请选择主口岸'); }
+        if (!backupPort) { showError('err-backup-port', '请选择备选口岸'); errors.push('请选择备选口岸'); }
+        else if (backupPort === mainPort) { showError('err-backup-port', '备选口岸不能与主口岸相同'); errors.push('备选口岸不能与主口岸相同'); }
+
+        if (errors.length > 0) {
+            alert(errors[0]);
+            return;
+        }
+
+        userConfig = { origin, destination, schoolTime, baseTime, mainPort, backupPort };
+        localStorage.setItem('terminus_config_v1_2', JSON.stringify(userConfig));
+        closeSettings();
+        renderUI();
+        fetchPortQueue();
+    }
+
+    (function bindInputErrors() {
+        const map = {
+            'input-origin': 'err-origin',
+            'input-destination': 'err-destination',
+            'input-school-time': 'err-school-time',
+            'input-base-time': 'err-base-time'
+        };
+        Object.keys(map).forEach(id => {
+            document.getElementById(id).addEventListener('input', function() {
+                const errEl = document.getElementById(map[id]);
+                errEl.textContent = '';
+                errEl.classList.remove('show');
+            });
+        });
+        initPortChips();
+    })();
+
+    // ============ 香港公众假期 ============
+    async function fetchHoliday() {
+        holidayData.loading = true;
+        holidayData.error = false;
+        renderHoliday();
+
+        try {
+            const data = await fetchJSON(HOLIDAY_API);
+            const vevents = data && data.vcalendar && data.vcalendar[0] && data.vcalendar[0].vevent;
+            const holidays = [];
+            if (Array.isArray(vevents)) {
+                vevents.forEach(ev => {
+                    const dt = (Array.isArray(ev.dtstart) && ev.dtstart[0]) ? String(ev.dtstart[0]) : '';
+                    if (dt) holidays.push(compactToYMD(dt));
+                });
+            }
+            holidayData.list = holidays;
+            holidayData.loading = false;
+        } catch (e) {
+            holidayData.list = HOLIDAY_FALLBACK;
+            holidayData.loading = false;
+            holidayData.error = true;
+        }
+        renderHoliday();
+        renderUI();
+    }
+
+    function renderHoliday() {
+        const text = document.getElementById('holiday-text');
+        const dot = document.getElementById('holiday-dot');
+
+        if (holidayData.loading) {
+            text.textContent = '查询香港假期中…';
+            setDot(dot, 'gray');
+            return;
+        }
+
+        const status = getRestStatus(new Date(), holidayData.list);
+        let label;
+        if (status.isRest) {
+            label = (status.restType === 'weekend') ? '今日周末，不用上学' : '今日香港：红日放假';
+            setDot(dot, 'red');
+        } else {
+            label = '正常上课';
+            setDot(dot, 'green');
+        }
+
+        text.textContent = label;
+    }
+
+    // ============ 口岸：仅此一处使用公共代理（非阻塞 + 并行竞速 + 5 秒预算） ============
+    const PORT_CORS_PROXIES = [
+        "https://api.allorigins.win/raw?url=",
+        "https://api.codetabs.com/v1/proxy/?quest=",
+        "https://corsproxy.io/?url="
+    ];
+
+    function withDeadline(promise, ms) {
+        return Promise.race([promise, new Promise((_, rej) => setTimeout(() => rej(new Error('deadline')), ms))]);
+    }
+
+    async function fetchPortData() {
+        if (fetchPortData._cache && Date.now() - fetchPortData._t < 5 * 60000) return fetchPortData._cache;
+        const valid = j => j && typeof j === 'object' && Object.keys(j).some(k => j[k] && typeof j[k].arrQueue === 'number');
+        const tasks = PORT_CORS_PROXIES.map(p =>
+            fetchJSON(p + encodeURIComponent(PORT_API_RESIDENT), {}, 5000)
+                .then(j => { if (!valid(j)) throw new Error('invalid'); return j; })
+        );
+        try {
+            const j = await withDeadline(Promise.any(tasks), 5000);
+            fetchPortData._cache = j;
+            fetchPortData._t = Date.now();
+            return j;
+        } catch (e) {
+            return null; // 5 秒内全失败：暂无数据
+        }
+    }
+
+    function fetchPortQueue() {
+        portData.loading = true;
+        renderPorts();
+
+        fetchPortData().then(data => {
+            const mainKey = (PORT_MAP[userConfig.mainPort] || {}).apiKey;
+            const backupKey = (PORT_MAP[userConfig.backupPort] || {}).apiKey;
+            portData.main = (mainKey && data && data[mainKey] && typeof data[mainKey].arrQueue === 'number') ? data[mainKey].arrQueue : null;
+            portData.backup = (backupKey && data && data[backupKey] && typeof data[backupKey].arrQueue === 'number') ? data[backupKey].arrQueue : null;
+            portData.loading = false;
+            renderPorts();
+            renderUI();
+        });
+    }
+
+    function portStatus(code) {
+        if (code === 0) return { label: '畅通', cls: 'green', penalty: 0 };
+        if (code === 1) return { label: '一般', cls: 'yellow', penalty: 7 };
+        if (code === 2) return { label: '繁忙', cls: 'red', penalty: 15 };
+        if (code === 4) return { label: '维护中', cls: 'gray', penalty: 0 };
+        if (code === 99) return { label: '非服务时间', cls: 'gray', penalty: 0 };
+        return { label: '暂无数据', cls: 'gray', penalty: 0 };
+    }
+
+    function getPortPenalty() {
+        if (portData.loading) return 0;
+        if (portData.main === null || portData.main === undefined) return 0;
+        return portStatus(portData.main).penalty;
+    }
+
+    function renderPortCards() {
+        document.getElementById('main-port-name').textContent = userConfig.mainPort || '主口岸';
+        document.getElementById('backup-port-name').textContent = userConfig.backupPort || '备选口岸';
+    }
+
+    function renderPorts() {
+        renderPortCards();
+        const mainDot = document.getElementById('main-dot');
+        const mainStatus = document.getElementById('main-status');
+        const backupDot = document.getElementById('backup-dot');
+        const backupStatus = document.getElementById('backup-status');
+
+        if (portData.loading) {
+            setDot(mainDot, 'gray'); mainStatus.textContent = '加载中…';
+            setDot(backupDot, 'gray'); backupStatus.textContent = '加载中…';
+            return;
+        }
+
+        renderPortOne(mainDot, mainStatus, portData.main);
+        renderPortOne(backupDot, backupStatus, portData.backup);
+    }
+
+    function renderPortOne(dot, status, code) {
+        if (code === null || code === undefined) {
+            setDot(dot, 'gray'); status.textContent = '暂无数据';
+            return;
+        }
+        const info = portStatus(code);
+        setDot(dot, info.cls); status.textContent = info.label;
+    }
+
+    // ============ 天气：香港天文台 + Open-Meteo 双直连 ============
+    async function fetchWeather() {
+        weatherData.loading = true;
+        renderWeather();
+
+        const [hk, sz] = await Promise.allSettled([fetchHkWeather(), fetchSzWeather()]);
+
+        if (hk.status === 'fulfilled') {
+            weatherData.hongkong = { temp: hk.value.temp, error: false };
+            weatherData.hkRain = hk.value.isRain;
+        } else {
+            weatherData.hongkong = { temp: null, error: true };
+            weatherData.hkRain = false;
+        }
+
+        if (sz.status === 'fulfilled') {
+            weatherData.shenzhen = { temp: sz.value.temp, error: false };
+            weatherData.szRain = sz.value.isRain;
+        } else {
+            weatherData.shenzhen = { temp: null, error: true };
+            weatherData.szRain = false;
+        }
+
+        weatherData.hasRain = weatherData.hkRain || weatherData.szRain;
+        weatherData.loading = false;
+
+        renderWeather();
+        renderUI();
+    }
+
+    async function fetchHkWeather() {
+        const j = await fetchJSON('https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=rhrread&lang=tc');
+        let temp = null;
+        if (j && j.temperature && Array.isArray(j.temperature.data)) {
+            const arr = j.temperature.data;
+            for (const p of arr) {
+                if ((p.place === '屯門' || p.place === '元朗') && typeof p.value === 'number') { temp = p.value; break; }
+            }
+            if (temp === null) {
+                for (const p of arr) {
+                    if (p.place === '香港天文台' && typeof p.value === 'number') { temp = p.value; break; }
+                }
+            }
+        }
+        let isRain = false;
+        if (j && j.rainfall && Array.isArray(j.rainfall.data)) {
+            for (const item of j.rainfall.data) {
+                if (item && item.place && typeof item.max === 'number' && item.max > 0) {
+                    if (['元朗', '屯門', '北區'].includes(item.place)) { isRain = true; break; }
+                }
+            }
+        }
+        return { temp, isRain };
+    }
+
+    async function fetchSzWeather() {
+        const j = await fetchJSON('https://api.open-meteo.com/v1/forecast?latitude=22.547&longitude=114.086&current=temperature_2m,weather_code&timezone=Asia%2FHong_Kong');
+        const temp = (j && j.current && typeof j.current.temperature_2m === 'number') ? Math.round(j.current.temperature_2m) : null;
+        const code = (j && j.current) ? j.current.weather_code : null;
+        const isRain = (code !== null && code !== undefined) ? RAIN_CODES.includes(code) : false;
+        return { temp, isRain };
+    }
+
+    function renderWeather() {
+        const szTemp = document.getElementById('sz-temp');
+        const hkTemp = document.getElementById('hk-temp');
+        const szDesc = document.getElementById('sz-desc');
+        const hkDesc = document.getElementById('hk-desc');
+        const tip = document.getElementById('weather-tip');
+
+        if (weatherData.loading) {
+            tip.textContent = '天气加载中…';
+            tip.classList.remove('rain');
+            return;
+        }
+
+        // 深圳
+        if (weatherData.shenzhen && !weatherData.shenzhen.error && weatherData.shenzhen.temp !== null) {
+            szTemp.innerHTML = `${weatherData.shenzhen.temp}<span>°</span>`;
+            szDesc.textContent = weatherData.szRain ? '有雨' : '—';
+            szDesc.classList.toggle('rain', weatherData.szRain);
+        } else {
+            szTemp.innerHTML = '--<span>°</span>';
+            szDesc.textContent = '天气暂不可用';
+            szDesc.classList.remove('rain');
+        }
+
+        // 香港
+        if (weatherData.hongkong && !weatherData.hongkong.error && weatherData.hongkong.temp !== null) {
+            hkTemp.innerHTML = `${weatherData.hongkong.temp}<span>°</span>`;
+            hkDesc.textContent = weatherData.hkRain ? '有雨' : '—';
+            hkDesc.classList.toggle('rain', weatherData.hkRain);
+        } else {
+            hkTemp.innerHTML = '--<span>°</span>';
+            hkDesc.textContent = '天气暂不可用';
+            hkDesc.classList.remove('rain');
+        }
+
+        if (weatherData.hasRain) {
+            tip.textContent = '今日有雨，通勤 +10 分钟';
+            tip.classList.add('rain');
+        } else {
+            tip.textContent = '天气晴好，通勤按保底计算';
+            tip.classList.remove('rain');
+        }
+    }
+
+    // ============ 离家进度条 ============
+    function updateProgressBar(targetLeaveDate, now, totalCommuteTime) {
+        const bar = document.getElementById('progress-bar');
+        if (!bar) return;
+        const remainingMinutes = Math.round((targetLeaveDate.getTime() - now.getTime()) / 60000);
+        let width, color;
+        if (remainingMinutes <= 0) {
+            width = 100;
+            color = 'var(--status-red)';
+        } else if (remainingMinutes > totalCommuteTime) {
+            width = 100;
+            color = 'var(--status-green)';
+        } else {
+            width = (remainingMinutes / totalCommuteTime) * 100;
+            color = remainingMinutes > 15 ? 'var(--status-green)' : 'var(--status-yellow)';
+        }
+        bar.style.width = width + '%';
+        bar.style.background = color;
+    }
+
+    function resetProgressBar() {
+        const bar = document.getElementById('progress-bar');
+        if (bar) { bar.style.width = '0%'; bar.style.background = 'var(--text-sub)'; }
+    }
+
+    function checkIn(type) {
+        if (type === 'reset') {
+            if (!confirm("确定要撤销今日的打卡记录吗？")) return;
+            checkInData = { date: todayYMD(), outTime: null, inTime: null };
+        } else if (type === 'out') {
+            checkInData.outTime = Date.now();
+            checkInData.inTime = null;
+        } else if (type === 'in') {
+            checkInData.inTime = Date.now();
+        }
+        checkInData.date = todayYMD();
+        localStorage.setItem('terminus_checkin', JSON.stringify(checkInData));
+        renderUI();
+    }
+
+    function manualRefresh() {
+        fetchWeather();
+        fetchHoliday();
+        fetchPortQueue();
+        fetchMtrData();
+        fetchBusData();
+        renderUI();
+    }
+
+    // ============ 时间倒推 & 渲染 ============
+    function renderUI() {
+        const timeEl = document.getElementById('suggested-time');
+        const statusEl = document.getElementById('status-text');
+        const titleEl = document.getElementById('hero-title-text');
+        const checkinArea = document.getElementById('checkin-action-area');
+
+        timeEl.classList.remove('late', 'warning');
+
+        const targetDate = getTargetDate();
+        const targetIsTomorrow = isTomorrowDate(targetDate);
+        const restStatus = getRestStatus(targetDate, holidayData.list);
+
+        // 【最高优】休息日：强制隐藏打卡，大数字 --:--
+        if (restStatus.isRest) {
+            timeEl.classList.remove('checkin-mode');
+            checkinArea.style.display = 'none';
+            checkinArea.innerHTML = '';
+            titleEl.innerText = "休息日";
+            setTimeWithAnimation(timeEl, '--:--');
+            statusEl.innerHTML = '<span>休息日，无需规划通勤</span>';
+            resetProgressBar();
+            renderNavLinks();
+            return;
+        }
+
+        // 【次高优】非今天（看明日）：忽略打卡，走正常推算
+        if (getEffectiveDay() !== 'today') {
+            timeEl.classList.remove('checkin-mode');
+            checkinArea.style.display = 'none';
+            checkinArea.innerHTML = '';
+        } else {
+            // 【最后】今天 + 非休息日：打卡状态机
+            if (checkInData.date !== todayYMD()) {
+                checkInData = { date: todayYMD(), outTime: null, inTime: null };
+                localStorage.setItem('terminus_checkin', JSON.stringify(checkInData));
+            }
+
+            if (checkInData.outTime && checkInData.inTime) {
+                timeEl.classList.add('checkin-mode');
+                titleEl.innerText = "今日打卡完成";
+                setTimeWithAnimation(timeEl, `耗时 ${Math.max(1, Math.round((checkInData.inTime - checkInData.outTime) / 60000))} 分钟`);
+                statusEl.innerHTML = '<span>已到校</span>';
+                checkinArea.style.display = 'block';
+                checkinArea.innerHTML = `<button class="action-card secondary" onclick="checkIn('reset')">清空今日打卡记录</button>`;
+                resetProgressBar();
+                renderNavLinks();
+                return;
+            }
+
+            if (checkInData.outTime && !checkInData.inTime) {
+                timeEl.classList.add('checkin-mode');
+                titleEl.innerText = "正在通勤中";
+                setTimeWithAnimation(timeEl, `已出门 ${Math.max(1, Math.round((Date.now() - checkInData.outTime) / 60000))} 分钟`);
+                statusEl.innerHTML = '<span>路上注意安全</span>';
+                checkinArea.style.display = 'block';
+                checkinArea.innerHTML = `<button class="action-card" onclick="checkIn('in')">我已到校</button><button class="action-card secondary" onclick="checkIn('reset')">点错了，撤销出门</button>`;
+                resetProgressBar();
+                renderNavLinks();
+                return;
+            }
+
+            // 未出门
+            timeEl.classList.remove('checkin-mode');
+            checkinArea.style.display = 'block';
+            checkinArea.innerHTML = `<button class="action-card" onclick="checkIn('out')">我已出门</button>`;
+        }
+
+        // 正常推算（未出门 或 非今天）
+        if (!userConfig.schoolTime || !userConfig.baseTime) {
+            titleEl.innerText = '建议出门时间';
+            setTimeWithAnimation(timeEl, '--:--');
+            statusEl.innerHTML = '<span>请设置通勤参数</span>';
+            resetProgressBar();
+            renderNavLinks();
+            return;
+        }
+
+        const weatherPenalty = weatherData.hasRain ? RAIN_PENALTY_MINUTES : 0;
+        const portPenalty = getPortPenalty();
+        const totalCommuteTime = userConfig.baseTime + weatherPenalty + portPenalty;
+
+        const [schoolHour, schoolMinute] = userConfig.schoolTime.split(':').map(Number);
+        const targetSchoolDate = new Date(targetDate.getTime());
+        targetSchoolDate.setHours(schoolHour, schoolMinute, 0, 0);
+
+        const now = new Date();
+        const targetLeaveDate = new Date(targetSchoolDate.getTime() - totalCommuteTime * 60000);
+
+        updateProgressBar(targetLeaveDate, now, totalCommuteTime);
+
+        titleEl.innerText = targetIsTomorrow ? "明日建议出门时间" : "建议出门时间";
+
+        const leaveHour = String(targetLeaveDate.getHours()).padStart(2, '0');
+        const leaveMin = String(targetLeaveDate.getMinutes()).padStart(2, '0');
+        setTimeWithAnimation(timeEl, `${leaveHour}:${leaveMin}`);
+
+        let statusHtml;
+        if (now > targetSchoolDate) {
+            timeEl.classList.add('late');
+            statusHtml = `<span style="color:var(--danger-color)">已迟到，快去学校！</span>`;
+        } else if (now > targetLeaveDate) {
+            timeEl.classList.add('warning');
+            statusHtml = `<span style="color:var(--warning-color)">已经到出门时间了，快走！</span>`;
+        } else {
+            let extraParts = [];
+            if (weatherPenalty > 0) extraParts.push(`雨天 +${weatherPenalty}`);
+            if (portPenalty > 0) extraParts.push(`口岸 +${portPenalty}`);
+            const extraHtml = extraParts.length
+                ? ` <span style="color:var(--warning-color)">(含 ${extraParts.join('，')} 分钟)</span>`
+                : '';
+            statusHtml = `<span>总耗时预估 ${totalCommuteTime} 分钟${extraHtml}</span>`;
+        }
+        statusEl.innerHTML = statusHtml;
+
+        renderNavLinks();
+    }
+
+    function renderNavLinks() {
+        const encodedName = encodeURIComponent(userConfig.destination || '学校');
+        const navUrl = `https://uri.amap.com/navigation?to=${encodedName}&mode=bus&coordinate=gaode&callnative=1`;
+        document.getElementById('nav-szw').href = navUrl;
+        document.getElementById('nav-ft').href = navUrl;
+
+        const mainLabel = userConfig.mainPort ? `经${userConfig.mainPort}前往` : '经主口岸前往';
+        const backupLabel = userConfig.backupPort ? `经${userConfig.backupPort}前往` : '经备选口岸前往';
+        document.getElementById('nav-szw').querySelector('.nav-btn-main').textContent = mainLabel;
+        document.getElementById('nav-ft').querySelector('.nav-btn-main').textContent = backupLabel;
+    }
+
+    // ============ SPA 视图切换 ============
+    function switchView(targetId) {
+        document.querySelectorAll('.view').forEach(v => {
+            if (v.id === targetId) {
+                v.style.display = 'flex';
+            } else {
+                v.style.display = 'none';
+            }
+        });
+
+        if (targetId === 'view-mtr') {
+            fetchMtrData();
+        } else if (targetId === 'view-bus') {
+            fetchBusData();
+        }
+
+        const target = document.getElementById(targetId);
+        target.style.opacity = '0';
+        target.style.transition = 'opacity 0.3s ease';
+        void target.offsetWidth;
+        target.style.opacity = '1';
+    }
+
+    // ============ 港铁东铁线（直连） ============
+    async function fetchMtr(sta) {
+        const j = await fetchJSON(`https://rt.data.gov.hk/v1/transport/mtr/getSchedule.php?line=EAL&sta=${sta}`);
+        const down = (j && j.data && j.data['EAL-' + sta] && j.data['EAL-' + sta].DOWN) || [];
+        return down.slice(0, 4).map(x => ({
+            minutes: (x.ttnt === '' || x.ttnt == null) ? null : Number(x.ttnt),
+            dest: MTR_DEST_MAP[x.dest] || x.dest,
+            delayed: x.isdelay === 'Y'
+        }));
+    }
+
+    async function fetchMtrData() {
+        mtrData.loading = true;
+        renderMtr();
+
+        const cards = await Promise.all(MTR_STATIONS.map(async s => {
+            try {
+                const trains = await fetchMtr(s.sta);
+                return { title: s.title, trains, error: false };
+            } catch (e) {
+                return { title: s.title, trains: [], error: true };
+            }
+        }));
+
+        mtrData.cards = cards;
+        mtrData.loading = false;
+        renderMtr();
+    }
+
+    function formatTtnt(minutes) {
+        if (minutes === null || minutes === undefined) return '--';
+        if (minutes < 1) return '即将到站';
+        if (minutes > 60) return '--';
+        return `${minutes} 分钟`;
+    }
+
+    function renderMtr() {
+        const container = document.getElementById('mtr-cards');
+        if (mtrData.loading || !mtrData.cards) {
+            container.innerHTML = MTR_STATIONS.map(s =>
+                `<div class="card"><div class="card-title">${s.title}</div><div class="bus-no-service">加载中…</div></div>`
+            ).join('');
+            return;
+        }
+        container.innerHTML = mtrData.cards.map(renderMtrCard).join('');
+    }
+
+    function renderMtrCard(card) {
+        let body;
+        if (card.error) {
+            body = `<div class="bus-no-service">暂无数据</div>`;
+        } else if (!card.trains.length) {
+            body = `<div class="bus-no-service">暂无班次</div>`;
+        } else {
+            body = card.trains.map(t => {
+                const etaText = formatTtnt(t.minutes);
+                const cls = (etaText === '--') ? 'mtr-eta dim' : 'mtr-eta';
+                const delayTag = t.delayed ? `<span class="mtr-delay">延误</span>` : '';
+                return `<div class="mtr-line">
+                    <span class="mtr-dest">往 ${t.dest}</span>
+                    <span class="mtr-eta-wrap"><span class="${cls}">${etaText}</span>${delayTag}</span>
+                </div>`;
+            }).join('');
+        }
+        return `<div class="card"><div class="card-title">${card.title}</div>${body}</div>`;
+    }
+
+    // ============ 巴士（城巴/九巴/屿巴 直连） ============
+    async function fetchCtb(stopId, route, leaveDir) {
+        const j = await fetchJSON(`https://rt.data.gov.hk/v1/transport/citybus-nwfb/eta/CTB/${stopId}/${route}`);
+        const all = (j && j.data) || [];
+        const leave = all.filter(x => x.dir === leaveDir && x.dest_tc && !/口岸|管制站/.test(x.dest_tc));
+        const head = leave[0];
+        return {
+            route,
+            dest: head ? head.dest_tc : null,
+            etas: leave.slice(0, 3).map(x => minutesFromNow(x.eta, true)),
+            remark: head ? head.rmk_tc : null
+        };
+    }
+
+    async function fetchKmb(stopId, routes) {
+        const j = await fetchJSON(`https://data.etabus.gov.hk/v1/transport/kmb/stop-eta/${stopId}`);
+        const all = (j && j.data) || [];
+        return routes.map(route => {
+            const hits = all.filter(x => x.route === route && x.dir === 'I');
+            const head = hits[0];
+            return {
+                route,
+                dest: head ? head.dest_sc : null,
+                etas: hits.slice(0, 3).map(x => minutesFromNow(x.eta, true)),
+                remark: head ? head.rmk_sc : null
+            };
+        });
+    }
+
+    async function fetchNlb(routeId, stopId) {
+        const base = 'https://rt.data.gov.hk/v2/transport/nlb/stop.php';
+        const query = new URLSearchParams({
+            action: 'estimatedArrivals',
+            routeId: String(routeId),
+            stopId: String(stopId),
+            language: 'cn'
+        }).toString();
+
+        const j = await fetchJSON(`${base}?${query}`, {}, 5000);
+
+        const arr = (j && Array.isArray(j.estimatedArrivals)) ? j.estimatedArrivals : [];
+
+        return arr
+            .map(x => ({
+                minutes: minutesFromNow(x.estimatedArrivalTime, false),
+                scheduled: String(x.noGPS) === '1'
+            }))
+            .filter(x => x.minutes >= 0)
+            .slice(0, 3);
+    }
+
+    async function fetchBusData() {
+        busData.loading = true;
+        renderBusCards();
+
+        const ports = [...new Set([userConfig.mainPort, userConfig.backupPort].filter(Boolean))];
+
+        const cards = await Promise.all(ports.map(async port => {
+            const cfg = BUS_CONFIG[port];
+            if (!cfg) {
+                return { name: port, lines: [], special: getBusPortFallback(port) };
+            }
+
+            const tasks = [];
+            if (cfg.nlb) {
+                cfg.nlb.routes.forEach(r => {
+                    tasks.push(
+                        fetchNlb(r.routeId, cfg.nlb.stopId).then(arr => ({
+                            route: r.route, dest: r.dest, weekendOnly: r.weekendOnly,
+                            etas: arr.map(a => a.minutes), remark: arr.some(a => a.scheduled) ? '原定班次' : null, error: false
+                        })).catch(() => ({ route: r.route, dest: r.dest, weekendOnly: r.weekendOnly, etas: [], remark: null, error: true }))
+                    );
+                });
+            }
+            if (cfg.ctb) {
+                cfg.ctb.routes.forEach(r => {
+                    tasks.push(
+                        fetchCtb(r.stopId, r.route, cfg.ctb.leaveDir).then(res => ({
+                            route: r.route, dest: res.dest || r.dest, weekendOnly: r.weekendOnly,
+                            etas: res.etas, remark: res.remark, error: false
+                        })).catch(() => ({ route: r.route, dest: r.dest, weekendOnly: r.weekendOnly, etas: [], remark: null, error: true }))
+                    );
+                });
+            }
+            if (cfg.kmb) {
+                cfg.kmb.routes.forEach(r => {
+                    tasks.push(
+                        fetchKmb(r.stopId, [r.route]).then(res => {
+                            const head = res[0];
+                            return { route: r.route, dest: head.dest || r.dest, weekendOnly: r.weekendOnly,
+                                etas: head.etas, remark: head.remark, error: false };
+                        }).catch(() => ({ route: r.route, dest: r.dest, weekendOnly: r.weekendOnly, etas: [], remark: null, error: true }))
+                    );
+                });
+            }
+
+            const lines = await Promise.all(tasks);
+            lines.sort(compareRoute);
+            return { name: port, lines, special: null };
+        }));
+
+        busData.cards = cards;
+        busData.loading = false;
+        renderBusCards();
+    }
+
+    function compareRoute(a, b) {
+        const parse = s => {
+            const m = String(s).match(/^B(\d+)([A-Z]*)$/);
+            return m ? [parseInt(m[1], 10), m[2]] : [Infinity, String(s)];
+        };
+        const [an, al] = parse(a.route);
+        const [bn, bl] = parse(b.route);
+        if (an !== bn) return an - bn;
+        return al < bl ? -1 : (al > bl ? 1 : 0);
+    }
+
+    function renderBusCards() {
+        const container = document.getElementById('bus-cards');
+        if (busData.loading || !busData.cards) {
+            const ports = [...new Set([userConfig.mainPort, userConfig.backupPort].filter(Boolean))];
+            const names = ports.length ? ports : ['口岸'];
+            container.innerHTML = names.map(n =>
+                `<div class="card"><div class="card-title bus-port-title">${n}</div><div class="bus-no-service">加载中…</div></div>`
+            ).join('');
+            return;
+        }
+        container.innerHTML = busData.cards.map(renderBusCard).join('');
+    }
+
+    function renderBusCard(card) {
+        let body;
+        if (card.special) {
+            body = `<div class="bus-no-service">${card.special}</div>`;
+        } else if (!card.lines.length) {
+            body = `<div class="bus-no-service">暂无巴士数据</div>`;
+        } else {
+            body = card.lines.map(renderBusLine).join('');
+        }
+        return `<div class="card">
+            <div class="card-title bus-port-title" onclick="openPortInAmap('${card.name}')">${card.name}</div>
+            ${body}
+        </div>`;
+    }
+
+    function renderBusLine(line) {
+        let etaHtml;
+        if (line.error) {
+            etaHtml = `<span class="bus-eta dim">暂无数据</span>`;
+        } else if (!line.etas.length && line.weekendOnly) {
+            etaHtml = `<span class="bus-eta dim">周末及公众假期</span>`;
+        } else if (!line.etas.length) {
+            etaHtml = `<span class="bus-eta dim">今日无班次</span>`;
+        } else {
+            etaHtml = line.etas.slice().sort((a, b) => a - b).map(m => {
+                const txt = m < 1 ? '即将到站' : `${m} 分钟`;
+                return `<span class="bus-eta">${txt}</span>`;
+            }).join('');
+        }
+
+        const remarkHtml = (line.remark === '原定班次' && line.etas.length) ? `<span class="bus-remark">原定班次</span>` : '';
+
+        return `<div class="bus-line">
+            <span class="bus-route">${line.route}</span>
+            <span class="bus-dest">往 ${line.dest}</span>
+            <span class="bus-etas">${etaHtml}${remarkHtml}</span>
+        </div>`;
+    }
+
+    function getBusPortFallback(port) {
+        if (port === '罗湖口岸' || port === '福田口岸/落马洲') {
+            return '香港侧无专营巴士，请前往乘坐东铁线。';
+        }
+        return '暂无专营巴士预计到站时间。';
+    }
+
+    function openPortInAmap(port) {
+        const c = PORT_COORDS[port];
+        if (!c) return;
+        const url = `https://uri.amap.com/marker?position=${c.lng},${c.lat}&name=${encodeURIComponent(port)}`;
+        window.open(url, '_blank');
+    }
+
+    // ============ 工具函数 ============
+    function setDot(el, cls) {
+        el.className = 'status-dot ' + cls;
+    }
+
+    function setTimeWithAnimation(el, newText) {
+        if (el.innerText === newText) return;
+        el.classList.add('fade');
+        setTimeout(() => {
+            el.innerText = newText;
+            el.classList.remove('fade');
+        }, 180);
+    }
+
+    function renderDate() {
+        const d = getTargetDate();
+        const weekdays = ['日', '一', '二', '三', '四', '五', '六'];
+        document.getElementById('date-line').textContent =
+            `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日 星期${weekdays[d.getDay()]}`;
+    }
+
+    function getEffectiveDay() {
+        if (dayMode === 'today') return 'today';
+        if (dayMode === 'tomorrow') return 'tomorrow';
+        return (new Date().getHours() >= 12) ? 'tomorrow' : 'today';
+    }
+
+    function getTargetDate() {
+        const d = new Date();
+        if (getEffectiveDay() === 'tomorrow') d.setDate(d.getDate() + 1);
+        return d;
+    }
+
+    function isTomorrowDate(dateObj) {
+        return dateToYMD(dateObj) === getNextDayYMD();
+    }
+
+    function setDayMode(mode) {
+        dayMode = mode;
+        renderDayToggle();
+        renderDate();
+        renderUI();
+    }
+
+    function renderDayToggle() {
+        const effective = getEffectiveDay();
+        const todayBtn = document.getElementById('day-today');
+        const tomorrowBtn = document.getElementById('day-tomorrow');
+        if (todayBtn) todayBtn.classList.toggle('active', effective === 'today');
+        if (tomorrowBtn) tomorrowBtn.classList.toggle('active', effective === 'tomorrow');
+    }
+
+    function todayYMD() {
+        const d = new Date();
+        return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+    }
+
+    function compactToYMD(s) {
+        s = String(s);
+        if (s.length === 8) return `${s.slice(0, 4)}-${s.slice(4, 6)}-${s.slice(6, 8)}`;
+        return s;
+    }
+
+    function dateToYMD(dateObj) {
+        return `${dateObj.getFullYear()}-${String(dateObj.getMonth() + 1).padStart(2, '0')}-${String(dateObj.getDate()).padStart(2, '0')}`;
+    }
+
+    function getNextDayYMD() {
+        const d = new Date();
+        d.setDate(d.getDate() + 1);
+        return dateToYMD(d);
+    }
+
+    function isWeekend(dateObj) {
+        const day = dateObj.getDay();
+        return day === 6 || day === 0;
+    }
+
+    function isDateInHolidayList(ymdStr, holidayArr) {
+        return (holidayArr || []).includes(ymdStr);
+    }
+
+    function getRestStatus(dateObj, holidayArr) {
+        if (isWeekend(dateObj)) return { isRest: true, restType: 'weekend' };
+        if (isDateInHolidayList(dateToYMD(dateObj), holidayArr)) return { isRest: true, restType: 'publicHoliday' };
+        return { isRest: false, restType: 'none' };
+    }
+
+    function isTodayRest() {
+        return getRestStatus(new Date(), holidayData.list).isRest;
+    }
+
+    function isTomorrowRest() {
+        const d = new Date();
+        d.setDate(d.getDate() + 1);
+        return getRestStatus(d, holidayData.list).isRest;
+    }
+
+    document.getElementById('settings-modal').addEventListener('click', function(e) {
+        if (e.target === this) closeSettings();
+    });
+
+    document.getElementById('info-modal').addEventListener('click', function(e) {
+        if (e.target === this) closeInfo();
+    });
+</script>
+</body>
+</html>
