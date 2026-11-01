@@ -624,6 +624,25 @@
             box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
         }
 
+           /* ===== 离线地图卡片：液态玻璃补齐 ===== */
+        body:not(.dark-mode) #view-map .card {
+            background: rgba(255, 255, 255, 0.35) !important;
+            backdrop-filter: blur(40px) saturate(180%) !important;
+            -webkit-backdrop-filter: blur(40px) saturate(180%) !important;
+            border: 1px solid rgba(255, 255, 255, 0.75) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+        }
+        
+        body.dark-mode #view-map .card {
+            background: rgba(20, 24, 34, 0.45) !important;
+            backdrop-filter: blur(40px) saturate(150%) !important;
+            -webkit-backdrop-filter: blur(40px) saturate(150%) !important;
+            border: 1px solid rgba(255, 255, 255, 0.15) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+        }
+
         /* ===== 离线地图（二级页 · 由 map-1.7 合并） ===== */
         #view-map {
             --m-sea: #E8EDF3; --m-sz: #FFFFFF; --m-hk: #CCD8E6; --m-coast: #A8B5C4;
