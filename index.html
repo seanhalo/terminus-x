@@ -286,7 +286,7 @@
             border: none;
             box-shadow: none;
             padding-top: 40px;
-            padding-bottom: 20px;
+            padding-bottom: 10px;
         }
 
         body:not(.dark-mode) #view-home .hero-time { text-shadow: 0 2px 10px rgba(0,0,0,0.05); }
@@ -294,6 +294,8 @@
         #view-home .progress-container { width: 80%; margin: 20px auto 16px; }
 
         body:not(.dark-mode) #view-home .hero-sub { color: #6E6E73; }
+
+        #view-home .hero-sub:not(:empty) { margin-top: 14px; }
 
         #view-home .progress-bar { background: var(--text-main); }
         #view-home .progress-bar.urgent { animation: tx-progress-breathe 1.2s ease-in-out infinite; }
@@ -709,7 +711,7 @@
         .cl-chip.selected { background: var(--text-main); color: var(--bg-color); border-color: var(--text-main); }
 
         /* ===== 自学习端侧推理引擎（LocalInferenceEngine）===== */
-        .engine-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+        .engine-row { display: flex; align-items: center; justify-content: space-between; gap: 12px;margin-top: 12px; }
         .engine-title { font-size: 14px; font-weight: 600; color: var(--text-main); }
         .engine-beta { font-size: 10px; color: var(--accent-color); font-weight: 600; margin-left: 4px; }
         .engine-sub { font-size: 11px; color: var(--text-sub); margin-top: 2px; }
@@ -2453,7 +2455,7 @@
 
     function renderEngineStatus(aiDelta) {
         if (!engineEnabled) return '';
-        if (!engineReady()) return '<span>* 推理引擎正在收集数据 *</span>';
+        if (!engineReady()) return '<span>推理引擎正在收集数据</span>';
         let msg = '* 推理引擎已接管：基于 ' + engineSamples + ' 次打卡校准 *';
         if (aiDelta !== null && aiDelta >= 0.5) {
             msg += '<br>* 因天气与星期叠加，推理引擎已额外预留 ' + Math.round(aiDelta) + ' 分钟 *';
