@@ -66,8 +66,6 @@
         .action-card:active { opacity: 0.6; }
         .action-card.secondary { background: transparent; border: none; color: var(--text-sub); font-size: 12px; font-weight: 400; margin-top: -4px; padding: 8px; }
         body.dark-mode .action-card { border-color: rgba(255, 255, 255, 0.1); background: rgba(255, 255, 255, 0.05); }
-        .hero-time.late { color: var(--danger-color); }
-        .hero-time.warning { color: var(--warning-color); }
         .hero-sub { font-size: 13px; color: var(--text-sub); display: flex; justify-content: center; align-items: center; gap: 6px; }
 
         .status-dot { width: 10px; height: 10px; border-radius: 50%; background: #D1D1D6; display: inline-block; flex-shrink: 0; }
@@ -270,10 +268,6 @@
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.03);
             border-radius: 24px;
         }
-        body:not(.dark-mode) .hero-time.late {
-            color: #FF453A;
-            text-shadow: 0 0 20px rgba(255, 69, 58, 0.2);
-        }
         body:not(.dark-mode) .action-card:not(.secondary) {
             background: rgba(255, 255, 255, 0.6);
             border: 1px solid rgba(255, 255, 255, 0.9);
@@ -296,8 +290,6 @@
         }
 
         body:not(.dark-mode) #view-home .hero-time { text-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        body:not(.dark-mode) #view-home .hero-time.late,
-        body:not(.dark-mode) #view-home .hero-time.warning { color: var(--text-main); }
 
         #view-home .progress-container { width: 80%; margin: 20px auto 16px; }
 
@@ -347,12 +339,6 @@
             background: rgba(255, 255, 255, 0.12) !important;
         }
 
-        /* 图标颜色让它跟随系统强调色或黑白主色 */
-        .sz-port-link-row svg {
-            color: var(--text-main) !important; 
-            margin-right: 2px;
-        }
-
         /* 1. 浅色模式：主卡片与普通卡片 */
         body:not(.dark-mode) #view-home .card.hero-card,
         body:not(.dark-mode) #view-home .card {
@@ -387,8 +373,7 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
         }
 
-        /* ===== 终极纯工具：隐藏进度条，大数字自然塌陷 ===== */
-        #view-home .progress-container { display: none; }
+        /* ===== 终极纯工具：大数字自然塌陷 ===== */
         #view-home .hero-time {
             margin-bottom: 16px;
             display: flex;
@@ -403,9 +388,6 @@
         #view-home #checkin-action-area > .action-card { margin-bottom: 0; }
         #view-home #checkin-action-area .flex-buttons { display: flex; gap: 12px; width: 100%; }
         #view-home #checkin-action-area .flex-buttons .action-card { flex: 1; margin: 0; width: auto; }
-
-        /* 强行覆盖之前的隐藏指令，复活进度条 */
-        #view-home .progress-container { display: block !important; }
 
         /* ===== 今日/明日：液态玻璃分段控制器（浅色） ===== */
         body:not(.dark-mode) .day-toggle {
@@ -624,7 +606,7 @@
             box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
         }
 
-           /* ===== 离线地图卡片：液态玻璃补齐 ===== */
+          /* ===== 离线地图卡片：液态玻璃补齐 ===== */
         body:not(.dark-mode) #view-map .card {
             background: rgba(255, 255, 255, 0.35) !important;
             backdrop-filter: blur(40px) saturate(180%) !important;
@@ -712,6 +694,32 @@
         #omDot { fill: var(--m-accent); stroke: #FFF; stroke-width: 1.6; }
         body.dark-mode #omDot { stroke: #12161D; }
 
+        /* ===== 启程自检（Checklist）===== */
+        .checklist-row-inner { display: flex; align-items: center; gap: 8px; }
+        .checklist-row-inner input { flex: 1; min-width: 0; }
+        .cl-del { width: 30px; height: 30px; flex-shrink: 0; border: none; background: transparent; color: var(--text-sub); font-size: 22px; line-height: 1; cursor: pointer; border-radius: 8px; transition: background 0.15s, color 0.15s; }
+        .cl-del:hover { color: var(--text-main); }
+        .cl-del:active { background: #E5E5EA; }
+        .cl-add-btn { width: 100%; padding: 12px; border: 1px dashed rgba(150,150,150,0.45); border-radius: 10px; background: transparent; color: var(--text-sub); font-size: 14px; font-weight: 500; cursor: pointer; transition: color 0.15s, border-color 0.15s; }
+        .cl-add-btn:hover { color: var(--text-main); border-color: rgba(150,150,150,0.7); }
+        #checklist-action-modal { z-index: 500; background: rgba(0,0,0,0.62); }
+        .cl-hint { text-align: center; font-size: 12px; color: var(--text-sub); margin: -12px 0 16px; }
+        #checklist-action-list { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+        .cl-chip { padding: 12px 18px; border-radius: 999px; border: 1px solid rgba(150,150,150,0.28); background: rgba(150,150,150,0.06); color: var(--text-main); font-size: 15px; font-weight: 600; cursor: pointer; transition: background 0.15s, color 0.15s, border-color 0.15s; }
+        .cl-chip.selected { background: var(--text-main); color: var(--bg-color); border-color: var(--text-main); }
+
+        /* ===== 自学习端侧推理引擎（LocalInferenceEngine）===== */
+        .engine-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+        .engine-title { font-size: 14px; font-weight: 600; color: var(--text-main); }
+        .engine-beta { font-size: 10px; color: var(--accent-color); font-weight: 600; margin-left: 4px; }
+        .engine-sub { font-size: 11px; color: var(--text-sub); margin-top: 2px; }
+        .engine-switch { width: 46px; height: 28px; border-radius: 14px; border: none; background: #D1D1D6; position: relative; cursor: pointer; transition: background 0.2s; flex-shrink: 0; }
+        .engine-switch::after { content: ""; position: absolute; top: 3px; left: 3px; width: 22px; height: 22px; border-radius: 50%; background: #FFF; transition: transform 0.2s; box-shadow: 0 1px 2px rgba(0,0,0,0.2); }
+        .engine-switch.on { background: var(--accent-color); }
+        .engine-switch.on::after { transform: translateX(18px); }
+        .engine-reset { background: transparent; border: none; color: var(--text-sub); font-size: 11px; cursor: pointer; text-decoration: underline; padding: 4px 8px; }
+        .engine-reset:active { opacity: 0.6; }
+
     
 
     </style>
@@ -731,6 +739,14 @@
                     <polyline points="23 4 23 10 17 10"></polyline>
                     <polyline points="1 20 1 14 7 14"></polyline>
                     <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                </svg>
+            </div>
+            <div class="settings-icon" onclick="openChecklist()" title="启程自检">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="4" y="3" width="16" height="18" rx="3"></rect>
+                    <line x1="9" y1="9" x2="15" y2="9"></line>
+                    <line x1="9" y1="13" x2="15" y2="13"></line>
+                    <line x1="9" y1="17" x2="13" y2="17"></line>
                 </svg>
             </div>
             <div class="settings-icon" onclick="openHistory()" title="历史记录">
@@ -862,6 +878,16 @@
             </svg>
             <span>巴士</span>
         </button>
+    </div>
+
+    <div class="card" style="padding:16px 20px;">
+        <div class="engine-row">
+            <div>
+                <div class="engine-title">自学习端侧推理引擎 <span class="engine-beta">Beta</span></div>
+                <div class="engine-sub">本地微型神经网络，动态校准通勤时间</div>
+            </div>
+            <button type="button" id="engine-toggle" class="engine-switch" onclick="toggleEngine()" aria-pressed="false" aria-label="切换推理引擎"></button>
+        </div>
     </div>
     </div>
 
@@ -1124,17 +1150,43 @@
 
         <button class="btn-save" onclick="saveSettings()">建立通勤协议</button>
         <div class="btn-hint">将为你定制专属倒计时</div>
-        <div class="version-text">Version 1.6</div>
+        <div style="text-align:center;margin-top:8px;">
+            <button type="button" class="engine-reset" onclick="resetEngine()">重置推理引擎模型</button>
+        </div>
+        <div class="version-text">Version 1.8</div>
     </div>
 </div>
 
 <div class="modal-overlay" id="info-modal">
     <div class="modal-content">
         <div class="info-title">晨昏线 Terminus X</div>
-        <div class="info-version">Version 1.6</div>
+        <div class="info-version">Version 1.8</div>
         <div class="info-divider"></div>
 
         <div class="changelog">
+             <div class="changelog-entry">
+                <div class="changelog-version">Version 1.8 · 端侧自学习｜2026.11.4</div>
+                <ul class="changelog-list">
+                    <li><b>自学习端侧推理引擎</b><br>37 参数微型多层感知机，纯原生 JS + Float32Array，训练与推理全部在手机本地完成，不依赖任何云端。</li>
+                    <li><b>动态个性化校准</b><br>引擎学习「实际通勤比保底多/少几分钟」，替代死板的静态公式，建议出门时间呈现 06:48 式非规整结果。</li>
+                    <li><b>四重防御锁</b><br>误差 &gt; 45 分钟自动丢弃、输出锁死 -15~+60 分钟、样本不足 5 次冷启动保护、权重带版本校验并可一键重置。</li>
+                    <li><b>极简开关</b><br>首页底部「自学习端侧推理引擎 Beta」默认关闭；接管后显示基于 N 次打卡校准与额外预留分钟数。</li>
+                </ul>
+            </div>
+             <div class="changelog-entry">
+                <div class="changelog-version">Version 1.7 · 手感与兜底｜2026.11.3</div>
+                <ul class="changelog-list">
+                    <li><b>启程自检上线</b><br>点击出门时弹出物理清单核对，全选即自动开始计时。支持自定义最高 6 项物品，杜绝忘带证件，建立出发前的清醒秩序。</li>
+                    <li><b>放学打卡机</b><br>晚间返程独立成环：离校、到家、保存记录；通勤档案按日并排早、晚两张卡，两段互不覆盖。</li>
+                    <li><b>计时真的会走了</b><br>“已出门 / 已放学 N 分钟”每 30 秒自动重算，不再等下一次网络请求才刷新。</li>
+                    <li><b>明日只用明日的数据</b><br>明日出门时间改看次日降水概率，不再借用今天的雨天实况与此刻的口岸排队；今日推算逻辑不变。</li>
+                    <li><b>进度条重写</b><br>按剩余通勤时间连续收缩，到点归零，不再在截止瞬间弹回满格。</li>
+                    <li><b>分段控件对齐</b><br>今日 / 明日的高亮跟随自动切换，不再出现标题写“明日”、按钮亮“今日”。</li>
+                    <li><b>口岸卡片不再闪</b><br>有数据时静默刷新；三个公共代理全部失败时保留上次结果，并缓存失败状态 60 秒。</li>
+                    <li><b>假期离线可用</b><br>成功拉取的公众假期写入本地，断网重开仍能判断红日。</li>
+                    <li><b>底层清理</b><br>移除未使用的样式与确认弹窗，收紧第三方文本转义，修正外观按钮被口岸逻辑误绑，通勤时长校验补上上限。</li>
+                </ul>
+            </div>
              <div class="changelog-entry">
                 <div class="changelog-version">Version 1.6 · 沉淀与边界｜2026.11.1</div>
                 <ul class="changelog-list">
@@ -1334,13 +1386,47 @@
 
     let userConfig = { ...defaultConfig };
 
-    let weatherData = { loading: true, hasRain: false, szHourly: null, shenzhen: { temp: null, error: false, feelsLike: null, humidity: null, windSpeed: null }, hongkong: { temp: null, error: false }, szRain: false, hkRain: false };
+    let weatherData = { loading: true, hasRain: false, szHourly: null, shenzhen: { temp: null, error: false, feelsLike: null, humidity: null, windSpeed: null }, hongkong: { temp: null, error: false }, szRain: false, hkRain: false, szTomorrowRainProb: null };
     let holidayData = { loading: true, error: false, list: [] };
-    let portData = { loading: true, main: null, backup: null };
+    let portData = { loading: true, main: null, backup: null, raw: null };
     let busData = { loading: true, cards: null };
     let mtrData = { loading: true, cards: null };
     let dayMode = 'auto'; // 'auto' | 'today' | 'tomorrow'
-    let checkInData = JSON.parse(localStorage.getItem('terminus_checkin') || '{}');
+    /* ============ 打卡数据结构（P0-P5）与跨日守卫 ============ */
+    /* 一旦缓存日期不是今日，未归档数据直接作废：不归档、不补录 */
+    function emptyCheckIn() {
+        return {
+            date: todayYMD(),
+            morningOut: null, morningIn: null, morningSaved: false,
+            eveningOut: null, eveningIn: null, eveningSaved: false
+        };
+    }
+
+    function loadCheckIn() {
+        let raw = null;
+        try { raw = JSON.parse(localStorage.getItem('terminus_checkin') || 'null'); } catch (e) { raw = null; }
+        if (!raw || typeof raw !== 'object') return emptyCheckIn();
+        if (raw.date !== todayYMD()) return emptyCheckIn();          // 跨日：丢弃旧对象
+        if (raw.morningOut === undefined && raw.eveningOut === undefined) {
+            // 同一天内的旧格式迁移：仅当 outTime 与 inTime 都在
+            if (raw.outTime && raw.inTime) {
+                return {
+                    date: todayYMD(),
+                    morningOut: raw.outTime, morningIn: raw.inTime, morningSaved: true,
+                    eveningOut: null, eveningIn: null, eveningSaved: false
+                };
+            }
+            return emptyCheckIn();
+        }
+        return {
+            date: todayYMD(),
+            morningOut: raw.morningOut || null, morningIn: raw.morningIn || null, morningSaved: raw.morningSaved === true,
+            eveningOut: raw.eveningOut || null, eveningIn: raw.eveningIn || null, eveningSaved: raw.eveningSaved === true
+        };
+    }
+
+    let checkInData = loadCheckIn();
+    localStorage.setItem('terminus_checkin', JSON.stringify(checkInData));
 
     let historyData = [];
     try {
@@ -1370,19 +1456,32 @@
 
     // ============ 初始化 ============
     window.onload = function() {
-        archivePreviousCheckin();
         const hasSaved = loadConfig();
         applyTheme(localStorage.getItem('terminus_theme') === 'dark' ? 'dark' : 'light');
         renderUI();
         renderDate();
         renderDayToggle();
+        updateEngineToggle();
         fetchWeather();
         fetchHoliday();
         fetchPortQueue(); // 非阻塞，异步填充口岸卡片
         if (!hasSaved) openSettings();
         // 口岸数据每 5 分钟刷新一次（内部有 5 分钟缓存）
         setInterval(fetchPortQueue, 5 * 60 * 1000);
+        // 打卡计时与跨日状态：30 秒一次轻量重算
+        setInterval(tickHome, 30 * 1000);
     };
+
+    /* 只在必要时重绘：打卡进行中重算已用时；其余情况只对齐日期与分段控件 */
+    function tickHome() {
+        if (document.hidden) return;
+        if (getEffectiveDay() === 'today' && !checkInData.eveningSaved && (checkInData.morningOut || checkInData.eveningOut)) {
+            renderUI();
+            return;
+        }
+        renderDate();
+        renderDayToggle();
+    }
 
     function loadConfig() {
         const saved = localStorage.getItem('terminus_config_v1_2');
@@ -1478,7 +1577,8 @@
     }
 
     function initPortChips() {
-        document.querySelectorAll('.chip-group').forEach(group => {
+        // 只接管口岸 chip；外观那组虽然也是 .chip-group，但不该走这里
+        document.querySelectorAll('#main-port-group, #backup-port-group').forEach(group => {
             group.addEventListener('click', function(e) {
                 const chip = e.target.closest('.chip');
                 if (!chip || chip.classList.contains('disabled')) return;
@@ -1523,7 +1623,7 @@
         if (!origin) { showError('err-origin', '请输入住宅名称'); errors.push('请输入住宅名称'); }
         if (!destination) { showError('err-destination', '请输入学校名称'); errors.push('请输入学校名称'); }
         if (!schoolTime) { showError('err-school-time', '请选择上课时间'); errors.push('请选择上课时间'); }
-        if (!baseTimeRaw || isNaN(baseTime) || baseTime < 10) { showError('err-base-time', '请输入合理的通勤时间'); errors.push('请输入合理的通勤时间'); }
+        if (!baseTimeRaw || isNaN(baseTime) || baseTime < 10 || baseTime > 300) { showError('err-base-time', '请输入 10–300 分钟之间的通勤时间'); errors.push('请输入合理的通勤时间'); }
         if (!mainPort) { showError('err-main-port', '请选择主口岸'); errors.push('请选择主口岸'); }
         if (!backupPort) { showError('err-backup-port', '请选择备选口岸'); errors.push('请选择备选口岸'); }
         else if (backupPort === mainPort) { showError('err-backup-port', '备选口岸不能与主口岸相同'); errors.push('备选口岸不能与主口岸相同'); }
@@ -1533,7 +1633,7 @@
         if (destinationCoordRaw && !destinationCoord) { showError('err-destination-coord', '坐标格式：纬度, 经度（如 22.460, 114.000）'); errors.push('学校坐标格式有误'); }
 
         if (errors.length > 0) {
-            alert(errors[0]);
+            showToast(errors[0]);
             return;
         }
 
@@ -1565,9 +1665,21 @@
     })();
 
     // ============ 香港公众假期 ============
+    const HOLIDAY_CACHE_KEY = 'terminus_holidays_v1';
+
+    /* 成功拉取过的假期写入本地，断网重开仍能判断红日 */
+    function loadCachedHolidays() {
+        try {
+            const arr = JSON.parse(localStorage.getItem(HOLIDAY_CACHE_KEY) || 'null');
+            return (Array.isArray(arr) && arr.length) ? arr : null;
+        } catch (e) { return null; }
+    }
+
     async function fetchHoliday() {
         holidayData.loading = true;
         holidayData.error = false;
+        const cached = loadCachedHolidays();
+        if (cached) { holidayData.list = cached; holidayData.loading = false; }
         renderHoliday();
 
         try {
@@ -1582,8 +1694,9 @@
             }
             holidayData.list = holidays;
             holidayData.loading = false;
+            try { localStorage.setItem(HOLIDAY_CACHE_KEY, JSON.stringify(holidays)); } catch (e) {}
         } catch (e) {
-            holidayData.list = HOLIDAY_FALLBACK;
+            holidayData.list = cached || HOLIDAY_FALLBACK;
             holidayData.loading = false;
             holidayData.error = true;
         }
@@ -1627,6 +1740,8 @@
 
     async function fetchPortData() {
         if (fetchPortData._cache && Date.now() - fetchPortData._t < 5 * 60000) return fetchPortData._cache;
+        // 刚失败过：60 秒内不再连打三个代理
+        if (fetchPortData._failedAt && Date.now() - fetchPortData._failedAt < 60000) return null;
         const valid = j => j && typeof j === 'object' && Object.keys(j).some(k => j[k] && typeof j[k].arrQueue === 'number');
         const tasks = PORT_CORS_PROXIES.map(p =>
             fetchJSON(p + encodeURIComponent(PORT_API_RESIDENT), {}, 5000)
@@ -1636,21 +1751,28 @@
             const j = await withDeadline(Promise.any(tasks), 5000);
             fetchPortData._cache = j;
             fetchPortData._t = Date.now();
+            fetchPortData._failedAt = 0;
             return j;
         } catch (e) {
-            return null; // 5 秒内全失败：暂无数据
+            fetchPortData._failedAt = Date.now();
+            return null; // 5 秒内全失败：沿用上一次成功结果
         }
     }
 
     function fetchPortQueue() {
-        portData.loading = true;
-        renderPorts();
+        // 已有数据时静默刷新，避免每 5 分钟闪一次「加载中…」
+        if (!portData.raw) {
+            portData.loading = true;
+            renderPorts();
+        }
 
         fetchPortData().then(data => {
+            if (data) portData.raw = data;
+            const src = portData.raw;
             const mainKey = (PORT_MAP[userConfig.mainPort] || {}).apiKey;
             const backupKey = (PORT_MAP[userConfig.backupPort] || {}).apiKey;
-            portData.main = (mainKey && data && data[mainKey] && typeof data[mainKey].arrQueue === 'number') ? data[mainKey].arrQueue : null;
-            portData.backup = (backupKey && data && data[backupKey] && typeof data[backupKey].arrQueue === 'number') ? data[backupKey].arrQueue : null;
+            portData.main = (mainKey && src && src[mainKey] && typeof src[mainKey].arrQueue === 'number') ? src[mainKey].arrQueue : null;
+            portData.backup = (backupKey && src && src[backupKey] && typeof src[backupKey].arrQueue === 'number') ? src[backupKey].arrQueue : null;
             portData.loading = false;
             renderPorts();
             renderUI();
@@ -1719,11 +1841,13 @@
         }
 
         if (sz.status === 'fulfilled') {
-            weatherData.shenzhen = { temp: sz.value.temp, error: false, feelsLike: sz.value.feelsLike, humidity: sz.value.humidity, windSpeed: sz.value.windSpeed };
+            weatherData.shenzhen = { temp: sz.value.temp, error: false, feelsLike: sz.value.feelsLike, humidity: sz.value.humidity, windSpeed: sz.value.windSpeed, weatherCode: sz.value.weatherCode };
             weatherData.szRain = sz.value.isRain;
+            weatherData.szTomorrowRainProb = (sz.value.tomorrowRainProb == null) ? null : sz.value.tomorrowRainProb;
         } else {
-            weatherData.shenzhen = { temp: null, error: true, feelsLike: null, humidity: null, windSpeed: null };
+            weatherData.shenzhen = { temp: null, error: true, feelsLike: null, humidity: null, windSpeed: null, weatherCode: null };
             weatherData.szRain = false;
+            weatherData.szTomorrowRainProb = null;
         }
 
         weatherData.hasRain = weatherData.hkRain || weatherData.szRain;
@@ -1759,7 +1883,7 @@
     }
 
     async function fetchSzWeather() {
-        const j = await fetchJSON('https://api.open-meteo.com/v1/forecast?latitude=22.547&longitude=114.086&current=temperature_2m,weather_code,apparent_temperature,relative_humidity_2m,wind_speed_10m&timezone=Asia%2FHong_Kong');
+        const j = await fetchJSON('https://api.open-meteo.com/v1/forecast?latitude=22.547&longitude=114.086&current=temperature_2m,weather_code,apparent_temperature,relative_humidity_2m,wind_speed_10m&daily=precipitation_probability_max&forecast_days=2&timezone=Asia%2FHong_Kong');
         const cur = (j && j.current) ? j.current : null;
         const temp = (cur && typeof cur.temperature_2m === 'number') ? Math.round(cur.temperature_2m) : null;
         const code = cur ? cur.weather_code : null;
@@ -1767,7 +1891,10 @@
         const feelsLike = (cur && typeof cur.apparent_temperature === 'number') ? Math.round(cur.apparent_temperature) : null;
         const humidity = (cur && typeof cur.relative_humidity_2m === 'number') ? Math.round(cur.relative_humidity_2m) : null;
         const windSpeed = (cur && typeof cur.wind_speed_10m === 'number') ? Math.round(cur.wind_speed_10m) : null;
-        return { temp, isRain, feelsLike, humidity, windSpeed };
+        // 次日降水概率（daily 第 0 位是今天，第 1 位是明天）
+        const probArr = (j && j.daily && Array.isArray(j.daily.precipitation_probability_max)) ? j.daily.precipitation_probability_max : null;
+        const tomorrowRainProb = (probArr && typeof probArr[1] === 'number') ? probArr[1] : null;
+        return { temp, isRain, feelsLike, humidity, windSpeed, tomorrowRainProb, weatherCode: code };
     }
 
     function renderWeather() {
@@ -1811,7 +1938,8 @@
             '<div class="weather-metric"><span>体感温度</span><b>' + fmtMetric(s.feelsLike, '°') + '</b></div>' +
             '<div class="weather-metric"><span>湿度</span><b>' + fmtMetric(s.humidity, '%') + '</b></div>' +
             '<div class="weather-metric"><span>风速</span><b>' + fmtMetric(s.windSpeed, ' km/h') + '</b></div>' +
-            '<div class="weather-metric"><span>降雨状态</span><b>' + (weatherData.szRain ? '有雨' : '无雨') + '</b></div>';
+            '<div class="weather-metric"><span>降雨状态</span><b>' + (weatherData.szRain ? '有雨' : '无雨') + '</b></div>' +
+            '<div class="weather-metric"><span>明日降雨概率</span><b>' + (weatherData.szTomorrowRainProb == null ? '--' : weatherData.szTomorrowRainProb + '%') + '</b></div>';
     }
 
     function renderRealTimeHK() {
@@ -1912,10 +2040,9 @@
         const bar = document.getElementById('progress-bar');
         if (!bar) return;
         const remainingMinutes = Math.round((targetLeaveDate.getTime() - now.getTime()) / 60000);
-        let width;
-        if (remainingMinutes <= 0) { width = 100; }
-        else if (remainingMinutes > totalCommuteTime) { width = 100; }
-        else { width = (remainingMinutes / totalCommuteTime) * 100; }
+        // 剩余时间占比：充裕时满格，临近出门连续收缩，到点归零（不再在截止瞬间弹回 100%）
+        const ratio = totalCommuteTime > 0 ? (remainingMinutes / totalCommuteTime) * 100 : 0;
+        const width = Math.max(0, Math.min(100, ratio));
         bar.style.width = width + '%';
         bar.style.background = 'var(--text-main)';
         if (remainingMinutes <= 15) { bar.classList.add('urgent'); }
@@ -1927,19 +2054,81 @@
         if (bar) { bar.style.width = '0%'; bar.style.background = 'var(--text-sub)'; bar.classList.remove('urgent'); }
     }
 
-    function checkIn(type) {
-        if (type === 'reset') {
-            if (!confirm("确定要撤销今日的打卡记录吗？")) return;
-            checkInData = { date: todayYMD(), outTime: null, inTime: null };
-        } else if (type === 'out') {
-            checkInData.outTime = Date.now();
-            checkInData.inTime = null;
-        } else if (type === 'in') {
-            checkInData.inTime = Date.now();
-        }
-        checkInData.date = todayYMD();
+    /* ============ 打卡动作：所有时间戳只来自按钮点击的 Date.now() ============ */
+    function persistCheckIn() {
         localStorage.setItem('terminus_checkin', JSON.stringify(checkInData));
         renderUI();
+    }
+
+    function pushEveningToHistory() {
+        const record = {
+            date: checkInData.date,
+            morningOut: checkInData.morningOut, morningIn: checkInData.morningIn, morningSaved: checkInData.morningSaved,
+            eveningOut: checkInData.eveningOut, eveningIn: checkInData.eveningIn, eveningSaved: checkInData.eveningSaved,
+            note: ''
+        };
+        const idx = historyData.findIndex(item => item.date === record.date);
+        if (idx > -1) {
+            record.note = historyData[idx].note || '';
+            historyData[idx] = record;
+        } else {
+            historyData.push(record);
+        }
+        historyData.sort((a, b) => String(b.date).localeCompare(String(a.date)));
+        while (historyData.length > 365) historyData.pop();
+        localStorage.setItem('terminus_history', JSON.stringify(historyData));
+    }
+
+    function tripMinutes(out, inTs) { return Math.round((inTs - out) / 60000); }
+
+    function tripValid(out, inTs) {
+        const d = inTs - out;
+        return d > 0 && d < 10 * 3600 * 1000;
+    }
+
+    function checkIn(action) {
+        if (action === 'morningOut') {
+            // 不直接记录时间戳：先弹启程自检，全部点亮后由 commitMorningOut() 落表
+            openChecklistAction();
+            return;
+        } else if (action === 'morningIn') {
+            checkInData.morningIn = Date.now();
+        } else if (action === 'saveMorning') {
+            if (!checkInData.morningOut || !checkInData.morningIn || !tripValid(checkInData.morningOut, checkInData.morningIn)) {
+                showToast('行程时长异常，不予保存');
+                return;
+            }
+            checkInData.morningSaved = true;
+            trainEngineOnTrip(tripMinutes(checkInData.morningOut, checkInData.morningIn), new Date(checkInData.morningOut), false);
+        } else if (action === 'resetMorningOut') {
+            checkInData.morningOut = null;
+            checkInData.morningIn = null;
+            checkInData.morningSaved = false;
+        } else if (action === 'resetMorningIn') {
+            checkInData.morningIn = null;
+        } else if (action === 'eveningOut') {
+            checkInData.eveningOut = Date.now();
+            checkInData.eveningIn = null;
+            checkInData.eveningSaved = false;
+        } else if (action === 'eveningIn') {
+            checkInData.eveningIn = Date.now();
+        } else if (action === 'saveEvening') {
+            if (!checkInData.eveningOut || !checkInData.eveningIn || !tripValid(checkInData.eveningOut, checkInData.eveningIn)) {
+                showToast('行程时长异常，不予保存');
+                return;
+            }
+            checkInData.eveningSaved = true;
+            pushEveningToHistory();
+            trainEngineOnTrip(tripMinutes(checkInData.eveningOut, checkInData.eveningIn), new Date(checkInData.eveningOut), true);
+        } else if (action === 'resetEveningOut') {
+            checkInData.eveningOut = null;
+            checkInData.eveningIn = null;
+            checkInData.eveningSaved = false;
+        } else if (action === 'resetEveningIn') {
+            checkInData.eveningIn = null;
+        }
+        checkInData.date = todayYMD();
+        persistCheckIn();
     }
 
     function manualRefresh() {
@@ -1952,6 +2141,326 @@
         renderUI();
     }
 
+    // ============ 启程自检（Checklist）============
+    let checklistItems = loadChecklist();
+    let checklistAdding = false;
+    let checklistActive = [];
+
+    function loadChecklist() {
+        try {
+            const raw = JSON.parse(localStorage.getItem('terminus_checklist') || 'null');
+            if (Array.isArray(raw) && raw.length) return raw.slice(0, 6).map(function (s) { return String(s); });
+        } catch (e) {}
+        return ['港澳通行证', '学生证', '八达通'];
+    }
+
+    function saveChecklist() {
+        try { localStorage.setItem('terminus_checklist', JSON.stringify(checklistItems)); } catch (e) {}
+    }
+
+    function openChecklist() {
+        checklistAdding = false;
+        renderChecklistEditor();
+        document.getElementById('checklist-modal').classList.add('active');
+    }
+
+    function closeChecklist() {
+        document.getElementById('checklist-modal').classList.remove('active');
+    }
+
+    function renderChecklistEditor() {
+        const list = document.getElementById('checklist-list');
+        const addArea = document.getElementById('checklist-add-area');
+        let html = '';
+        checklistItems.forEach(function (item, i) {
+            const isFixed = i < 3;
+            html += '<div class="input-group" style="margin-bottom:14px;">'
+                + '<label>物品 ' + (i + 1) + '</label>'
+                + '<div class="checklist-row-inner">'
+                + '<input type="text" data-cl-idx="' + i + '" value="' + escapeHtml(item) + '">'
+                + (isFixed ? '' : '<button type="button" class="cl-del" onclick="deleteChecklistItem(' + i + ')" title="删除">×</button>')
+                + '</div></div>';
+        });
+        list.innerHTML = html;
+
+        const canAdd = checklistItems.length < 6;
+        if (checklistAdding && canAdd) {
+            addArea.innerHTML = '<div class="input-group" style="margin-bottom:0;"><input type="text" id="cl-new-input" placeholder="输入物品名称，回车或离开保存" onkeydown="checklistNewKeydown(event)" onblur="commitChecklistItem()"></div>';
+            const inp = document.getElementById('cl-new-input');
+            if (inp) setTimeout(function () { try { inp.focus(); } catch (e) {} }, 0);
+        } else {
+            addArea.innerHTML = canAdd
+                ? '<button type="button" class="cl-add-btn" onclick="startAddChecklistItem()">+ 添加物品</button>'
+                : '';
+        }
+    }
+
+    function startAddChecklistItem() {
+        if (checklistItems.length >= 6) return;
+        checklistAdding = true;
+        renderChecklistEditor();
+    }
+
+    function checklistNewKeydown(e) {
+        if (e && e.key === 'Enter') { e.preventDefault(); commitChecklistItem(); }
+    }
+
+    function commitChecklistItem() {
+        if (!checklistAdding) return;
+        checklistAdding = false;
+        const inp = document.getElementById('cl-new-input');
+        const v = inp ? inp.value.trim() : '';
+        if (v && checklistItems.length < 6) checklistItems.push(v);
+        renderChecklistEditor();
+    }
+
+    function deleteChecklistItem(idx) {
+        checklistItems.splice(idx, 1);
+        renderChecklistEditor();
+    }
+
+    function saveChecklistAndClose() {
+        const inputs = document.querySelectorAll('#checklist-list input[data-cl-idx]');
+        const arr = [];
+        inputs.forEach(function (inp) { const v = inp.value.trim(); if (v) arr.push(v); });
+        checklistItems = arr.slice(0, 6);
+        saveChecklist();
+        closeChecklist();
+        showToast('自检清单已保存');
+    }
+
+    // ===== 阻断式打卡卡片（早上出门）=====
+    function openChecklistAction() {
+        if (!checklistItems.length) { commitMorningOut(); return; }
+        checklistActive = [];
+        renderChecklistAction();
+        document.getElementById('checklist-action-modal').classList.add('active');
+    }
+
+    function closeChecklistAction() {
+        document.getElementById('checklist-action-modal').classList.remove('active');
+    }
+
+    function renderChecklistAction() {
+        const wrap = document.getElementById('checklist-action-list');
+        wrap.innerHTML = checklistItems.map(function (item, i) {
+            const on = checklistActive.indexOf(i) > -1;
+            return '<button type="button" class="cl-chip' + (on ? ' selected' : '') + '" onclick="toggleChecklistChip(' + i + ')">' + escapeHtml(item) + '</button>';
+        }).join('');
+    }
+
+    function toggleChecklistChip(i) {
+        const pos = checklistActive.indexOf(i);
+        if (pos > -1) { checklistActive.splice(pos, 1); }
+        else { checklistActive.push(i); }
+        if (checklistActive.length >= checklistItems.length) {
+            commitMorningOut();
+            return;
+        }
+        renderChecklistAction();
+    }
+
+    function commitMorningOut() {
+        checkInData.morningOut = Date.now();
+        checkInData.morningIn = null;
+        checkInData.morningSaved = false;
+        checkInData.date = todayYMD();
+        closeChecklistAction();
+        persistCheckIn();
+    }
+
+    // ============ 自学习端侧推理引擎（LocalInferenceEngine / Tiny MLP）============
+    const EDGE_WEIGHTS_KEY = 'terminus_edge_weights';
+    const EDGE_META_KEY = 'terminus_edge_meta';
+    const EDGE_TOGGLE_KEY = 'terminus_edge_enabled';
+    const EDGE_IN = 4, EDGE_HIDDEN = 6, EDGE_LR = 0.01;
+
+    let engineEnabled = (localStorage.getItem(EDGE_TOGGLE_KEY) === '1');
+    let engineSamples = loadEngineSamples();
+
+    function loadEngineSamples() {
+        try {
+            const meta = JSON.parse(localStorage.getItem(EDGE_META_KEY) || 'null');
+            return (meta && typeof meta.samples === 'number') ? meta.samples : 0;
+        } catch (e) { return 0; }
+    }
+
+    class LocalInferenceEngine {
+        constructor() { this.initWeights(); }
+        initWeights() {
+            // 近零初始化：W2/b2 从 0 起步 → 初始输出≈0，等同静态公式，逐步长出手感
+            this.W1 = new Float32Array(EDGE_IN * EDGE_HIDDEN);
+            this.b1 = new Float32Array(EDGE_HIDDEN);
+            this.W2 = new Float32Array(EDGE_HIDDEN);
+            this.b2 = new Float32Array(1);
+            for (let i = 0; i < this.W1.length; i++) this.W1[i] = (Math.random() - 0.5) * 0.1;
+            for (let i = 0; i < this.W2.length; i++) this.W2[i] = 0;
+            for (let i = 0; i < this.b1.length; i++) this.b1[i] = 0;
+            this.b2[0] = 0;
+        }
+        loadWeights() {
+            try {
+                const raw = JSON.parse(localStorage.getItem(EDGE_WEIGHTS_KEY) || 'null');
+                if (!raw || raw.version !== '1.0') return false;
+                if (!Array.isArray(raw.W1) || raw.W1.length !== EDGE_IN * EDGE_HIDDEN) return false;
+                if (!Array.isArray(raw.b1) || raw.b1.length !== EDGE_HIDDEN) return false;
+                if (!Array.isArray(raw.W2) || raw.W2.length !== EDGE_HIDDEN) return false;
+                if (!Array.isArray(raw.b2) || raw.b2.length !== 1) return false;
+                this.W1 = new Float32Array(raw.W1);
+                this.b1 = new Float32Array(raw.b1);
+                this.W2 = new Float32Array(raw.W2);
+                this.b2 = new Float32Array(raw.b2);
+                return true;
+            } catch (e) { return false; }
+        }
+        saveWeights() {
+            try {
+                localStorage.setItem(EDGE_WEIGHTS_KEY, JSON.stringify({
+                    version: '1.0',
+                    W1: Array.from(this.W1), b1: Array.from(this.b1),
+                    W2: Array.from(this.W2), b2: Array.from(this.b2)
+                }));
+            } catch (e) {}
+        }
+        forward(inputs) {
+            const h = new Float32Array(EDGE_HIDDEN);
+            for (let j = 0; j < EDGE_HIDDEN; j++) {
+                let sum = this.b1[j];
+                for (let i = 0; i < EDGE_IN; i++) sum += this.W1[i * EDGE_HIDDEN + j] * inputs[i];
+                h[j] = sum > 0 ? sum : 0;
+            }
+            let out = this.b2[0];
+            for (let j = 0; j < EDGE_HIDDEN; j++) out += this.W2[j] * h[j];
+            return out;
+        }
+        predict(inputs) {
+            const raw = this.forward(inputs);
+            if (!isFinite(raw)) return 0;
+            return Math.max(-15, Math.min(60, raw));
+        }
+        train(inputs, target) {
+            const pre = new Float32Array(EDGE_HIDDEN);
+            const h = new Float32Array(EDGE_HIDDEN);
+            for (let j = 0; j < EDGE_HIDDEN; j++) {
+                let sum = this.b1[j];
+                for (let i = 0; i < EDGE_IN; i++) sum += this.W1[i * EDGE_HIDDEN + j] * inputs[i];
+                pre[j] = sum;
+                h[j] = sum > 0 ? sum : 0;
+            }
+            let out = this.b2[0];
+            for (let j = 0; j < EDGE_HIDDEN; j++) out += this.W2[j] * h[j];
+
+            const dOut = 2 * (out - target);
+            for (let j = 0; j < EDGE_HIDDEN; j++) {
+                const dh = dOut * this.W2[j] * (pre[j] > 0 ? 1 : 0);   // 用更新前的 W2 回传
+                this.W2[j] -= EDGE_LR * dOut * h[j];
+                this.b1[j] -= EDGE_LR * dh;
+                for (let i = 0; i < EDGE_IN; i++) {
+                    this.W1[i * EDGE_HIDDEN + j] -= EDGE_LR * dh * inputs[i];
+                }
+            }
+            this.b2[0] -= EDGE_LR * dOut;
+
+            if (this._hasNaN()) { this.initWeights(); return 0; }
+            return out - target;
+        }
+        _hasNaN() {
+            for (let i = 0; i < this.W1.length; i++) if (!isFinite(this.W1[i])) return true;
+            for (let i = 0; i < this.W2.length; i++) if (!isFinite(this.W2[i])) return true;
+            for (let i = 0; i < this.b1.length; i++) if (!isFinite(this.b1[i])) return true;
+            return !isFinite(this.b2[0]);
+        }
+        reset() { this.initWeights(); }
+    }
+
+    const engine = new LocalInferenceEngine();
+    engine.loadWeights();
+
+    // ===== 特征工程：客观数据 → 0.0~1.0 =====
+    function weatherFeatureNow() {
+        const code = (weatherData.shenzhen && weatherData.shenzhen.weatherCode) || null;
+        if (code !== null) {
+            if (code === 81 || code === 82 || code === 95 || code === 96 || code === 99) return 1.0; // 强降水/雷暴
+            if (RAIN_CODES.indexOf(code) > -1) return 0.5; // 小雨/中雨
+            return 0;
+        }
+        return (weatherData.szRain || weatherData.hkRain) ? 0.5 : 0;
+    }
+
+    function portFeatureNow() {
+        const c = portData.main;
+        if (c === 1) return 0.5;
+        if (c === 2) return 1.0;
+        return 0;
+    }
+
+    function dayOfWeekFeature(dateObj) {
+        const map = { 0: 0.0, 1: 1.0, 2: 0.75, 3: 0.5, 4: 0.35, 5: 0.2, 6: 0.1 };
+        return map[dateObj.getDay()];
+    }
+
+    function buildEngineFeatures(dateObj, isToday) {
+        const weather = isToday ? weatherFeatureNow()
+            : ((weatherData.szTomorrowRainProb !== null && weatherData.szTomorrowRainProb >= 50) ? 0.5 : 0);
+        const port = isToday ? portFeatureNow() : 0;
+        return [weather, port, dayOfWeekFeature(dateObj), 0]; // 末位 0 = 去程
+    }
+
+    function engineReady() { return engineSamples >= 5; }
+
+    // ===== 训练入口：保存记录时调用 =====
+    function trainEngineOnTrip(duration, dateObj, isReturn) {
+        if (!isFinite(duration) || duration <= 0) return;
+        const base = Number(userConfig.baseTime);
+        if (!isFinite(base) || base <= 0) return;
+        const target = duration - base;
+        const features = [weatherFeatureNow(), portFeatureNow(), dayOfWeekFeature(dateObj), isReturn ? 1 : 0];
+        const predicted = engine.predict(features);
+        if (Math.abs(target - predicted) > 45) {
+            showToast('误差过大，推理引擎已忽略本次学习');
+            return;
+        }
+        engine.train(features, target);
+        engine.saveWeights();
+        engineSamples += 1;
+        try { localStorage.setItem(EDGE_META_KEY, JSON.stringify({ samples: engineSamples })); } catch (e) {}
+    }
+
+    // ===== 开关 / 重置 / 状态文案 =====
+    function toggleEngine() {
+        engineEnabled = !engineEnabled;
+        try { localStorage.setItem(EDGE_TOGGLE_KEY, engineEnabled ? '1' : '0'); } catch (e) {}
+        updateEngineToggle();
+        renderUI();
+    }
+
+    function updateEngineToggle() {
+        const t = document.getElementById('engine-toggle');
+        if (t) {
+            t.classList.toggle('on', engineEnabled);
+            t.setAttribute('aria-pressed', engineEnabled ? 'true' : 'false');
+        }
+    }
+
+    function resetEngine() {
+        engine.reset();
+        engine.saveWeights();
+        engineSamples = 0;
+        try { localStorage.setItem(EDGE_META_KEY, JSON.stringify({ samples: 0 })); } catch (e) {}
+        renderUI();
+        showToast('推理引擎已重置');
+    }
+
+    function renderEngineStatus(aiDelta) {
+        if (!engineEnabled) return '';
+        if (!engineReady()) return '<span>* 推理引擎正在收集数据 *</span>';
+        let msg = '* 推理引擎已接管：基于 ' + engineSamples + ' 次打卡校准 *';
+        if (aiDelta !== null && aiDelta >= 0.5) {
+            msg += '<br>* 因天气与星期叠加，推理引擎已额外预留 ' + Math.round(aiDelta) + ' 分钟 *';
+        }
+        return '<span style="text-align:center;line-height:1.5;">' + msg + '</span>';
+    }
+
     // ============ 时间倒推 & 渲染 ============
     function renderUI() {
         const timeEl = document.getElementById('suggested-time');
@@ -1959,7 +2468,7 @@
         const titleEl = document.getElementById('hero-title-text');
         const checkinArea = document.getElementById('checkin-action-area');
 
-        timeEl.classList.remove('late', 'warning');
+        renderDayToggle();
 
         const targetDate = getTargetDate();
         const targetIsTomorrow = isTomorrowDate(targetDate);
@@ -1985,39 +2494,88 @@
             checkinArea.innerHTML = '';
         } else {
             // 【最后】今天 + 非休息日：打卡状态机
+            // 跨日兜底（加载时已守卫，这里再确认一次，绝不修改历史）
             if (checkInData.date !== todayYMD()) {
-                checkInData = { date: todayYMD(), outTime: null, inTime: null };
+                checkInData = emptyCheckIn();
                 localStorage.setItem('terminus_checkin', JSON.stringify(checkInData));
             }
 
-            if (checkInData.outTime && checkInData.inTime) {
-                timeEl.classList.add('checkin-mode');
-                titleEl.innerText = "今日打卡已完成";
-                setTimeWithAnimation(timeEl, `耗时 ${Math.max(1, Math.round((checkInData.inTime - checkInData.outTime) / 60000))} 分钟`);
-                statusEl.innerHTML = '';
-                checkinArea.style.display = 'block';
-                checkinArea.innerHTML = `<button class="action-card" onclick="checkIn('reset')">撤销记录</button>`;
-                resetProgressBar();
-                renderNavLinks();
-                return;
-            }
+            const ci = checkInData;
+            const mDur = (ci.morningOut && ci.morningIn) ? Math.max(1, tripMinutes(ci.morningOut, ci.morningIn)) : 0;
+            const eDur = (ci.eveningOut && ci.eveningIn) ? Math.max(1, tripMinutes(ci.eveningOut, ci.eveningIn)) : 0;
 
-            if (checkInData.outTime && !checkInData.inTime) {
-                timeEl.classList.add('checkin-mode');
-                titleEl.innerText = "正在通勤中";
-                setTimeWithAnimation(timeEl, `已出门 ${Math.max(1, Math.round((Date.now() - checkInData.outTime) / 60000))} 分钟`);
-                statusEl.innerHTML = '';
-                checkinArea.style.display = 'block';
-                checkinArea.innerHTML = `<div class="flex-buttons"><button class="action-card" onclick="checkIn('in')">我已到校</button><button class="action-card" onclick="checkIn('reset')">撤销出门</button></div>`;
-                resetProgressBar();
-                renderNavLinks();
-                return;
-            }
-
-            // 未出门
-            timeEl.classList.remove('checkin-mode');
+            timeEl.classList.add('checkin-mode');
             checkinArea.style.display = 'block';
-            checkinArea.innerHTML = `<button class="action-card" onclick="checkIn('out')">我已出门</button>`;
+
+            // 全部完成
+            if (ci.eveningSaved) {
+                titleEl.innerText = '今日打卡已完成';
+                setTimeWithAnimation(timeEl, `总耗时 ${mDur + eDur} 分钟`);
+                statusEl.innerHTML = '';
+                checkinArea.innerHTML = '';
+                resetProgressBar();
+                renderNavLinks();
+                return;
+            }
+
+            // P5 返程待保存
+            if (ci.eveningIn) {
+                titleEl.innerText = '返程待保存';
+                setTimeWithAnimation(timeEl, `返程耗时 ${eDur} 分钟`);
+                statusEl.innerHTML = '';
+                checkinArea.innerHTML = `<div class="flex-buttons"><button class="action-card" onclick="checkIn('saveEvening')">保存记录</button><button class="action-card" onclick="checkIn('resetEveningIn')">撤销到家</button></div>`;
+                resetProgressBar();
+                renderNavLinks();
+                return;
+            }
+
+            // P4 返程通勤中
+            if (ci.eveningOut) {
+                titleEl.innerText = '返程通勤中';
+                setTimeWithAnimation(timeEl, `已放学 ${Math.max(1, Math.round((Date.now() - ci.eveningOut) / 60000))} 分钟`);
+                statusEl.innerHTML = '';
+                checkinArea.innerHTML = `<div class="flex-buttons"><button class="action-card" onclick="checkIn('eveningIn')">我已到家</button><button class="action-card" onclick="checkIn('resetEveningOut')">撤销离校</button></div>`;
+                resetProgressBar();
+                renderNavLinks();
+                return;
+            }
+
+            // P3 待放学
+            if (ci.morningSaved) {
+                titleEl.innerText = '今日待放学';
+                setTimeWithAnimation(timeEl, `今早耗时 ${mDur} 分钟`);
+                statusEl.innerHTML = '';
+                checkinArea.innerHTML = `<button class="action-card" onclick="checkIn('eveningOut')">我已放学</button>`;
+                resetProgressBar();
+                renderNavLinks();
+                return;
+            }
+
+            // P2 上学已完成待保存
+            if (ci.morningIn) {
+                titleEl.innerText = '上学待保存';
+                setTimeWithAnimation(timeEl, `耗时 ${mDur} 分钟`);
+                statusEl.innerHTML = '';
+                checkinArea.innerHTML = `<div class="flex-buttons"><button class="action-card" onclick="checkIn('saveMorning')">保存记录</button><button class="action-card" onclick="checkIn('resetMorningIn')">撤销到校</button></div>`;
+                resetProgressBar();
+                renderNavLinks();
+                return;
+            }
+
+            // P1 上学通勤中
+            if (ci.morningOut) {
+                titleEl.innerText = '正在通勤中';
+                setTimeWithAnimation(timeEl, `已出门 ${Math.max(1, Math.round((Date.now() - ci.morningOut) / 60000))} 分钟`);
+                statusEl.innerHTML = '';
+                checkinArea.innerHTML = `<div class="flex-buttons"><button class="action-card" onclick="checkIn('morningIn')">我已到校</button><button class="action-card" onclick="checkIn('resetMorningOut')">撤销出门</button></div>`;
+                resetProgressBar();
+                renderNavLinks();
+                return;
+            }
+
+            // P0 待出门：继续走下方推算，只换按钮
+            timeEl.classList.remove('checkin-mode');
+            checkinArea.innerHTML = `<button class="action-card" onclick="checkIn('morningOut')">我已出门</button>`;
         }
 
         // 正常推算（未出门 或 非今天）
@@ -2030,9 +2588,21 @@
             return;
         }
 
-        const weatherPenalty = weatherData.hasRain ? RAIN_PENALTY_MINUTES : 0;
-        const portPenalty = getPortPenalty();
-        const totalCommuteTime = userConfig.baseTime + weatherPenalty + portPenalty;
+        // 明日只用明日的数据：改看次日降水概率，且不叠加此刻的口岸排队
+        const isTodayPlan = getEffectiveDay() === 'today';
+        const weatherPenalty = isTodayPlan
+            ? (weatherData.hasRain ? RAIN_PENALTY_MINUTES : 0)
+            : ((weatherData.szTomorrowRainProb !== null && weatherData.szTomorrowRainProb >= 50) ? RAIN_PENALTY_MINUTES : 0);
+        const portPenalty = isTodayPlan ? getPortPenalty() : 0;
+        // 自学习引擎接管：用本地 MLP 的「额外分钟」替代静态天气/口岸惩罚
+        let aiDelta = null;
+        let totalCommuteTime;
+        if (engineEnabled && engineReady()) {
+            aiDelta = engine.predict(buildEngineFeatures(targetDate, isTodayPlan));
+            totalCommuteTime = Number(userConfig.baseTime) + aiDelta;
+        } else {
+            totalCommuteTime = Number(userConfig.baseTime) + weatherPenalty + portPenalty;
+        }
 
         const [schoolHour, schoolMinute] = userConfig.schoolTime.split(':').map(Number);
         const targetSchoolDate = new Date(targetDate.getTime());
@@ -2049,7 +2619,7 @@
         const leaveMin = String(targetLeaveDate.getMinutes()).padStart(2, '0');
         setTimeWithAnimation(timeEl, `${leaveHour}:${leaveMin}`);
 
-        statusEl.innerHTML = '';
+        statusEl.innerHTML = renderEngineStatus(aiDelta);
 
         renderNavLinks();
     }
@@ -2147,7 +2717,7 @@
                 const cls = (etaText === '--') ? 'mtr-eta dim' : 'mtr-eta';
                 const delayTag = t.delayed ? `<span class="mtr-delay">延误</span>` : '';
                 return `<div class="mtr-line">
-                    <span class="mtr-dest">往 ${t.dest}</span>
+                    <span class="mtr-dest">往 ${escapeHtml(t.dest == null ? '—' : t.dest)}</span>
                     <span class="mtr-eta-wrap"><span class="${cls}">${etaText}</span>${delayTag}</span>
                 </div>`;
             }).join('');
@@ -2278,7 +2848,7 @@
             const ports = [...new Set([userConfig.mainPort, userConfig.backupPort].filter(Boolean))];
             const names = ports.length ? ports : ['口岸'];
             container.innerHTML = names.map(n =>
-                `<div class="card"><div class="card-title bus-port-title">${n}</div><div class="bus-no-service">加载中…</div></div>`
+                `<div class="card"><div class="card-title bus-port-title">${escapeHtml(n)}</div><div class="bus-no-service">加载中…</div></div>`
             ).join('');
             return;
         }
@@ -2295,10 +2865,16 @@
             body = card.lines.map(renderBusLine).join('');
         }
         return `<div class="card">
-            <div class="card-title bus-port-title" onclick="openPortInAmap('${card.name}')">${card.name}</div>
+            <div class="card-title bus-port-title" data-port="${escapeHtml(card.name)}">${escapeHtml(card.name)}</div>
             ${body}
         </div>`;
     }
+
+    /* 口岸标题点击跳高德：用 data-port 传递，避免把名称拼进内联 JS */
+    document.getElementById('bus-cards').addEventListener('click', function (e) {
+        const t = e.target.closest('.bus-port-title');
+        if (t && t.dataset.port) openPortInAmap(t.dataset.port);
+    });
 
     function renderBusLine(line) {
         let etaHtml;
@@ -2318,8 +2894,8 @@
         const remarkHtml = (line.remark === '原定班次' && line.etas.length) ? `<span class="bus-remark">原定班次</span>` : '';
 
         return `<div class="bus-line">
-            <span class="bus-route">${line.route}</span>
-            <span class="bus-dest">往 ${line.dest}</span>
+            <span class="bus-route">${escapeHtml(line.route)}</span>
+            <span class="bus-dest">往 ${escapeHtml(line.dest == null ? '—' : line.dest)}</span>
             <span class="bus-etas">${etaHtml}${remarkHtml}</span>
         </div>`;
     }
@@ -2359,9 +2935,13 @@
     }
 
     function getEffectiveDay() {
+        // 手动选择优先：点「今日/明日」即强制生效
         if (dayMode === 'today') return 'today';
         if (dayMode === 'tomorrow') return 'tomorrow';
-        return (new Date().getHours() >= 12) ? 'tomorrow' : 'today';
+        // 自动模式：今天的行程还没归档（早间未闭环，或返程进行中）→ 锁死在今日
+        if (!checkInData.eveningSaved && (checkInData.morningOut || checkInData.eveningOut)) return 'today';
+        // 自动切换阈值 18 点，适配傍晚放学通勤
+        return (new Date().getHours() >= 18) ? 'tomorrow' : 'today';
     }
 
     function getTargetDate() {
@@ -2427,16 +3007,6 @@
         return { isRest: false, restType: 'none' };
     }
 
-    function isTodayRest() {
-        return getRestStatus(new Date(), holidayData.list).isRest;
-    }
-
-    function isTomorrowRest() {
-        const d = new Date();
-        d.setDate(d.getDate() + 1);
-        return getRestStatus(d, holidayData.list).isRest;
-    }
-
     document.getElementById('settings-modal').addEventListener('click', function(e) {
         if (e.target === this) closeSettings();
     });
@@ -2449,32 +3019,60 @@
         if (e.target === this) closeHistory();
     });
 
-    function archivePreviousCheckin() {
-        try {
-            const saved = localStorage.getItem('terminus_checkin');
-            if (!saved) return;
-            const data = JSON.parse(saved);
-            if (!data || !data.date || data.date === todayYMD()) return;
 
-            // 跨日了。只有出门与到校都在，才盖棺进历史
-            if (data.outTime && data.inTime) {
-                const record = { date: data.date, outTime: data.outTime, inTime: data.inTime, note: '' };
-                const idx = historyData.findIndex(item => item.date === record.date);
-                if (idx > -1) {
-                    record.note = historyData[idx].note || '';
-                    historyData[idx] = record;
-                } else {
-                    historyData.push(record);
-                }
-                historyData.sort((a, b) => String(b.date).localeCompare(String(a.date)));
-                while (historyData.length > 365) historyData.pop();
-                localStorage.setItem('terminus_history', JSON.stringify(historyData));
-            }
 
-            checkInData = { date: todayYMD(), outTime: null, inTime: null };
-            localStorage.setItem('terminus_checkin', JSON.stringify(checkInData));
-        } catch (e) {}
+    /* ================= 自绘轻量弹层：备注 / Toast（不使用任何原生弹窗） ================= */
+    let currentNoteDate = null;
+    let toastTimer = null;
+
+    function showToast(msg) {
+        const el = document.getElementById('tx-toast');
+        if (!el) return;
+        el.textContent = String(msg == null ? '' : msg);
+        el.style.opacity = '1';
+        if (toastTimer) clearTimeout(toastTimer);
+        toastTimer = setTimeout(function () {
+            el.style.opacity = '0';
+            toastTimer = null;
+        }, 2000);
     }
+
+    /* 长按 / 右键卡片唤起备注弹窗 */
+    function openNote(date) {
+        const item = historyData.find(x => x.date === date);
+        if (!item) return;
+        currentNoteDate = date;
+        const input = document.getElementById('note-input');
+        if (input) input.value = item.note || '';
+        document.getElementById('note-modal').classList.add('active');
+        if (input) setTimeout(function () { try { input.focus(); } catch (e) {} }, 150);
+    }
+
+    function closeNoteModal() {
+        document.getElementById('note-modal').classList.remove('active');
+        currentNoteDate = null;
+    }
+
+    function saveNote() {
+        if (!currentNoteDate) { closeNoteModal(); return; }
+        const input = document.getElementById('note-input');
+        const item = historyData.find(x => x.date === currentNoteDate);
+        if (item) {
+            item.note = input ? input.value : '';
+            localStorage.setItem('terminus_history', JSON.stringify(historyData));
+            renderHistory();
+        }
+        closeNoteModal();
+        showToast('备注已保存');
+    }
+
+    /* 备注弹层的节点在脚本之后才解析，监听必须等 DOM 就绪再挂 */
+    document.addEventListener('DOMContentLoaded', function () {
+        const nm = document.getElementById('note-modal');
+        if (nm) nm.addEventListener('click', function (e) { if (e.target === this) closeNoteModal(); });
+        const cm = document.getElementById('checklist-modal');
+        if (cm) cm.addEventListener('click', function (e) { if (e.target === this) closeChecklist(); });
+    });
 
     function fmtDateCN(ymd) {
         const p = String(ymd).split('-');
@@ -2496,6 +3094,28 @@
     function openHistory() { renderHistory(); document.getElementById('history-modal').classList.add('active'); }
     function closeHistory() { document.getElementById('history-modal').classList.remove('active'); }
 
+    function historyCardHtml(item, kind, noteHtml) {
+        const isMorning = (kind === 'morning');
+        const out = isMorning ? (item.morningOut != null ? item.morningOut : item.outTime) : item.eveningOut;
+        const inTs = isMorning ? (item.morningIn != null ? item.morningIn : item.inTime) : item.eveningIn;
+        const dur = Math.max(1, Math.round((inTs - out) / 60000));
+        const title = isMorning ? '通勤档案 · 上学' : '通勤档案 · 放学';
+        const outLabel = isMorning ? '出门时间' : '离校时间';
+        const inLabel = isMorning ? '到校时间' : '到家时间';
+        const durLabel = isMorning ? '早间耗时' : '晚间耗时';
+        return '<div class="history-card" data-date="' + item.date + '"'
+            + ' ontouchstart="startPress(event)" ontouchmove="movePress(event)"'
+            + ' ontouchend="endPress()" ontouchcancel="endPress()"'
+            + ' oncontextmenu="openNote(this.dataset.date); return false;">'
+            + '<div class="history-date">' + title + '</div>'
+            + '<div class="history-row"><span>日期</span><b>' + fmtDateCN(item.date) + '</b></div>'
+            + '<div class="history-row"><span>' + outLabel + '</span><b>' + fmtHHMM(out) + '</b></div>'
+            + '<div class="history-row"><span>' + inLabel + '</span><b>' + fmtHHMM(inTs) + '</b></div>'
+            + '<div class="history-duration">' + durLabel + ' ' + dur + ' 分钟</div>'
+            + noteHtml
+            + '</div>';
+    }
+
     function renderHistory() {
         const list = document.getElementById('history-list');
         if (!list) return;
@@ -2503,20 +3123,21 @@
             list.innerHTML = '<div style="text-align:center; color:var(--text-sub); font-size:13px; padding:20px;">暂无历史记录</div>';
             return;
         }
-        list.innerHTML = historyData.map(item => {
-            const dur = Math.max(1, Math.round((item.inTime - item.outTime) / 60000));
+        const cards = [];
+        historyData.forEach(item => {
+            if (!item || !item.date) return;
             const noteHtml = item.note ? '<div class="history-note">' + escapeHtml(item.note) + '</div>' : '';
-            return '<div class="history-card" data-date="' + item.date + '"'
-                + ' ontouchstart="startPress(event)" ontouchmove="movePress(event)"'
-                + ' ontouchend="endPress()" ontouchcancel="endPress()"'
-                + ' oncontextmenu="openNote(this.dataset.date); return false;">'
-                + '<div class="history-date">' + fmtDateCN(item.date) + '</div>'
-                + '<div class="history-row"><span>出门时间</span><b>' + fmtHHMM(item.outTime) + '</b></div>'
-                + '<div class="history-row"><span>到校时间</span><b>' + fmtHHMM(item.inTime) + '</b></div>'
-                + '<div class="history-duration">总耗时 ' + dur + ' 分钟</div>'
-                + noteHtml
-                + '</div>';
-        }).join('');
+            // 上学卡片：新结构看 morningSaved，旧结构看 outTime/inTime
+            const hasMorning = (item.morningSaved === true) ||
+                (item.morningOut != null && item.morningIn != null) ||
+                (item.morningOut === undefined && item.outTime != null && item.inTime != null);
+            // 放学卡片：仅当返程完整存在
+            const hasEvening = (item.eveningSaved === true) ||
+                (item.eveningOut != null && item.eveningIn != null);
+            if (hasMorning) cards.push(historyCardHtml(item, 'morning', noteHtml));
+            if (hasEvening) cards.push(historyCardHtml(item, 'evening', hasMorning ? '' : noteHtml));
+        });
+        list.innerHTML = cards.join('') || '<div style="text-align:center; color:var(--text-sub); font-size:13px; padding:20px;">暂无历史记录</div>';
     }
 
     let pressTimer = null, pressStartX = 0, pressStartY = 0;
@@ -2539,15 +3160,6 @@
     }
     function endPress() { clearTimeout(pressTimer); pressTimer = null; }
 
-    function openNote(date) {
-        const item = historyData.find(x => x.date === date);
-        if (!item) return;
-        const input = prompt('给这次通勤写个备注：', item.note || '');
-        if (input === null) return;
-        item.note = input;
-        localStorage.setItem('terminus_history', JSON.stringify(historyData));
-        renderHistory();
-    }
 </script>
 
 <script>
@@ -2741,24 +3353,35 @@
         return (typeof userConfig !== 'undefined' && userConfig) ? userConfig : {};
     }
 
-    /* 深圳：当前位置 → 主口岸；香港：当前位置 → 自定义学校（没有学校坐标则不显示） */
+    /* 去程：深圳→主口岸 / 香港→自定义学校；返程（已放学）：香港→主口岸 / 深圳→自定义家 */
     function updateDistance(zone, lat, lon) {
         var cfg = appCfg(), target = null;
-        if (zone === '深圳') {
-            var portName = cfg.mainPort || '';
-            var c = (portName && typeof PORT_COORDS !== 'undefined') ? PORT_COORDS[portName] : null;
-            if (c) target = { lat: c.lat, lon: c.lng, label: '距' + portName };
-        } else if (zone === '香港') {
-            var sc = parseCoord(cfg.destinationCoord);
-            if (sc) target = { lat: sc.lat, lon: sc.lon, label: '距' + (cfg.destination || '学校') };
+        el.distRow.style.display = 'none';
+        if (!checkInData.eveningOut) {                     // 去程
+            if (zone === '深圳' && cfg.mainPort && PORT_COORDS[cfg.mainPort]) {
+                var c = PORT_COORDS[cfg.mainPort];
+                target = { lat: c.lat, lon: c.lng, label: '距' + cfg.mainPort };
+            } else if (zone === '香港') {
+                var sc = parseCoord(cfg.destinationCoord);
+                if (sc) target = { lat: sc.lat, lon: sc.lon, label: '距' + (cfg.destination || '学校') };
+            }
+        } else {                                            // 返程
+            if (zone === '香港' && cfg.mainPort && PORT_COORDS[cfg.mainPort]) {
+                var c2 = PORT_COORDS[cfg.mainPort];
+                target = { lat: c2.lat, lon: c2.lng, label: '距' + cfg.mainPort };
+            } else if (zone === '深圳') {
+                var hc = parseCoord(cfg.originCoord);
+                if (hc) target = { lat: hc.lat, lon: hc.lon, label: '距' + (cfg.origin || '家') };
+            }
         }
-        if (!target) { el.distRow.style.display = 'none'; return; }
-        var d = distM(lat, lon, target.lat, target.lon);
-        el.distLabel.textContent = target.label;
-        el.dist.innerHTML = (d < 1000)
-            ? Math.round(d) + '<small>m</small>'
-            : (d / 1000).toFixed(1) + '<small>km</small>';
-        el.distRow.style.display = '';
+        if (target) {
+            var d = distM(lat, lon, target.lat, target.lon);
+            el.distLabel.textContent = target.label;
+            el.dist.innerHTML = d < 1000
+                ? Math.round(d) + '<small>m</small>'
+                : (d / 1000).toFixed(1) + '<small>km</small>';
+            el.distRow.style.display = '';
+        }
     }
 
     function paintFix(lat, lon, acc) {
@@ -2889,6 +3512,42 @@
     syncConfig();
 })();
 </script>
+
+<!-- ===== 通勤备注弹窗（自绘 · 替代 prompt） ===== -->
+<div class="modal-overlay" id="note-modal">
+    <div class="modal-content">
+        <div class="modal-title">通勤备注</div>
+        <div class="input-group">
+            <textarea id="note-input" rows="3" placeholder="给这次通勤写点什么…" style="width:100%;height:80px;box-sizing:border-box;display:block;border:1px solid rgba(128,128,128,0.18);border:1px solid color-mix(in srgb, var(--text-main) 12%, transparent);border-radius:10px;padding:12px;background:rgba(128,128,128,0.08);background:color-mix(in srgb, var(--text-main) 6%, transparent);color:var(--text-main);caret-color:var(--text-main);font-family:inherit;font-size:15px;line-height:1.55;resize:none;outline:none;"></textarea>
+        </div>
+        <div style="display:flex;gap:10px;align-items:center;">
+            <button type="button" class="btn-save" style="flex:1;margin-top:0;background:transparent !important;color:var(--text-main) !important;border:1px solid rgba(150,150,150,0.2);" onclick="closeNoteModal()">取消</button>
+            <button type="button" class="btn-save" style="flex:1;margin-top:0;border:1px solid transparent;" onclick="saveNote()">保存</button>
+        </div>
+    </div>
+</div>
+
+<!-- ===== 顶部 Toast 轻提示（自绘 · 替代 alert） ===== -->
+<div id="tx-toast" style="position:fixed;top:40px;left:50%;transform:translateX(-50%);max-width:calc(100vw - 48px);box-sizing:border-box;background:var(--text-main);color:var(--bg-color);padding:10px 20px;border-radius:20px;font-size:13px;font-weight:600;text-align:center;line-height:1.4;opacity:0;pointer-events:none;transition:opacity 0.3s ease;z-index:9999;box-shadow:0 4px 12px rgba(0,0,0,0.15);"></div>
+
+<!-- ===== 启程自检 · 配置面板 ===== -->
+<div class="modal-overlay" id="checklist-modal">
+    <div class="modal-content">
+        <div class="modal-title">启程自检</div>
+        <div id="checklist-list"></div>
+        <div id="checklist-add-area"></div>
+        <button class="btn-save" onclick="saveChecklistAndClose()">保存自检清单</button>
+    </div>
+</div>
+
+<!-- ===== 启程自检 · 阻断式打卡卡片 ===== -->
+<div class="modal-overlay" id="checklist-action-modal">
+    <div class="modal-content">
+        <div class="modal-title">启程自检</div>
+        <div class="cl-hint">逐一点亮随身物品，全部点亮即自动出发</div>
+        <div id="checklist-action-list"></div>
+    </div>
+</div>
 
 </body>
 </html>
