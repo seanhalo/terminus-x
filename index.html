@@ -711,7 +711,7 @@
         .cl-chip.selected { background: var(--text-main); color: var(--bg-color); border-color: var(--text-main); }
 
         /* ===== 自学习端侧推理引擎（LocalInferenceEngine）===== */
-        .engine-row { display: flex; align-items: center; justify-content: space-between; gap: 12px;margin-top: 12px; }
+        .engine-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
         .engine-title { font-size: 14px; font-weight: 600; color: var(--text-main); }
         .engine-beta { font-size: 10px; color: var(--accent-color); font-weight: 600; margin-left: 4px; }
         .engine-sub { font-size: 11px; color: var(--text-sub); margin-top: 2px; }
@@ -721,6 +721,9 @@
         .engine-switch.on::after { transform: translateX(18px); }
         .engine-reset { background: transparent; border: none; color: var(--text-sub); font-size: 11px; cursor: pointer; text-decoration: underline; padding: 4px 8px; }
         .engine-reset:active { opacity: 0.6; }
+
+        /* ===== 赛博足迹（Cyber Footprint）===== */
+        #view-map .fp-point { transition: opacity 0.4s ease; }
 
     
 
@@ -1048,6 +1051,7 @@
                     <g id="omOverlay">
                         <g id="omRegion"></g>
                         <g id="omMarks"></g>
+                        <g id="cyber-footprint"></g>
                         <g id="omPin" visibility="hidden">
                             <circle id="omHalo" r="20"/>
                             <circle id="omRing" r="0"/>
@@ -1394,6 +1398,8 @@
     let busData = { loading: true, cards: null };
     let mtrData = { loading: true, cards: null };
     let dayMode = 'auto'; // 'auto' | 'today' | 'tomorrow'
+    let footprintPoints = [];      // 赛博足迹采样点
+    let footprintWatchId = null;   // 赛博足迹定位监听句柄
     /* ============ 打卡数据结构（P0-P5）与跨日守卫 ============ */
     /* 一旦缓存日期不是今日，未归档数据直接作废：不归档、不补录 */
     function emptyCheckIn() {
@@ -1630,9 +1636,9 @@
         if (!backupPort) { showError('err-backup-port', '请选择备选口岸'); errors.push('请选择备选口岸'); }
         else if (backupPort === mainPort) { showError('err-backup-port', '备选口岸不能与主口岸相同'); errors.push('备选口岸不能与主口岸相同'); }
         const originCoord = normCoord(originCoordRaw);
-        if (originCoordRaw && !originCoord) { showError('err-origin-coord', '坐标格式：纬度, 经度（如 22.570, 114.050）'); errors.push('住宅坐标格式有误'); }
+        if (originCoordRaw && !originCoord) { showError('err-origin-coord', '坐标格式：纬度, 经度（如 22.123, 114.123）'); errors.push('住宅坐标格式有误'); }
         const destinationCoord = normCoord(destinationCoordRaw);
-        if (destinationCoordRaw && !destinationCoord) { showError('err-destination-coord', '坐标格式：纬度, 经度（如 22.460, 114.000）'); errors.push('学校坐标格式有误'); }
+        if (destinationCoordRaw && !destinationCoord) { showError('err-destination-coord', '坐标格式：纬度, 经度（如 22.000, 114.000）'); errors.push('学校坐标格式有误'); }
 
         if (errors.length > 0) {
             showToast(errors[0]);
@@ -2095,6 +2101,7 @@
             return;
         } else if (action === 'morningIn') {
             checkInData.morningIn = Date.now();
+            if (window.OmMap && window.OmMap.footprintDissolve) window.OmMap.footprintDissolve();
         } else if (action === 'saveMorning') {
             if (!checkInData.morningOut || !checkInData.morningIn || !tripValid(checkInData.morningOut, checkInData.morningIn)) {
                 showToast('行程时长异常，不予保存');
@@ -2106,6 +2113,7 @@
             checkInData.morningOut = null;
             checkInData.morningIn = null;
             checkInData.morningSaved = false;
+            if (window.OmMap && window.OmMap.footprintClear) window.OmMap.footprintClear();
         } else if (action === 'resetMorningIn') {
             checkInData.morningIn = null;
         } else if (action === 'eveningOut') {
@@ -2114,6 +2122,7 @@
             checkInData.eveningSaved = false;
         } else if (action === 'eveningIn') {
             checkInData.eveningIn = Date.now();
+            if (window.OmMap && window.OmMap.footprintDissolve) window.OmMap.footprintDissolve();
         } else if (action === 'saveEvening') {
             if (!checkInData.eveningOut || !checkInData.eveningIn || !tripValid(checkInData.eveningOut, checkInData.eveningIn)) {
                 showToast('行程时长异常，不予保存');
@@ -2126,11 +2135,28 @@
             checkInData.eveningOut = null;
             checkInData.eveningIn = null;
             checkInData.eveningSaved = false;
+            if (window.OmMap && window.OmMap.footprintClear) window.OmMap.footprintClear();
         } else if (action === 'resetEveningIn') {
             checkInData.eveningIn = null;
         }
         checkInData.date = todayYMD();
         persistCheckIn();
+    }
+
+    // ============ 赛博足迹：通勤状态判断与同步 ============
+    function isCommuting() {
+        return (checkInData.morningOut && !checkInData.morningIn) || (checkInData.eveningOut && !checkInData.eveningIn);
+    }
+
+    function footprintSync() {
+        if (!window.OmMap || !window.OmMap.footprintStart || !window.OmMap.footprintStop) return;
+        const mapView = document.getElementById('view-map');
+        const mapVisible = mapView && mapView.style.display !== 'none';
+        if (mapVisible && isCommuting()) {
+            window.OmMap.footprintStart();
+        } else {
+            window.OmMap.footprintStop();
+        }
     }
 
     function manualRefresh() {
@@ -2652,6 +2678,9 @@
         } else if (targetId === 'view-map') {
             if (window.OmMap && window.OmMap.onShow) window.OmMap.onShow();
         }
+
+        // 地图打开 + 通勤中 → 开启足迹；离开地图 → 暂停（保留点位）
+        footprintSync();
 
         const target = document.getElementById(targetId);
         target.style.opacity = '0';
@@ -3468,12 +3497,13 @@
     document.addEventListener('visibilitychange', function () {
         if (document.hidden) {
             if (watchId != null) { closeWatch(); setStatus('已暂停 · 页面转入后台', false); }
-        } else if (wantGps) {
-            setStatus('正在定位…', false);
-            openWatch();
+            footprintStop();   // 足迹同步暂停，省电
+        } else {
+            if (wantGps) { setStatus('正在定位…', false); openWatch(); }
+            if (typeof footprintSync === 'function') footprintSync(); // 仍在通勤且地图可见则恢复足迹
         }
     });
-    window.addEventListener('pagehide', function () { closeWatch(); });
+    window.addEventListener('pagehide', function () { closeWatch(); footprintStop(); });
 
     /* ---------- 与主程序设置联动 ---------- */
     function syncConfig() {
@@ -3488,6 +3518,108 @@
         if (LAST) paintFix(LAST.lat, LAST.lon, LAST.acc);
     }
 
+    /* ---------- 赛博足迹（Cyber Footprint）---------- */
+    var FP_MIN_DIST = 200;   // 米，节流阈值
+    var FP_MAX = 50;         // 最大点数（防爆）
+    var fpGroup = null;
+    var fpLast = null;
+    var fpTimer = null;
+
+    function fpGroupEl() {
+        if (!fpGroup) fpGroup = document.getElementById('cyber-footprint');
+        return fpGroup;
+    }
+
+    /* 丢弃超出 SVG 视口、或飘到海里的点 */
+    function fpAccept(lat, lon) {
+        var px = geoToPx(lat, lon);
+        var vb = svg.viewBox.baseVal;
+        if (px.x < vb.x || px.x > vb.x + vb.width || px.y < vb.y || px.y > vb.y + vb.height) return false;
+        if (zoneOf(lat, lon) === '海域') return false;
+        return true;
+    }
+
+    /* 每个采样点渲染为「光晕 + 核心点」两层圆，赛博朋克光晕 */
+    function fpRenderPoint(lat, lon) {
+        var g = fpGroupEl();
+        if (!g) return;
+        var px = geoToPx(lat, lon);
+        var pg = document.createElementNS(NS, 'g');
+        pg.setAttribute('class', 'fp-point');
+        var halo = document.createElementNS(NS, 'circle');
+        halo.setAttribute('cx', px.x.toFixed(2));
+        halo.setAttribute('cy', px.y.toFixed(2));
+        halo.setAttribute('r', '4');
+        halo.setAttribute('fill', '#E4693C');
+        halo.setAttribute('opacity', '0.25');
+        var dot = document.createElementNS(NS, 'circle');
+        dot.setAttribute('cx', px.x.toFixed(2));
+        dot.setAttribute('cy', px.y.toFixed(2));
+        dot.setAttribute('r', '1.5');
+        dot.setAttribute('fill', '#E4693C');
+        dot.setAttribute('opacity', '0.7');
+        pg.appendChild(halo);
+        pg.appendChild(dot);
+        g.appendChild(pg);
+    }
+
+    function footprintStart() {
+        if (footprintWatchId !== null) return;          // 已在监听
+        if (footprintPoints.length >= FP_MAX) return;   // 已达上限
+        if (!navigator.geolocation) return;
+        fpLast = null;
+        footprintWatchId = navigator.geolocation.watchPosition(
+            function (pos) {
+                if (footprintPoints.length >= FP_MAX) { footprintStop(); return; }
+                var c = pos.coords;
+                var lat = c.latitude, lon = c.longitude;
+                if (fpLast && distM(fpLast.lat, fpLast.lon, lat, lon) < FP_MIN_DIST) return; // 节流：<200m 不记录
+                if (!fpAccept(lat, lon)) return;        // 超出视口/海里丢弃
+                fpLast = { lat: lat, lon: lon };
+                footprintPoints.push({ lat: lat, lon: lon });
+                fpRenderPoint(lat, lon);
+            },
+            function () { footprintStop(); },
+            { enableHighAccuracy: true, timeout: 15000, maximumAge: 5000 }
+        );
+    }
+
+    function footprintStop() {
+        if (footprintWatchId !== null) {
+            if (navigator.geolocation) navigator.geolocation.clearWatch(footprintWatchId);
+            footprintWatchId = null;
+        }
+    }
+
+    function footprintReset() {
+        if (fpTimer) { clearTimeout(fpTimer); fpTimer = null; }
+        footprintStop();
+        footprintPoints.length = 0;
+        fpLast = null;
+        var g = fpGroupEl();
+        if (g) { while (g.firstChild) g.removeChild(g.firstChild); }
+    }
+
+    /* 到达打卡：从起点开始逐个消散（贪吃蛇式），结束后清空 */
+    function footprintDissolve() {
+        footprintStop();
+        var g = fpGroupEl();
+        if (!g) { footprintReset(); return; }
+        var pts = g.querySelectorAll('.fp-point');
+        var i = 0;
+        (function step() {
+            if (i >= pts.length) { footprintReset(); return; }
+            pts[i].setAttribute('opacity', '0');
+            i += 1;
+            fpTimer = setTimeout(step, 100);
+        })();
+    }
+
+    /* 撤销打卡：立即清除（无动画） */
+    function footprintClear() {
+        footprintReset();
+    }
+
     buildRegions();
     renderMarks();
     placeLabels(null);
@@ -3497,7 +3629,11 @@
         syncConfig: syncConfig,
         setPos: function (lat, lon, acc) { paintFix(lat, lon, (acc == null) ? 300 : acc); },
         clear: clearFix,
-        stop: stopGps
+        stop: stopGps,
+        footprintStart: footprintStart,
+        footprintStop: footprintStop,
+        footprintDissolve: footprintDissolve,
+        footprintClear: footprintClear
     };
 
     /* 图幅宽度变化（旋转 / 分栏）时误差圈的像素兜底要重算 */
