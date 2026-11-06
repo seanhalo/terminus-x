@@ -33,6 +33,31 @@
             --status-red: #FF453A;
         }
 
+        /* ===== 逐光主题：暮光暖深（复用深色结构，背景随时间变化）===== */
+        body.dark-mode.theme-chase {
+            --bg-color: #0B0806;
+            --card-bg: rgba(34, 26, 20, 0.72);
+            --text-main: #F2E9DC;
+            --text-sub: #A99C8C;
+            --accent-color: #E8A44C;
+            --status-green: #7FB07A;
+            --status-yellow: #E8B45A;
+            --status-red: #D9735C;
+            --danger-color: #D9735C;
+            background: linear-gradient(180deg, var(--chase-a, #140D08), var(--chase-b, #0A0705));
+        }
+        body.dark-mode.theme-chase::before {
+            background: radial-gradient(circle at 50% 0%, rgba(120, 70, 25, 0.20) 0%, transparent 55%);
+        }
+        body.dark-mode.theme-chase .card:not(.hero-card),
+        body.dark-mode.theme-chase .nav-btn,
+        body.dark-mode.theme-chase .sz-port-link,
+        body.dark-mode.theme-chase .transit-btn,
+        body.dark-mode.theme-chase .action-card:not(.secondary) {
+            background: rgba(34, 26, 20, 0.62) !important;
+            border-color: rgba(255, 240, 220, 0.10) !important;
+        }
+
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif; -webkit-tap-highlight-color: transparent; }
 
         body { background: linear-gradient(180deg, var(--bg-tint-a), var(--bg-tint-b)); color: var(--text-main); display: flex; justify-content: center; padding: 20px; transition: color 0.3s ease; }
@@ -1151,10 +1176,10 @@
 
         <div class="input-group">
             <label>外观</label>
-            <div class="theme-hint">深色模式专为晨昏通勤定制，暗光护眼，融入微光与玻璃质感。</div>
             <div class="chip-group">
                 <button type="button" class="chip" id="theme-light">浅色</button>
                 <button type="button" class="chip" id="theme-dark">深色</button>
+                <button type="button" class="chip" id="theme-chase">逐光</button>
             </div>
         </div>
 
@@ -1184,104 +1209,102 @@
                     <li><b>启程检查单</b><br>出门打卡前核对随身物品，全部确认后自动开始计时。</li>
                     <li><b>优雅降级</b><br>数据缺失或异常时跳过学习，不影响打卡主流程。</li>
                     <li><b>界面与数据</b><br>浅色/深色背景改为固定双色渐变，深色模式降低蓝色饱和度；天气仅用于训练，口岸取出门时刻快照。</li>
+                    <li><b>逐光主题</b><br>新增第三套主题「逐光」，暮光暖深配色，背景随时间插值变化；复用深色结构，地图沿用深色。</li>
                 </ul>
             </div>
              <div class="changelog-entry">
                 <div class="changelog-version">Version 1.7 · 手感与兜底｜2026.11.3</div>
                 <ul class="changelog-list">
-                    <li><b>启程检查单上线</b><br>点击出门时弹出物理清单核对，全选即自动开始计时。支持自定义最高 6 项物品，杜绝忘带证件，建立出发前的清醒秩序。</li>
-                    <li><b>放学打卡机</b><br>晚间返程独立成环：离校、到家、保存记录；通勤档案按日并排早、晚两张卡，两段互不覆盖。</li>
-                    <li><b>计时真的会走了</b><br>“已出门 / 已放学 N 分钟”每 30 秒自动重算，不再等下一次网络请求才刷新。</li>
-                    <li><b>明日只用明日的数据</b><br>明日出门时间改看次日降水概率，不再借用今天的雨天实况与此刻的口岸排队；今日推算逻辑不变。</li>
-                    <li><b>进度条重写</b><br>按剩余通勤时间连续收缩，到点归零，不再在截止瞬间弹回满格。</li>
-                    <li><b>分段控件对齐</b><br>今日 / 明日的高亮跟随自动切换，不再出现标题写“明日”、按钮亮“今日”。</li>
-                    <li><b>口岸卡片不再闪</b><br>有数据时静默刷新；三个公共代理全部失败时保留上次结果，并缓存失败状态 60 秒。</li>
-                    <li><b>假期离线可用</b><br>成功拉取的公众假期写入本地，断网重开仍能判断红日。</li>
-                    <li><b>底层清理</b><br>移除未使用的样式与确认弹窗，收紧第三方文本转义，修正外观按钮被口岸逻辑误绑，通勤时长校验补上上限。</li>
+                    <li><b>启程检查单</b><br>出门前逐项确认随身物品，全部确认后自动开始计时；支持最多 6 项自定义物品。</li>
+                    <li><b>返程打卡</b><br>新增离校与到家记录，通勤档案按日并列早、晚两段。</li>
+                    <li><b>计时刷新</b><br>「已出门 / 已放学」时长每 30 秒自动更新。</li>
+                    <li><b>明日推算</b><br>改用次日降水概率，不再叠加当日实况与实时口岸排队。</li>
+                    <li><b>进度条</b><br>按剩余通勤时间连续收缩，到点归零。</li>
+                    <li><b>分段控件</b><br>今日 / 明日高亮与自动切换保持同步。</li>
+                    <li><b>口岸卡片</b><br>静默刷新；代理全部失败时保留上次结果并缓存 60 秒。</li>
+                    <li><b>假期数据</b><br>成功拉取的公众假期写入本地，离线可用。</li>
+                    <li><b>底层清理</b><br>移除未使用样式与确认弹窗，收紧第三方文本转义，修正外观按钮误绑，补充通勤时长上限校验。</li>
                 </ul>
             </div>
              <div class="changelog-entry">
                 <div class="changelog-version">Version 1.6 · 沉淀与边界｜2026.11.1</div>
                 <ul class="changelog-list">
-                    <li><b>双城离线地图上线</b><br>自研经纬度投影与本地射线法判定。完全离线，精准绘制定位红点与距离测算。</li>
-                    <li><b>通勤档案</b><br>打卡状态机闭环，跨日自动归档出门与到校时间，纯本地持久化。</li>
-                    <li><b>天气二级决策页</b><br>深圳端引入 24 小时横向预报，香港端直连天文台实时观测，信息分层拒绝冗余。</li>
-                    <li><b>极客向坐标微调</b><br>设置面板新增“住宅坐标”“学校坐标”选填项</li>
+                    <li><b>双城离线地图</b><br>自研经纬度投影与本地射线法判定，完全离线，支持定位与距离测算。</li>
+                    <li><b>通勤档案</b><br>打卡状态机闭环，跨日归档出门与到校时间，纯本地持久化。</li>
+                    <li><b>天气二级页</b><br>深圳端 24 小时横向预报，香港端直连天文台实时观测。</li>
+                    <li><b>坐标选填</b><br>设置面板新增住宅坐标、学校坐标选填项。</li>
                 </ul>
             </div>
             <div class="changelog-entry">
                 <div class="changelog-version">Version 1.5 · 秩序与呼吸｜2026.10.29</div>
                 <ul class="changelog-list">
-                    <li><b>全新视觉材质：液态玻璃</b><br>全局引入极致通透的液态玻璃（Glassmorphism）。主卡片、二级页、设置弹窗与输入框全部告别死板色块，升级液态玻璃质感</li>
-                    <li><b>彻底扑杀“系统蓝”</b><br>移除返回箭头、ETA 数字、底部图标、选中胶囊与主按钮上的所有系统默认蓝，部分回归黑白灰单色体系。</li>
-                    <li><b>红绿灯语义回归</b><br>恢复状态圆点的红、黄、绿语义：畅通绿、一般黄、拥堵红；深色模式统一降为半透明。</li>
-                    <li><b>打卡状态机终极重构</b><br>P1 保留 72px 巨无霸时间招牌，P2、P3 自动缩放并全卡片化；所有操作按钮统一为四个汉字（我已出门 / 我已到校 / 撤销出门 / 撤销记录），节奏一致。</li>
-                    <li><b>信息降噪</b><br>删除无数据的“深圳端出境”模块，净化天气卡片多余横线，切除“已迟到，快去学校”这类提示。</li>
-                    <li><b>底层接口与逻辑重构</b><br>重写屿巴 NLB 接口、修复班次拉取错误；全面移除 ETA 缩写；修复“今日/明日”切换与休息日判断缺陷，并根除时间刷新残影闪烁。</li>
+                    <li><b>液态玻璃材质</b><br>主卡片、二级页、弹窗与输入框统一为液态玻璃质感。</li>
+                    <li><b>移除系统蓝</b><br>移除返回箭头、到站数字、底部图标、选中胶囊与主按钮的默认蓝色，回归黑白灰体系。</li>
+                    <li><b>状态色语义</b><br>状态圆点恢复红黄绿语义：畅通绿、一般黄、拥堵红；深色模式降为半透明。</li>
+                    <li><b>打卡状态机重构</b><br>P1 保留 72px 主时间，P2、P3 自动缩放并卡片化；操作按钮统一为四字文案。</li>
+                    <li><b>信息降噪</b><br>移除无数据的深圳端出境模块、天气卡片多余横线及迟到提示。</li>
+                    <li><b>接口与逻辑修复</b><br>重写屿巴接口、修复班次拉取错误；移除到站缩写；修复今日/明日切换与休息日判断，消除时间刷新残影。</li>
                 </ul>
             </div>
             <div class="changelog-entry">
                 <div class="changelog-version">Version 1.4 · 进化与呼吸｜2026.10.25</div>
                 <ul class="changelog-list">
-                    <li>全新深色模式视觉，引入深空靛蓝、玻璃拟态与极光数字特效</li>
-                    <li>新增“通勤状态机”打卡功能，精准记录出门与到校时间</li>
-                    <li>新增全局手动刷新按钮，支持一键拉取最新天气、口岸及交通状态</li>
+                    <li><b>深色模式</b><br>采用深空靛蓝、玻璃拟态与极光数字特效。</li>
+                    <li><b>通勤状态机</b><br>新增打卡功能，记录出门与到校时间。</li>
+                    <li><b>手动刷新</b><br>一键拉取天气、口岸与交通状态。</li>
                 </ul>
             </div>
             <div class="changelog-entry">
                 <div class="changelog-version">Version 1.3 · 纯粹与呼吸｜2026.10.23</div>
                 <ul class="changelog-list">
-                    <li><b>全新外观系统</b><br>支持手动切换深色模式。暗夜下采用极深黑灰底色，顶部伴随微弱的深蓝紫渐变光晕，模拟晨昏交替的呼吸感；卡片采用发光玻璃边框，倒计时数字带有专属荧光效果，暗光护眼。</li>
-                    <li><b>离家进度可视化</b><br>倒计时下方新增极细进度条，直观呈现剩余时间占比。时间充裕为绿色，临近出门15分钟内变黄，超时变红。</li>
-                    <li><b>性能与质感打磨</b><br>全局加入平滑主题过渡动画，无感切换明暗交替。</li>
-                    <li><b>设置体验优化</b><br>修复 iOS 端时间输入框原生样式导致的横向溢出问题。</li>
+                    <li><b>外观系统</b><br>支持手动切换深色模式；深色采用极深黑灰底色与顶部深蓝紫渐变，卡片为发光玻璃边框，倒计时带荧光效果。</li>
+                    <li><b>离家进度</b><br>倒计时下方新增进度条，显示剩余时间占比；充裕为绿、临近 15 分钟为黄、超时为红。</li>
+                    <li><b>过渡动画</b><br>全局加入平滑主题过渡。</li>
+                    <li><b>输入框修复</b><br>修复 iOS 端时间输入框横向溢出。</li>
                 </ul>
             </div>
             <div class="changelog-entry">
                 <div class="changelog-version">Version 1.2 稳定版｜2026.10.23</div>
                 <ul class="changelog-list">
-                    <li>修复屿巴数据源请求错误，深圳湾B2、B2P、B2X等可正常拉取预计到站时间</li>
-                    <li>界面文案优化，移除全部ETA缩写，统一使用易懂中文表述</li>
-                    <li>通勤规划逻辑重构，按时段自动切换今日/次日通勤，支持手动切换，修复休息日判断逻辑缺陷</li>
+                    <li><b>屿巴数据修复</b><br>修复数据源请求错误，深圳湾 B2、B2P、B2X 可正常拉取到站时间。</li>
+                    <li><b>文案优化</b><br>移除全部到站缩写，统一为中文表述。</li>
+                    <li><b>通勤规划</b><br>按时段自动切换今日/次日，支持手动切换，修复休息日判断缺陷。</li>
                 </ul>
             </div>
             <div class="changelog-entry">
                 <div class="changelog-version">Version 1.2 · 真实，才有意义｜2026.10.22</div>
                 <ul class="changelog-list">
-                    <li>新增更新日志：可在信息面板查看版本变更记录</li>
-                    <li>实时公共交通时刻：东铁线、九巴、城巴、屿巴接入官方实时到站数据</li>
-                    <li>口岸判断优化：切换居民通道等候分级，拥堵惩罚规则贴合通勤节奏</li>
-                    <li>双源气象：香港天文台、Open-Meteo直连，两地天气稳定可靠</li>
-                    <li>东铁延误提示：终点站显示中文，列车延误暖色标记</li>
-                    <li>休息日智能识别：自动识别周末与香港公众假期；明日休息时，自动停用通勤推算</li>
-                    <li>稳健降级机制：单一数据源获取失败，不阻塞页面核心通勤计算</li>
+                    <li><b>更新日志</b><br>信息面板可查看版本变更记录。</li>
+                    <li><b>实时到站数据</b><br>东铁线、九巴、城巴、屿巴接入官方实时数据。</li>
+                    <li><b>口岸分级</b><br>切换居民通道等候分级，拥堵惩罚规则优化。</li>
+                    <li><b>双源气象</b><br>香港天文台与 Open-Meteo 直连。</li>
+                    <li><b>东铁延误</b><br>终点站中文显示，延误暖色标记。</li>
+                    <li><b>休息日识别</b><br>自动识别周末与香港公众假期，休息日停用通勤推算。</li>
+                    <li><b>稳健降级</b><br>单一数据源失败不阻塞核心计算。</li>
                 </ul>
             </div>
             <div class="changelog-entry">
                 <div class="changelog-version">Version 1.1 · 晨昏线｜2026.10.21</div>
                 <ul class="changelog-list">
-                    <li>品牌与底层架构重构：项目更名晨昏线 Terminus X，重构为SPA多视图架构，搭建首页、港铁视图、巴士视图整套页面框架</li>
-                    <li>通勤协议系统上线：全新设置面板，支持自定义住址、学校、上课时间、保底通勤时长；支持自选主次出行口岸，配置本地持久保存</li>
-                    <li>公共交通视图就位：独立港铁、巴士页面搭建完成，UI与交互全部落地，为实时数据源预留完整接入接口</li>
-                    <li>口岸渲染逻辑升级：口岸不再硬编码，跟随用户配置动态渲染，配套导航链接动态生成</li>
-                    <li>UI体系统一：全套iOS极简视觉规范、状态圆点、动画过渡效果落地</li>
+                    <li><b>架构重构</b><br>项目更名晨昏线 Terminus X，重构为 SPA 多视图架构，搭建首页、港铁、巴士视图。</li>
+                    <li><b>通勤协议</b><br>新增设置面板，支持住址、学校、上课时间、保底时长与主次口岸配置，本地持久化。</li>
+                    <li><b>公共交通视图</b><br>港铁、巴士独立页面搭建完成，预留实时数据接口。</li>
+                    <li><b>口岸渲染</b><br>口岸随配置动态渲染，导航链接动态生成。</li>
+                    <li><b>UI 体系</b><br>统一 iOS 极简视觉规范、状态圆点与过渡动画。</li>
                 </ul>
             </div>
             <div class="changelog-entry">
                 <div class="changelog-version">Version 1.0 · Original 双城穿梭｜2026.10.20</div>
                 <ul class="changelog-list">
-                    <li>初代核心通勤底盘搭建：通勤时间倒推引擎，根据上课时间自动计算最晚出门时刻</li>
-                    <li>双城数据看板基础：深圳、香港两地天气面板、口岸等候状态面板</li>
-                    <li>假期基础识别能力：接入香港公众假期接口，基础假期判断逻辑</li>
-                    <li>口岸导航工具：固定口岸一键导航跳转，配套深圳出境查询入口</li>
-                    <li>基础本地存储：保存上课时间、保底通勤时长等基础设置</li>
-                    <li>基础页面框架：单页模式、设置弹窗、首页卡片布局，整套产品原型落地</li>
+                    <li><b>通勤倒推引擎</b><br>根据上课时间计算最晚出门时刻。</li>
+                    <li><b>双城看板</b><br>深圳、香港天气面板与口岸等候状态面板。</li>
+                    <li><b>假期识别</b><br>接入香港公众假期接口，基础假期判断。</li>
+                    <li><b>口岸导航</b><br>固定口岸一键导航，配套深圳出境查询入口。</li>
+                    <li><b>本地存储</b><br>保存上课时间、保底通勤时长等基础设置。</li>
+                    <li><b>页面框架</b><br>单页模式、设置弹窗、首页卡片布局。</li>
                 </ul>
             </div>
         </div>
-
-        <div class="info-divider"></div>
-        <div class="info-data-note">假期数据：优先接入香港政府在线假期日历。网络不可用时，自动启用本年度本地假期备份。本程序无法识别校内自定义假期。</div>
     </div>
 </div>
 
@@ -1472,7 +1495,8 @@
     // ============ 初始化 ============
     window.onload = function() {
         const hasSaved = loadConfig();
-        applyTheme(localStorage.getItem('terminus_theme') === 'dark' ? 'dark' : 'light');
+        const savedTheme = localStorage.getItem('terminus_theme');
+        applyTheme(savedTheme === 'dark' ? 'dark' : (savedTheme === 'chase' ? 'chase' : 'light'));
         renderUI();
         renderDate();
         renderDayToggle();
@@ -1491,6 +1515,7 @@
     /* 只在必要时重绘：打卡进行中重算已用时；其余情况只对齐日期与分段控件 */
     function tickHome() {
         if (document.hidden) return;
+        applyChaseTint();
         if (getEffectiveDay() === 'today' && !checkInData.eveningSaved && (checkInData.morningOut || checkInData.eveningOut)) {
             renderUI();
             return;
@@ -1541,20 +1566,60 @@
         document.getElementById('info-modal').classList.remove('active');
     }
 
+    /* ===== 逐光主题：暮光暖深，背景随时间插值 ===== */
+    const CHASE_SKY = [
+        { h: 0,  a: '#140D08', b: '#0A0705' },
+        { h: 5,  a: '#1C0F07', b: '#0B0705' },
+        { h: 6,  a: '#2C1307', b: '#140A06' },
+        { h: 8,  a: '#1E130B', b: '#0C0906' },
+        { h: 12, a: '#18110B', b: '#0B0806' },
+        { h: 16, a: '#281508', b: '#110A06' },
+        { h: 18, a: '#2C1306', b: '#130806' },
+        { h: 20, a: '#180C07', b: '#0A0705' },
+        { h: 24, a: '#140D08', b: '#0A0705' }
+    ];
+    function chaseRgb(h) { h = h.replace('#', ''); return [parseInt(h.slice(0,2),16), parseInt(h.slice(2,4),16), parseInt(h.slice(4,6),16)]; }
+    function chaseMix(c1, c2, t) { const a = chaseRgb(c1), b = chaseRgb(c2); return 'rgb(' + Math.round(a[0]+(b[0]-a[0])*t) + ',' + Math.round(a[1]+(b[1]-a[1])*t) + ',' + Math.round(a[2]+(b[2]-a[2])*t) + ')'; }
+    function chaseTintAt(hour) {
+        const h = ((hour % 24) + 24) % 24;
+        for (let i = 0; i < CHASE_SKY.length - 1; i++) {
+            const a = CHASE_SKY[i], b = CHASE_SKY[i + 1];
+            if (h >= a.h && h <= b.h) {
+                const t = (h - a.h) / (b.h - a.h);
+                return { a: chaseMix(a.a, b.a, t), b: chaseMix(a.b, b.b, t) };
+            }
+        }
+        return { a: CHASE_SKY[0].a, b: CHASE_SKY[0].b };
+    }
+    function applyChaseTint() {
+        if (!document.body.classList.contains('theme-chase')) return;
+        const now = new Date();
+        const t = chaseTintAt(now.getHours() + now.getMinutes() / 60);
+        document.documentElement.style.setProperty('--chase-a', t.a);
+        document.documentElement.style.setProperty('--chase-b', t.b);
+    }
+
     function applyTheme(theme) {
-        document.body.classList.toggle('dark-mode', theme === 'dark');
+        const isDark = (theme === 'dark' || theme === 'chase');
+        document.body.classList.toggle('dark-mode', isDark);
+        document.body.classList.toggle('theme-chase', theme === 'chase');
         localStorage.setItem('terminus_theme', theme);
         const lightBtn = document.getElementById('theme-light');
         const darkBtn = document.getElementById('theme-dark');
+        const chaseBtn = document.getElementById('theme-chase');
         if (lightBtn) lightBtn.classList.toggle('selected', theme === 'light');
         if (darkBtn) darkBtn.classList.toggle('selected', theme === 'dark');
+        if (chaseBtn) chaseBtn.classList.toggle('selected', theme === 'chase');
+        applyChaseTint();
     }
 
     (function initThemeButtons() {
         const lightBtn = document.getElementById('theme-light');
         const darkBtn = document.getElementById('theme-dark');
+        const chaseBtn = document.getElementById('theme-chase');
         if (lightBtn) lightBtn.addEventListener('click', function() { applyTheme('light'); });
         if (darkBtn) darkBtn.addEventListener('click', function() { applyTheme('dark'); });
+        if (chaseBtn) chaseBtn.addEventListener('click', function() { applyTheme('chase'); });
     })();
 
     function showError(id, msg) {
