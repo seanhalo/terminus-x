@@ -7,6 +7,8 @@
     <style>
         :root {
             --bg-color: #F5F5F7;
+            --bg-tint-a: #FBF0E4;
+            --bg-tint-b: #F5F5F7;
             --card-bg: #FFFFFF;
             --text-main: #1D1D1F;
             --text-sub: #86868B;
@@ -20,6 +22,8 @@
 
         body.dark-mode {
             --bg-color: #0B0C10;
+            --bg-tint-a: #0C1320;
+            --bg-tint-b: #07080C;
             --card-bg: rgba(26, 28, 35, 0.85);
             --text-main: #E5E7EB;
             --text-sub: #9CA3AF;
@@ -31,7 +35,7 @@
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif; -webkit-tap-highlight-color: transparent; }
 
-        body { background-color: var(--bg-color); color: var(--text-main); display: flex; justify-content: center; padding: 20px; transition: background-color 0.3s ease, color 0.3s ease; }
+        body { background: linear-gradient(180deg, var(--bg-tint-a), var(--bg-tint-b)); color: var(--text-main); display: flex; justify-content: center; padding: 20px; transition: color 0.3s ease; }
 
         .app-container { width: 100%; max-width: 400px; display: flex; flex-direction: column; gap: 16px; }
 
@@ -696,7 +700,7 @@
         #omDot { fill: var(--m-accent); stroke: #FFF; stroke-width: 1.6; }
         body.dark-mode #omDot { stroke: #12161D; }
 
-        /* ===== 启程自检（Checklist）===== */
+        /* ===== 启程检查单（Checklist）===== */
         .checklist-row-inner { display: flex; align-items: center; gap: 8px; }
         .checklist-row-inner input { flex: 1; min-width: 0; }
         .cl-del { width: 30px; height: 30px; flex-shrink: 0; border: none; background: transparent; color: var(--text-sub); font-size: 22px; line-height: 1; cursor: pointer; border-radius: 8px; transition: background 0.15s, color 0.15s; }
@@ -713,7 +717,7 @@
         /* ===== 自学习端侧推理引擎（LocalInferenceEngine）===== */
         .engine-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
         .engine-title { font-size: 14px; font-weight: 600; color: var(--text-main); }
-        .engine-beta { font-size: 10px; color: var(--accent-color); font-weight: 600; margin-left: 4px; }
+        .engine-pro { font-size: 10px; color: var(--accent-color); font-weight: 600; margin-left: 4px; }
         .engine-sub { font-size: 11px; color: var(--text-sub); margin-top: 2px; }
         .engine-switch { width: 46px; height: 28px; border-radius: 14px; border: none; background: #D1D1D6; position: relative; cursor: pointer; transition: background 0.2s; flex-shrink: 0; }
         .engine-switch::after { content: ""; position: absolute; top: 3px; left: 3px; width: 22px; height: 22px; border-radius: 50%; background: #FFF; transition: transform 0.2s; box-shadow: 0 1px 2px rgba(0,0,0,0.2); }
@@ -723,7 +727,7 @@
         .engine-reset:active { opacity: 0.6; }
 
         /* ===== 赛博足迹（Cyber Footprint）===== */
-        #view-map .fp-point { transition: opacity 0.4s ease; }
+        #view-map #cyber-footprint polyline, #view-map #cyber-footprint circle { transition: opacity 0.5s ease; }
 
     
 
@@ -746,7 +750,7 @@
                     <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
                 </svg>
             </div>
-            <div class="settings-icon" onclick="openChecklist()" title="启程自检">
+            <div class="settings-icon" onclick="openChecklist()" title="启程检查单">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                     <rect x="4" y="3" width="16" height="18" rx="3"></rect>
                     <line x1="9" y1="9" x2="15" y2="9"></line>
@@ -888,7 +892,7 @@
     <div class="card" style="padding:16px 20px;">
         <div class="engine-row">
             <div>
-                <div class="engine-title">自学习端侧推理引擎 <span class="engine-beta">Beta</span></div>
+                <div class="engine-title">自学习端侧推理引擎 <span class="engine-pro">Pro</span></div>
                 <div class="engine-sub">本地微型神经网络，动态校准通勤时间</div>
             </div>
             <button type="button" id="engine-toggle" class="engine-switch" onclick="toggleEngine()" aria-pressed="false" aria-label="切换推理引擎"></button>
@@ -1171,18 +1175,21 @@
 
         <div class="changelog">
              <div class="changelog-entry">
-                <div class="changelog-version">Version 1.8 · 端侧自学习｜2026.11.4</div>
+                <div class="changelog-version">Version 1.8 · 端侧自学习｜2026.11.6</div>
                 <ul class="changelog-list">
-                    <li><b>自学习端侧推理引擎</b><br>37 参数微型多层感知机，纯原生 JS + Float32Array，训练与推理全部在手机本地完成，不依赖任何云端。</li>
-                    <li><b>动态个性化校准</b><br>引擎学习「实际通勤比保底多/少几分钟」，替代死板的静态公式，建议出门时间呈现 06:48 式非规整结果。</li>
-                    <li><b>四重防御锁</b><br>误差 &gt; 45 分钟自动丢弃、输出锁死 -15~+60 分钟、样本不足 5 次冷启动保护、权重带版本校验并可一键重置。</li>
-                    <li><b>极简开关</b><br>首页底部「自学习端侧推理引擎 Beta」默认关闭；接管后显示基于 N 次打卡校准与额外预留分钟数。</li>
+                    <li><b>自学习端侧推理引擎（Pro）</b><br>37 参数微型多层感知机，原生 JS 与 Float32Array 实现，训练与推理均在本地完成，无云端依赖。</li>
+                    <li><b>历史回放预热</b><br>首次启动以历史行程批量校准，缩短冷启动周期。</li>
+                    <li><b>渐进接管</b><br>按样本数线性混合静态推算与模型输出，样本达 5 次后完全接管。</li>
+                    <li><b>赛博足迹</b><br>地图轨迹改为连续红色折线，支持本地持久化与跨日重置。</li>
+                    <li><b>启程检查单</b><br>出门打卡前核对随身物品，全部确认后自动开始计时。</li>
+                    <li><b>优雅降级</b><br>数据缺失或异常时跳过学习，不影响打卡主流程。</li>
+                    <li><b>界面与数据</b><br>浅色/深色背景改为固定双色渐变，深色模式降低蓝色饱和度；天气仅用于训练，口岸取出门时刻快照。</li>
                 </ul>
             </div>
              <div class="changelog-entry">
                 <div class="changelog-version">Version 1.7 · 手感与兜底｜2026.11.3</div>
                 <ul class="changelog-list">
-                    <li><b>启程自检上线</b><br>点击出门时弹出物理清单核对，全选即自动开始计时。支持自定义最高 6 项物品，杜绝忘带证件，建立出发前的清醒秩序。</li>
+                    <li><b>启程检查单上线</b><br>点击出门时弹出物理清单核对，全选即自动开始计时。支持自定义最高 6 项物品，杜绝忘带证件，建立出发前的清醒秩序。</li>
                     <li><b>放学打卡机</b><br>晚间返程独立成环：离校、到家、保存记录；通勤档案按日并排早、晚两张卡，两段互不覆盖。</li>
                     <li><b>计时真的会走了</b><br>“已出门 / 已放学 N 分钟”每 30 秒自动重算，不再等下一次网络请求才刷新。</li>
                     <li><b>明日只用明日的数据</b><br>明日出门时间改看次日降水概率，不再借用今天的雨天实况与此刻的口岸排队；今日推算逻辑不变。</li>
@@ -1470,6 +1477,7 @@
         renderDate();
         renderDayToggle();
         updateEngineToggle();
+        warmStartEngine();
         fetchWeather();
         fetchHoliday();
         fetchPortQueue(); // 非阻塞，异步填充口岸卡片
@@ -2096,7 +2104,7 @@
 
     function checkIn(action) {
         if (action === 'morningOut') {
-            // 不直接记录时间戳：先弹启程自检，全部点亮后由 commitMorningOut() 落表
+            // 不直接记录时间戳：先弹启程检查单，全部点亮后由 commitMorningOut() 落表
             openChecklistAction();
             return;
         } else if (action === 'morningIn') {
@@ -2120,6 +2128,8 @@
             checkInData.eveningOut = Date.now();
             checkInData.eveningIn = null;
             checkInData.eveningSaved = false;
+            departurePort = portData.main;   // 离校时刻快照口岸
+            fetchPortQueue();
         } else if (action === 'eveningIn') {
             checkInData.eveningIn = Date.now();
             if (window.OmMap && window.OmMap.footprintDissolve) window.OmMap.footprintDissolve();
@@ -2169,7 +2179,7 @@
         renderUI();
     }
 
-    // ============ 启程自检（Checklist）============
+    // ============ 启程检查单（Checklist）============
     let checklistItems = loadChecklist();
     let checklistAdding = false;
     let checklistActive = [];
@@ -2254,7 +2264,7 @@
         checklistItems = arr.slice(0, 6);
         saveChecklist();
         closeChecklist();
-        showToast('自检清单已保存');
+        showToast('检查单已保存');
     }
 
     // ===== 阻断式打卡卡片（早上出门）=====
@@ -2293,6 +2303,8 @@
         checkInData.morningIn = null;
         checkInData.morningSaved = false;
         checkInData.date = todayYMD();
+        departurePort = portData.main;   // 出门时刻快照口岸，作为「过境」代理
+        fetchPortQueue();
         closeChecklistAction();
         persistCheckIn();
     }
@@ -2305,12 +2317,48 @@
 
     let engineEnabled = (localStorage.getItem(EDGE_TOGGLE_KEY) === '1');
     let engineSamples = loadEngineSamples();
+    let departurePort = null;   // 出门时刻口岸快照（训练用，用完即弃）
 
     function loadEngineSamples() {
         try {
             const meta = JSON.parse(localStorage.getItem(EDGE_META_KEY) || 'null');
             return (meta && typeof meta.samples === 'number') ? meta.samples : 0;
         } catch (e) { return 0; }
+    }
+
+    /* 冷启动时用历史档案批量回放预热：攒了几天档案的人，开引擎就已是「已学习 N 次」 */
+    function warmStartEngine() {
+        if (engineSamples > 0) return;
+        if (!historyData || !historyData.length) return;
+        const base = Number(userConfig.baseTime);
+        if (!isFinite(base) || base <= 0) return;
+        let replayed = 0;
+        historyData.forEach(function (item) {
+            if (!item) return;
+            const mOut = item.morningOut != null ? item.morningOut : item.outTime;
+            const mIn = item.morningIn != null ? item.morningIn : item.inTime;
+            if (mOut && mIn) {
+                const dur = Math.round((mIn - mOut) / 60000);
+                if (dur > 0 && dur < 600) {
+                    const target = dur - base;
+                    const features = [0, 0, dayOfWeekFeature(new Date(mOut)), 0]; // 历史无天气/口岸，填中性 0
+                    if (Math.abs(target - engine.predict(features)) <= 45) { engine.train(features, target); replayed++; }
+                }
+            }
+            if (item.eveningOut && item.eveningIn) {
+                const dur = Math.round((item.eveningIn - item.eveningOut) / 60000);
+                if (dur > 0 && dur < 600) {
+                    const target = dur - base;
+                    const features = [0, 0, dayOfWeekFeature(new Date(item.eveningOut)), 1];
+                    if (Math.abs(target - engine.predict(features)) <= 45) { engine.train(features, target); replayed++; }
+                }
+            }
+        });
+        if (replayed > 0) {
+            engineSamples = replayed;
+            engine.saveWeights();
+            try { localStorage.setItem(EDGE_META_KEY, JSON.stringify({ samples: engineSamples })); } catch (e) {}
+        }
     }
 
     class LocalInferenceEngine {
@@ -2422,6 +2470,14 @@
         return 0;
     }
 
+    /* 训练优先用「出门时刻」的口岸快照（更接近过境），无快照则退回当前 */
+    function departurePortFeature() {
+        if (departurePort === null || departurePort === undefined) return portFeatureNow();
+        if (departurePort === 1) return 0.5;
+        if (departurePort === 2) return 1.0;
+        return 0;
+    }
+
     function dayOfWeekFeature(dateObj) {
         const map = { 0: 0.0, 1: 1.0, 2: 0.75, 3: 0.5, 4: 0.35, 5: 0.2, 6: 0.1 };
         return map[dateObj.getDay()];
@@ -2434,24 +2490,28 @@
         return [weather, port, dayOfWeekFeature(dateObj), 0]; // 末位 0 = 去程
     }
 
-    function engineReady() { return engineSamples >= 5; }
-
-    // ===== 训练入口：保存记录时调用 =====
+    // ===== 训练入口：保存记录时调用（优雅降级：数据不完整 → 静默跳过，绝不报错）=====
     function trainEngineOnTrip(duration, dateObj, isReturn) {
-        if (!isFinite(duration) || duration <= 0) return;
-        const base = Number(userConfig.baseTime);
-        if (!isFinite(base) || base <= 0) return;
-        const target = duration - base;
-        const features = [weatherFeatureNow(), portFeatureNow(), dayOfWeekFeature(dateObj), isReturn ? 1 : 0];
-        const predicted = engine.predict(features);
-        if (Math.abs(target - predicted) > 45) {
-            showToast('误差过大，推理引擎已忽略本次学习');
-            return;
+        try {
+            if (!isFinite(duration) || duration <= 0) return;
+            const base = Number(userConfig.baseTime);
+            if (!isFinite(base) || base <= 0) return;
+            if (weatherData.loading || portData.loading) return;   // 关键数据未就绪 → 不学
+            const target = duration - base;
+            const features = [weatherFeatureNow(), departurePortFeature(), dayOfWeekFeature(dateObj), isReturn ? 1 : 0];
+            departurePort = null;   // 快照用完即弃
+            const predicted = engine.predict(features);
+            if (Math.abs(target - predicted) > 45) {
+                showToast('误差过大，推理引擎已忽略本次学习');
+                return;
+            }
+            engine.train(features, target);
+            engine.saveWeights();
+            engineSamples += 1;
+            try { localStorage.setItem(EDGE_META_KEY, JSON.stringify({ samples: engineSamples })); } catch (e) {}
+        } catch (e) {
+            // 任何异常静默吞掉，不影响打卡主流程
         }
-        engine.train(features, target);
-        engine.saveWeights();
-        engineSamples += 1;
-        try { localStorage.setItem(EDGE_META_KEY, JSON.stringify({ samples: engineSamples })); } catch (e) {}
     }
 
     // ===== 开关 / 重置 / 状态文案 =====
@@ -2481,7 +2541,8 @@
 
     function renderEngineStatus(aiDelta) {
         if (!engineEnabled) return '';
-        if (!engineReady()) return '<span>推理引擎正在收集数据</span>';
+        if (engineSamples === 0) return '<span>推理引擎正在收集数据</span>';
+        if (engineSamples < 5) return '<span>* 推理引擎校准中：基于 ' + engineSamples + ' 次打卡，正在逐步接管 *</span>';
         let msg = '* 推理引擎已接管：基于 ' + engineSamples + ' 次打卡校准 *';
         if (aiDelta !== null && aiDelta >= 0.5) {
             msg += '<br>* 因天气与星期叠加，推理引擎已额外预留 ' + Math.round(aiDelta) + ' 分钟 *';
@@ -2622,14 +2683,16 @@
             ? (weatherData.hasRain ? RAIN_PENALTY_MINUTES : 0)
             : ((weatherData.szTomorrowRainProb !== null && weatherData.szTomorrowRainProb >= 50) ? RAIN_PENALTY_MINUTES : 0);
         const portPenalty = isTodayPlan ? getPortPenalty() : 0;
-        // 自学习引擎接管：用本地 MLP 的「额外分钟」替代静态天气/口岸惩罚
+        // 自学习引擎：随样本数渐进接管（0 次=纯静态，≥5 次=完全接管）
+        const staticPenalty = weatherPenalty + portPenalty;
+        const alpha = Math.min(engineSamples / 5, 1);
         let aiDelta = null;
         let totalCommuteTime;
-        if (engineEnabled && engineReady()) {
+        if (engineEnabled && alpha > 0) {
             aiDelta = engine.predict(buildEngineFeatures(targetDate, isTodayPlan));
-            totalCommuteTime = Number(userConfig.baseTime) + aiDelta;
+            totalCommuteTime = Number(userConfig.baseTime) + (1 - alpha) * staticPenalty + alpha * aiDelta;
         } else {
-            totalCommuteTime = Number(userConfig.baseTime) + weatherPenalty + portPenalty;
+            totalCommuteTime = Number(userConfig.baseTime) + staticPenalty;
         }
 
         const [schoolHour, schoolMinute] = userConfig.schoolTime.split(':').map(Number);
@@ -3518,9 +3581,11 @@
         if (LAST) paintFix(LAST.lat, LAST.lon, LAST.acc);
     }
 
-    /* ---------- 赛博足迹（Cyber Footprint）---------- */
+    /* ---------- 赛博足迹（Cyber Footprint · 红色连线版）---------- */
     var FP_MIN_DIST = 200;   // 米，节流阈值
     var FP_MAX = 50;         // 最大点数（防爆）
+    var FP_KEY = 'terminus_footprint';
+    var FP_COLOR = '#FF3B30';
     var fpGroup = null;
     var fpLast = null;
     var fpTimer = null;
@@ -3539,35 +3604,50 @@
         return true;
     }
 
-    /* 每个采样点渲染为「光晕 + 核心点」两层圆，赛博朋克光晕 */
-    function fpRenderPoint(lat, lon) {
+    function fpYmd() {
+        var d = new Date();
+        return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+    }
+
+    function fpSave() {
+        try { localStorage.setItem(FP_KEY, JSON.stringify({ date: fpYmd(), points: footprintPoints })); } catch (e) {}
+    }
+
+    /* 刷新恢复当日足迹（跨日丢弃） */
+    function fpLoad() {
+        try {
+            var raw = JSON.parse(localStorage.getItem(FP_KEY) || 'null');
+            if (raw && raw.date === fpYmd() && Array.isArray(raw.points)) {
+                footprintPoints.length = 0;
+                raw.points.forEach(function (p) { if (p && isFinite(p.lat) && isFinite(p.lon)) footprintPoints.push({ lat: p.lat, lon: p.lon }); });
+                if (footprintPoints.length) fpRenderLine();
+            } else {
+                localStorage.removeItem(FP_KEY);
+            }
+        } catch (e) {}
+    }
+
+    /* 红色连线：光晕(6px) + 主线(3px) 两层 polyline，重建成本可忽略 */
+    function fpRenderLine() {
         var g = fpGroupEl();
         if (!g) return;
-        var px = geoToPx(lat, lon);
-        var pg = document.createElementNS(NS, 'g');
-        pg.setAttribute('class', 'fp-point');
-        var halo = document.createElementNS(NS, 'circle');
-        halo.setAttribute('cx', px.x.toFixed(2));
-        halo.setAttribute('cy', px.y.toFixed(2));
-        halo.setAttribute('r', '4');
-        halo.setAttribute('fill', '#E4693C');
-        halo.setAttribute('opacity', '0.25');
-        var dot = document.createElementNS(NS, 'circle');
-        dot.setAttribute('cx', px.x.toFixed(2));
-        dot.setAttribute('cy', px.y.toFixed(2));
-        dot.setAttribute('r', '1.5');
-        dot.setAttribute('fill', '#E4693C');
-        dot.setAttribute('opacity', '0.7');
-        pg.appendChild(halo);
-        pg.appendChild(dot);
-        g.appendChild(pg);
+        if (footprintPoints.length === 1) {
+            var p0 = footprintPoints[0];
+            var px0 = geoToPx(p0.lat, p0.lon);
+            g.innerHTML = '<circle cx="' + px0.x.toFixed(2) + '" cy="' + px0.y.toFixed(2) + '" r="3" fill="' + FP_COLOR + '" opacity="0.85"/>';
+            return;
+        }
+        if (footprintPoints.length < 2) { g.innerHTML = ''; return; }
+        var pts = footprintPoints.map(function (p) { var px = geoToPx(p.lat, p.lon); return px.x.toFixed(2) + ',' + px.y.toFixed(2); }).join(' ');
+        g.innerHTML = '<polyline points="' + pts + '" fill="none" stroke="' + FP_COLOR + '" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity="0.25"/>'
+            + '<polyline points="' + pts + '" fill="none" stroke="' + FP_COLOR + '" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"/>';
     }
 
     function footprintStart() {
         if (footprintWatchId !== null) return;          // 已在监听
         if (footprintPoints.length >= FP_MAX) return;   // 已达上限
         if (!navigator.geolocation) return;
-        fpLast = null;
+        fpLast = footprintPoints.length ? footprintPoints[footprintPoints.length - 1] : null; // 节流连续性
         footprintWatchId = navigator.geolocation.watchPosition(
             function (pos) {
                 if (footprintPoints.length >= FP_MAX) { footprintStop(); return; }
@@ -3577,7 +3657,8 @@
                 if (!fpAccept(lat, lon)) return;        // 超出视口/海里丢弃
                 fpLast = { lat: lat, lon: lon };
                 footprintPoints.push({ lat: lat, lon: lon });
-                fpRenderPoint(lat, lon);
+                fpRenderLine();
+                fpSave();
             },
             function () { footprintStop(); },
             { enableHighAccuracy: true, timeout: 15000, maximumAge: 5000 }
@@ -3596,29 +3677,28 @@
         footprintStop();
         footprintPoints.length = 0;
         fpLast = null;
+        try { localStorage.removeItem(FP_KEY); } catch (e) {}
         var g = fpGroupEl();
         if (g) { while (g.firstChild) g.removeChild(g.firstChild); }
     }
 
-    /* 到达打卡：从起点开始逐个消散（贪吃蛇式），结束后清空 */
+    /* 到达打卡：整条线淡出后清空 */
     function footprintDissolve() {
         footprintStop();
         var g = fpGroupEl();
         if (!g) { footprintReset(); return; }
-        var pts = g.querySelectorAll('.fp-point');
-        var i = 0;
-        (function step() {
-            if (i >= pts.length) { footprintReset(); return; }
-            pts[i].setAttribute('opacity', '0');
-            i += 1;
-            fpTimer = setTimeout(step, 100);
-        })();
+        var els = g.querySelectorAll('polyline, circle');
+        if (!els.length) { footprintReset(); return; }
+        for (var i = 0; i < els.length; i++) els[i].setAttribute('opacity', '0');
+        fpTimer = setTimeout(function () { footprintReset(); }, 900);
     }
 
     /* 撤销打卡：立即清除（无动画） */
     function footprintClear() {
         footprintReset();
     }
+
+    fpLoad();   // 恢复当日足迹（刷新不丢）
 
     buildRegions();
     renderMarks();
@@ -3668,20 +3748,20 @@
 <!-- ===== 顶部 Toast 轻提示（自绘 · 替代 alert） ===== -->
 <div id="tx-toast" style="position:fixed;top:40px;left:50%;transform:translateX(-50%);max-width:calc(100vw - 48px);box-sizing:border-box;background:var(--text-main);color:var(--bg-color);padding:10px 20px;border-radius:20px;font-size:13px;font-weight:600;text-align:center;line-height:1.4;opacity:0;pointer-events:none;transition:opacity 0.3s ease;z-index:9999;box-shadow:0 4px 12px rgba(0,0,0,0.15);"></div>
 
-<!-- ===== 启程自检 · 配置面板 ===== -->
+<!-- ===== 启程检查单 · 配置面板 ===== -->
 <div class="modal-overlay" id="checklist-modal">
     <div class="modal-content">
-        <div class="modal-title">启程自检</div>
+        <div class="modal-title">启程检查单</div>
         <div id="checklist-list"></div>
         <div id="checklist-add-area"></div>
-        <button class="btn-save" onclick="saveChecklistAndClose()">保存自检清单</button>
+        <button class="btn-save" onclick="saveChecklistAndClose()">保存检查单</button>
     </div>
 </div>
 
-<!-- ===== 启程自检 · 阻断式打卡卡片 ===== -->
+<!-- ===== 启程检查单 · 阻断式打卡卡片 ===== -->
 <div class="modal-overlay" id="checklist-action-modal">
     <div class="modal-content">
-        <div class="modal-title">启程自检</div>
+        <div class="modal-title">启程检查单</div>
         <div class="cl-hint">逐一点亮随身物品，全部点亮即自动出发</div>
         <div id="checklist-action-list"></div>
     </div>
