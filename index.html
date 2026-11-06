@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#F5F5F7">
     <title>晨昏线 Terminus X</title>
     <style>
         :root {
+            color-scheme: light;
             --bg-color: #F5F5F7;
             --bg-tint-a: #FBF0E4;
             --bg-tint-b: #F5F5F7;
@@ -21,6 +23,7 @@
         }
 
         body.dark-mode {
+            color-scheme: dark;
             --bg-color: #0B0C10;
             --bg-tint-a: #0C1320;
             --bg-tint-b: #07080C;
@@ -33,29 +36,52 @@
             --status-red: #FF453A;
         }
 
-        /* ===== 逐光主题：暮光暖深（复用深色结构，背景随时间变化）===== */
+        /* ===== 逐光主题：彩天（中性冷调玻璃，背景随时间变化）===== */
         body.dark-mode.theme-chase {
-            --bg-color: #0B0806;
-            --card-bg: rgba(34, 26, 20, 0.72);
-            --text-main: #F2E9DC;
-            --text-sub: #A99C8C;
+            --bg-color: #0B0F18;
+            --card-bg: rgba(20, 24, 34, 0.72);
+            --text-main: #EEF0F5;
+            --text-sub: #A0A8B8;
             --accent-color: #E8A44C;
-            --status-green: #7FB07A;
-            --status-yellow: #E8B45A;
-            --status-red: #D9735C;
-            --danger-color: #D9735C;
-            background: linear-gradient(180deg, var(--chase-a, #140D08), var(--chase-b, #0A0705));
+            --status-green: #30D158;
+            --status-yellow: #FF9F0A;
+            --status-red: #FF453A;
+            background: linear-gradient(180deg, var(--chase-a, #101726), var(--chase-b, #0A0E18));
         }
         body.dark-mode.theme-chase::before {
-            background: radial-gradient(circle at 50% 0%, rgba(120, 70, 25, 0.20) 0%, transparent 55%);
+            background: radial-gradient(circle at 50% 0%, rgba(70, 100, 160, 0.16) 0%, transparent 55%);
         }
-        body.dark-mode.theme-chase .card:not(.hero-card),
-        body.dark-mode.theme-chase .nav-btn,
+        body.dark-mode.theme-chase #view-home .card:not(.hero-card),
+        body.dark-mode.theme-chase #view-mtr .card,
+        body.dark-mode.theme-chase #view-bus .card,
+        body.dark-mode.theme-chase #view-weather .card,
+        body.dark-mode.theme-chase #view-map .card,
+        body.dark-mode.theme-chase #view-home .nav-btn,
+        body.dark-mode.theme-chase #view-home .transit-btn,
         body.dark-mode.theme-chase .sz-port-link,
-        body.dark-mode.theme-chase .transit-btn,
         body.dark-mode.theme-chase .action-card:not(.secondary) {
-            background: rgba(34, 26, 20, 0.62) !important;
-            border-color: rgba(255, 240, 220, 0.10) !important;
+            background: rgba(20, 24, 34, 0.55) !important;
+            border-color: rgba(255, 255, 255, 0.12) !important;
+        }
+
+        /* ===== 逐光 · 白天：地图切回浅色（真实日出日落切换，0.6s 淡入淡出）===== */
+        body.dark-mode.theme-chase.map-day #view-map {
+            --m-sea: #E8EDF3; --m-sz: #FFFFFF; --m-hk: #CCD8E6; --m-coast: #A8B5C4;
+            --m-region: rgba(29, 29, 31, 0.32); --m-region-sub: rgba(29, 29, 31, 0.17);
+            --m-key: #8E97A4; --m-key-stroke: #FFFFFF;
+            --m-label: #6E6E73; --m-label-stroke: rgba(255, 255, 255, 0.9);
+            --m-accent: #E4693C; --m-ring: rgba(228, 105, 60, 0.58); --m-halo-op: 0.13;
+            --m-hair: #F0F0F2; --m-sw-border: #BFC9D6;
+            --m-plate-hair: rgba(29, 29, 31, 0.05); --m-plate-shadow: rgba(29, 29, 31, 0.04);
+        }
+        body.dark-mode.theme-chase.map-day #view-map .glass-btn {
+            background: rgba(255, 255, 255, 0.6) !important;
+            border: 1px solid rgba(0, 0, 0, 0.08) !important;
+            color: #1D1D1F !important;
+        }
+        #view-map .land, #view-map .rg, #view-map .rs, #view-map .rk, #view-map .rt,
+        #view-map .plate, #view-map .glass-btn {
+            transition: fill .6s ease, stroke .6s ease, background .6s ease, color .6s ease;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif; -webkit-tap-highlight-color: transparent; }
@@ -1333,6 +1359,23 @@
         "2026-12-25", "2026-12-26"
     ];
     const RAIN_PENALTY_MINUTES = 10;
+    // 降雨分档：0 无雨 / 1 小雨 / 2 中雨 / 3 大雨暴雨
+    const RAIN_TIER_PENALTY = [0, 5, 9, 15];
+    const RAIN_TIER_FEATURE = [0, 0.35, 0.65, 1.0];
+    function rainTier(code) {
+        if (code === null || code === undefined) return 0;
+        if ([51,53,55,56,57,61,80].indexOf(code) > -1) return 1;
+        if ([63,66,81].indexOf(code) > -1) return 2;
+        if ([65,67,82,95,96,99].indexOf(code) > -1) return 3;
+        return 0;
+    }
+    function rainTierFromProb(p) {
+        if (p === null || p === undefined) return 0;
+        if (p >= 65) return 3;
+        if (p >= 40) return 2;
+        if (p >= 20) return 1;
+        return 0;
+    }
 
     // 入境处「居民」口岸排队数据（全站唯一使用公共代理的地方）
     const PORT_API_RESIDENT = 'https://secure1.info.gov.hk/immd/mobileapps/2bb9ae17/data/CPQueueTimeR.json';
@@ -1504,6 +1547,7 @@
         warmStartEngine();
         fetchWeather();
         fetchHoliday();
+        fetchWarnings();
         fetchPortQueue(); // 非阻塞，异步填充口岸卡片
         if (!hasSaved) openSettings();
         // 口岸数据每 5 分钟刷新一次（内部有 5 分钟缓存）
@@ -1568,15 +1612,15 @@
 
     /* ===== 逐光主题：暮光暖深，背景随时间插值 ===== */
     const CHASE_SKY = [
-        { h: 0,  a: '#140D08', b: '#0A0705' },
-        { h: 5,  a: '#1C0F07', b: '#0B0705' },
-        { h: 6,  a: '#2C1307', b: '#140A06' },
-        { h: 8,  a: '#1E130B', b: '#0C0906' },
-        { h: 12, a: '#18110B', b: '#0B0806' },
-        { h: 16, a: '#281508', b: '#110A06' },
-        { h: 18, a: '#2C1306', b: '#130806' },
-        { h: 20, a: '#180C07', b: '#0A0705' },
-        { h: 24, a: '#140D08', b: '#0A0705' }
+        { h: 0,  a: '#101726', b: '#0A0E18' },
+        { h: 5,  a: '#1C2540', b: '#101426' },
+        { h: 6,  a: '#33406A', b: '#A07154' },
+        { h: 8,  a: '#5A7AA8', b: '#C4A87E' },
+        { h: 12, a: '#6E8EB8', b: '#D6E0EC' },
+        { h: 16, a: '#5E86B8', b: '#C9A878' },
+        { h: 18, a: '#343458', b: '#A85A44' },
+        { h: 20, a: '#1A1E38', b: '#0C0E1C' },
+        { h: 24, a: '#101726', b: '#0A0E18' }
     ];
     function chaseRgb(h) { h = h.replace('#', ''); return [parseInt(h.slice(0,2),16), parseInt(h.slice(2,4),16), parseInt(h.slice(4,6),16)]; }
     function chaseMix(c1, c2, t) { const a = chaseRgb(c1), b = chaseRgb(c2); return 'rgb(' + Math.round(a[0]+(b[0]-a[0])*t) + ',' + Math.round(a[1]+(b[1]-a[1])*t) + ',' + Math.round(a[2]+(b[2]-a[2])*t) + ')'; }
@@ -1591,12 +1635,31 @@
         }
         return { a: CHASE_SKY[0].a, b: CHASE_SKY[0].b };
     }
+    /* 真实日出/日落（NOAA 简化式，深港纬度） */
+    function sunTimes(date) {
+        const lat = 22.55 * Math.PI / 180, lon = 114.08;
+        const N = Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 86400000);
+        const g = 2 * Math.PI / 365 * (N - 1 + 0.5);
+        const eq = 229.18 * (0.000075 + 0.001868 * Math.cos(g) - 0.032077 * Math.sin(g) - 0.014615 * Math.cos(2 * g) - 0.040849 * Math.sin(2 * g));
+        const d = 0.006918 - 0.399912 * Math.cos(g) + 0.070257 * Math.sin(g) - 0.006758 * Math.cos(2 * g) + 0.000907 * Math.sin(2 * g) - 0.002697 * Math.cos(3 * g) + 0.00148 * Math.sin(3 * g);
+        const c = Math.cos(90.833 * Math.PI / 180) / (Math.cos(lat) * Math.cos(d)) - Math.tan(lat) * Math.tan(d);
+        if (c < -1 || c > 1) return { sunrise: 6, sunset: 18 };
+        const ha = Math.acos(c) * 180 / Math.PI;
+        const noon = 720 - 4 * lon - eq;
+        const toLocal = m => ((m + 480) % 1440 + 1440) % 1440 / 60;
+        return { sunrise: toLocal(noon - 4 * ha), sunset: toLocal(noon + 4 * ha) };
+    }
+
     function applyChaseTint() {
-        if (!document.body.classList.contains('theme-chase')) return;
+        const isChase = document.body.classList.contains('theme-chase');
+        if (!isChase) { document.body.classList.remove('map-day'); return; }
         const now = new Date();
         const t = chaseTintAt(now.getHours() + now.getMinutes() / 60);
         document.documentElement.style.setProperty('--chase-a', t.a);
         document.documentElement.style.setProperty('--chase-b', t.b);
+        const st = sunTimes(now);
+        const h = now.getHours() + now.getMinutes() / 60;
+        document.body.classList.toggle('map-day', h >= st.sunrise && h < st.sunset);
     }
 
     function applyTheme(theme) {
@@ -1604,6 +1667,9 @@
         document.body.classList.toggle('dark-mode', isDark);
         document.body.classList.toggle('theme-chase', theme === 'chase');
         localStorage.setItem('terminus_theme', theme);
+        const tc = { light: '#F5F5F7', dark: '#0B0C10', chase: '#0B0F18' };
+        const meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.setAttribute('content', tc[theme] || '#F5F5F7');
         const lightBtn = document.getElementById('theme-light');
         const darkBtn = document.getElementById('theme-dark');
         const chaseBtn = document.getElementById('theme-chase');
@@ -1785,9 +1851,46 @@
         renderUI();
     }
 
+    /* ===== 香港天文台警告：台风 / 暴雨 → 停课判断 ===== */
+    const WARNING_API = 'https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=warnsum&lang=tc';
+    let warningData = { loading: true, list: [], suspended: false, label: '' };
+
+    function isTyphoon8(code) {
+        return code === 'TC8' || code === 'TC8NE' || code === 'TC8SE' || code === 'TC8SW' || code === 'TC8NW' || code === 'TC9' || code === 'TC10';
+    }
+
+    async function fetchWarnings() {
+        try {
+            const data = await fetchJSON(WARNING_API, {}, 8000);
+            const list = [];
+            if (data && typeof data === 'object') {
+                Object.keys(data).forEach(function (k) {
+                    const w = data[k] || {};
+                    list.push({ code: String(w.code || k), name: String(w.name || '') });
+                });
+            }
+            warningData.list = list;
+            const hit = list.find(function (w) { return isTyphoon8(w.code) || w.code === 'WRAINB'; });
+            warningData.suspended = !!hit;
+            warningData.label = hit ? hit.name : '';
+        } catch (e) {
+            warningData.suspended = false;
+            warningData.label = '';
+        }
+        warningData.loading = false;
+        renderHoliday();
+        renderUI();
+    }
+
     function renderHoliday() {
         const text = document.getElementById('holiday-text');
         const dot = document.getElementById('holiday-dot');
+
+        if (warningData.suspended) {
+            text.textContent = '停课 · ' + (warningData.label || '恶劣天气');
+            setDot(dot, 'red');
+            return;
+        }
 
         if (holidayData.loading) {
             text.textContent = '查询香港假期中…';
@@ -2238,6 +2341,7 @@
         weatherData.szHourly = null;
         fetchWeather();
         fetchHoliday();
+        fetchWarnings();
         fetchPortQueue();
         fetchMtrData();
         fetchBusData();
@@ -2519,13 +2623,9 @@
 
     // ===== 特征工程：客观数据 → 0.0~1.0 =====
     function weatherFeatureNow() {
-        const code = (weatherData.shenzhen && weatherData.shenzhen.weatherCode) || null;
-        if (code !== null) {
-            if (code === 81 || code === 82 || code === 95 || code === 96 || code === 99) return 1.0; // 强降水/雷暴
-            if (RAIN_CODES.indexOf(code) > -1) return 0.5; // 小雨/中雨
-            return 0;
-        }
-        return (weatherData.szRain || weatherData.hkRain) ? 0.5 : 0;
+        const code = (weatherData.shenzhen && weatherData.shenzhen.weatherCode);
+        if (code !== null && code !== undefined) return RAIN_TIER_FEATURE[rainTier(code)];
+        return (weatherData.szRain || weatherData.hkRain) ? RAIN_TIER_FEATURE[1] : 0;
     }
 
     function portFeatureNow() {
@@ -2549,8 +2649,7 @@
     }
 
     function buildEngineFeatures(dateObj, isToday) {
-        const weather = isToday ? weatherFeatureNow()
-            : ((weatherData.szTomorrowRainProb !== null && weatherData.szTomorrowRainProb >= 50) ? 0.5 : 0);
+        const weather = isToday ? weatherFeatureNow() : RAIN_TIER_FEATURE[rainTierFromProb(weatherData.szTomorrowRainProb)];
         const port = isToday ? portFeatureNow() : 0;
         return [weather, port, dayOfWeekFeature(dateObj), 0]; // 末位 0 = 去程
     }
@@ -2628,12 +2727,13 @@
         const targetIsTomorrow = isTomorrowDate(targetDate);
         const restStatus = getRestStatus(targetDate, holidayData.list);
 
-        // 【最高优】休息日：强制隐藏打卡，大数字 --:--
-        if (restStatus.isRest) {
+        // 【最高优】休息日 / 停课：强制隐藏打卡，大数字 --:--
+        const suspendedToday = warningData.suspended && !targetIsTomorrow;
+        if (restStatus.isRest || suspendedToday) {
             timeEl.classList.remove('checkin-mode');
             checkinArea.style.display = 'none';
             checkinArea.innerHTML = '';
-            titleEl.innerText = "休息日";
+            titleEl.innerText = suspendedToday ? '停课' : '休息日';
             setTimeWithAnimation(timeEl, '--:--');
             statusEl.innerHTML = '<span></span>';
             resetProgressBar();
@@ -2745,8 +2845,8 @@
         // 明日只用明日的数据：改看次日降水概率，且不叠加此刻的口岸排队
         const isTodayPlan = getEffectiveDay() === 'today';
         const weatherPenalty = isTodayPlan
-            ? (weatherData.hasRain ? RAIN_PENALTY_MINUTES : 0)
-            : ((weatherData.szTomorrowRainProb !== null && weatherData.szTomorrowRainProb >= 50) ? RAIN_PENALTY_MINUTES : 0);
+            ? RAIN_TIER_PENALTY[rainTier(weatherData.shenzhen && weatherData.shenzhen.weatherCode)]
+            : RAIN_TIER_PENALTY[rainTierFromProb(weatherData.szTomorrowRainProb)];
         const portPenalty = isTodayPlan ? getPortPenalty() : 0;
         // 自学习引擎：随样本数渐进接管（0 次=纯静态，≥5 次=完全接管）
         const staticPenalty = weatherPenalty + portPenalty;
