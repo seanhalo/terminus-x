@@ -179,7 +179,7 @@
         .tool-btn:active { transform: scale(0.97); }
         .tool-btn svg { color: var(--text-main); }
         body.dark-mode .tool-head, body.dark-mode .tool-btn { background: rgba(20,24,34,0.45); border-color: rgba(255,255,255,0.15); box-shadow: 0 16px 40px rgba(0,0,0,0.5); backdrop-filter: blur(40px) saturate(150%); -webkit-backdrop-filter: blur(40px) saturate(150%); }
-        body.dark-mode.theme-chase .tool-head, body.dark-mode.theme-chase .tool-btn { background: rgba(20,24,34,0.72); border: none; box-shadow: none; backdrop-filter: none; -webkit-backdrop-filter: none; }
+        body.dark-mode.theme-chase .tool-head, body.dark-mode.theme-chase .tool-btn { background: rgba(20,24,34,0.55); border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 16px 40px rgba(0,0,0,0.5); backdrop-filter: blur(40px) saturate(150%); -webkit-backdrop-filter: blur(40px) saturate(150%); }
         .tool-head:focus:not(:focus-visible), .tool-btn:focus:not(:focus-visible) { outline: none; }
         .tool-head:focus-visible, .tool-btn:focus-visible { outline: 2px solid var(--accent-color); outline-offset: 2px; }
 
@@ -825,7 +825,7 @@
         .game-ov-btn { margin-top: 8px; padding: 12px 28px; border-radius: 999px; border: none; background: var(--text-main); color: var(--bg-color); font-size: 14px; font-weight: 600; cursor: pointer; }
         .game-ov-btn.amber { background: #E8A44C; color: #1D1D1F; }
         .game-overlay.dark .game-ov-title { color: #F5E6C8; }
-        .game-stage.chase { background: #1A1E38; }
+        .game-stage.chase { background: #1A1E38; border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 16px 40px rgba(0,0,0,0.45); }
         .game-ov-btn:active { transform: scale(.96); }
         .game-hint { text-align: center; font-size: 11px; color: var(--text-sub); padding-top: 12px; letter-spacing: .06em; }
 
@@ -1234,7 +1234,7 @@
     <div id="view-game-chase" class="view" style="display:none;">
         <div class="subview-header">
             <button class="back-btn" onclick="switchView('view-home')">‹</button>
-            <div class="subview-title">逐光</div>
+            <div class="subview-title">光暗穿门</div>
             <span class="back-btn-spacer"></span>
         </div>
         <div class="game-stage chase">
@@ -1242,7 +1242,7 @@
             <div class="game-timerbar"><div class="game-timer-fill" id="chase-dawn-fill" style="width:0%; background:#E8A44C;"></div></div>
             <div class="game-hud"><span>黎明 <b id="chase-dawn">0</b>%</span></div>
             <div class="game-overlay dark" id="chase-overlay">
-                <div class="game-ov-title" id="chase-ov-title">逐光</div>
+                <div class="game-ov-title" id="chase-ov-title">光暗穿门</div>
                 <div class="game-ov-sub" id="chase-ov-sub">点击切换光 / 影，穿过同色的拱门<br>撑到天亮</div>
                 <button class="game-ov-btn amber" id="chase-ov-btn">出发</button>
             </div>
@@ -4342,6 +4342,7 @@
     var spawnTimer = 1.0;
     var frame = 0;
     var flash = 0;
+    var endingT = 0;
     var paused = true;
 
     var stars = [];
@@ -4358,7 +4359,7 @@
         state = 'playing';
         roundLen = (plays === 0) ? FIRST_ROUND : NEXT_ROUND;
         plays++;
-        dawn = 0; light = 0.7; cooldown = 0; shadows = []; spawnTimer = 1.0; frame = 0; flash = 0;
+        dawn = 0; light = 0.7; cooldown = 0; shadows = []; spawnTimer = 1.0; frame = 0; flash = 0; endingT = 0;
         overlay.classList.add('hide');
         dawnEl.textContent = '0';
         dawnFill.style.width = '0%';
@@ -4366,7 +4367,7 @@
 
     function toReady() {
         state = 'ready';
-        dawn = 0; light = 0.7; cooldown = 0; shadows = []; spawnTimer = 1.0; frame = 0; flash = 0;
+        dawn = 0; light = 0.7; cooldown = 0; shadows = []; spawnTimer = 1.0; frame = 0; flash = 0; endingT = 0;
         overlay.classList.remove('hide');
         ovTitle.textContent = '守灯人';
         ovSub.innerHTML = '点击提灯，让灯光烧退靠近的暗影<br>撑到天亮，你就赢了';
@@ -4398,11 +4399,16 @@
 
     function update(dt) {
         frame++;
+        if (state === 'ending') {
+            endingT = Math.min(1, endingT + dt / 1.5);
+            if (endingT >= 1) endRound(true);
+            return;
+        }
         if (state !== 'playing') return;
         dawn = Math.min(1, dawn + dt / roundLen);
         dawnEl.textContent = Math.floor(dawn * 100);
         dawnFill.style.width = (dawn * 100) + '%';
-        if (dawn >= 1) { endRound(true); return; }
+        if (dawn >= 1) { state = 'ending'; endingT = 0; return; }
         cooldown -= dt;
         flash = Math.max(0, flash - dt * 4);
         light = Math.max(0, light - dt * (0.26 + dawn * 0.20));
@@ -4485,7 +4491,7 @@
 
         for (var i = 0; i < stars.length; i++) {
             var st = stars[i];
-            ctx.globalAlpha = st.a * (0.65 + 0.35 * Math.sin(frame * 0.03 + i));
+            ctx.globalAlpha = st.a * (0.65 + 0.35 * Math.sin(frame * 0.03 + i)) * (1 - endingT);
             ctx.fillStyle = '#E5E7EB';
             ctx.beginPath(); ctx.arc(st.x, st.y, st.r, 0, Math.PI * 2); ctx.fill();
         }
@@ -4493,6 +4499,17 @@
 
         if (dawn > 0) {
             ctx.fillStyle = 'rgba(90, 130, 190, ' + (dawn * 0.10) + ')';
+            ctx.fillRect(0, 0, W, H);
+        }
+
+        if (state === 'ending') {
+            var sunY = H + 40 - endingT * (H * 0.55);
+            var sg = ctx.createRadialGradient(W / 2, sunY, 10, W / 2, sunY, 150);
+            sg.addColorStop(0, 'rgba(255, 205, 130, ' + (0.95 * endingT) + ')');
+            sg.addColorStop(1, 'rgba(255, 205, 130, 0)');
+            ctx.fillStyle = sg;
+            ctx.beginPath(); ctx.arc(W / 2, sunY, 150, 0, Math.PI * 2); ctx.fill();
+            ctx.fillStyle = 'rgba(255, 200, 120, ' + (0.30 * endingT) + ')';
             ctx.fillRect(0, 0, W, H);
         }
 
@@ -4508,12 +4525,14 @@
             var s = shadows[j];
             var sx = cx + Math.cos(s.angle) * s.dist;
             var sy = cy + Math.sin(s.angle) * s.dist;
+            ctx.globalAlpha = 1 - endingT;
             ctx.fillStyle = 'rgba(8, 6, 12, 0.88)';
             ctx.beginPath(); ctx.arc(sx, sy, s.r, 0, Math.PI * 2); ctx.fill();
-            ctx.strokeStyle = 'rgba(190, 60, 60, 0.35)';
+            ctx.strokeStyle = 'rgba(190, 60, 60, ' + (0.35 * (1 - endingT)) + ')';
             ctx.lineWidth = 1.5;
             ctx.beginPath(); ctx.arc(sx, sy, s.r, 0, Math.PI * 2); ctx.stroke();
         }
+        ctx.globalAlpha = 1;
 
         drawKeeper();
 
@@ -4569,10 +4588,11 @@
     var speed = 190;
     var archs = [];
     var spawnTimer = 1.0;
-    var player = { color: 'light' };
+    var player = { color: 'light', x: PX };
     var frame = 0;
     var flash = 0;
     var shake = 0;
+    var endingT = 0;
     var paused = true;
 
     var dawnEl = document.getElementById('chase-dawn');
@@ -4610,7 +4630,7 @@
         roundLen = (plays === 0) ? FIRST_ROUND : NEXT_ROUND;
         plays++;
         progress = 0; speed = 190; archs = []; spawnTimer = 1.0;
-        player.color = 'light'; frame = 0; flash = 0; shake = 0;
+        player.color = 'light'; player.x = PX; frame = 0; flash = 0; shake = 0; endingT = 0;
         overlay.classList.add('hide');
         dawnEl.textContent = '0';
         dawnFill.style.width = '0%';
@@ -4619,9 +4639,9 @@
     function toReady() {
         state = 'ready';
         progress = 0; speed = 190; archs = []; spawnTimer = 1.0;
-        player.color = 'light'; frame = 0; flash = 0; shake = 0;
+        player.color = 'light'; player.x = PX; frame = 0; flash = 0; shake = 0; endingT = 0;
         overlay.classList.remove('hide');
-        ovTitle.textContent = '逐光';
+        ovTitle.textContent = '光暗穿门';
         ovSub.innerHTML = '点击切换光 / 影，穿过同色的拱门<br>撑到天亮';
         ovBtn.textContent = '出发';
         dawnEl.textContent = '0';
@@ -4652,12 +4672,20 @@
         frame++;
         flash = Math.max(0, flash - dt * 4);
         shake = Math.max(0, shake - dt * 6);
+
+        if (state === 'ending') {
+            endingT = Math.min(1, endingT + dt / 1.5);
+            player.x += 55 * dt;
+            for (var e = 0; e < archs.length; e++) archs[e].alpha = Math.max(0, archs[e].alpha - dt * 2);
+            if (endingT >= 1) endRound(true);
+            return;
+        }
         if (state !== 'playing') return;
 
         progress = Math.min(1, progress + dt / roundLen);
         dawnEl.textContent = Math.floor(progress * 100);
         dawnFill.style.width = (progress * 100) + '%';
-        if (progress >= 1) { endRound(true); return; }
+        if (progress >= 1) { state = 'ending'; endingT = 0; return; }
 
         speed = 190 + progress * 100;
         spawnTimer -= dt;
@@ -4746,8 +4774,11 @@
     }
 
     function drawPlayer() {
-        var bx = PX, by = groundY;
-        var bob = Math.sin(frame * 0.09) * 1.4;
+        var bx = player.x, by = groundY;
+        var t = frame * 0.38;
+        var swing = Math.sin(t);
+        var run = swing * 6;
+        var bob = Math.abs(Math.sin(t)) * 1.5;
         var base = by - bob;
 
         var aura = player.color === 'light' ? '232,164,76' : '80,120,190';
@@ -4762,8 +4793,8 @@
 
         ctx.strokeStyle = '#3A3A3C'; ctx.lineWidth = 4; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
         var hipY = base - 14;
-        ctx.beginPath(); ctx.moveTo(bx - 4, hipY); ctx.lineTo(bx - 4, hipY + 8); ctx.lineTo(bx - 4, base); ctx.stroke();
-        ctx.beginPath(); ctx.moveTo(bx + 4, hipY); ctx.lineTo(bx + 4, hipY + 8); ctx.lineTo(bx + 4, base); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(bx - 4, hipY); ctx.lineTo(bx - 4 - run * 0.55, hipY + 8); ctx.lineTo(bx - 4 - run, base); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(bx + 4, hipY); ctx.lineTo(bx + 4 + run * 0.55, hipY + 8); ctx.lineTo(bx + 4 + run, base); ctx.stroke();
 
         ctx.fillStyle = '#E8A44C';
         rrect(bx - 10, base - 35, 20, 23, 7); ctx.fill();
@@ -4815,6 +4846,13 @@
         for (var i = 0; i < archs.length; i++) drawArch(archs[i]);
         drawPlayer();
         ctx.restore();
+        if (state === 'ending') {
+            var eg = ctx.createLinearGradient(0, 0, 0, H);
+            eg.addColorStop(0, 'rgba(255, 214, 150, ' + (endingT * 0.30) + ')');
+            eg.addColorStop(1, 'rgba(255, 180, 120, ' + (endingT * 0.55) + ')');
+            ctx.fillStyle = eg;
+            ctx.fillRect(0, 0, W, H);
+        }
         if (flash > 0) {
             ctx.fillStyle = 'rgba(255, 240, 210, ' + (flash * 0.18) + ')';
             ctx.fillRect(0, 0, W, H);
