@@ -200,7 +200,7 @@
 
         .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.4); display: none; justify-content: center; align-items: center; padding: 20px; backdrop-filter: blur(5px); z-index: 100; }
         .modal-overlay.active { display: flex; }
-        .modal-content { background: var(--card-bg); width: 100%; max-width: 340px; border-radius: 20px; padding: 24px; max-height: 90vh; overflow-y: auto; }
+        .modal-content { background: var(--card-bg); width: 100%; max-width: 340px; border-radius: 24px; padding: 24px; max-height: 90vh; overflow-y: auto; }
         .modal-title { font-size: 18px; font-weight: 600; margin-bottom: 20px; text-align: center; }
         .input-group { margin-bottom: 16px; }
         .input-group label { display: block; font-size: 13px; color: var(--text-sub); margin-bottom: 6px; }
@@ -215,7 +215,7 @@
         .input-error { display: none; font-size: 11px; color: var(--danger-color); margin-top: 4px; }
         .input-error.show { display: block; }
         .chip-group { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-        .chip { padding: 10px 8px; border-radius: 10px; border: 1px solid #E5E5EA; background: #F5F5F7; color: var(--text-main); font-size: 13px; font-weight: 500; cursor: pointer; transition: background 0.15s, color 0.15s, border-color 0.15s; }
+        .chip { padding: 10px 8px; border-radius: 12px; border: 1px solid #E5E5EA; background: #F5F5F7; color: var(--text-main); font-size: 13px; font-weight: 500; cursor: pointer; transition: background 0.15s, color 0.15s, border-color 0.15s; }
         .chip.selected { background: var(--text-main); color: #FFF; border-color: var(--text-main); }
         .chip.disabled { opacity: 0.35; cursor: not-allowed; }
         .btn-save { width: 100%; padding: 14px; border-radius: 10px; background: var(--accent-color); color: white; font-size: 16px; font-weight: 600; border: none; margin-top: 10px; cursor: pointer; }
@@ -1013,6 +1013,52 @@
             -webkit-backdrop-filter: none;
         }
 
+        /* 轻简：补齐残留（弹窗 / 今日明日 / 港铁卡 / 游戏浮层 / 地图按钮 / chip） */
+        body.theme-simple .modal-content {
+            background: #FFFFFF !important;
+            border: 1px solid #E6E6E3 !important;
+            box-shadow: none !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+        }
+        body.theme-simple .day-toggle {
+            background: #F0F0EE !important;
+            border: 1px solid #E6E6E3 !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+        }
+        body.theme-simple .day-btn {
+            background: transparent !important;
+            border-color: transparent !important;
+            color: var(--text-sub) !important;
+        }
+        body.theme-simple .day-btn.active {
+            background: #17171A !important;
+            border-color: #17171A !important;
+            color: #FFFFFF !important;
+        }
+        body.theme-simple #view-mtr .card {
+            background: #FFFFFF !important;
+            border: 1px solid #E6E6E3 !important;
+            box-shadow: none !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+        }
+        body.theme-simple .game-overlay {
+            background: rgba(247, 247, 245, 0.96);
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+        }
+        body.theme-simple #view-map .glass-btn {
+            background: #FFFFFF !important;
+            border-color: #E6E6E3 !important;
+            box-shadow: none !important;
+        }
+        body.theme-simple .chip {
+            background: #F0F0EE;
+            border-color: #E6E6E3;
+        }
+
         /* ===== 轻简小游戏：呼吸 / 叠 ===== */
         .game-stage.lite {
             --breathe-sq: clamp(120px, 40vmin, 200px);
@@ -1082,6 +1128,22 @@
     </style>
 </head>
 <body>
+<script>
+/* 首帧主题：在样式计算前套用已保存主题，避免切主题时闪色 */
+(function () {
+    try {
+        var t = localStorage.getItem('terminus_theme');
+        if (!t) return;
+        if (t === 'simple') document.body.classList.add('theme-simple');
+        if (t === 'dark' || t === 'chase') {
+            document.body.classList.add('dark-mode');
+            if (t === 'chase') document.body.classList.add('theme-chase');
+        }
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.setAttribute('content', t === 'simple' ? '#F7F7F5' : (t === 'dark' ? '#0B0C10' : (t === 'chase' ? '#0B0F18' : '#F5F5F7')));
+    } catch (e) {}
+})();
+</script>
 
 <div class="app-container">
     <div id="view-home" class="view">
@@ -1655,7 +1717,7 @@
                     <li><b>新页面结构</b><br>改为四页 App 式布局：首页 / 地图 / 通勤 / 设置，底部常驻悬浮岛切换，二级内容保留原页面。</li>
                     <li><b>悬浮岛</b><br>底部改为液态玻璃悬浮岛，选中项为雾面胶囊，切换时胶囊滑动过渡，不再硬切。</li>
                     <li><b>轻简主题</b><br>新增第四套主题「轻简」：纯白纯色，无玻璃、无渐变、无阴影，用 1px 细线分层，渲染压力最低。</li>
-                    <li><b>两个新彩蛋</b><br>轻简主题下双击 Hero，随机进入「呼吸」或「叠」；两款均为纯 DOM 纯色游戏，进入先显示准备页。</li>
+                    <li><b>多个新彩蛋</b><br>任意主题下双击 Hero，进入多款自制离线小游戏。</li>
                     <li><b>预约车队的士</b><br>通勤工具新增「预约车队的士」入口。</li>
                     <li><b>统一圆角</b><br>卡片 24px，悬浮岛与选中胶囊为胶囊形，标签胶囊化，圆角层级统一。</li>
                 </ul>
