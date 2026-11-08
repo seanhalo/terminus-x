@@ -20,6 +20,15 @@
             --status-green: #34C759;
             --status-yellow: #FF9500;
             --status-red: #FF3B30;
+            /* 圆角刻度（以卡片 20px 为基准） */
+            --radius-sm: 12px;
+            --radius-md: 20px;
+            --radius-lg: 28px;
+            --radius-pill: 999px;
+            /* 动效 */
+            --ease: cubic-bezier(0.22, 1, 0.36, 1);
+            --t-fast: 0.12s;
+            --t-norm: 0.34s;
         }
 
         body.dark-mode {
@@ -119,7 +128,7 @@
 
         .section-title { font-size: 12px; color: var(--text-sub); font-weight: 600; letter-spacing: 0.3px; padding-left: 8px; margin-bottom: -8px; }
 
-        .card { background-color: var(--card-bg); border-radius: 20px; padding: 24px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03); }
+        .card { background-color: var(--card-bg); border-radius: 24px; padding: 24px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03); }
 
         .hero-card { text-align: center; }
         .hero-title { font-size: 14px; color: var(--text-sub); margin-bottom: 8px; }
@@ -175,7 +184,7 @@
         .tool-body { overflow: hidden; max-height: 0; opacity: 0; transition: max-height .35s ease, opacity .25s ease; }
         .tool-group.open .tool-body { max-height: 280px; opacity: 1; }
         .tool-group .nav-grid { padding-top: 12px; }
-        .tool-btn { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; min-height: 96px; padding: 18px 14px; border-radius: 18px; color: var(--text-main); font-size: 15px; font-weight: 600; text-decoration: none; cursor: pointer; background: rgba(255,255,255,0.65); border: 1px solid rgba(255,255,255,0.8); backdrop-filter: blur(40px) saturate(180%); -webkit-backdrop-filter: blur(40px) saturate(180%); box-shadow: 0 8px 24px rgba(0,0,0,0.03); }
+        .tool-btn { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; min-height: 96px; padding: 18px 14px; border-radius: 24px; color: var(--text-main); font-size: 15px; font-weight: 600; text-decoration: none; cursor: pointer; background: rgba(255,255,255,0.65); border: 1px solid rgba(255,255,255,0.8); backdrop-filter: blur(40px) saturate(180%); -webkit-backdrop-filter: blur(40px) saturate(180%); box-shadow: 0 8px 24px rgba(0,0,0,0.03); }
         .tool-btn:active { transform: scale(0.97); }
         .tool-btn svg { color: var(--text-main); }
         body.dark-mode .tool-head, body.dark-mode .tool-btn { background: rgba(20,24,34,0.45); border-color: rgba(255,255,255,0.15); box-shadow: 0 16px 40px rgba(0,0,0,0.5); backdrop-filter: blur(40px) saturate(150%); -webkit-backdrop-filter: blur(40px) saturate(150%); }
@@ -183,7 +192,7 @@
         .tool-head:focus:not(:focus-visible), .tool-btn:focus:not(:focus-visible) { outline: none; }
         .tool-head:focus-visible, .tool-btn:focus-visible { outline: 2px solid var(--accent-color); outline-offset: 2px; }
 
-        .sz-port-link { background-color: var(--card-bg); border-radius: 16px; padding: 16px; text-align: center; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02); cursor: pointer; text-decoration: none; color: var(--text-main); display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 14px; font-weight: 600; transition: transform 0.1s; }
+        .sz-port-link { background-color: var(--card-bg); border-radius: 24px; padding: 16px; text-align: center; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02); cursor: pointer; text-decoration: none; color: var(--text-main); display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 14px; font-weight: 600; transition: transform 0.1s; }
         .sz-port-link:active { transform: scale(0.98); }
         .sz-port-link-row { display: flex; align-items: center; justify-content: center; gap: 6px; }
         .sz-port-link-row svg { color: var(--accent-color); }
@@ -829,6 +838,247 @@
         .game-ov-btn:active { transform: scale(.96); }
         .game-hint { text-align: center; font-size: 11px; color: var(--text-sub); padding-top: 12px; letter-spacing: .06em; }
 
+        /* ===== App 式底部 Tab ===== */
+        .tabbar {
+            position: fixed; left: 50%; bottom: calc(env(safe-area-inset-bottom) + 12px);
+            transform: translateX(-50%);
+            width: min(90vw, 400px);
+            display: flex; gap: 2px; padding: 5px;
+            border-radius: var(--radius-pill); z-index: 70;
+            background: rgba(255,255,255,0.65);
+            border: 1px solid rgba(255,255,255,0.7);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+            backdrop-filter: blur(30px) saturate(180%);
+            -webkit-backdrop-filter: blur(30px) saturate(180%);
+            transition: transform .4s cubic-bezier(0.22,1,0.36,1), opacity .3s ease;
+        }
+        body.dark-mode .tabbar { background: rgba(20,24,34,0.55); border-color: rgba(255,255,255,0.12); box-shadow: 0 12px 30px rgba(0,0,0,0.5); }
+        body.dark-mode.theme-chase .tabbar { background: rgba(20,24,34,0.6); }
+        body.subview .tabbar { transform: translate(-50%, 160%); opacity: 0; pointer-events: none; }
+        .tab-btn {
+            flex: 1; border: none; background: transparent; color: var(--text-sub);
+            display: flex; align-items: center; justify-content: center;
+            padding: 2px; cursor: pointer;
+        }
+        .tab-inner {
+            display: flex; flex-direction: column; align-items: center; gap: 1px;
+            padding: 8px 16px;
+            border-radius: var(--radius-pill);
+            border: 1px solid transparent;
+            background: transparent;
+            transition: background .2s var(--ease), border-color .2s var(--ease);
+        }
+        .tab-btn svg { width: 19px; height: 19px; }
+        .tab-inner span { font-size: 8px; }
+        .tab-indicator {
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            height: calc(100% - 12px);
+            border-radius: var(--radius-pill);
+            background: rgba(255,255,255,0.14);
+            border: 1px solid rgba(255,255,255,0.20);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.15);
+            transition: transform .38s var(--ease), width .38s var(--ease);
+            pointer-events: none;
+            z-index: 0;
+        }
+        body:not(.dark-mode) .tab-indicator {
+            background: rgba(255,255,255,0.75);
+            border-color: rgba(255,255,255,0.9);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+        }
+        .tab-btn { position: relative; z-index: 1; }
+        .tab-btn.active .tab-inner { background: transparent; border-color: transparent; color: var(--text-main); }
+        .app-container { padding-bottom: calc(env(safe-area-inset-bottom) + 84px); }
+
+        /* ===== 通勤工具四宫格 ===== */
+        .tool-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+        /* ===== 设置页 ===== */
+        .settings-page-card { padding: 4px 20px; }
+        .setting-row {
+            display: flex; align-items: center; justify-content: space-between; gap: 14px;
+            width: 100%; padding: 17px 0; font-size: 15px; color: var(--text-main);
+            background: transparent; border: none; border-bottom: 1px solid rgba(128,128,128,0.15);
+            text-align: left; cursor: pointer;
+        }
+        .setting-row:last-child { border-bottom: none; }
+        .setting-chev { color: var(--text-sub); font-size: 18px; }
+        .theme-seg { display: flex; gap: 3px; background: rgba(128,128,128,0.12); padding: 3px; border-radius: var(--radius-md); }
+        .theme-seg button { border: 1px solid transparent; background: transparent; color: var(--text-sub); font-size: 11px; padding: 5px 12px; border-radius: var(--radius-sm); cursor: pointer; transition: background .2s var(--ease), border-color .2s var(--ease); }
+        .theme-seg button.active { background: rgba(255,255,255,0.75); border-color: rgba(255,255,255,0.9); color: var(--text-main); }
+        body.dark-mode .theme-seg button.active { background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,0.20); color: var(--text-main); }
+
+        /* ===== 全站卡片统一液态玻璃（本次调整） ===== */
+        .card, .sz-port-link, .tool-btn, .holiday-card {
+            background: rgba(255, 255, 255, 0.65) !important;
+            border: 1px solid rgba(255, 255, 255, 0.72) !important;
+            backdrop-filter: blur(40px) saturate(180%) !important;
+            -webkit-backdrop-filter: blur(40px) saturate(180%) !important;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06) !important;
+        }
+        body.dark-mode .card, body.dark-mode .sz-port-link, body.dark-mode .tool-btn, body.dark-mode .holiday-card {
+            background: rgba(20, 24, 34, 0.45) !important;
+            border-color: rgba(255, 255, 255, 0.12) !important;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5) !important;
+        }
+        body.dark-mode.theme-chase .card, body.dark-mode.theme-chase .sz-port-link, body.dark-mode.theme-chase .tool-btn, body.dark-mode.theme-chase .holiday-card {
+            background: rgba(20, 24, 34, 0.55) !important;
+        }
+
+        /* ===== 悬浮岛：与今日/明日切换同风格（玻璃胶囊 + 实心选中） ===== */
+        .tabbar {
+            background: rgba(255, 255, 255, 0.55) !important;
+            border: 1px solid rgba(255, 255, 255, 0.72) !important;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.7) !important;
+            backdrop-filter: blur(40px) saturate(180%) !important;
+            -webkit-backdrop-filter: blur(40px) saturate(180%) !important;
+        }
+        body.dark-mode .tabbar {
+            background: rgba(20, 24, 34, 0.5) !important;
+            border-color: rgba(255, 255, 255, 0.12) !important;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+        }
+        /* 选中胶囊样式已在上方 .tab-inner 规则中定义（雾面，非实心） */
+
+        /* ===== 主题分段：玻璃材质 ===== */
+        .theme-seg {
+            background: rgba(255, 255, 255, 0.5) !important;
+            border: 1px solid rgba(255, 255, 255, 0.65) !important;
+            backdrop-filter: blur(20px) saturate(180%) !important;
+            -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+        }
+        body.dark-mode .theme-seg {
+            background: rgba(20, 24, 34, 0.4) !important;
+            border-color: rgba(255, 255, 255, 0.1) !important;
+        }
+
+        /* ===== 第四套主题：轻简（纯白 / 纯色 / 无玻璃 / 无渐变 / 无阴影） ===== */
+        body.theme-simple {
+            --bg-color: #F7F7F5;
+            --bg-tint-a: #F7F7F5;
+            --bg-tint-b: #F7F7F5;
+            --card-bg: #FFFFFF;
+            --text-main: #17171A;
+            --text-sub: #6E6E73;
+            --accent-color: #2E6BFF;
+            --hairline: #E6E6E3;
+            --glass-ridge: #E6E6E3;
+            background: #F7F7F5 !important;
+        }
+        body.theme-simple #view-home .card,
+        body.theme-simple #view-bus .card,
+        body.theme-simple #view-weather .card,
+        body.theme-simple #view-map .card,
+        body.theme-simple .card,
+        body.theme-simple .sz-port-link,
+        body.theme-simple .tool-btn,
+        body.theme-simple .holiday-card {
+            background: #FFFFFF !important;
+            border: 1px solid #E6E6E3 !important;
+            box-shadow: none !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+        }
+        body.theme-simple .tabbar {
+            background: #FFFFFF !important;
+            border: 1px solid #E6E6E3 !important;
+            box-shadow: none !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+        }
+        body.theme-simple .tab-indicator {
+            background: #F0F0EE !important;
+            border: 1px solid #E6E6E3 !important;
+            box-shadow: none !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+        }
+        body.theme-simple .theme-seg {
+            background: #F0F0EE !important;
+            border: 1px solid #E6E6E3 !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+        }
+        body.theme-simple .theme-seg button.active {
+            background: #17171A !important;
+            color: #FFFFFF !important;
+        }
+        body.theme-simple .modal-overlay {
+            background: rgba(0, 0, 0, 0.32);
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+        }
+
+        /* ===== 轻简小游戏：呼吸 / 叠 ===== */
+        .game-stage.lite {
+            --breathe-sq: clamp(120px, 40vmin, 200px);
+            flex: none;
+            width: 100%;
+            aspect-ratio: 400 / 540;
+            background: #FFFFFF;
+            border: 1px solid #E6E6E3;
+            border-radius: 24px;
+            box-shadow: none;
+        }
+        body.theme-simple .game-stage.lite { background: #FFFFFF; border-color: #E6E6E3; box-shadow: none; }
+
+        .breathe-target {
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: calc(var(--breathe-sq) * 0.9);
+            height: calc(var(--breathe-sq) * 0.9);
+            border: 1px solid #D1D1D6;
+            border-radius: 6px;
+            transition: border-color .12s;
+        }
+        .breathe-target.hit { border-color: #111111; }
+        .breathe-wrap {
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: var(--breathe-sq);
+            height: var(--breathe-sq);
+        }
+        .breathe-shake { width: 100%; height: 100%; }
+        .breathe-shake.shake { animation: breathe-shake .24s ease; }
+        @keyframes breathe-shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+        .breathe-square { width: 100%; height: 100%; background: #111111; border-radius: 6px; will-change: transform; }
+        .breathe-hint { position: absolute; bottom: 10px; left: 0; right: 0; text-align: center; font-size: 11px; color: var(--text-sub); letter-spacing: .06em; pointer-events: none; transition: opacity .24s; }
+
+        .lite-overlay {
+            position: absolute; inset: 0; z-index: 2;
+            background: #FFFFFF;
+            display: none; flex-direction: column; align-items: center; justify-content: center;
+            gap: 16px;
+        }
+        .lite-overlay.show { display: flex; }
+        .lite-over-title { font-size: 26px; font-weight: 700; letter-spacing: .06em; color: var(--text-main); }
+        .lite-over-sub { font-size: 12px; color: var(--text-sub); line-height: 1.8; text-align: center; max-width: 260px; }
+        .lite-over-score { font-size: 56px; font-weight: 700; line-height: 1; letter-spacing: -2px; font-variant-numeric: tabular-nums; }
+        .lite-over-btn {
+            margin-top: 8px; padding: 12px 28px;
+            border: none; background: var(--text-main); color: var(--bg-color);
+            font-size: 14px; font-weight: 600; border-radius: 999px; cursor: pointer;
+        }
+        .lite-over-btn:active { transform: scale(.96); }
+
+        .lite-meta { display: flex; align-items: center; justify-content: space-between; padding: 0 4px; }
+        .breathe-lives { display: flex; gap: 6px; }
+        .breathe-life { width: 8px; height: 8px; border-radius: 50%; background: #111111; }
+        .breathe-life.off { background: #E6E6E3; }
+        .lite-score { font-size: 20px; font-weight: 700; font-variant-numeric: tabular-nums; }
+
+        .stack-tower { position: absolute; inset: 0; will-change: transform; }
+        .stack-block, .stack-moving { position: absolute; height: 27px; background: #111111; border-radius: 3px; }
+        .stack-hint { position: absolute; bottom: 10px; left: 0; right: 0; text-align: center; font-size: 11px; color: var(--text-sub); letter-spacing: .06em; pointer-events: none; transition: opacity .24s; }
+
     </style>
 </head>
 <body>
@@ -846,34 +1096,6 @@
                     <polyline points="23 4 23 10 17 10"></polyline>
                     <polyline points="1 20 1 14 7 14"></polyline>
                     <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
-                </svg>
-            </div>
-            <div class="settings-icon" onclick="openChecklist()" title="启程检查单">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="4" y="3" width="16" height="18" rx="3"></rect>
-                    <line x1="9" y1="9" x2="15" y2="9"></line>
-                    <line x1="9" y1="13" x2="15" y2="13"></line>
-                    <line x1="9" y1="17" x2="13" y2="17"></line>
-                </svg>
-            </div>
-            <div class="settings-icon" onclick="openHistory()" title="历史记录">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M3 12a9 9 0 1 0 3-6.7"></path>
-                    <polyline points="3 3 3 8 8 8"></polyline>
-                    <polyline points="12 7 12 12 15.5 14"></polyline>
-                </svg>
-            </div>
-            <div class="settings-icon" onclick="openSettings()" title="设置">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="3"></circle>
-                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-                </svg>
-            </div>
-            <div class="info-icon" onclick="openInfo()" title="信息">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <line x1="12" y1="16" x2="12" y2="12"></line>
-                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
                 </svg>
             </div>
         </div>
@@ -909,6 +1131,22 @@
         <div class="holiday-text" id="holiday-text">查询香港假期中…</div>
         <div class="status-dot gray" id="holiday-dot"></div>
     </div>
+
+    <div class="card" style="padding:16px 20px;">
+        <div class="engine-row">
+            <div>
+                <div class="engine-title">自学习端侧推理引擎 <span class="engine-pro">Pro</span></div>
+                <div class="engine-sub">本地微型神经网络，动态校准通勤时间</div>
+            </div>
+            <button type="button" id="engine-toggle" class="engine-switch" onclick="toggleEngine()" aria-pressed="false" aria-label="切换推理引擎"></button>
+        </div>
+    </div>
+    </div>
+
+    <div id="view-commute" class="view" style="display:none;">
+        <div class="header">
+            <div class="header-brand"><span class="header-title">通勤工具</span></div>
+        </div>
     <div class="section-title">深圳端 · 出境状态</div>
 <a class="sz-port-link" href="https://ka.sz.gov.cn/" target="_blank" rel="noopener">
     <span class="sz-port-link-row">
@@ -953,61 +1191,68 @@
         </div>
     </div>
 
-    <div class="tool-group" id="tool-group">
-        <button type="button" class="tool-head" onclick="toggleToolGroup()" aria-expanded="false">
-            <span class="tool-title">通勤工具</span>
-            <svg class="tool-chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </button>
-        <div class="tool-body">
-            <div class="nav-grid">
-                <a class="tool-btn" href="#" onclick="switchView('view-mtr');return false;">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="5" y="3" width="14" height="13" rx="3"></rect>
-                        <line x1="5" y1="9" x2="19" y2="9"></line>
-                        <line x1="10" y1="3" x2="10" y2="9"></line>
-                        <line x1="14" y1="3" x2="14" y2="9"></line>
-                        <line x1="9" y1="16" x2="9" y2="20"></line>
-                        <line x1="15" y1="16" x2="15" y2="20"></line>
-                    </svg>
-                    <span>港铁时刻表</span>
-                </a>
-                <a class="tool-btn" href="#" onclick="switchView('view-bus');return false;">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="3" y="3" width="18" height="13" rx="3"></rect>
-                        <line x1="3" y1="9" x2="21" y2="9"></line>
-                        <line x1="7" y1="16" x2="7" y2="20"></line>
-                        <line x1="17" y1="16" x2="17" y2="20"></line>
-                    </svg>
-                    <span>巴士时刻表</span>
-                </a>
-                <a class="tool-btn" href="#" onclick="switchView('view-map');return false;">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M3 6 L9 4 L15 6 L21 4 V18 L15 20 L9 18 L3 20 Z"></path>
-                        <line x1="9" y1="4" x2="9" y2="18"></line>
-                        <line x1="15" y1="6" x2="15" y2="20"></line>
-                    </svg>
-                    <span>离线地图</span>
-                </a>
-                <a id="nav-amap" class="tool-btn" href="#" target="_blank" rel="noopener">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="9"></circle>
-                        <path d="M15.5 8.5 L13.5 13.5 L8.5 15.5 L10.5 10.5 Z"></path>
-                    </svg>
-                    <span>高德地图</span>
-                </a>
-            </div>
-        </div>
+    <div class="section-title">通勤工具</div>
+    <div class="tool-grid">
+        <a class="tool-btn" href="#" onclick="switchView('view-mtr');return false;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="5" y="3" width="14" height="13" rx="3"></rect>
+                <line x1="5" y1="9" x2="19" y2="9"></line>
+                <line x1="10" y1="3" x2="10" y2="9"></line>
+                <line x1="14" y1="3" x2="14" y2="9"></line>
+                <line x1="9" y1="16" x2="9" y2="20"></line>
+                <line x1="15" y1="16" x2="15" y2="20"></line>
+            </svg>
+            <span>港铁时刻表</span>
+        </a>
+        <a class="tool-btn" href="#" onclick="switchView('view-bus');return false;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="13" rx="3"></rect>
+                <line x1="3" y1="9" x2="21" y2="9"></line>
+                <line x1="7" y1="16" x2="7" y2="20"></line>
+                <line x1="17" y1="16" x2="17" y2="20"></line>
+            </svg>
+            <span>巴士时刻表</span>
+        </a>
+        <a class="tool-btn" href="https://www.octopus.com.hk/sc/consumer/mobile-payment/easy-ride/about/index.html" target="_blank" rel="noopener">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="7" width="18" height="10" rx="3"></rect>
+                <path d="M6 7 L8 4 H16 L18 7"></path>
+                <rect x="9" y="1.5" width="6" height="2.5" rx="1"></rect>
+                <circle cx="7.5" cy="17" r="1.8"></circle>
+                <circle cx="16.5" cy="17" r="1.8"></circle>
+            </svg>
+            <span>预约车队的士</span>
+        </a>
+        <a id="nav-amap" class="tool-btn" href="#" target="_blank" rel="noopener">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9"></circle>
+                <path d="M15.5 8.5 L13.5 13.5 L8.5 15.5 L10.5 10.5 Z"></path>
+            </svg>
+            <span>高德地图</span>
+        </a>
     </div>
 
-    <div class="card" style="padding:16px 20px;">
-        <div class="engine-row">
-            <div>
-                <div class="engine-title">自学习端侧推理引擎 <span class="engine-pro">Pro</span></div>
-                <div class="engine-sub">本地微型神经网络，动态校准通勤时间</div>
-            </div>
-            <button type="button" id="engine-toggle" class="engine-switch" onclick="toggleEngine()" aria-pressed="false" aria-label="切换推理引擎"></button>
-        </div>
     </div>
+
+    <div id="view-settings" class="view" style="display:none;">
+        <div class="header">
+            <div class="header-brand"><span class="header-title">设置</span></div>
+        </div>
+        <div class="card settings-page-card">
+            <div class="setting-row">
+                <span>主题</span>
+                <div class="theme-seg" id="theme-seg">
+                    <button type="button" data-theme="light" class="active">浅色</button>
+                    <button type="button" data-theme="dark">深色</button>
+                    <button type="button" data-theme="chase">逐光</button>
+                    <button type="button" data-theme="simple">轻简</button>
+                </div>
+            </div>
+            <button type="button" class="setting-row" onclick="openSettings()"><span>通勤设置</span><span class="setting-chev">›</span></button>
+            <button type="button" class="setting-row" onclick="openHistory()"><span>通勤档案</span><span class="setting-chev">›</span></button>
+            <button type="button" class="setting-row" onclick="openInfo()"><span>更新日志</span><span class="setting-chev">›</span></button>
+            <button type="button" class="setting-row" onclick="openChecklist()"><span>启程检查单</span><span class="setting-chev">›</span></button>
+        </div>
     </div>
 
     <div id="view-mtr" class="view" style="display:none;">
@@ -1048,10 +1293,8 @@
     </div>
 
         <div id="view-map" class="view" style="display:none;">
-        <div class="subview-header">
-            <button class="back-btn" onclick="switchView('view-home')" aria-label="返回">&lt;</button>
-            <div class="subview-title">离线地图</div>
-            <div class="back-btn-spacer"></div>
+        <div class="header">
+            <div class="header-brand"><span class="header-title">离线地图</span></div>
         </div>
 
         <div class="card map-card">
@@ -1243,14 +1486,88 @@
             <div class="game-hud"><span>黎明 <b id="chase-dawn">0</b>%</span></div>
             <div class="game-overlay dark" id="chase-overlay">
                 <div class="game-ov-title" id="chase-ov-title">光暗穿门</div>
-                <div class="game-ov-sub" id="chase-ov-sub">点击切换光 / 影，穿过同色的拱门<br>撑到天亮</div>
+                <div class="game-ov-sub" id="chase-ov-sub">点击切换光影，穿过同色的拱门<br>撑到天亮</div>
                 <button class="game-ov-btn amber" id="chase-ov-btn">出发</button>
             </div>
         </div>
-        <div class="game-hint">点击画面切换光 / 影</div>
+        <div class="game-hint">点击画面切换光影</div>
+    </div>
+
+    <div id="view-game-breathe" class="view" style="display:none;">
+        <div class="subview-header">
+            <button class="back-btn" onclick="switchView('view-home')">‹</button>
+            <div class="subview-title">呼吸</div>
+            <span class="back-btn-spacer"></span>
+        </div>
+        <div class="game-stage lite" id="breathe-stage">
+            <div class="breathe-target" id="breathe-target"></div>
+            <div class="breathe-wrap" id="breathe-wrap">
+                <div class="breathe-shake" id="breathe-shake"><div class="breathe-square" id="breathe-square"></div></div>
+            </div>
+            <div class="breathe-hint" id="breathe-hint">方块碰到细线时，轻点一下</div>
+            <div class="lite-overlay show" id="breathe-overlay">
+                <div class="lite-over-title" id="breathe-over-title">呼吸</div>
+                <div class="lite-over-sub" id="breathe-over-sub">方块碰到细线时，轻点一下</div>
+                <div class="lite-over-score" id="breathe-final" style="display:none;">0</div>
+                <button class="lite-over-btn" id="breathe-btn">开始</button>
+            </div>
+        </div>
+        <div class="lite-meta">
+            <div class="breathe-lives" id="breathe-lives"></div>
+            <div class="lite-score" id="breathe-score">0</div>
+        </div>
+    </div>
+
+    <div id="view-game-stack" class="view" style="display:none;">
+        <div class="subview-header">
+            <button class="back-btn" onclick="switchView('view-home')">‹</button>
+            <div class="subview-title">叠</div>
+            <span class="back-btn-spacer"></span>
+        </div>
+        <div class="game-stage lite" id="stack-stage">
+            <div class="stack-tower" id="stack-tower"></div>
+            <div class="stack-hint" id="stack-hint">点击放下方块，尽量对齐</div>
+            <div class="lite-overlay show" id="stack-overlay">
+                <div class="lite-over-title" id="stack-over-title">叠</div>
+                <div class="lite-over-sub" id="stack-over-sub">点击放下方块，尽量对齐</div>
+                <div class="lite-over-score" id="stack-final" style="display:none;">0</div>
+                <button class="lite-over-btn" id="stack-btn">开始</button>
+            </div>
+        </div>
+        <div class="lite-meta">
+            <div class="lite-score" id="stack-score">0</div>
+        </div>
     </div>
 
 </div>
+
+<nav class="tabbar" id="tabbar">
+    <span class="tab-indicator" id="tabIndicator"></span>
+    <button type="button" class="tab-btn active" data-tab="home" onclick="switchTab('home')">
+        <span class="tab-inner">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 L12 3 L21 11"></path><path d="M5 10 V21 H19 V10"></path></svg>
+            <span>首页</span>
+        </span>
+    </button>
+    <button type="button" class="tab-btn" data-tab="map" onclick="switchTab('map')">
+        <span class="tab-inner">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6 L9 4 L15 6 L21 4 V18 L15 20 L9 18 L3 20 Z"></path><line x1="9" y1="4" x2="9" y2="18"></line><line x1="15" y1="6" x2="15" y2="20"></line></svg>
+            <span>地图</span>
+        </span>
+    </button>
+    <button type="button" class="tab-btn" data-tab="commute" onclick="switchTab('commute')">
+        <span class="tab-inner">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="19" r="2"></circle><circle cx="18" cy="5" r="2"></circle><path d="M8 19h6a4 4 0 0 0 0-8h-4a4 4 0 0 1 0-8h6"></path></svg>
+            <span>通勤</span>
+        </span>
+    </button>
+    <button type="button" class="tab-btn" data-tab="settings" onclick="switchTab('settings')">
+        <span class="tab-inner">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+            <span>设置</span>
+        </span>
+    </button>
+</nav>
 
 <div class="modal-overlay" id="settings-modal">
     <div class="modal-content">
@@ -1316,31 +1633,33 @@
             <div class="input-error" id="err-backup-port"></div>
         </div>
 
-        <div class="input-group">
-            <label>外观</label>
-            <div class="chip-group">
-                <button type="button" class="chip" id="theme-light">浅色</button>
-                <button type="button" class="chip" id="theme-dark">深色</button>
-                <button type="button" class="chip" id="theme-chase">逐光</button>
-            </div>
-        </div>
-
         <button class="btn-save" onclick="saveSettings()">建立通勤协议</button>
         <div class="btn-hint">将为你定制专属倒计时</div>
         <div style="text-align:center;margin-top:8px;">
             <button type="button" class="engine-reset" onclick="resetEngine()">重置推理引擎模型</button>
         </div>
-        <div class="version-text">Version 1.8</div>
+        <div class="version-text">Version 1.9</div>
     </div>
 </div>
 
 <div class="modal-overlay" id="info-modal">
     <div class="modal-content">
-        <div class="info-title">晨昏线 Terminus X</div>
-        <div class="info-version">Version 1.8</div>
+        <div class="info-title">更新日志</div>
+        <div class="info-version">Version 1.9</div>
         <div class="info-divider"></div>
 
         <div class="changelog">
+             <div class="changelog-entry">
+                <div class="changelog-version">Version 1.9 · 轻简与新页｜2026.11.8</div>
+                <ul class="changelog-list">
+                    <li><b>新页面结构</b><br>改为四页 App 式布局：首页 / 地图 / 通勤 / 设置，底部常驻悬浮岛切换，二级内容保留原页面。</li>
+                    <li><b>悬浮岛</b><br>底部改为液态玻璃悬浮岛，选中项为雾面胶囊，切换时胶囊滑动过渡，不再硬切。</li>
+                    <li><b>轻简主题</b><br>新增第四套主题「轻简」：纯白纯色，无玻璃、无渐变、无阴影，用 1px 细线分层，渲染压力最低。</li>
+                    <li><b>两个新彩蛋</b><br>轻简主题下双击 Hero，随机进入「呼吸」或「叠」；两款均为纯 DOM 纯色游戏，进入先显示准备页。</li>
+                    <li><b>预约车队的士</b><br>通勤工具新增「预约车队的士」入口。</li>
+                    <li><b>统一圆角</b><br>卡片 24px，悬浮岛与选中胶囊为胶囊形，标签胶囊化，圆角层级统一。</li>
+                </ul>
+            </div>
              <div class="changelog-entry">
                 <div class="changelog-version">Version 1.8 · 端侧自学习｜2026.11.6</div>
                 <ul class="changelog-list">
@@ -1652,10 +1971,11 @@
     }
 
     // ============ 初始化 ============
+    let firstRunChecklistPending = false; // 首次启动：设置保存后接着打开检查单
     window.onload = function() {
         const hasSaved = loadConfig();
         const savedTheme = localStorage.getItem('terminus_theme');
-        applyTheme(savedTheme === 'dark' ? 'dark' : (savedTheme === 'chase' ? 'chase' : 'light'));
+        applyTheme(savedTheme === 'dark' ? 'dark' : (savedTheme === 'chase' ? 'chase' : (savedTheme === 'simple' ? 'simple' : 'light')));
         renderUI();
         renderDate();
         renderDayToggle();
@@ -1665,7 +1985,7 @@
         fetchHoliday();
         fetchWarnings();
         fetchPortQueue(); // 非阻塞，异步填充口岸卡片
-        if (!hasSaved) openSettings();
+        if (!hasSaved) { firstRunChecklistPending = true; openSettings(); }
         // 口岸数据每 5 分钟刷新一次（内部有 5 分钟缓存）
         setInterval(fetchPortQueue, 5 * 60 * 1000);
         // 打卡计时与跨日状态：30 秒一次轻量重算
@@ -1782,8 +2102,9 @@
         const isDark = (theme === 'dark' || theme === 'chase');
         document.body.classList.toggle('dark-mode', isDark);
         document.body.classList.toggle('theme-chase', theme === 'chase');
+        document.body.classList.toggle('theme-simple', theme === 'simple');
         localStorage.setItem('terminus_theme', theme);
-        const tc = { light: '#F5F5F7', dark: '#0B0C10', chase: '#0B0F18' };
+        const tc = { light: '#F5F5F7', dark: '#0B0C10', chase: '#0B0F18', simple: '#F7F7F5' };
         const meta = document.querySelector('meta[name="theme-color"]');
         if (meta) meta.setAttribute('content', tc[theme] || '#F5F5F7');
         const lightBtn = document.getElementById('theme-light');
@@ -1792,6 +2113,9 @@
         if (lightBtn) lightBtn.classList.toggle('selected', theme === 'light');
         if (darkBtn) darkBtn.classList.toggle('selected', theme === 'dark');
         if (chaseBtn) chaseBtn.classList.toggle('selected', theme === 'chase');
+        document.querySelectorAll('#theme-seg button').forEach(function (b) {
+            b.classList.toggle('active', b.dataset.theme === theme);
+        });
         applyChaseTint();
     }
 
@@ -1802,6 +2126,12 @@
         if (lightBtn) lightBtn.addEventListener('click', function() { applyTheme('light'); });
         if (darkBtn) darkBtn.addEventListener('click', function() { applyTheme('dark'); });
         if (chaseBtn) chaseBtn.addEventListener('click', function() { applyTheme('chase'); });
+    })();
+
+    (function initThemeSeg() {
+        document.querySelectorAll('#theme-seg button').forEach(function (b) {
+            b.addEventListener('click', function () { applyTheme(b.dataset.theme); });
+        });
     })();
 
     function showError(id, msg) {
@@ -1906,6 +2236,10 @@
         closeSettings();
         renderUI();
         fetchPortQueue();
+        if (firstRunChecklistPending) {
+            firstRunChecklistPending = false;
+            setTimeout(openChecklist, 280);
+        }
     }
 
     (function bindInputErrors() {
@@ -3007,6 +3341,34 @@
         if (head) head.setAttribute('aria-expanded', open ? 'true' : 'false');
     }
 
+    /* 滑动指示器：把胶囊移动到当前 Tab */
+    function moveIndicator() {
+        var bar = document.getElementById('tabbar');
+        var ind = document.getElementById('tabIndicator');
+        if (!bar || !ind) return;
+        var active = bar.querySelector('.tab-btn.active');
+        if (!active) return;
+        var barRect = bar.getBoundingClientRect();
+        var r = active.getBoundingClientRect();
+        var pad = 6;
+        var extra = -6;
+        ind.style.width = (r.width + extra) + 'px';
+        ind.style.transform = 'translateX(' + (r.left - barRect.left - pad - extra / 2) + 'px)';
+    }
+
+    function switchTab(name) {
+        switchView('view-' + name);
+    }
+
+    (function initTabs() {
+        document.body.classList.remove('subview');
+        document.querySelectorAll('.tab-btn').forEach(function (b) {
+            b.classList.toggle('active', b.dataset.tab === 'home');
+        });
+        requestAnimationFrame(moveIndicator);
+        window.addEventListener('resize', moveIndicator);
+    })();
+
     function switchView(targetId) {
         document.querySelectorAll('.view').forEach(v => {
             if (v.id === targetId) {
@@ -3015,6 +3377,14 @@
                 v.style.display = 'none';
             }
         });
+
+        var MAIN_TABS = ['view-home', 'view-map', 'view-commute', 'view-settings'];
+        var isMain = MAIN_TABS.indexOf(targetId) > -1;
+        document.body.classList.toggle('subview', !isMain);
+        document.querySelectorAll('.tab-btn').forEach(function (b) {
+            b.classList.toggle('active', b.dataset.tab === targetId.replace('view-', ''));
+        });
+        moveIndicator();
 
         if (targetId === 'view-mtr') {
             fetchMtrData();
@@ -3030,12 +3400,18 @@
             if (window.__gameLantern) window.__gameLantern.start();
         } else if (targetId === 'view-game-chase') {
             if (window.__gameChase) window.__gameChase.start();
+        } else if (targetId === 'view-game-breathe') {
+            if (window.__gameBreathe) window.__gameBreathe.start();
+        } else if (targetId === 'view-game-stack') {
+            if (window.__gameStack) window.__gameStack.start();
         }
 
         // 离开游戏页时暂停游戏循环，避免后台空转
         if (targetId !== 'view-game-train' && window.__gameTrain) window.__gameTrain.pause();
         if (targetId !== 'view-game-lantern' && window.__gameLantern) window.__gameLantern.pause();
         if (targetId !== 'view-game-chase' && window.__gameChase) window.__gameChase.pause();
+        if (targetId !== 'view-game-breathe' && window.__gameBreathe) window.__gameBreathe.pause();
+        if (targetId !== 'view-game-stack' && window.__gameStack) window.__gameStack.pause();
 
         // 地图打开 + 通勤中 → 开启足迹；离开地图 → 暂停（保留点位）
         footprintSync();
@@ -4642,7 +5018,7 @@
         player.color = 'light'; player.x = PX; frame = 0; flash = 0; shake = 0; endingT = 0;
         overlay.classList.remove('hide');
         ovTitle.textContent = '光暗穿门';
-        ovSub.innerHTML = '点击切换光 / 影，穿过同色的拱门<br>撑到天亮';
+        ovSub.innerHTML = '点击切换光影，穿过同色的拱门<br>撑到天亮';
         ovBtn.textContent = '出发';
         dawnEl.textContent = '0';
         dawnFill.style.width = '0%';
@@ -4883,6 +5259,252 @@
     };
 })();
 
+/* ===== 轻简小游戏：呼吸 ===== */
+(function () {
+    var stage = document.getElementById('breathe-stage');
+    if (!stage) return;
+    var square = document.getElementById('breathe-square');
+    var shake = document.getElementById('breathe-shake');
+    var target = document.getElementById('breathe-target');
+    var livesEl = document.getElementById('breathe-lives');
+    var scoreEl = document.getElementById('breathe-score');
+    var overlay = document.getElementById('breathe-overlay');
+    var overTitle = document.getElementById('breathe-over-title');
+    var overSub = document.getElementById('breathe-over-sub');
+    var finalEl = document.getElementById('breathe-final');
+    var btn = document.getElementById('breathe-btn');
+    var hint = document.getElementById('breathe-hint');
+
+    var TARGET = 0.9, MIN_S = 0.55, MAX_S = 1.0, PERIOD = 1.8, TOL_START = 0.06, TOL_MIN = 0.02;
+    var state = { score: 0, lives: 3, tol: TOL_START, phase: 0, paused: true, last: 0 };
+
+    function renderLives() {
+        livesEl.innerHTML = '';
+        for (var i = 0; i < 3; i++) {
+            var d = document.createElement('span');
+            d.className = 'breathe-life' + (i < state.lives ? '' : ' off');
+            livesEl.appendChild(d);
+        }
+    }
+
+    function scaleAt(phase) {
+        return MIN_S + (MAX_S - MIN_S) * (0.5 + 0.5 * Math.sin(phase));
+    }
+
+    function reset() {
+        state.score = 0;
+        state.lives = 3;
+        state.tol = TOL_START;
+        state.phase = 0;
+        state.last = 0;
+        scoreEl.textContent = '0';
+        square.style.transform = 'scale(' + MIN_S + ')';
+        hint.style.opacity = '1';
+        renderLives();
+    }
+
+    function toReady() {
+        reset();
+        state.paused = true;
+        overTitle.textContent = '呼吸';
+        overSub.style.display = '';
+        overSub.textContent = '方块碰到细线时，轻点一下';
+        finalEl.style.display = 'none';
+        btn.textContent = '开始';
+        overlay.classList.add('show');
+    }
+
+    function startGame() {
+        overlay.classList.remove('show');
+        state.paused = false;
+        state.last = 0;
+        requestAnimationFrame(tick);
+    }
+
+    function tick(ts) {
+        if (state.paused) return;
+        if (!state.last) state.last = ts;
+        var dt = Math.min(0.05, (ts - state.last) / 1000);
+        state.last = ts;
+        state.phase += (2 * Math.PI / PERIOD) * dt;
+        if (state.phase > Math.PI * 2) state.phase -= Math.PI * 2;
+        square.style.transform = 'scale(' + scaleAt(state.phase).toFixed(4) + ')';
+        requestAnimationFrame(tick);
+    }
+
+    function onTap() {
+        if (state.paused) return;
+        var s = scaleAt(state.phase);
+        if (Math.abs(s - TARGET) <= state.tol) {
+            state.score++;
+            scoreEl.textContent = state.score;
+            state.tol = Math.max(TOL_MIN, state.tol - 0.004);
+            hint.style.opacity = '0';
+            target.classList.add('hit');
+            setTimeout(function () { target.classList.remove('hit'); }, 120);
+        } else {
+            state.lives--;
+            renderLives();
+            shake.classList.remove('shake');
+            void shake.offsetWidth;
+            shake.classList.add('shake');
+            if (state.lives <= 0) {
+                state.paused = true;
+                overTitle.textContent = '本局';
+                overSub.style.display = 'none';
+                finalEl.style.display = '';
+                finalEl.textContent = state.score;
+                btn.textContent = '再来一次';
+                overlay.classList.add('show');
+            }
+        }
+    }
+
+    stage.addEventListener('pointerdown', function (e) { e.preventDefault(); onTap(); });
+    btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        startGame();
+    });
+
+    window.__gameBreathe = {
+        start: toReady,
+        pause: function () { state.paused = true; }
+    };
+})();
+
+/* ===== 轻简小游戏：叠 ===== */
+(function () {
+    var stage = document.getElementById('stack-stage');
+    if (!stage) return;
+    var tower = document.getElementById('stack-tower');
+    var scoreEl = document.getElementById('stack-score');
+    var overlay = document.getElementById('stack-overlay');
+    var overTitle = document.getElementById('stack-over-title');
+    var overSub = document.getElementById('stack-over-sub');
+    var finalEl = document.getElementById('stack-final');
+    var btn = document.getElementById('stack-btn');
+    var hint = document.getElementById('stack-hint');
+
+    var B = 28, BASE_MIN = 150, BASE_MAX = 240, SPEED_START = 1.15, SPEED_MAX = 2.6;
+    var blocks = [], moving = null, movingLeft = 0, phase = 0, speed = SPEED_START;
+    var paused = true, last = 0;
+
+    function stageW() { return stage.clientWidth; }
+    function stageH() { return stage.clientHeight; }
+
+    function makeBlock(left, width, bottom) {
+        var d = document.createElement('div');
+        d.className = 'stack-block';
+        d.style.left = left + 'px';
+        d.style.width = width + 'px';
+        d.style.bottom = bottom + 'px';
+        tower.appendChild(d);
+    }
+
+    function spawnMoving() {
+        var w = blocks[blocks.length - 1].width;
+        moving.style.width = w + 'px';
+        moving.style.bottom = (blocks.length * B) + 'px';
+        movingLeft = 0;
+        moving.style.left = '0px';
+    }
+
+    function scrollTower() {
+        var offset = Math.min(0, (stageH() - 90) - blocks.length * B);
+        tower.style.transform = 'translateY(' + offset + 'px)';
+    }
+
+    function reset() {
+        tower.innerHTML = '';
+        blocks = [];
+        phase = 0;
+        speed = SPEED_START;
+        scoreEl.textContent = '0';
+        overlay.classList.remove('show');
+        hint.style.opacity = '1';
+        var w = Math.min(BASE_MAX, stageW() * 0.62);
+        if (w < BASE_MIN) w = Math.min(BASE_MIN, stageW() * 0.7);
+        var left = (stageW() - w) / 2;
+        makeBlock(left, w, 0);
+        blocks.push({ left: left, width: w });
+        moving = document.createElement('div');
+        moving.className = 'stack-moving';
+        tower.appendChild(moving);
+        spawnMoving();
+        scrollTower();
+        last = 0;
+    }
+
+    function toReady() {
+        reset();
+        paused = true;
+        overTitle.textContent = '叠';
+        overSub.style.display = '';
+        overSub.textContent = '点击放下方块，尽量对齐';
+        finalEl.style.display = 'none';
+        btn.textContent = '开始';
+        overlay.classList.add('show');
+    }
+
+    function startGame() {
+        overlay.classList.remove('show');
+        paused = false;
+        last = 0;
+        requestAnimationFrame(tick);
+    }
+
+    function tick(ts) {
+        if (paused) return;
+        if (!last) last = ts;
+        var dt = Math.min(0.05, (ts - last) / 1000);
+        last = ts;
+        phase += speed * dt;
+        var w = parseFloat(moving.style.width);
+        var range = Math.max(0, stageW() - w);
+        var left = (Math.sin(phase) * 0.5 + 0.5) * range;
+        movingLeft = left;
+        moving.style.left = left + 'px';
+        requestAnimationFrame(tick);
+    }
+
+    function drop() {
+        if (paused) return;
+        var prev = blocks[blocks.length - 1];
+        var w = parseFloat(moving.style.width);
+        var l = movingLeft;
+        var overlap = Math.min(l + w, prev.left + prev.width) - Math.max(l, prev.left);
+        if (overlap <= 0) {
+            paused = true;
+            overTitle.textContent = '本局';
+            overSub.style.display = 'none';
+            finalEl.style.display = '';
+            finalEl.textContent = String(blocks.length - 1);
+            btn.textContent = '再来一次';
+            overlay.classList.add('show');
+            return;
+        }
+        var newLeft = Math.max(l, prev.left);
+        makeBlock(newLeft, overlap, blocks.length * B);
+        blocks.push({ left: newLeft, width: overlap });
+        speed = Math.min(SPEED_MAX, SPEED_START + blocks.length * 0.03);
+        scoreEl.textContent = String(blocks.length - 1);
+        hint.style.opacity = '0';
+        spawnMoving();
+        scrollTower();
+    }
+
+    stage.addEventListener('pointerdown', function (e) { e.preventDefault(); drop(); });
+    btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        startGame();
+    });
+
+    window.__gameStack = {
+        start: toReady,
+        pause: function () { paused = true; }
+    };
+})();
+
 /* ===== 彩蛋触发：hero card 双击（第一次轻提示，第二次进入） ===== */
 (function () {
     var hero = document.querySelector('#view-home .hero-card');
@@ -4896,7 +5518,13 @@
             lastTap = 0;
             var isChase = document.body.classList.contains('theme-chase');
             var isDark = document.body.classList.contains('dark-mode');
-            switchView(isChase ? 'view-game-chase' : (isDark ? 'view-game-lantern' : 'view-game-train'));
+            var isSimple = document.body.classList.contains('theme-simple');
+            if (isSimple) {
+                // 轻简主题：两个小游戏随机出现
+                switchView(Math.random() < 0.5 ? 'view-game-breathe' : 'view-game-stack');
+            } else {
+                switchView(isChase ? 'view-game-chase' : (isDark ? 'view-game-lantern' : 'view-game-train'));
+            }
         } else {
             lastTap = now;
             showToast('再点一次，看看会发生什么');
