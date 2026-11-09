@@ -8,6 +8,7 @@
     <style>
         :root {
             color-scheme: light;
+            /* ===== 色彩 ===== */
             --bg-color: #F5F5F7;
             --bg-tint-a: #FBF0E4;
             --bg-tint-b: #F5F5F7;
@@ -20,15 +21,41 @@
             --status-green: #34C759;
             --status-yellow: #FF9500;
             --status-red: #FF3B30;
-            /* 圆角刻度（以卡片 20px 为基准） */
+            --line: #E5E5EA;
+            /* ===== 间距刻度（4 基） ===== */
+            --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px;
+            --sp-5: 20px; --sp-6: 24px; --sp-8: 32px;
+            /* ===== 圆角刻度 12 / 16 / 24 / 胶囊 ===== */
             --radius-sm: 12px;
-            --radius-md: 20px;
-            --radius-lg: 28px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
             --radius-pill: 999px;
-            /* 动效 */
+            /* ===== 材质：glass（浅 / 深 / 逐光共用一套） ===== */
+            --glass-blur: 40px;
+            --glass-sat: 180%;
+            --glass-bg: rgba(255, 255, 255, 0.42);
+            --glass-border: rgba(255, 255, 255, 0.85);
+            --glass-border-soft: rgba(255, 255, 255, 0.35);
+            --glass-shadow: 0 12px 32px rgba(0, 0, 0, 0.10), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+            --glass-float-bg: rgba(255, 255, 255, 0.72);
+            --shadow-float: 0 20px 60px rgba(0, 0, 0, 0.12);
+            /* ===== 分段控件（与 glass 同源） ===== */
+            --seg-bg: rgba(255, 255, 255, 0.42);
+            --seg-border: rgba(255, 255, 255, 0.85);
+            --seg-active-bg: rgba(255, 255, 255, 0.75);
+            --seg-active-border: rgba(255, 255, 255, 0.9);
+            --seg-active-text: #1D1D1F;
+            /* ===== 排版 ===== */
+            --fs-xs: 10px; --fs-sm: 12px; --fs-md: 14px; --fs-lg: 16px;
+            --fs-xl: 20px; --fs-2xl: 26px; --fs-3xl: 32px;
+            --fw-regular: 400; --fw-medium: 500; --fw-semibold: 600; --fw-bold: 700;
+            /* ===== 动效 ===== */
             --ease: cubic-bezier(0.22, 1, 0.36, 1);
             --t-fast: 0.12s;
             --t-norm: 0.34s;
+            --t-slow: 0.5s;
+            /* ===== 布局 ===== */
+            --header-h: 44px;
         }
 
         body.dark-mode {
@@ -43,6 +70,19 @@
             --status-green: #30D158;
             --status-yellow: #FF9F0A;
             --status-red: #FF453A;
+            --line: rgba(255, 255, 255, 0.12);
+            --glass-sat: 150%;
+            --glass-bg: rgba(20, 24, 34, 0.42);
+            --glass-border: rgba(255, 255, 255, 0.16);
+            --glass-border-soft: rgba(255, 255, 255, 0.06);
+            --glass-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+            --glass-float-bg: rgba(24, 28, 38, 0.78);
+            --shadow-float: 0 24px 60px rgba(0, 0, 0, 0.55);
+            --seg-bg: rgba(20, 24, 34, 0.42);
+            --seg-border: rgba(255, 255, 255, 0.16);
+            --seg-active-bg: rgba(255, 255, 255, 0.14);
+            --seg-active-border: rgba(255, 255, 255, 0.20);
+            --seg-active-text: #E5E7EB;
         }
 
         /* ===== 逐光主题：彩天（中性冷调玻璃，背景随时间变化）===== */
@@ -55,6 +95,8 @@
             --status-green: #30D158;
             --status-yellow: #FF9F0A;
             --status-red: #FF453A;
+            --glass-bg: rgba(20, 24, 34, 0.55);
+            --seg-bg: rgba(20, 24, 34, 0.55);
             background: linear-gradient(180deg, var(--chase-a, #101726), var(--chase-b, #0A0E18));
         }
         body.dark-mode.theme-chase::before {
@@ -235,6 +277,11 @@
 
         /* ===== SPA 视图 ===== */
         .view { display: flex; flex-direction: column; gap: 16px; }
+        .view-enter { animation: view-in var(--t-norm) var(--ease); }
+        @keyframes view-in {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: none; }
+        }
         .subview-header { display: flex; align-items: center; gap: 8px; padding: 6px 0; }
         .back-btn { width: 32px; height: 32px; border-radius: 50%; border: none; background: transparent; color: var(--text-main); font-size: 22px; cursor: pointer; display: flex; align-items: center; justify-content: center; line-height: 1; }
         .back-btn:active { background: #E5E5EA; }
@@ -843,55 +890,38 @@
             position: fixed; left: 50%; bottom: calc(env(safe-area-inset-bottom) + 12px);
             transform: translateX(-50%);
             width: min(90vw, 400px);
-            display: flex; gap: 2px; padding: 5px;
+            display: flex; gap: 2px; padding: 3px;
             border-radius: var(--radius-pill); z-index: 70;
-            background: rgba(255,255,255,0.65);
-            border: 1px solid rgba(255,255,255,0.7);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
-            backdrop-filter: blur(30px) saturate(180%);
-            -webkit-backdrop-filter: blur(30px) saturate(180%);
-            transition: transform .4s cubic-bezier(0.22,1,0.36,1), opacity .3s ease;
+            transition: transform var(--t-slow) var(--ease), opacity var(--t-norm) ease;
         }
-        body.dark-mode .tabbar { background: rgba(20,24,34,0.55); border-color: rgba(255,255,255,0.12); box-shadow: 0 12px 30px rgba(0,0,0,0.5); }
-        body.dark-mode.theme-chase .tabbar { background: rgba(20,24,34,0.6); }
         body.subview .tabbar { transform: translate(-50%, 160%); opacity: 0; pointer-events: none; }
         .tab-btn {
             flex: 1; border: none; background: transparent; color: var(--text-sub);
             display: flex; align-items: center; justify-content: center;
             padding: 2px; cursor: pointer;
+            position: relative; z-index: 1;
         }
         .tab-inner {
-            display: flex; flex-direction: column; align-items: center; gap: 1px;
-            padding: 8px 16px;
+            display: flex; flex-direction: column; align-items: center; gap: 2px;
+            padding: 6px 14px;
             border-radius: var(--radius-pill);
             border: 1px solid transparent;
             background: transparent;
-            transition: background .2s var(--ease), border-color .2s var(--ease);
+            transition: color var(--t-fast) var(--ease);
         }
         .tab-btn svg { width: 19px; height: 19px; }
-        .tab-inner span { font-size: 8px; }
+        .tab-inner span { font-size: var(--fs-xs); }
         .tab-indicator {
             position: absolute;
-            top: 6px;
-            left: 6px;
-            height: calc(100% - 12px);
+            top: 3px;
+            left: 3px;
+            height: calc(100% - 6px);
             border-radius: var(--radius-pill);
-            background: rgba(255,255,255,0.14);
-            border: 1px solid rgba(255,255,255,0.20);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.15);
-            transition: transform .38s var(--ease), width .38s var(--ease);
+            transition: transform var(--t-norm) var(--ease), width var(--t-norm) var(--ease);
             pointer-events: none;
             z-index: 0;
         }
-        body:not(.dark-mode) .tab-indicator {
-            background: rgba(255,255,255,0.75);
-            border-color: rgba(255,255,255,0.9);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
-        }
-        .tab-btn { position: relative; z-index: 1; }
-        .tab-btn.active .tab-inner { background: transparent; border-color: transparent; color: var(--text-main); }
+        .tab-btn.active .tab-inner { color: var(--seg-active-text); }
         .app-container { padding-bottom: calc(env(safe-area-inset-bottom) + 84px); }
 
         /* ===== 通勤工具四宫格 ===== */
@@ -907,156 +937,154 @@
         }
         .setting-row:last-child { border-bottom: none; }
         .setting-chev { color: var(--text-sub); font-size: 18px; }
-        .theme-seg { display: flex; gap: 3px; background: rgba(128,128,128,0.12); padding: 3px; border-radius: var(--radius-md); }
-        .theme-seg button { border: 1px solid transparent; background: transparent; color: var(--text-sub); font-size: 11px; padding: 5px 12px; border-radius: var(--radius-sm); cursor: pointer; transition: background .2s var(--ease), border-color .2s var(--ease); }
-        .theme-seg button.active { background: rgba(255,255,255,0.75); border-color: rgba(255,255,255,0.9); color: var(--text-main); }
-        body.dark-mode .theme-seg button.active { background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,0.20); color: var(--text-main); }
+        .theme-seg { display: flex; gap: 3px; }
+        .theme-seg button { font-size: var(--fs-sm); padding: 5px 12px; cursor: pointer; }
 
-        /* ===== 全站卡片统一液态玻璃（本次调整） ===== */
-        .card, .sz-port-link, .tool-btn, .holiday-card {
-            background: rgba(255, 255, 255, 0.65) !important;
-            border: 1px solid rgba(255, 255, 255, 0.72) !important;
-            backdrop-filter: blur(40px) saturate(180%) !important;
-            -webkit-backdrop-filter: blur(40px) saturate(180%) !important;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06) !important;
+        /* ===== 统一材质：所有卡片共用同一套 glass token ===== */
+        body:not(.dark-mode) .card,
+        body:not(.dark-mode) .sz-port-link,
+        body:not(.dark-mode) .tool-btn,
+        body:not(.dark-mode) .holiday-card,
+        body:not(.dark-mode) #view-home .card,
+        body:not(.dark-mode) #view-mtr .card,
+        body:not(.dark-mode) #view-bus .card,
+        body:not(.dark-mode) #view-weather .card,
+        body:not(.dark-mode) #view-map .card,
+        body.dark-mode .card,
+        body.dark-mode .sz-port-link,
+        body.dark-mode .tool-btn,
+        body.dark-mode .holiday-card,
+        body.dark-mode #view-home .card,
+        body.dark-mode #view-mtr .card,
+        body.dark-mode #view-bus .card,
+        body.dark-mode #view-weather .card,
+        body.dark-mode #view-map .card {
+            background: var(--glass-bg) !important;
+            border: 1px solid var(--glass-border) !important;
+            border-bottom: 1px solid var(--glass-border-soft) !important;
+            box-shadow: var(--glass-shadow) !important;
+            backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat)) !important;
+            -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat)) !important;
         }
-        body.dark-mode .card, body.dark-mode .sz-port-link, body.dark-mode .tool-btn, body.dark-mode .holiday-card {
-            background: rgba(20, 24, 34, 0.45) !important;
-            border-color: rgba(255, 255, 255, 0.12) !important;
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5) !important;
-        }
-        body.dark-mode.theme-chase .card, body.dark-mode.theme-chase .sz-port-link, body.dark-mode.theme-chase .tool-btn, body.dark-mode.theme-chase .holiday-card {
-            background: rgba(20, 24, 34, 0.55) !important;
+        body.dark-mode.theme-chase .card,
+        body.dark-mode.theme-chase .sz-port-link,
+        body.dark-mode.theme-chase .tool-btn,
+        body.dark-mode.theme-chase .holiday-card {
+            background: var(--glass-bg) !important;
         }
 
-        /* ===== 悬浮岛：与今日/明日切换同风格（玻璃胶囊 + 实心选中） ===== */
+        /* 弹窗：同一套玻璃，浮层用更实的底 + 更大投影 */
+        body:not(.dark-mode) .modal-content,
+        body.dark-mode .modal-content {
+            background: var(--glass-float-bg) !important;
+            border: 1px solid var(--glass-border) !important;
+            box-shadow: var(--shadow-float) !important;
+            backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat)) !important;
+            -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat)) !important;
+        }
+
+        /* ===== 统一分段控件：今日/明日、主题、悬浮岛共用一套胶囊 ===== */
+        .day-toggle,
+        .theme-seg,
         .tabbar {
-            background: rgba(255, 255, 255, 0.55) !important;
-            border: 1px solid rgba(255, 255, 255, 0.72) !important;
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.7) !important;
-            backdrop-filter: blur(40px) saturate(180%) !important;
-            -webkit-backdrop-filter: blur(40px) saturate(180%) !important;
+            background: var(--seg-bg) !important;
+            border: 1px solid var(--seg-border) !important;
+            border-radius: var(--radius-pill) !important;
+            box-shadow: var(--glass-shadow) !important;
+            backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat)) !important;
+            -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat)) !important;
         }
-        body.dark-mode .tabbar {
-            background: rgba(20, 24, 34, 0.5) !important;
-            border-color: rgba(255, 255, 255, 0.12) !important;
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+        .day-toggle,
+        .theme-seg { padding: 3px; }
+        .day-btn,
+        .theme-seg button {
+            border: 1px solid transparent !important;
+            border-radius: var(--radius-pill) !important;
+            background: transparent !important;
+            box-shadow: none !important;
         }
-        /* 选中胶囊样式已在上方 .tab-inner 规则中定义（雾面，非实心） */
+        .day-toggle, .theme-seg { position: relative; }
+        .day-btn, .theme-seg button { position: relative; z-index: 1; }
+        .seg-indicator {
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            height: calc(100% - 6px);
+            border-radius: var(--radius-pill);
+            background: var(--seg-active-bg);
+            border: 1px solid var(--seg-active-border);
+            box-shadow: none;
+            transition: transform var(--t-norm) var(--ease), width var(--t-norm) var(--ease);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .day-btn.active,
+        .theme-seg button.active {
+            background: transparent !important;
+            border-color: transparent !important;
+            color: var(--seg-active-text) !important;
+            box-shadow: none !important;
+        }
+        .tab-indicator {
+            background: var(--seg-active-bg) !important;
+            border: 1px solid var(--seg-active-border) !important;
+            color: var(--seg-active-text) !important;
+            box-shadow: none !important;
+        }
 
-        /* ===== 主题分段：玻璃材质 ===== */
-        .theme-seg {
-            background: rgba(255, 255, 255, 0.5) !important;
-            border: 1px solid rgba(255, 255, 255, 0.65) !important;
-            backdrop-filter: blur(20px) saturate(180%) !important;
-            -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
-        }
-        body.dark-mode .theme-seg {
-            background: rgba(20, 24, 34, 0.4) !important;
-            border-color: rgba(255, 255, 255, 0.1) !important;
-        }
-
-        /* ===== 第四套主题：轻简（纯白 / 纯色 / 无玻璃 / 无渐变 / 无阴影） ===== */
+        /* ===== 第四套主题：轻简（flat：纯色 + 细线，无玻璃 / 无渐变 / 无阴影） ===== */
         body.theme-simple {
-            --bg-color: #F7F7F5;
-            --bg-tint-a: #F7F7F5;
-            --bg-tint-b: #F7F7F5;
+            --bg-color: #F5F5F7;
+            --bg-tint-a: #F5F5F7;
+            --bg-tint-b: #F5F5F7;
             --card-bg: #FFFFFF;
-            --text-main: #17171A;
-            --text-sub: #6E6E73;
-            --accent-color: #2E6BFF;
-            --hairline: #E6E6E3;
-            --glass-ridge: #E6E6E3;
-            background: #F7F7F5 !important;
+            --text-main: #1D1D1F;
+            --text-sub: #86868B;
+            --accent-color: #0071E3;
+            --line: #E5E5EA;
+            /* flat 材质 */
+            --glass-bg: #FFFFFF;
+            --glass-border: #E5E5EA;
+            --glass-border-soft: #E5E5EA;
+            --glass-shadow: none;
+            --glass-float-bg: #FFFFFF;
+            --shadow-float: none;
+            /* flat 分段 */
+            --seg-bg: #FFFFFF;
+            --seg-border: #E5E5EA;
+            --seg-active-bg: #F0F0EE;
+            --seg-active-border: #E5E5EA;
+            --seg-active-text: #1D1D1F;
+            background: #F5F5F7 !important;
         }
-        body.theme-simple #view-home .card,
-        body.theme-simple #view-bus .card,
-        body.theme-simple #view-weather .card,
-        body.theme-simple #view-map .card,
-        body.theme-simple .card,
-        body.theme-simple .sz-port-link,
-        body.theme-simple .tool-btn,
-        body.theme-simple .holiday-card {
-            background: #FFFFFF !important;
-            border: 1px solid #E6E6E3 !important;
+        /* 轻简：去掉地图 / 开关 / 游戏舞台上残留的阴影，做到纯平面 */
+        body.theme-simple #view-map .plate,
+        body.theme-simple #view-map .sw.sz,
+        body.theme-simple #view-map .sw.hk,
+        body.theme-simple .engine-switch::after,
+        body.theme-simple .game-stage,
+        body.theme-simple .game-stage.dark,
+        body.theme-simple .game-stage.chase {
             box-shadow: none !important;
-            backdrop-filter: none !important;
-            -webkit-backdrop-filter: none !important;
-        }
-        body.theme-simple .tabbar {
-            background: #FFFFFF !important;
-            border: 1px solid #E6E6E3 !important;
-            box-shadow: none !important;
-            backdrop-filter: none !important;
-            -webkit-backdrop-filter: none !important;
-        }
-        body.theme-simple .tab-indicator {
-            background: #F0F0EE !important;
-            border: 1px solid #E6E6E3 !important;
-            box-shadow: none !important;
-            backdrop-filter: none !important;
-            -webkit-backdrop-filter: none !important;
-        }
-        body.theme-simple .theme-seg {
-            background: #F0F0EE !important;
-            border: 1px solid #E6E6E3 !important;
-            backdrop-filter: none !important;
-            -webkit-backdrop-filter: none !important;
-        }
-        body.theme-simple .theme-seg button.active {
-            background: #17171A !important;
-            color: #FFFFFF !important;
         }
         body.theme-simple .modal-overlay {
             background: rgba(0, 0, 0, 0.32);
             backdrop-filter: none;
             -webkit-backdrop-filter: none;
         }
-
-        /* 轻简：补齐残留（弹窗 / 今日明日 / 港铁卡 / 游戏浮层 / 地图按钮 / chip） */
-        body.theme-simple .modal-content {
-            background: #FFFFFF !important;
-            border: 1px solid #E6E6E3 !important;
-            box-shadow: none !important;
-            backdrop-filter: none !important;
-            -webkit-backdrop-filter: none !important;
-        }
-        body.theme-simple .day-toggle {
-            background: #F0F0EE !important;
-            border: 1px solid #E6E6E3 !important;
-            backdrop-filter: none !important;
-            -webkit-backdrop-filter: none !important;
-        }
-        body.theme-simple .day-btn {
-            background: transparent !important;
-            border-color: transparent !important;
-            color: var(--text-sub) !important;
-        }
-        body.theme-simple .day-btn.active {
-            background: #17171A !important;
-            border-color: #17171A !important;
-            color: #FFFFFF !important;
-        }
-        body.theme-simple #view-mtr .card {
-            background: #FFFFFF !important;
-            border: 1px solid #E6E6E3 !important;
-            box-shadow: none !important;
-            backdrop-filter: none !important;
-            -webkit-backdrop-filter: none !important;
-        }
         body.theme-simple .game-overlay {
-            background: rgba(247, 247, 245, 0.96);
+            background: #F5F5F7;
             backdrop-filter: none;
             -webkit-backdrop-filter: none;
         }
         body.theme-simple #view-map .glass-btn {
             background: #FFFFFF !important;
-            border-color: #E6E6E3 !important;
+            border-color: var(--line) !important;
             box-shadow: none !important;
         }
         body.theme-simple .chip {
-            background: #F0F0EE;
-            border-color: #E6E6E3;
+            background: #F5F5F7;
+            border-color: var(--line);
         }
 
         /* ===== 轻简小游戏：呼吸 / 叠 ===== */
@@ -1065,12 +1093,11 @@
             flex: none;
             width: 100%;
             aspect-ratio: 400 / 540;
-            background: #FFFFFF;
-            border: 1px solid #E6E6E3;
-            border-radius: 24px;
+            background: var(--card-bg);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-lg);
             box-shadow: none;
         }
-        body.theme-simple .game-stage.lite { background: #FFFFFF; border-color: #E6E6E3; box-shadow: none; }
 
         .breathe-target {
             position: absolute; top: 50%; left: 50%;
@@ -1118,12 +1145,42 @@
         .lite-meta { display: flex; align-items: center; justify-content: space-between; padding: 0 4px; }
         .breathe-lives { display: flex; gap: 6px; }
         .breathe-life { width: 8px; height: 8px; border-radius: 50%; background: #111111; }
-        .breathe-life.off { background: #E6E6E3; }
+        .breathe-life.off { background: var(--line); }
         .lite-score { font-size: 20px; font-weight: 700; font-variant-numeric: tabular-nums; }
 
         .stack-tower { position: absolute; inset: 0; will-change: transform; }
         .stack-block, .stack-moving { position: absolute; height: 27px; background: #111111; border-radius: 3px; }
         .stack-hint { position: absolute; bottom: 10px; left: 0; right: 0; text-align: center; font-size: 11px; color: var(--text-sub); letter-spacing: .06em; pointer-events: none; transition: opacity .24s; }
+
+        /* ===== 统一排版与组件（token 驱动） ===== */
+        .header { min-height: var(--header-h); padding: var(--sp-2) 0; }
+        .header-title { font-size: var(--fs-lg); font-weight: var(--fw-semibold); }
+        .header-sub { font-size: var(--fs-xs); color: var(--text-sub); }
+        .subview-header { min-height: var(--header-h); padding: var(--sp-2) 0; gap: var(--sp-2); }
+        .subview-title { flex: 1; text-align: left; font-size: var(--fs-lg); font-weight: var(--fw-semibold); }
+        .section-title { font-size: var(--fs-sm); font-weight: var(--fw-semibold); }
+        .modal-title { font-size: var(--fs-xl); font-weight: var(--fw-semibold); }
+        .info-title { font-size: var(--fs-xl); font-weight: var(--fw-semibold); }
+        .card-title { font-size: var(--fs-md); font-weight: var(--fw-semibold); }
+        .setting-row { font-size: var(--fs-lg); padding: var(--sp-4) 0; }
+        .hero-title { font-size: var(--fs-md); }
+        .hero-sub { font-size: var(--fs-sm); }
+        .chip { font-size: var(--fs-md); border-radius: var(--radius-sm); }
+        .cl-chip { border-radius: var(--radius-pill); }
+        .cl-add-btn { border-radius: var(--radius-sm); }
+        .day-btn { font-size: var(--fs-sm); }
+        .btn-save { border-radius: var(--radius-md); font-size: var(--fs-md); }
+        .action-card { border-radius: var(--radius-md); font-size: var(--fs-md); }
+        .glass-btn { border-radius: var(--radius-md); }
+        .input-group input { border-radius: var(--radius-sm); border-color: var(--line); }
+        .engine-switch { border-radius: var(--radius-pill); }
+        .port-name { font-size: var(--fs-md); }
+        .port-status { font-size: var(--fs-lg); }
+        .weather-city-name { font-size: var(--fs-md); }
+        .weather-temp { font-size: var(--fs-3xl); }
+        .weather-desc { font-size: var(--fs-sm); }
+        .game-ov-title, .lite-over-title { font-size: var(--fs-2xl); }
+        .game-ov-sub, .lite-over-sub, .game-hint, .breathe-hint, .stack-hint { font-size: var(--fs-sm); }
 
     </style>
 </head>
@@ -1166,6 +1223,7 @@
     <div class="date-row">
         <div class="date-line" id="date-line">加载日期…</div>
         <div class="day-toggle">
+            <span class="seg-indicator" id="dayIndicator"></span>
             <button type="button" class="day-btn" id="day-today" onclick="setDayMode('today')">今日</button>
             <button type="button" class="day-btn" id="day-tomorrow" onclick="setDayMode('tomorrow')">明日</button>
         </div>
@@ -1304,6 +1362,7 @@
             <div class="setting-row">
                 <span>主题</span>
                 <div class="theme-seg" id="theme-seg">
+                    <span class="seg-indicator" id="themeIndicator"></span>
                     <button type="button" data-theme="light" class="active">浅色</button>
                     <button type="button" data-theme="dark">深色</button>
                     <button type="button" data-theme="chase">逐光</button>
@@ -2178,6 +2237,7 @@
         document.querySelectorAll('#theme-seg button').forEach(function (b) {
             b.classList.toggle('active', b.dataset.theme === theme);
         });
+        placeSegIndicator();
         applyChaseTint();
     }
 
@@ -3412,10 +3472,28 @@
         if (!active) return;
         var barRect = bar.getBoundingClientRect();
         var r = active.getBoundingClientRect();
-        var pad = 6;
+        var pad = 3;
         var extra = -6;
         ind.style.width = (r.width + extra) + 'px';
         ind.style.transform = 'translateX(' + (r.left - barRect.left - pad - extra / 2) + 'px)';
+    }
+
+    /* 分段控件指示器：今日/明日、主题 */
+    function placeSegIndicator() {
+        var pairs = [
+            [document.querySelector('.day-toggle'), document.getElementById('dayIndicator')],
+            [document.getElementById('theme-seg'), document.getElementById('themeIndicator')]
+        ];
+        pairs.forEach(function (p) {
+            var track = p[0], ind = p[1];
+            if (!track || !ind) return;
+            var active = track.querySelector('.active');
+            if (!active) return;
+            var tr = track.getBoundingClientRect();
+            var br = active.getBoundingClientRect();
+            ind.style.width = br.width + 'px';
+            ind.style.transform = 'translateX(' + (br.left - tr.left - 3) + 'px)';
+        });
     }
 
     function switchTab(name) {
@@ -3427,8 +3505,8 @@
         document.querySelectorAll('.tab-btn').forEach(function (b) {
             b.classList.toggle('active', b.dataset.tab === 'home');
         });
-        requestAnimationFrame(moveIndicator);
-        window.addEventListener('resize', moveIndicator);
+        requestAnimationFrame(function () { moveIndicator(); placeSegIndicator(); });
+        window.addEventListener('resize', function () { moveIndicator(); placeSegIndicator(); });
     })();
 
     function switchView(targetId) {
@@ -3479,10 +3557,12 @@
         footprintSync();
 
         const target = document.getElementById(targetId);
-        target.style.opacity = '0';
-        target.style.transition = 'opacity 0.3s ease';
-        void target.offsetWidth;
-        target.style.opacity = '1';
+        if (target) {
+            target.classList.remove('view-enter');
+            void target.offsetWidth;
+            target.classList.add('view-enter');
+        }
+        placeSegIndicator();
     }
 
     // ============ 港铁东铁线（直连） ============
@@ -3796,6 +3876,7 @@
         const tomorrowBtn = document.getElementById('day-tomorrow');
         if (todayBtn) todayBtn.classList.toggle('active', effective === 'today');
         if (tomorrowBtn) tomorrowBtn.classList.toggle('active', effective === 'tomorrow');
+        placeSegIndicator();
     }
 
     function todayYMD() {
