@@ -145,6 +145,8 @@
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif; -webkit-tap-highlight-color: transparent; }
+        /* iOS Safari 默认按钮样式（蓝色文字 / 系统底色）重置 */
+        button { -webkit-appearance: none; appearance: none; font-family: inherit; color: inherit; }
 
         body { background: linear-gradient(180deg, var(--bg-tint-a), var(--bg-tint-b)); background-attachment: fixed; color: var(--text-main); display: flex; justify-content: center; padding: 20px; min-height: 100vh; min-height: 100dvh; transition: color 0.3s ease; }
 
@@ -938,7 +940,7 @@
         .setting-row:last-child { border-bottom: none; }
         .setting-chev { color: var(--text-sub); font-size: 18px; }
         .theme-seg { display: flex; gap: 3px; }
-        .theme-seg button { font-size: var(--fs-sm); padding: 5px 12px; cursor: pointer; }
+        .theme-seg button { font-size: var(--fs-sm); padding: 5px 12px; cursor: pointer; color: var(--text-sub); }
 
         /* ===== 统一材质：所有卡片共用同一套 glass token ===== */
         body:not(.dark-mode) .card,
@@ -1378,7 +1380,7 @@
 
     <div id="view-mtr" class="view" style="display:none;">
         <div class="subview-header">
-            <button class="back-btn" onclick="switchView('view-home')">&lt;</button>
+            <button class="back-btn" onclick="goBack()">&lt;</button>
             <div class="subview-title">港铁东铁线</div>
             <div class="back-btn-spacer"></div>
         </div>
@@ -1387,7 +1389,7 @@
 
     <div id="view-bus" class="view" style="display:none;">
         <div class="subview-header">
-            <button class="back-btn" onclick="switchView('view-home')">&lt;</button>
+            <button class="back-btn" onclick="goBack()">&lt;</button>
             <div class="subview-title">口岸巴士</div>
             <div class="back-btn-spacer"></div>
         </div>
@@ -1397,7 +1399,7 @@
 
     <div id="view-weather" class="view" style="display:none;">
         <div class="subview-header">
-            <button class="back-btn" onclick="switchView('view-home')">&lt;</button>
+            <button class="back-btn" onclick="goBack()">&lt;</button>
             <div class="subview-title">今日天气详情</div>
             <div class="back-btn-spacer"></div>
         </div>
@@ -1559,7 +1561,7 @@
 
     <div id="view-game-train" class="view" style="display:none;">
         <div class="subview-header">
-            <button class="back-btn" onclick="switchView('view-home')">‹</button>
+            <button class="back-btn" onclick="goBack()">‹</button>
             <div class="subview-title">末班车</div>
             <span class="back-btn-spacer"></span>
         </div>
@@ -1578,7 +1580,7 @@
 
     <div id="view-game-lantern" class="view" style="display:none;">
         <div class="subview-header">
-            <button class="back-btn" onclick="switchView('view-home')">‹</button>
+            <button class="back-btn" onclick="goBack()">‹</button>
             <div class="subview-title">守灯人</div>
             <span class="back-btn-spacer"></span>
         </div>
@@ -1597,7 +1599,7 @@
 
     <div id="view-game-chase" class="view" style="display:none;">
         <div class="subview-header">
-            <button class="back-btn" onclick="switchView('view-home')">‹</button>
+            <button class="back-btn" onclick="goBack()">‹</button>
             <div class="subview-title">光暗穿门</div>
             <span class="back-btn-spacer"></span>
         </div>
@@ -1616,7 +1618,7 @@
 
     <div id="view-game-breathe" class="view" style="display:none;">
         <div class="subview-header">
-            <button class="back-btn" onclick="switchView('view-home')">‹</button>
+            <button class="back-btn" onclick="goBack()">‹</button>
             <div class="subview-title">呼吸</div>
             <span class="back-btn-spacer"></span>
         </div>
@@ -1641,7 +1643,7 @@
 
     <div id="view-game-stack" class="view" style="display:none;">
         <div class="subview-header">
-            <button class="back-btn" onclick="switchView('view-home')">‹</button>
+            <button class="back-btn" onclick="goBack()">‹</button>
             <div class="subview-title">叠</div>
             <span class="back-btn-spacer"></span>
         </div>
@@ -3468,14 +3470,22 @@
         var bar = document.getElementById('tabbar');
         var ind = document.getElementById('tabIndicator');
         if (!bar || !ind) return;
+        if (bar.offsetWidth === 0) return;
         var active = bar.querySelector('.tab-btn.active');
         if (!active) return;
         var barRect = bar.getBoundingClientRect();
         var r = active.getBoundingClientRect();
         var pad = 3;
         var extra = -6;
+        var first = !ind.dataset.placed;
+        if (first) ind.style.transition = 'none';
         ind.style.width = (r.width + extra) + 'px';
         ind.style.transform = 'translateX(' + (r.left - barRect.left - pad - extra / 2) + 'px)';
+        if (first) {
+            void ind.offsetWidth;
+            ind.style.transition = '';
+            ind.dataset.placed = '1';
+        }
     }
 
     /* 分段控件指示器：今日/明日、主题 */
@@ -3487,12 +3497,20 @@
         pairs.forEach(function (p) {
             var track = p[0], ind = p[1];
             if (!track || !ind) return;
+            if (track.offsetWidth === 0 || track.offsetHeight === 0) return;
             var active = track.querySelector('.active');
             if (!active) return;
             var tr = track.getBoundingClientRect();
             var br = active.getBoundingClientRect();
+            var first = !ind.dataset.placed;
+            if (first) ind.style.transition = 'none';
             ind.style.width = br.width + 'px';
             ind.style.transform = 'translateX(' + (br.left - tr.left - 3) + 'px)';
+            if (first) {
+                void ind.offsetWidth;
+                ind.style.transition = '';
+                ind.dataset.placed = '1';
+            }
         });
     }
 
@@ -3509,7 +3527,17 @@
         window.addEventListener('resize', function () { moveIndicator(); placeSegIndicator(); });
     })();
 
+    var currentViewId = 'view-home';
+    var lastMainTab = 'home';
+
+    function goBack() {
+        switchView('view-' + lastMainTab);
+    }
+
     function switchView(targetId) {
+        if (targetId === currentViewId) return;
+        currentViewId = targetId;
+
         document.querySelectorAll('.view').forEach(v => {
             if (v.id === targetId) {
                 v.style.display = 'flex';
@@ -3520,6 +3548,7 @@
 
         var MAIN_TABS = ['view-home', 'view-map', 'view-commute', 'view-settings'];
         var isMain = MAIN_TABS.indexOf(targetId) > -1;
+        if (isMain) lastMainTab = targetId.replace('view-', '');
         document.body.classList.toggle('subview', !isMain);
         document.querySelectorAll('.tab-btn').forEach(function (b) {
             b.classList.toggle('active', b.dataset.tab === targetId.replace('view-', ''));
