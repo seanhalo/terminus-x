@@ -1371,6 +1371,14 @@
                     <button type="button" data-theme="simple">轻简</button>
                 </div>
             </div>
+            <div class="setting-row">
+                <span>语言</span>
+                <div class="theme-seg" id="lang-seg">
+                    <span class="seg-indicator" id="langIndicator"></span>
+                    <button type="button" data-lang="zh" class="active">简体中文</button>
+                    <button type="button" data-lang="en">English</button>
+                </div>
+            </div>
             <button type="button" class="setting-row" onclick="openSettings()"><span>通勤设置</span><span class="setting-chev">›</span></button>
             <button type="button" class="setting-row" onclick="openHistory()"><span>通勤档案</span><span class="setting-chev">›</span></button>
             <button type="button" class="setting-row" onclick="openInfo()"><span>更新日志</span><span class="setting-chev">›</span></button>
@@ -1735,7 +1743,7 @@
             <div class="chip-group" id="main-port-group">
                 <button type="button" class="chip" data-value="深圳湾口岸">深圳湾口岸</button>
                 <button type="button" class="chip" data-value="皇岗口岸">皇岗口岸</button>
-                <button type="button" class="chip" data-value="福田口岸/落马洲">福田口岸/落马洲</button>
+                <button type="button" class="chip" data-value="福田口岸/落马洲">福田口岸</button>
                 <button type="button" class="chip" data-value="罗湖口岸">罗湖口岸</button>
                 <button type="button" class="chip" data-value="文锦渡口岸">文锦渡口岸</button>
                 <button type="button" class="chip" data-value="莲塘口岸">莲塘口岸</button>
@@ -1748,7 +1756,7 @@
             <div class="chip-group" id="backup-port-group">
                 <button type="button" class="chip" data-value="深圳湾口岸">深圳湾口岸</button>
                 <button type="button" class="chip" data-value="皇岗口岸">皇岗口岸</button>
-                <button type="button" class="chip" data-value="福田口岸/落马洲">福田口岸/落马洲</button>
+                <button type="button" class="chip" data-value="福田口岸/落马洲">福田口岸</button>
                 <button type="button" class="chip" data-value="罗湖口岸">罗湖口岸</button>
                 <button type="button" class="chip" data-value="文锦渡口岸">文锦渡口岸</button>
                 <button type="button" class="chip" data-value="莲塘口岸">莲塘口岸</button>
@@ -1773,7 +1781,7 @@
 
         <div class="changelog">
              <div class="changelog-entry">
-                <div class="changelog-version">Version 1.9 · 轻简与新页｜2026.11.8</div>
+                <div class="changelog-version">Version 1.9 · 轻简与新页｜2026.11.9</div>
                 <ul class="changelog-list">
                     <li><b>新页面结构</b><br>改为四页 App 式布局：首页 / 地图 / 通勤 / 设置，底部常驻悬浮岛切换，二级内容保留原页面。</li>
                     <li><b>悬浮岛</b><br>底部改为液态玻璃悬浮岛，选中项为雾面胶囊，切换时胶囊滑动过渡，不再硬切。</li>
@@ -1781,6 +1789,7 @@
                     <li><b>多个新彩蛋</b><br>任意主题下双击 Hero，进入多款自制离线小游戏。</li>
                     <li><b>预约车队的士</b><br>通勤工具新增「预约车队的士」入口。</li>
                     <li><b>统一圆角</b><br>卡片 24px，悬浮岛与选中胶囊为胶囊形，标签胶囊化，圆角层级统一。</li>
+                    <li><b>英文版</b><br>新增英文版：设置页「语言」可在简体中文 / English 之间切换，全站文案、数据映射与更新日志均支持英文。</li>
                 </ul>
             </div>
              <div class="changelog-entry">
@@ -1934,6 +1943,453 @@
         if (p >= 20) return 1;
         return 0;
     }
+
+    // ============ 多语言（zh / en） ============
+    var LANG = (function () {
+        try { return localStorage.getItem('terminus_lang') === 'en' ? 'en' : 'zh'; } catch (e) { return 'zh'; }
+    })();
+
+    var EN = {
+        // 导航 / 页面
+        '首页': 'Home', '地图': 'Map', '通勤': 'Commute', '设置': 'Settings',
+        '离线地图': 'Offline map', '通勤工具': 'Commute',
+        // 首页
+        '建议出门时间': 'Leave by', '明日建议出门时间': 'Tomorrow · leave by',
+        '请设置通勤参数': 'Set up your commute',
+        '推理引擎正在学习中': 'Engine is learning',
+        '自学习端侧推理引擎': 'Self-learning on-device engine',
+        '本地微型神经网络，动态校准通勤时间': 'A small local network that calibrates your commute',
+        '刷新': 'Refresh', '加载日期…': 'Loading date…',
+        '今日': 'Today', '明日': 'Tomorrow',
+        '查询香港假期中…': 'Checking HK holidays…',
+        '今日周末，不用上学': 'Weekend — no school',
+        '今日香港：红日放假': 'HK public holiday — no school',
+        '正常上课': 'School today',
+        '停课': 'Suspended', '恶劣天气': 'Severe weather',
+        '休息日': 'Day off',
+        '今日打卡已完成': 'Done for today',
+        '返程待保存': 'Save return trip', '返程通勤中': 'Heading home',
+        '今日待放学': 'Waiting for school to end', '上学待保存': 'Save morning trip',
+        '正在通勤中': 'On the way',
+        '我已出门': "I'm out", '我已到校': 'Arrived',
+        '我已放学': "School's out", '我已到家': 'Home',
+        '保存记录': 'Save', '撤销出门': 'Undo out', '撤销到校': 'Undo arrival',
+        '撤销离校': 'Undo school', '撤销到家': 'Undo home',
+        // 通勤页
+        '深圳端 · 出境状态': 'Shenzhen · Departure',
+        '香港端 · 入境轮候': 'Hong Kong · Arrival queues',
+        '今日天气': "Today's weather",
+        '查询深圳口岸出境状态': 'Check Shenzhen port status',
+        '或使用微信「i口岸」小程序': 'Or use the “iPort” WeChat mini app',
+        '主口岸': 'Main port', '备选口岸': 'Backup port',
+        '加载中…': 'Loading…', '暂无数据': 'No data',
+        '深圳': 'Shenzhen', '香港': 'Hong Kong',
+        '港铁时刻表': 'MTR timetable', '巴士时刻表': 'Bus timetable',
+        '预约车队的士': 'Book a taxi', '高德地图': 'Amap',
+        // 设置
+        '主题': 'Theme', '浅色': 'Light', '深色': 'Dark', '逐光': 'Chase', '轻简': 'Lite',
+        '语言': 'Language',
+        '通勤设置': 'Commute setup', '通勤档案': 'Commute log',
+        '更新日志': 'Changelog', '启程检查单': 'Departure checklist',
+        // 地图
+        '我的位置': 'My location', '定位': 'Location',
+        '所在区域': 'Area', '待定位': 'Not located',
+        '定位精度': 'Accuracy', '直线距离': 'Straight-line distance',
+        '获取定位': 'Get location', '尚未获取定位': 'Not located yet',
+        '误差 ±300 m 内视为同一位置，红点外圈为精度示意': 'Within ±300 m counts as the same place; the ring shows accuracy',
+        '当前浏览器不支持定位': 'Geolocation not supported',
+        '定位权限被拒绝': 'Location permission denied',
+        '暂时无法获取位置': 'Location unavailable',
+        '定位超时': 'Location timed out', '定位失败': 'Location failed',
+        // 二级页
+        '港铁东铁线': 'MTR East Rail Line', '口岸巴士': 'Cross-border buses',
+        '今日天气详情': 'Weather details',
+        '香港（屯门·元朗观测点）': 'Hong Kong (Tuen Mun · Yuen Long)',
+        '* 显示时间为巴士预计到站时间｜数据来源：香港政府开放数据 (DATA.GOV.HK)': '* Times are estimated arrivals | Source: DATA.GOV.HK',
+        '*香港天文台开放接口不提供小时预报，仅展示实时观测': '* HKO API provides real-time observations only',
+        // 弹窗
+        '住宅名称': 'Home name', '例如：XX花园': 'e.g. XX Garden',
+        '住宅坐标（选填）': 'Home coordinates (optional)',
+        '纬度, 经度': 'Lat, Lng',
+        '学校名称': 'School name', '例如：XX学校': 'e.g. XX School',
+        '学校坐标（选填）': 'School coordinates (optional)',
+        '上课时间': 'Class start time',
+        '保底通勤时间 (分钟)': 'Baseline commute (min)',
+        '例如: 95': 'e.g. 95',
+        '主口岸 (首选出境)': 'Main port (preferred)',
+        '备选口岸 (Plan B)': 'Backup port (Plan B)',
+        '建立通勤协议': 'Save',
+        '将为你定制专属倒计时': 'Your commute countdown will be calibrated',
+        '重置推理引擎模型': 'Reset engine model',
+        '关闭': 'Close',
+        '逐一点亮随身物品，全部点亮即自动出发': 'Tap each item to light it up — all lit, you’re off',
+        '保存检查单': 'Save checklist',
+        '+ 添加物品': '+ Add item',
+        '输入物品名称，回车或离开保存': 'Item name — press Enter to save',
+        '通勤备注': 'Commute note',
+        '给这次通勤写点什么…': 'Add a note for this trip…',
+        '取消': 'Cancel', '保存': 'Save',
+        // 校验
+        '请输入住宅名称': 'Enter your home name',
+        '请输入学校名称': 'Enter your school name',
+        '请选择上课时间': 'Choose your class time',
+        '请输入 10–300 分钟之间的通勤时间': 'Enter a commute time between 10 and 300 minutes',
+        '请选择主口岸': 'Choose a main port',
+        '请选择备选口岸': 'Choose a backup port',
+        '备选口岸不能与主口岸相同': 'Backup port must differ from the main port',
+        '坐标格式：纬度, 经度（如 22.123, 114.123）': 'Format: lat, lng (e.g. 22.123, 114.123)',
+        '坐标格式：纬度, 经度（如 22.000, 114.000）': 'Format: lat, lng (e.g. 22.000, 114.000)',
+        '请输入合理的通勤时间': 'Enter a valid commute time',
+        '住宅坐标格式有误': 'Invalid home coordinates',
+        '学校坐标格式有误': 'Invalid school coordinates',
+        // 游戏
+        '末班车': 'Last Train', '守灯人': 'Lamp Keeper', '光暗穿门': 'Light & Shadow',
+        '呼吸': 'Breathe', '叠': 'Stack',
+        '出发': 'Start', '开始': 'Start', '再来一次': 'Play again', '本局': 'Score',
+        '点击画面切换光 / 影': 'Tap to switch light / shadow',
+        '点击切换光 / 影，穿过同色的拱门': 'Tap to switch light / shadow. Pass matching gates.',
+        '撑到天亮': 'Survive till dawn',
+        '方块碰到细线时，轻点一下': 'Tap when the square touches the line',
+        '点击放下方块，尽量对齐': 'Tap to drop; line it up',
+        '剩余': 'Remaining', '发车': 'Depart', '黎明': 'Dawn', '守夜': 'Night watch',
+        '点击画面跳跃': 'Tap to jump',
+        '点击跳跃，别撞上行李、人群和路障': 'Tap to jump — avoid luggage, crowds and barriers',
+        '点击画面提灯': 'Tap to light',
+        '点击提灯，让灯光烧退靠近的暗影': 'Tap to light the lamp and push back the shadows',
+        '撑到天亮，你就赢了': 'Survive until dawn to win',
+        '点击画面切换光影': 'Tap to switch light / shadow',
+        '点击切换光影，穿过同色的拱门': 'Tap to switch light / shadow. Pass matching gates.',
+        // 口岸 / 状态
+        '深圳湾口岸': 'Shenzhen Bay', '皇岗口岸': 'Huanggang',
+        '福田口岸/落马洲': 'Lok Ma Chau', '罗湖口岸': 'Lo Wu',
+        '文锦渡口岸': 'Wenjindu', '莲塘口岸': 'Liantang',
+        '畅通': 'Clear', '繁忙': 'Busy', '拥堵': 'Congested',
+        // 天气
+        '晴': 'Clear', '多云': 'Cloudy', '阴': 'Overcast', '小雨': 'Light rain',
+        '中雨': 'Rain', '大雨': 'Heavy rain', '雷阵雨': 'Thunderstorms',
+        '雾': 'Fog', '霾': 'Haze', '阵雨': 'Showers',
+        // 假期
+        '元旦': 'New Year’s Day', '聖誕節': 'Christmas Day', '中秋節': 'Mid-Autumn Festival',
+        '國慶日': 'National Day', '清明節': 'Ching Ming Festival', '端午節': 'Tuen Ng Festival',
+        '重陽節': 'Chung Yeung Festival', '復活節': 'Easter', '勞動節': 'Labour Day',
+        '香港特別行政區成立紀念日': 'HKSAR Establishment Day', '佛誕': 'Buddha’s Birthday',
+        '農曆年初一': 'Lunar New Year', '農曆年初二': 'Second day of Lunar New Year',
+        '農曆年初三': 'Third day of Lunar New Year', '耶穌受難節': 'Good Friday',
+        '耶穌受難節翌日': 'Day after Good Friday', '復活節星期一': 'Easter Monday',
+        '一般': 'Moderate', '暂无班次': 'No trains', '港铁': 'MTR', '巴士': 'Bus',
+        '落马洲站出发': 'From Lok Ma Chau', '罗湖站出发': 'From Lo Wu',
+        '金钟': 'Admiralty', '屯门': 'Tuen Mun', '天水围': 'Tin Shui Wai',
+        '上水': 'Sheung Shui', '大围': 'Tai Wai',
+        // 小游戏 / 提示
+        '再点一次，看看会发生什么': 'Tap again and see what happens',
+        '行程时长异常，不予保存': 'Trip duration looks off — not saved',
+        '检查单已保存': 'Checklist saved',
+        '误差过大，推理引擎已忽略本次学习': 'Error too large — the engine skipped this sample',
+        '推理引擎已重置': 'Engine reset',
+        '备注已保存': 'Note saved',
+        '赶上了': 'Made it', '没赶上': 'Missed it',
+        '天亮了': 'Dawn broke', '灯灭了': 'The lamp went out',
+        '光暗不合': 'Light and shadow don’t match',
+        // 天气二级页
+        '延误': 'Delayed', '即将到站': 'Arriving',
+        '数据暂不可用': 'Data unavailable',
+        '小时预报加载中…': 'Loading hourly…', '小时预报暂不可用': 'Hourly unavailable',
+        '温度': 'Temp', '体感温度': 'Feels like', '湿度': 'Humidity',
+        '风速': 'Wind', '降雨状态': 'Rain', '有雨': 'Rain', '无雨': 'Dry',
+        '明日降雨概率': 'Tomorrow rain',
+        // 巴士
+        '原定班次': 'Scheduled',
+        '香港侧无专营巴士，请前往乘坐东铁线。': 'No franchised bus on the HK side — take the East Rail.',
+        '天水围 (天慈邨)': 'Tin Shui Wai (Tin Tsz)',
+        '元朗港铁站': 'Yuen Long MTR',
+        '天水围 (天耀邨)': 'Tin Shui Wai (Tin Yiu)',
+        '屯门市中心': 'Tuen Mun Town Centre',
+        '屯门码头': 'Tuen Mun Ferry Pier',
+        '山景邨': 'Shan King Estate',
+        '乌溪沙站': 'Wu Kai Sha Station',
+        '小西湾蓝湾半岛': 'Siu Sai Wan (Island Resort)',
+        '启德世运道': 'Kai Tak Sports Avenue',
+        '周末线': 'Weekend service',
+        '天富 (天水围)': 'Tin Fu (Tin Shui Wai)',
+        '葵芳 (葵翠邨)': 'Kwai Fong (Kwai Tsui)',
+        '粉岭站': 'Fanling Station',
+        '大围站': 'Tai Wai Station',
+        '屯门站 (另经元朗形点)': 'Tuen Mun Station (via YOHO)',
+        '元朗 (西)': 'Yuen Long (West)',
+        '天水圍(天慈邨)': 'Tin Shui Wai (Tin Tsz)',
+        '天水圍(天耀邨)': 'Tin Shui Wai (Tin Yiu)',
+        '元朗港鐵站': 'Yuen Long MTR',
+        '屯門市中心': 'Tuen Mun Town Centre',
+        '屯門碼頭': 'Tuen Mun Ferry Pier',
+        '山景邨': 'Shan King Estate',
+        '烏溪沙站': 'Wu Kai Sha Station',
+        '小西灣藍灣半島': 'Siu Sai Wan (Island Resort)',
+        '啟德世運道': 'Kai Tak Sports Avenue',
+        '天富(天水圍)': 'Tin Fu (Tin Shui Wai)',
+        '葵芳(葵翠邨)': 'Kwai Fong (Kwai Tsui)',
+        '粉嶺站': 'Fanling Station',
+        '大圍站': 'Tai Wai Station',
+        '屯門站(經元朗形點)': 'Tuen Mun Station (via YOHO)',
+        '元朗(西)': 'Yuen Long (West)',
+        // 口岸统一：落马洲
+        '落马洲': 'Lok Ma Chau', '福田口岸': 'Lok Ma Chau',
+        '维护中': 'Maintenance', '非服务时间': 'Closed',
+        '深圳香港离线地图': 'Shenzhen–Hong Kong offline map',
+        '末班車已過': 'Last bus passed', '最後一班': 'Last bus',
+        '已過': 'Passed', '行駛中': 'In service',
+        '暂无巴士数据': 'No bus data', '今日无班次': 'No service today',
+        '周末及公众假期': 'Weekends & public holidays',
+        '暂无专营巴士预计到站时间。': 'No franchised bus arrivals.',
+        '停止定位': 'Stop locating', '已停止定位': 'Location stopped',
+        '正在定位…': 'Locating…',
+        '已开启 · 回到页面后开始定位': 'On · starts when you return',
+        '已暂停 · 页面转入后台': 'Paused · page in background',
+        '本地文件无法调用定位，需 https 或 localhost': 'Location needs https or localhost',
+        '已定位（参数落点）': 'Located (config point)',
+        '车门在身后合上，末班车准点出发': 'The doors close behind you — the last train departs on time',
+        '被挡在门外，下一班要等很久': 'Locked out — the next one is a long wait',
+        '你追上了晨光，最后一扇门散成光': 'You caught the dawn — the last gate dissolves into light',
+        '你停在门前，晨光还差一点': 'You stopped at the gate — dawn was just out of reach',
+        '你守住了这盏灯，晨光落在肩上': 'You kept the lamp — dawn rests on your shoulders',
+        '暗影涌上来，灯芯熄了': 'Shadows rose — the wick went out',
+        '再守一夜': 'Keep watch again', '再走一次': 'Try again', '再跑一次': 'Run again',
+        '北區': 'North District', '屯門': 'Tuen Mun', '海域': 'Sea', '元朗': 'Yuen Long',
+        '家': 'Home', '学校': 'School', '口岸': 'Port',
+        '香港天文台': 'Hong Kong Observatory', '删除': 'Delete',
+        '八达通': 'Octopus', '学生证': 'Student ID', '港澳通行证': 'HK/Macau permit',
+        '通勤档案 · 上学': 'Commute log · Morning',
+        '通勤档案 · 放学': 'Commute log · Evening',
+        '出门时间': 'Departure', '离校时间': 'Left school',
+        '到校时间': 'Arrival', '到家时间': 'Home',
+        '早间耗时': 'Morning', '晚间耗时': 'Evening',
+        '日期': 'Date', '暂无历史记录': 'No records yet'
+    };
+
+    var EN_PAT = [
+        [/^已出门 (\d+) 分钟$/, 'Out for $1 min'],
+        [/^已放学 (\d+) 分钟$/, 'Out for $1 min'],
+        [/^总耗时 (\d+) 分钟$/, 'Total $1 min'],
+        [/^今早耗时 (\d+) 分钟$/, 'Morning $1 min'],
+        [/^返程耗时 (\d+) 分钟$/, 'Return $1 min'],
+        [/^耗时 (\d+) 分钟$/, 'Trip $1 min'],
+        [/^已定位 · 精度 (\d+) m$/, 'Located · ±$1 m'],
+        [/^物品 (\d+)$/, 'Item $1'],
+        [/^停课 · (.+)$/, 'Suspended · $1'],
+        [/^(\d+) 分钟$/, '$1 min'],
+        [/^往 (.+)$/, function (m) { return 'To ' + translateDest(m[1]); }],
+        [/^(.+) 站出发$/, function (m) { return 'From ' + (EN[m[1]] || m[1]); }],
+        [/^距 (.+)$/, 'Dist. $1'],
+        [/^(早间耗时|晚间耗时) (\d+) 分钟$/, function (m) { return (EN[m[1]] || m[1]) + ' ' + m[2] + ' min'; }]
+    ];
+
+    function translateText(s) {
+        if (!s) return s;
+        var key = s.trim();
+        if (EN[key]) return s.replace(key, EN[key]);
+        for (var i = 0; i < EN_PAT.length; i++) {
+            var re = EN_PAT[i][0], rep = EN_PAT[i][1];
+            var m = key.match(re);
+            if (m) {
+                var out = (typeof rep === 'function') ? rep(m) : key.replace(re, rep);
+                return s.replace(key, out);
+            }
+        }
+        return s;
+    }
+
+    function translateDest(d) {
+        if (!d) return d;
+        if (EN[d]) return EN[d];
+        var norm = function (x) { return String(x).replace(/\s+/g, '').replace(/（/g, '(').replace(/）/g, ')'); };
+        var n = norm(d);
+        for (var k in EN) {
+            if (norm(k) === n) return EN[k];
+        }
+        return d;
+    }
+
+    var i18nApplying = false;
+
+    function walkTranslate(toEn) {
+        var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+            acceptNode: function (node) {
+                var p = node.parentNode;
+                if (!p) return NodeFilter.FILTER_REJECT;
+                var tag = p.nodeName;
+                if (tag === 'SCRIPT' || tag === 'STYLE' || tag === 'TEXTAREA') return NodeFilter.FILTER_REJECT;
+                if (p.closest && p.closest('#info-modal .changelog')) return NodeFilter.FILTER_REJECT;
+                return NodeFilter.FILTER_ACCEPT;
+            }
+        });
+        var nodes = [], n;
+        while ((n = walker.nextNode())) nodes.push(n);
+        nodes.forEach(function (node) {
+            var txt = node.nodeValue;
+            if (!txt || !txt.trim()) return;
+            if (toEn) {
+                var out = translateText(txt);
+                if (out === txt) return;
+                if (node.nodeValue === out) return;
+                node.__zh = txt;
+                node.__en = out;
+                node.nodeValue = out;
+            } else if (node.__zh != null) {
+                if (node.nodeValue === node.__en) node.nodeValue = node.__zh;
+                node.__zh = null;
+                node.__en = null;
+            }
+        });
+        document.querySelectorAll('[aria-label],[placeholder],[title]').forEach(function (el) {
+            ['aria-label', 'placeholder', 'title'].forEach(function (a) {
+                var v = el.getAttribute(a);
+                if (!v) return;
+                var key = v.trim();
+                if (!EN[key]) return;
+                if (toEn) {
+                    if (!el.__zhAttr) el.__zhAttr = {};
+                    if (!el.__zhAttr[a]) el.__zhAttr[a] = v;
+                    el.setAttribute(a, EN[key]);
+                } else if (el.__zhAttr && el.__zhAttr[a]) {
+                    el.setAttribute(a, el.__zhAttr[a]);
+                }
+            });
+        });
+    }
+
+    var EN_CHANGELOG = [
+        '<div class="changelog-entry"><div class="changelog-version">Version 1.9 · Lite &amp; new shell｜Nov 9, 2026</div><ul class="changelog-list">',
+        '<li><b>New shell</b><br>Four-tab layout: Home / Map / Commute / Settings, with a floating tab bar.</li>',
+        '<li><b>Tab bar</b><br>Frosted floating bar; the selected tab is a translucent capsule that slides between tabs.</li>',
+        '<li><b>Lite theme</b><br>A fourth theme: flat white, solid colors, 1px hairlines, no blur or shadows.</li>',
+        '<li><b>New mini-games</b><br>Double-tap the hero to enter a set of offline mini-games.</li>',
+        '<li><b>Book a taxi</b><br>New taxi entry in Commute tools.</li>',
+        '<li><b>Unified radius</b><br>Cards 24px, tab bar and capsules pill-shaped, tags capsule-shaped.</li>',
+        '<li><b>English</b><br>A new English version; switch under Settings → Language. UI, data mapping and changelog are localized.</li>',
+        '</ul></div>',
+        '<div class="changelog-entry"><div class="changelog-version">Version 1.8 · On-device learning｜Nov 6, 2026</div><ul class="changelog-list">',
+        '<li><b>Self-learning engine (Pro)</b><br>A 37-parameter MLP in plain JS and Float32Array; training and inference stay on-device.</li>',
+        '<li><b>History warm-up</b><br>Batch-calibrates from past trips on first launch.</li>',
+        '<li><b>Progressive takeover</b><br>Blends static estimates with the model; takes over fully after 5 samples.</li>',
+        '<li><b>Cyber footprint</b><br>The map route is a continuous red polyline, stored locally and reset daily.</li>',
+        '<li><b>Departure checklist</b><br>Check your items before leaving; the timer starts when all are confirmed.</li>',
+        '<li><b>Graceful fallback</b><br>Skips learning when data is missing; the check-in flow keeps working.</li>',
+        '<li><b>UI &amp; data</b><br>Fixed two-tone backgrounds; lower blue saturation in dark; weather for training only; port snapshot at departure.</li>',
+        '<li><b>Chase theme</b><br>A third theme with warm dusk colors and a time-interpolated sky.</li>',
+        '</ul></div>',
+        '<div class="changelog-entry"><div class="changelog-version">Version 1.7 · Feel &amp; fallback｜Nov 3, 2026</div><ul class="changelog-list">',
+        '<li><b>Departure checklist</b><br>Confirm items before leaving; up to 6 custom items.</li>',
+        '<li><b>Return check-in</b><br>Leaving school and getting home are recorded; the log shows morning and evening trips.</li>',
+        '<li><b>Live timers</b><br>“Out” and “Left school” update every 30 seconds.</li>',
+        '<li><b>Tomorrow</b><br>Uses next-day rain probability, without today’s live port queues.</li>',
+        '<li><b>Progress bar</b><br>Shrinks with the remaining commute and reaches zero on time.</li>',
+        '<li><b>Segmented control</b><br>Today / Tomorrow highlighting stays in sync with auto-switch.</li>',
+        '<li><b>Port cards</b><br>Silent refresh; keeps the last result for 60 seconds if all proxies fail.</li>',
+        '<li><b>Holidays</b><br>Fetched public holidays are stored locally and work offline.</li>',
+        '<li><b>Cleanup</b><br>Removed unused styles and confirm dialogs; tightened escaping; capped commute time.</li>',
+        '</ul></div>',
+        '<div class="changelog-entry"><div class="changelog-version">Version 1.6 · Depth &amp; bounds｜Nov 1, 2026</div><ul class="changelog-list">',
+        '<li><b>Offline map</b><br>Custom projection and local ray-casting; fully offline, with location and distance.</li>',
+        '<li><b>Commute log</b><br>Full check-in state machine; archives departure and arrival times locally.</li>',
+        '<li><b>Weather detail</b><br>24-hour Shenzhen forecast; real-time Hong Kong Observatory observations.</li>',
+        '<li><b>Optional coordinates</b><br>Home and school coordinates in settings.</li>',
+        '</ul></div>',
+        '<div class="changelog-entry"><div class="changelog-version">Version 1.5 · Order &amp; breath｜Oct 29, 2026</div><ul class="changelog-list">',
+        '<li><b>Liquid glass</b><br>Cards, secondary pages, modals and inputs share a glass material.</li>',
+        '<li><b>No system blue</b><br>Removed default blue from arrows, ETAs, icons, capsules and primary buttons.</li>',
+        '<li><b>Status colors</b><br>Dots use red / yellow / green: clear, busy, congested.</li>',
+        '<li><b>Check-in refactor</b><br>Large main time in P1; compact cards in P2 and P3; unified four-character buttons.</li>',
+        '<li><b>Less noise</b><br>Removed the empty Shenzhen departure module and extra dividers.</li>',
+        '<li><b>Fixes</b><br>Rewrote the island bus API; fixed schedules; fixed today/tomorrow and rest-day logic.</li>',
+        '</ul></div>',
+        '<div class="changelog-entry"><div class="changelog-version">Version 1.4 · Evolution &amp; breath｜Oct 25, 2026</div><ul class="changelog-list">',
+        '<li><b>Dark mode</b><br>Deep indigo, glassmorphism and aurora numerals.</li>',
+        '<li><b>Commute state machine</b><br>Check in at departure and arrival.</li>',
+        '<li><b>Manual refresh</b><br>One tap refreshes weather, ports and transit.</li>',
+        '</ul></div>',
+        '<div class="changelog-entry"><div class="changelog-version">Version 1.3 · Purity &amp; breath｜Oct 23, 2026</div><ul class="changelog-list">',
+        '<li><b>Appearance</b><br>Manual dark mode with deep black-gray backgrounds and a blue-purple top glow.</li>',
+        '<li><b>Departure progress</b><br>Progress bar under the countdown: green, yellow within 15 minutes, red when late.</li>',
+        '<li><b>Transitions</b><br>Smooth theme transitions across the app.</li>',
+        '<li><b>Input fix</b><br>Fixed horizontal overflow of the iOS time input.</li>',
+        '</ul></div>',
+        '<div class="changelog-entry"><div class="changelog-version">Version 1.2 stable｜Oct 23, 2026</div><ul class="changelog-list">',
+        '<li><b>Island bus fix</b><br>B2, B2P and B2X arrival times now load correctly.</li>',
+        '<li><b>Copy</b><br>Removed all arrival abbreviations.</li>',
+        '<li><b>Planning</b><br>Auto-switches today / tomorrow by time, with manual control; fixed rest-day detection.</li>',
+        '</ul></div>',
+        '<div class="changelog-entry"><div class="changelog-version">Version 1.2 · Real data｜Oct 22, 2026</div><ul class="changelog-list">',
+        '<li><b>Changelog</b><br>Version history in the info panel.</li>',
+        '<li><b>Real-time arrivals</b><br>East Rail, KMB, Citybus and island buses use official real-time data.</li>',
+        '<li><b>Port tiers</b><br>Resident queue tiers and congestion penalties.</li>',
+        '<li><b>Dual weather</b><br>Hong Kong Observatory and Open-Meteo.</li>',
+        '<li><b>East Rail delays</b><br>Chinese terminus names and warm-colored delay tags.</li>',
+        '<li><b>Rest days</b><br>Detects weekends and Hong Kong public holidays.</li>',
+        '<li><b>Fallback</b><br>A single data-source failure does not block the core calculation.</li>',
+        '</ul></div>',
+        '<div class="changelog-entry"><div class="changelog-version">Version 1.1 · Terminus X｜Oct 21, 2026</div><ul class="changelog-list">',
+        '<li><b>Architecture</b><br>Renamed to Terminus X; rebuilt as a single-page app with Home, MTR and Bus views.</li>',
+        '<li><b>Commute profile</b><br>Settings for home, school, class time, baseline duration and main/backup ports, stored locally.</li>',
+        '<li><b>Transit views</b><br>Separate MTR and Bus pages with live-data hooks.</li>',
+        '<li><b>Ports</b><br>Ports render from the profile; navigation links are generated.</li>',
+        '<li><b>UI</b><br>Minimal iOS visual language, status dots and transitions.</li>',
+        '</ul></div>',
+        '<div class="changelog-entry"><div class="changelog-version">Version 1.0 · Original｜Oct 20, 2026</div><ul class="changelog-list">',
+        '<li><b>Departure engine</b><br>Calculates the latest leave time from the class start time.</li>',
+        '<li><b>Two-city board</b><br>Weather panels for Shenzhen and Hong Kong, plus port queue status.</li>',
+        '<li><b>Holidays</b><br>Hong Kong public holiday API with basic rest-day detection.</li>',
+        '<li><b>Port navigation</b><br>One-tap navigation and a Shenzhen departure-status link.</li>',
+        '<li><b>Local storage</b><br>Saves class time and baseline commute.</li>',
+        '<li><b>Layout</b><br>Single page, settings modal and home cards.</li>',
+        '</ul></div>'
+    ].join('');
+
+    function swapChangelog(toEn) {
+        var box = document.querySelector('#info-modal .changelog');
+        if (!box) return;
+        if (!box.__zhHtml) box.__zhHtml = box.innerHTML;
+        box.innerHTML = toEn ? EN_CHANGELOG : box.__zhHtml;
+    }
+
+    function applyLang(lang, silent) {
+        LANG = (lang === 'en') ? 'en' : 'zh';
+        try { localStorage.setItem('terminus_lang', LANG); } catch (e) {}
+        document.documentElement.lang = (LANG === 'en') ? 'en' : 'zh-CN';
+        var brandTitle = document.querySelector('#view-home .header-title');
+        var brandSub = document.querySelector('#view-home .header-sub');
+        if (brandTitle) brandTitle.textContent = (LANG === 'en') ? 'Terminus X' : '晨昏线';
+        if (brandSub) brandSub.style.display = (LANG === 'en') ? 'none' : '';
+        document.title = (LANG === 'en') ? 'Terminus X' : '晨昏线 Terminus X';
+        if (!silent) {
+            try { renderUI(); } catch (e) {}
+            try { renderDate(); } catch (e) {}
+            try { renderHoliday(); } catch (e) {}
+            try { renderPorts(); } catch (e) {}
+            try { renderHistory(); } catch (e) {}
+        }
+        walkTranslate(LANG === 'en');
+        swapChangelog(LANG === 'en');
+        document.querySelectorAll('#lang-seg button').forEach(function (b) {
+            b.classList.toggle('active', b.dataset.lang === LANG);
+        });
+        moveIndicator();
+        placeSegIndicator();
+    }
+
+    (function initI18n() {
+        applyLang(LANG, true);
+        document.querySelectorAll('#lang-seg button').forEach(function (b) {
+            b.addEventListener('click', function () { applyLang(b.dataset.lang); });
+        });
+        var obs = new MutationObserver(function () {
+            if (i18nApplying || LANG !== 'en') return;
+            i18nApplying = true;
+            requestAnimationFrame(function () {
+                walkTranslate(true);
+                i18nApplying = false;
+            });
+        });
+        obs.observe(document.body, { childList: true, subtree: true, characterData: true });
+    })();
 
     // 入境处「居民」口岸排队数据（全站唯一使用公共代理的地方）
     const PORT_API_RESIDENT = 'https://secure1.info.gov.hk/immd/mobileapps/2bb9ae17/data/CPQueueTimeR.json';
@@ -2552,9 +3008,14 @@
         return portStatus(portData.main).penalty;
     }
 
+    function portDisplayName(port) {
+        if (port === '福田口岸/落马洲') return '福田口岸';
+        return port;
+    }
+
     function renderPortCards() {
-        document.getElementById('main-port-name').textContent = userConfig.mainPort || '主口岸';
-        document.getElementById('backup-port-name').textContent = userConfig.backupPort || '备选口岸';
+        document.getElementById('main-port-name').textContent = portDisplayName(userConfig.mainPort) || '主口岸';
+        document.getElementById('backup-port-name').textContent = portDisplayName(userConfig.backupPort) || '备选口岸';
     }
 
     function renderPorts() {
@@ -2932,7 +3393,9 @@
             const raw = JSON.parse(localStorage.getItem('terminus_checklist') || 'null');
             if (Array.isArray(raw) && raw.length) return raw.slice(0, 6).map(function (s) { return String(s); });
         } catch (e) {}
-        return ['港澳通行证', '学生证', '八达通'];
+        return LANG === 'en'
+            ? ['HK/Macau permit', 'Student ID', 'Octopus']
+            : ['港澳通行证', '学生证', '八达通'];
     }
 
     function saveChecklist() {
@@ -3492,7 +3955,8 @@
     function placeSegIndicator() {
         var pairs = [
             [document.querySelector('.day-toggle'), document.getElementById('dayIndicator')],
-            [document.getElementById('theme-seg'), document.getElementById('themeIndicator')]
+            [document.getElementById('theme-seg'), document.getElementById('themeIndicator')],
+            [document.getElementById('lang-seg'), document.getElementById('langIndicator')]
         ];
         pairs.forEach(function (p) {
             var track = p[0], ind = p[1];
@@ -3865,9 +4329,13 @@
 
     function renderDate() {
         const d = getTargetDate();
+        const el = document.getElementById('date-line');
+        if (LANG === 'en') {
+            el.textContent = d.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric', year: 'numeric' });
+            return;
+        }
         const weekdays = ['日', '一', '二', '三', '四', '五', '六'];
-        document.getElementById('date-line').textContent =
-            `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日 星期${weekdays[d.getDay()]}`;
+        el.textContent = `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日 星期${weekdays[d.getDay()]}`;
     }
 
     function getEffectiveDay() {
@@ -3965,7 +4433,9 @@
     function showToast(msg) {
         const el = document.getElementById('tx-toast');
         if (!el) return;
-        el.textContent = String(msg == null ? '' : msg);
+        let s = String(msg == null ? '' : msg);
+        if (LANG === 'en') s = translateText(s);
+        el.textContent = s;
         el.style.opacity = '1';
         if (toastTimer) clearTimeout(toastTimer);
         toastTimer = setTimeout(function () {
@@ -4015,6 +4485,9 @@
         const p = String(ymd).split('-');
         if (p.length !== 3) return String(ymd);
         const d = new Date(Number(p[0]), Number(p[1]) - 1, Number(p[2]));
+        if (LANG === 'en') {
+            return d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+        }
         const week = ['日','一','二','三','四','五','六'][d.getDay()];
         return p[0] + '.' + p[1] + '.' + p[2] + ' 星期' + week;
     }
