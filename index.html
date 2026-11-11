@@ -1000,6 +1000,7 @@
             <div class="kv"><span>所在区域</span><b id="omZone">待定位</b></div>
             <div class="kv"><span>定位精度</span><b id="omAcc">—</b></div>
             <div class="kv" id="omDistRow" style="display:none;"><span id="omDistLabel">直线距离</span><b id="omDist">—</b></div>
+            <div class="kv" id="portEtaRow" style="display:none;"><span>预计到达口岸</span><b id="portEta">—</b></div>
             <button class="glass-btn" id="omBtnStart">获取定位</button>
             <div class="status" id="omStatus">尚未获取定位</div>
             <div class="note">误差 ±300 m 内视为同一位置，红点外圈为精度示意</div>
@@ -1220,6 +1221,14 @@
 
         <div class="changelog">
              <div class="changelog-entry">
+                <div class="changelog-version">Version 1.9 稳定版｜2026.11.11</div>
+                <ul class="changelog-list">
+                    <li><b>引擎升级</b><br>推理引擎升级，新增口岸分段预测，口岸到达时间更准确。</li>
+                    <li><b>独立域名</b><br>启用独立域名 terminusx.one，访问更稳定。</li>
+                    <li><b>口岸代理</b><br>口岸数据新增一个代理，失败时自动切换，不再单点依赖。</li>
+                </ul>
+            </div>
+             <div class="changelog-entry">
                 <div class="changelog-version">Version 1.9 · 轻简与新页｜2026.11.9</div>
                 <ul class="changelog-list">
                     <li><b>新页面结构</b><br>改为四页 App 式布局：首页 / 地图 / 通勤 / 设置，底部常驻悬浮岛切换，二级内容保留原页面。</li>
@@ -1433,7 +1442,8 @@
         '我的位置': 'My location', '定位': 'Location',
         '所在区域': 'Area', '待定位': 'Not located',
         '定位精度': 'Accuracy', '直线距离': 'Straight-line distance',
-        '获取定位': 'Get location', '尚未获取定位': 'Not located yet',
+        '预计到达口岸': 'Port ETA',
+        '获取定位': 'Get location', '关闭定位': 'Turn off location', '尚未获取定位': 'Not located yet',
         '误差 ±300 m 内视为同一位置，红点外圈为精度示意': 'Within ±300 m counts as the same place; the ring shows accuracy',
         '当前浏览器不支持定位': 'Geolocation not supported',
         '定位权限被拒绝': 'Location permission denied',
@@ -1695,6 +1705,11 @@
     }
 
     var EN_CHANGELOG = [
+        '<div class="changelog-entry"><div class="changelog-version">Version 1.9 stable｜Nov 11, 2026</div><ul class="changelog-list">',
+        '<li><b>Engine upgrade</b><br>The inference engine is upgraded with port-segment prediction for more accurate port ETAs.</li>',
+        '<li><b>Dedicated domain</b><br>A dedicated domain, terminusx.one, for more stable access.</li>',
+        '<li><b>Port proxy</b><br>One more proxy for port data, with automatic failover.</li>',
+        '</ul></div>',
         '<div class="changelog-entry"><div class="changelog-version">Version 1.9 · Lite &amp; new shell｜Nov 9, 2026</div><ul class="changelog-list">',
         '<li><b>New shell</b><br>Four-tab layout: Home / Map / Commute / Settings, with a floating tab bar.</li>',
         '<li><b>Tab bar</b><br>Frosted floating bar; the selected tab is a translucent capsule that slides between tabs.</li>',
@@ -2394,28 +2409,45 @@
         "https://corsproxy.io/?url="
     ];
 
+    /* 静态镜像兜底：GitHub Actions 每 15 分钟刷新，三家代理全失败后才使用 */
+    const PORT_STATIC_URL = 'https://raw.githubusercontent.com/seanhalo/terminus-x/main/port-data.json';
+
     function withDeadline(promise, ms) {
         return Promise.race([promise, new Promise((_, rej) => setTimeout(() => rej(new Error('deadline')), ms))]);
     }
 
     async function fetchPortData() {
         if (fetchPortData._cache && Date.now() - fetchPortData._t < 5 * 60000) return fetchPortData._cache;
-        // 刚失败过：60 秒内不再连打三个代理
+        // 刚失败过：60 秒内不再连打
         if (fetchPortData._failedAt && Date.now() - fetchPortData._failedAt < 60000) return null;
         const valid = j => j && typeof j === 'object' && Object.keys(j).some(k => j[k] && typeof j[k].arrQueue === 'number');
-        const tasks = PORT_CORS_PROXIES.map(p =>
-            fetchJSON(p + encodeURIComponent(PORT_API_RESIDENT), {}, 5000)
-                .then(j => { if (!valid(j)) throw new Error('invalid'); return j; })
-        );
+
+        // 1) 三个公共代理竞速（4 秒预算）
         try {
-            const j = await withDeadline(Promise.any(tasks), 5000);
+            const tasks = PORT_CORS_PROXIES.map(p =>
+                fetchJSON(p + encodeURIComponent(PORT_API_RESIDENT), {}, 4000)
+                    .then(j => { if (!valid(j)) throw new Error('invalid'); return j; })
+            );
+            const j = await withDeadline(Promise.any(tasks), 4000);
+            fetchPortData._cache = j;
+            fetchPortData._t = Date.now();
+            fetchPortData._failedAt = 0;
+            return j;
+        } catch (e) {
+            // 三家全失败，走静态镜像
+        }
+
+        // 2) 静态镜像兜底（3 秒）
+        try {
+            const j = await fetchJSON(PORT_STATIC_URL, { cache: 'no-store' }, 3000);
+            if (!valid(j)) throw new Error('invalid');
             fetchPortData._cache = j;
             fetchPortData._t = Date.now();
             fetchPortData._failedAt = 0;
             return j;
         } catch (e) {
             fetchPortData._failedAt = Date.now();
-            return null; // 5 秒内全失败：沿用上一次成功结果
+            return null; // 全部失败：沿用上一次成功结果
         }
     }
 
@@ -3103,6 +3135,347 @@
 
     const engine = new LocalInferenceEngine();
     engine.loadWeights();
+
+    // ============ MLP-B：口岸分段模型 + GPS 围栏（与 MLP-A 完全独立） ============
+    const PORT_WEIGHTS_KEY = 'terminus_mlp_port_weights';
+    const PORT_SAMPLES_KEY = 'terminus_mlp_port_samples';
+    const PORT_COUNT_KEY = 'terminus_mlp_port_count';
+    const PORT_IN = 7, PORT_HIDDEN = 6, PORT_LR = 0.01;
+    const PORT_TRIGGER_M = 150;
+    const PORT_ACC_MAX = 80;
+    const PORT_DWELL_MS = 8000;
+    const PORT_MIN_FIXES = 3;
+    const PORT_SLOW = 1.2;
+    const PORT_MIN_MOVE = 0.25;
+    const PORT_DEBOUNCE_MS = 5 * 60000;
+
+    class PortInferenceEngine {
+        constructor() { this.initWeights(); }
+        initWeights() {
+            this.W1 = new Float32Array(PORT_IN * PORT_HIDDEN);
+            this.b1 = new Float32Array(PORT_HIDDEN);
+            this.W2 = new Float32Array(PORT_HIDDEN);
+            this.b2 = new Float32Array(1);
+            for (let i = 0; i < this.W1.length; i++) this.W1[i] = (Math.random() - 0.5) * 0.1;
+            for (let i = 0; i < this.W2.length; i++) this.W2[i] = 0;
+        }
+        loadWeights() {
+            try {
+                const raw = JSON.parse(localStorage.getItem(PORT_WEIGHTS_KEY) || 'null');
+                if (!raw || raw.version !== '1.0') return false;
+                if (!Array.isArray(raw.W1) || raw.W1.length !== PORT_IN * PORT_HIDDEN) return false;
+                if (!Array.isArray(raw.b1) || raw.b1.length !== PORT_HIDDEN) return false;
+                if (!Array.isArray(raw.W2) || raw.W2.length !== PORT_HIDDEN) return false;
+                if (!Array.isArray(raw.b2) || raw.b2.length !== 1) return false;
+                this.W1 = new Float32Array(raw.W1);
+                this.b1 = new Float32Array(raw.b1);
+                this.W2 = new Float32Array(raw.W2);
+                this.b2 = new Float32Array(raw.b2);
+                return true;
+            } catch (e) { return false; }
+        }
+        saveWeights() {
+            try {
+                localStorage.setItem(PORT_WEIGHTS_KEY, JSON.stringify({
+                    version: '1.0',
+                    W1: Array.from(this.W1), b1: Array.from(this.b1),
+                    W2: Array.from(this.W2), b2: Array.from(this.b2)
+                }));
+            } catch (e) {}
+        }
+        forward(inputs) {
+            const h = new Float32Array(PORT_HIDDEN);
+            for (let j = 0; j < PORT_HIDDEN; j++) {
+                let sum = this.b1[j];
+                for (let i = 0; i < PORT_IN; i++) sum += this.W1[i * PORT_HIDDEN + j] * inputs[i];
+                h[j] = sum > 0 ? sum : 0;
+            }
+            let out = this.b2[0];
+            for (let j = 0; j < PORT_HIDDEN; j++) out += this.W2[j] * h[j];
+            return out;
+        }
+        predict(inputs) {
+            const raw = this.forward(inputs);
+            return isFinite(raw) ? Math.max(0, Math.min(60, raw)) : 0;
+        }
+        train(inputs, target) {
+            const pre = new Float32Array(PORT_HIDDEN);
+            const h = new Float32Array(PORT_HIDDEN);
+            for (let j = 0; j < PORT_HIDDEN; j++) {
+                let sum = this.b1[j];
+                for (let i = 0; i < PORT_IN; i++) sum += this.W1[i * PORT_HIDDEN + j] * inputs[i];
+                pre[j] = sum;
+                h[j] = sum > 0 ? sum : 0;
+            }
+            let out = this.b2[0];
+            for (let j = 0; j < PORT_HIDDEN; j++) out += this.W2[j] * h[j];
+            const dOut = 2 * (out - target);
+            const oldW2 = Array.from(this.W2);
+            for (let j = 0; j < PORT_HIDDEN; j++) {
+                const dh = dOut * oldW2[j] * (pre[j] > 0 ? 1 : 0);
+                for (let i = 0; i < PORT_IN; i++) this.W1[i * PORT_HIDDEN + j] -= PORT_LR * dh * inputs[i];
+                this.b1[j] -= PORT_LR * dh;
+                this.W2[j] -= PORT_LR * dOut * h[j];
+            }
+            this.b2[0] -= PORT_LR * dOut;
+        }
+    }
+
+    const portEngine = new PortInferenceEngine();
+    portEngine.loadWeights();
+
+    let portSamples = (function () {
+        try {
+            const a = JSON.parse(localStorage.getItem(PORT_SAMPLES_KEY) || '[]');
+            return Array.isArray(a) ? a : [];
+        } catch (e) { return []; }
+    })();
+    let portCount = (function () {
+        const n = parseInt(localStorage.getItem(PORT_COUNT_KEY) || '0', 10);
+        return isFinite(n) && n > 0 ? n : 0;
+    })();
+
+    let globalWatchId = null;
+    let globalLastFix = null;
+    let portGeo = {};
+    let portLastHit = {};
+
+    function haversineM(lat1, lon1, lat2, lon2) {
+        const R = 6371000, rad = Math.PI / 180;
+        const dLat = (lat2 - lat1) * rad, dLon = (lon2 - lon1) * rad;
+        const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                  Math.cos(lat1 * rad) * Math.cos(lat2 * rad) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+        return 2 * R * Math.asin(Math.min(1, Math.sqrt(a)));
+    }
+
+    function tripDir() {
+        if (checkInData.eveningOut && !checkInData.eveningIn) return 'evening';
+        return 'morning';
+    }
+    function tripStartTs() {
+        return tripDir() === 'evening' ? (checkInData.eveningOut || null) : (checkInData.morningOut || null);
+    }
+    function portIndex(port) {
+        const keys = Object.keys(PORT_MAP);
+        const i = keys.indexOf(port);
+        return i >= 0 ? i + 1 : 3;
+    }
+    function portCongestionFeature(code) {
+        if (code === 0) return 0;
+        if (code === 1) return 0.5;
+        if (code === 2) return 1;
+        return 0.25;
+    }
+    function portCongestionNow(port) {
+        const meta = PORT_MAP[port];
+        const src = fetchPortData._cache;
+        if (meta && src && src[meta.apiKey] && typeof src[meta.apiKey].arrQueue === 'number') {
+            return src[meta.apiKey].arrQueue;
+        }
+        return null;
+    }
+    function portTidalFallback(port, hour) {
+        const rows = portSamples.filter(function (s) {
+            if (!s || s.port !== port || typeof s.ts !== 'number') return false;
+            const h = new Date(s.ts).getHours();
+            return Math.abs(h - hour) <= 1;
+        });
+        if (!rows.length) return null;
+        const sum = rows.reduce(function (a, s) { return a + (typeof s.congestion === 'number' ? s.congestion : 0); }, 0);
+        return sum / rows.length;
+    }
+    function portFeatureVec(port, congestionCode, dir, dateObj) {
+        const d = dateObj || new Date();
+        const hour = d.getHours() + d.getMinutes() / 60;
+        const dow = d.getDay();
+        const rain = (weatherData.szRain || weatherData.hkRain) ? 1 : 0;
+        const weekend = (dow === 0 || dow === 6) ? 1 : 0;
+        return [
+            hour / 24,
+            dow / 7,
+            portIndex(port) / 7,
+            portCongestionFeature(congestionCode),
+            rain,
+            weekend,
+            dir === 'evening' ? 1 : 0
+        ];
+    }
+
+    function onGlobalFix(pos) {
+        const c = pos.coords;
+        const lat = c.latitude, lon = c.longitude, acc = c.accuracy;
+        const now = Date.now();
+        let speed = null;
+        if (globalLastFix) {
+            const dt = (now - globalLastFix.ts) / 1000;
+            if (dt > 0.5 && dt < 120) {
+                speed = haversineM(globalLastFix.lat, globalLastFix.lon, lat, lon) / dt;
+            }
+        }
+        globalLastFix = { lat: lat, lon: lon, ts: now, acc: acc, speed: speed };
+        checkPortGeofence(lat, lon, acc, speed, now);
+        updatePortEta();
+        if (window.OmMap) {
+            if (window.OmMap.setPos) window.OmMap.setPos(lat, lon, acc);
+            if (window.OmMap.setStatus) window.OmMap.setStatus('已定位 · 精度 ' + Math.round(acc) + ' m', true);
+        }
+    }
+
+    function checkPortGeofence(lat, lon, acc, speed, now) {
+        if (!engineEnabled) return;
+        if (acc != null && acc > PORT_ACC_MAX) return;
+        Object.keys(PORT_COORDS).forEach(function (port) {
+            const c = PORT_COORDS[port];
+            const d = haversineM(lat, lon, c.lat, c.lng);
+            const st = portGeo[port] || (portGeo[port] = { enterAt: 0, fixes: 0 });
+            if (d <= PORT_TRIGGER_M) {
+                if (!st.enterAt) st.enterAt = now;
+                st.fixes++;
+                const dwell = now - st.enterAt;
+                const slow = (speed == null) || (speed < PORT_SLOW);
+                if (dwell >= PORT_DWELL_MS && st.fixes >= PORT_MIN_FIXES && slow) {
+                    const last = portLastHit[port] || 0;
+                    if (now - last >= PORT_DEBOUNCE_MS) {
+                        portLastHit[port] = now;
+                        onPortArrival(port, now, acc);
+                    }
+                    st.enterAt = 0; st.fixes = 0;
+                }
+            } else {
+                st.enterAt = 0; st.fixes = 0;
+            }
+        });
+    }
+
+    function onPortArrival(port, now, acc) {
+        const dir = tripDir();
+        const start = tripStartTs();
+        if (!start) return;
+        const duration = Math.round((now - start) / 60000);
+        if (!isFinite(duration) || duration <= 0 || duration > 300) return;
+        let cong = portCongestionNow(port);
+        if (cong == null) cong = portTidalFallback(port, new Date(now).getHours());
+        portSamples.push({
+            ts: now, port: port, dir: dir, duration: duration,
+            congestion: cong, accuracy: (acc == null ? null : Math.round(acc))
+        });
+        if (portSamples.length > 200) portSamples = portSamples.slice(-200);
+        try { localStorage.setItem(PORT_SAMPLES_KEY, JSON.stringify(portSamples)); } catch (e) {}
+        portCount += 1;
+        try { localStorage.setItem(PORT_COUNT_KEY, String(portCount)); } catch (e) {}
+        try {
+            portEngine.train(portFeatureVec(port, cong, dir), duration);
+            portEngine.saveWeights();
+        } catch (e) {}
+        try { console.info('[PortETA] arrival', port, dir, duration + 'min', 'cong=' + cong); } catch (e) {}
+        updatePortEta();
+    }
+
+    function startGlobalWatch() {
+        if (globalWatchId != null || document.hidden) return;
+        if (!navigator.geolocation) return;
+        globalWatchId = navigator.geolocation.watchPosition(
+            onGlobalFix,
+            function () {
+                globalWatchId = null;
+                var b = document.getElementById('omBtnStart');
+                if (b) b.textContent = '获取定位';
+            },
+            { enableHighAccuracy: true, timeout: 15000, maximumAge: 3000 }
+        );
+    }
+    function stopGlobalWatch() {
+        if (globalWatchId != null) {
+            try { navigator.geolocation.clearWatch(globalWatchId); } catch (e) {}
+            globalWatchId = null;
+        }
+    }
+
+    function portQueuePrediction(dir, dateObj) {
+        const port = userConfig.mainPort || '深圳湾口岸';
+        let cong = portCongestionNow(port);
+        if (cong == null) cong = portTidalFallback(port, (dateObj || new Date()).getHours());
+        return portEngine.predict(portFeatureVec(port, cong, dir, dateObj));
+    }
+    function lastRealPortDuration() {
+        const last = portSamples[portSamples.length - 1];
+        return last ? last.duration : null;
+    }
+    function computePortEta() {
+        if (!engineEnabled || portCount <= 0) return null;
+
+        // 方向 + 是否已过口岸（去程过口岸=进入海域/香港；返程过口岸=进入海域/深圳）
+        const dir = tripDir();
+        const fix = globalLastFix;
+        let zone = null;
+        if (fix && window.OmMap && window.OmMap.zoneOf) {
+            try { zone = window.OmMap.zoneOf(fix.lat, fix.lon); } catch (e) { zone = null; }
+        }
+        if (dir === 'morning' && (zone === '海域' || zone === '香港')) return null;
+        if (dir === 'evening' && (zone === '海域' || zone === '深圳')) return null;
+
+        const now = Date.now();
+        const lastD = lastRealPortDuration();
+
+        // count=1：直接复用上次真实口岸耗时
+        if (portCount === 1) {
+            if (lastD == null) return null;
+            return now + lastD * 60000;
+        }
+
+        const port = userConfig.mainPort || '深圳湾口岸';
+        if (!PORT_COORDS[port]) return null;
+
+        // MLP-B 预测：有速度用「剩余距离 ÷ 速度 + 排队」，否则用「家-口岸总耗时」
+        const queueMs = portQueuePrediction(dir) * 60000;
+        let etaMs = null;
+        if (fix && fix.speed != null && fix.speed > PORT_MIN_MOVE) {
+            const c = PORT_COORDS[port];
+            const dist = haversineM(fix.lat, fix.lon, c.lat, c.lng);
+            etaMs = (dist / fix.speed) * 1000 + queueMs;
+        } else {
+            const total = portEngine.predict(portFeatureVec(port, portCongestionNow(port), dir));
+            if (isFinite(total) && total > 0) etaMs = total * 60000;
+        }
+        if (etaMs == null) {
+            if (lastD == null) return null;
+            etaMs = lastD * 60000;
+        }
+        if (portCount === 2) {
+            if (lastD == null) return null;
+            etaMs = 0.5 * (lastD * 60000) + 0.5 * etaMs;
+        }
+        if (!isFinite(etaMs) || etaMs <= 0) return null;
+        return now + etaMs;
+    }
+    function updatePortEta() {
+        const row = document.getElementById('portEtaRow');
+        const val = document.getElementById('portEta');
+        if (!row || !val) return;
+        const t = computePortEta();
+        if (t == null) { row.style.display = 'none'; return; }
+        const d = new Date(t);
+        val.textContent = String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0');
+        row.style.display = '';
+    }
+
+    window.__portEta = {
+        start: startGlobalWatch,
+        stop: stopGlobalWatch,
+        isOn: function () { return globalWatchId != null; }
+    };
+
+    (function initPortEta() {
+        startGlobalWatch();
+        updatePortEta();
+        var btn = document.getElementById('omBtnStart');
+        if (btn && navigator.geolocation) btn.textContent = '关闭定位';
+        document.addEventListener('visibilitychange', function () {
+            if (document.hidden) stopGlobalWatch();
+            else { startGlobalWatch(); updatePortEta(); }
+        });
+        setInterval(function () { if (!document.hidden) updatePortEta(); }, 30000);
+    })();
 
     // ===== 特征工程：客观数据 → 0.0~1.0 =====
     function weatherFeatureNow() {
@@ -4295,20 +4668,25 @@
             return;
         }
         wantGps = true;
-        el.btnStart.textContent = '停止定位';
+        el.btnStart.textContent = '关闭定位';
+        if (window.__portEta && window.__portEta.start) window.__portEta.start();
+        else openWatch();
         if (document.hidden) { setStatus('已开启 · 回到页面后开始定位', false); return; }
         setStatus('正在定位…', false);
-        openWatch();
     }
 
     function stopGps() {
         wantGps = false;
         closeWatch();
+        if (window.__portEta && window.__portEta.stop) window.__portEta.stop();
         el.btnStart.textContent = '获取定位';
         setStatus('已停止定位', false);
     }
 
-    el.btnStart.addEventListener('click', function () { (wantGps ? stopGps() : startGps()); });
+    el.btnStart.addEventListener('click', function () {
+        var on = (window.__portEta && window.__portEta.isOn) ? window.__portEta.isOn() : wantGps;
+        (on ? stopGps() : startGps());
+    });
 
     /* 切后台暂停、切回恢复：不做后台常驻定位 */
     document.addEventListener('visibilitychange', function () {
@@ -4316,7 +4694,8 @@
             if (watchId != null) { closeWatch(); setStatus('已暂停 · 页面转入后台', false); }
             footprintStop();   // 足迹同步暂停，省电
         } else {
-            if (wantGps) { setStatus('正在定位…', false); openWatch(); }
+            var globalOn = !!(window.__portEta && window.__portEta.isOn && window.__portEta.isOn());
+            if (wantGps && !globalOn) { setStatus('正在定位…', false); openWatch(); }
             if (typeof footprintSync === 'function') footprintSync(); // 仍在通勤且地图可见则恢复足迹
         }
     });
@@ -4461,6 +4840,9 @@
     window.OmMap = {
         onShow: function () { syncConfig(); },
         syncConfig: syncConfig,
+        distM: distM,
+        zoneOf: zoneOf,
+        setStatus: setStatus,
         setPos: function (lat, lon, acc) { paintFix(lat, lon, (acc == null) ? 300 : acc); },
         clear: clearFix,
         stop: stopGps,
