@@ -1,0 +1,45 @@
+const fs = require('fs');
+
+const TARGET = 'https://secure1.info.gov.hk/immd/mobileapps/2bb9ae17/data/CPQueueTimeR.json';
+const OUT = 'port-data.json';
+
+(async () => {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 8000);
+
+  try {
+    const res = await fetch(TARGET, {
+      signal: controller.signal,
+      headers: {
+        'Accept': 'application/json',
+        'User-Agent': 'TerminusX/1.9'
+      }
+    });
+    if (!res.ok) throw new Error('upstream HTTP ' + res.status);
+
+    const data = await res.json();
+
+    // 校验：至少有一个口岸带 arrQueue
+    const valid = data && typeof data === 'object' &&
+      Object.keys(data).some(k => data[k] && typeof data[k].arrQueue === 'number');
+    if (!valid) throw new Error('invalid payload');
+
+    const next = JSON.stringify(data);
+    let old = '';
+    try { old = fs.readFileSync(OUT, 'utf8'); } catch (e) {}
+
+    // 内容没变就不写，避免无意义提交
+    if (next === old) {
+      console.log('no change');
+      return;
+    }
+
+    fs.writeFileSync(OUT, next);
+    console.log('updated', OUT);
+  } catch (e) {
+    console.error(e);
+    process.exit(1);   // 失败 → 不提交，保留旧文件
+  } finally {
+    clearTimeout(timer);
+  }
+})();
