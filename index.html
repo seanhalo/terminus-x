@@ -22,8 +22,7 @@
             --status-red: #FF3B30;
             --line: #E5E5EA;
             /* ===== 间距刻度（4 基） ===== */
-            --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px;
-            --sp-5: 20px; --sp-6: 24px; --sp-8: 32px;
+            --sp-2: 8px; --sp-4: 16px;
             /* ===== 圆角刻度 12 / 16 / 24 / 胶囊 ===== */
             --radius-sm: 12px;
             --radius-md: 16px;
@@ -47,7 +46,7 @@
             /* ===== 排版 ===== */
             --fs-xs: 10px; --fs-sm: 12px; --fs-md: 14px; --fs-lg: 16px;
             --fs-xl: 20px; --fs-2xl: 26px; --fs-3xl: 32px;
-            --fw-regular: 400; --fw-medium: 500; --fw-semibold: 600; --fw-bold: 700;
+            --fw-semibold: 600;
             /* ===== 动效 ===== */
             --ease: cubic-bezier(0.22, 1, 0.36, 1);
             --t-fast: 0.12s;
@@ -104,7 +103,7 @@
         }/* ===== 逐光 · 白天：地图切回浅色（真实日出日落切换，0.6s 淡入淡出）===== */
         body.dark-mode.theme-chase.map-day #view-map {
             --m-sea: #E8EDF3; --m-sz: #FFFFFF; --m-hk: #CCD8E6; --m-coast: #A8B5C4;
-            --m-region: rgba(29, 29, 31, 0.32); --m-region-sub: rgba(29, 29, 31, 0.17);
+            --m-region: rgba(29, 29, 31, 0.32);
             --m-key: #8E97A4; --m-key-stroke: #FFFFFF;
             --m-label: #6E6E73; --m-label-stroke: rgba(255, 255, 255, 0.9);
             --m-accent: #E4693C; --m-ring: rgba(228, 105, 60, 0.58); --m-halo-op: 0.13;
@@ -117,11 +116,18 @@
         }#view-map .land, #view-map .rg, #view-map .rs, #view-map .rk, #view-map .rt, #view-map .plate, #view-map .glass-btn {
             transition: fill .6s ease, stroke .6s ease, background .6s ease, color .6s ease;
         }* { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif; -webkit-tap-highlight-color: transparent; }/* iOS Safari 默认按钮样式（蓝色文字 / 系统底色）重置 */
-        button { -webkit-appearance: none; appearance: none; font-family: inherit; color: inherit; }body { background: linear-gradient(180deg, var(--bg-tint-a), var(--bg-tint-b)); background-attachment: fixed; color: var(--text-main); display: flex; justify-content: center; padding: 20px; min-height: 100vh; min-height: 100dvh; transition: color 0.3s ease; }.app-container { width: 100%; max-width: 400px; display: flex; flex-direction: column; gap: 16px; }.header { display: flex; justify-content: space-between; align-items: center; padding: 10px 5px; font-size: 16px; font-weight: 600; }.header-brand { display: flex; align-items: baseline; gap: 8px; }.header-title { font-size: 16px; font-weight: 600; }.header-sub { font-size: 10px; color: var(--text-sub); font-weight: 400; letter-spacing: 0.5px; }.settings-icon { color: var(--text-sub); cursor: pointer; display: flex; align-items: center; transition: color 0.2s, transform 0.3s; }.settings-icon:hover { color: var(--text-main); }.settings-icon:active { transform: rotate(45deg); }.header-actions { display: flex; align-items: center; gap: 14px; }.date-row { display: flex; align-items: center; justify-content: space-between; padding: 0 5px; margin-top: -8px; }.date-line { font-size: 13px; color: var(--text-sub); }.day-toggle { display: flex; gap: 4px; }.day-btn { padding: 3px 10px; border-radius: 10px; border: 1px solid #E5E5EA; background: #F5F5F7; color: var(--text-sub); font-size: 11px; cursor: pointer; transition: background 0.15s, color 0.15s, border-color 0.15s; }.day-btn.active { background: var(--text-main); color: #FFF; border-color: var(--text-main); }.section-title { font-size: 12px; color: var(--text-sub); font-weight: 600; letter-spacing: 0.3px; padding-left: 8px; margin-bottom: -8px; }.card { background-color: var(--card-bg); border-radius: 24px; padding: 24px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03); }.hero-card { text-align: center; }.hero-title { font-size: 14px; color: var(--text-sub); margin-bottom: 8px; }.hero-time { font-size: 72px; font-weight: 700; line-height: 1; letter-spacing: -2px; margin-bottom: 12px; color: var(--text-main); transition: opacity 0.35s ease, transform 0.35s ease; }.hero-time.fade { opacity: 0; transform: translateY(6px); }.hero-time.checkin-mode { font-size: 36px !important; letter-spacing: 0 !important; white-space: nowrap; margin-top: 16px; margin-bottom: 16px; }.action-card { display: block; width: 100%; padding: 14px; margin-bottom: 8px; border-radius: 12px; border: 1px solid rgba(150, 150, 150, 0.2); background: rgba(150, 150, 150, 0.05); color: var(--text-main); font-size: 14px; font-weight: 600; cursor: pointer; transition: opacity 0.15s; text-align: center; }.action-card:active { opacity: 0.6; }.action-card.secondary { background: transparent; border: none; color: var(--text-sub); font-size: 12px; font-weight: 400; margin-top: -4px; padding: 8px; }body.dark-mode .action-card { border-color: rgba(255, 255, 255, 0.1); background: rgba(255, 255, 255, 0.05); }.hero-sub { font-size: 13px; color: var(--text-sub); display: flex; justify-content: center; align-items: center; gap: 6px; }.status-dot { width: 10px; height: 10px; border-radius: 50%; background: #D1D1D6; display: inline-block; flex-shrink: 0; }.status-dot.green { background: var(--status-green); }.status-dot.yellow { background: var(--status-yellow); }.status-dot.red { background: var(--status-red); }.status-dot.gray { background: #D1D1D6; }.holiday-card { display: flex; align-items: center; gap: 12px; padding: 16px 20px; }.holiday-icon { color: var(--text-sub); display: flex; align-items: center; }.holiday-text { flex: 1; font-size: 14px; font-weight: 600; }.port-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }.port-card { padding: 18px 16px; text-align: center; }.port-name { font-size: 14px; font-weight: 600; margin-bottom: 10px; }.port-status { display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 15px; font-weight: 600; }.weather-card { padding: 18px 24px; }.weather-row { display: flex; align-items: center; }.weather-city { flex: 1; text-align: center; }.weather-city-name { font-size: 14px; font-weight: 600; margin-bottom: 6px; }.weather-temp { font-size: 32px; font-weight: 700; letter-spacing: -1px; }.weather-temp span { font-size: 18px; font-weight: 500; color: var(--text-sub); }.weather-desc { font-size: 12px; color: var(--text-sub); margin-top: 4px; }.weather-desc.rain { color: var(--warning-color); }.weather-divider { width: 1px; height: 48px; background: #E5E5EA; }.tool-btn { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; min-height: 96px; padding: 18px 14px; border-radius: 24px; color: var(--text-main); font-size: 15px; font-weight: 600; text-decoration: none; cursor: pointer; background: rgba(255,255,255,0.65); border: 1px solid rgba(255,255,255,0.8); backdrop-filter: blur(40px) saturate(180%); -webkit-backdrop-filter: blur(40px) saturate(180%); box-shadow: 0 8px 24px rgba(0,0,0,0.03); }.tool-btn:active { transform: scale(0.97); }.tool-btn svg { color: var(--text-main); }body.dark-mode .tool-btn { background: rgba(20,24,34,0.45); border-color: rgba(255,255,255,0.15); box-shadow: 0 16px 40px rgba(0,0,0,0.5); backdrop-filter: blur(40px) saturate(150%); -webkit-backdrop-filter: blur(40px) saturate(150%); }body.dark-mode.theme-chase .tool-btn { background: rgba(20,24,34,0.55); border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 16px 40px rgba(0,0,0,0.5); backdrop-filter: blur(40px) saturate(150%); -webkit-backdrop-filter: blur(40px) saturate(150%); }.tool-btn:focus:not(:focus-visible) { outline: none; }.tool-btn:focus-visible { outline: 2px solid var(--accent-color); outline-offset: 2px; }.sz-port-link { background-color: var(--card-bg); border-radius: 24px; padding: 16px; text-align: center; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02); cursor: pointer; text-decoration: none; color: var(--text-main); display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 14px; font-weight: 600; transition: transform 0.1s; }.sz-port-link:active { transform: scale(0.98); }.sz-port-link-row { display: flex; align-items: center; justify-content: center; gap: 6px; }.sz-port-link-row svg { color: var(--accent-color); }.sz-port-link-sub { font-size: 11px; color: var(--text-sub); font-weight: 400; }.modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.4); display: none; justify-content: center; align-items: center; padding: 20px; backdrop-filter: blur(5px); z-index: 100; }.modal-overlay.active { display: flex; }.modal-content { background: var(--card-bg); width: 100%; max-width: 340px; border-radius: 24px; padding: 24px; max-height: 90vh; overflow-y: auto; }.modal-title { font-size: 18px; font-weight: 600; margin-bottom: 20px; text-align: center; }.input-group { margin-bottom: 16px; }.input-group label { display: block; font-size: 13px; color: var(--text-sub); margin-bottom: 6px; }.input-group input { width: 100%; box-sizing: border-box; min-width: 0; padding: 12px; border-radius: 10px; border: 1px solid #E5E5EA; font-size: 16px; outline: none; background: #FFF; }.input-group input:focus { border-color: var(--accent-color); }input[type="time"] {
+        button { -webkit-appearance: none; appearance: none; font-family: inherit; color: inherit; }body { background: linear-gradient(180deg, var(--bg-tint-a), var(--bg-tint-b)); background-attachment: fixed; color: var(--text-main); display: flex; justify-content: center; padding: 20px; min-height: 100vh; min-height: 100dvh; transition: color 0.3s ease; }.app-container { width: 100%; max-width: 400px; display: flex; flex-direction: column; gap: 16px; }.header { display: flex; justify-content: space-between; align-items: center; padding: 10px 5px; font-size: 16px; font-weight: 600; }.header-brand { display: flex; align-items: baseline; gap: 8px; }.header-title { font-size: 16px; font-weight: 600; }.header-sub { font-size: 10px; color: var(--text-sub); font-weight: 400; letter-spacing: 0.5px; }.settings-icon { color: var(--text-sub); cursor: pointer; display: flex; align-items: center; transition: color 0.2s, transform 0.3s; }.settings-icon:hover { color: var(--text-main); }.settings-icon:active { transform: rotate(45deg); }.header-actions { display: flex; align-items: center; gap: 14px; }.date-row { display: flex; align-items: center; justify-content: space-between; padding: 0 5px; margin-top: -8px; }.date-line { font-size: 13px; color: var(--text-sub); }.day-toggle { display: flex; gap: 4px; }.day-btn { padding: 3px 10px; border-radius: 10px; border: 1px solid #E5E5EA; background: #F5F5F7; color: var(--text-sub); font-size: 11px; cursor: pointer; transition: background 0.15s, color 0.15s, border-color 0.15s; }.day-btn.active { background: var(--text-main); color: #FFF; border-color: var(--text-main); }.section-title { font-size: 12px; color: var(--text-sub); font-weight: 600; letter-spacing: 0.3px; padding-left: 8px; margin-bottom: -8px; }.card { background-color: var(--card-bg); border-radius: 24px; padding: 24px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03); }.hero-card { text-align: center; }.hero-title { font-size: 14px; color: var(--text-sub); margin-bottom: 8px; }.hero-time { font-size: 72px; font-weight: 700; line-height: 1; letter-spacing: -2px; margin-bottom: 12px; color: var(--text-main); transition: opacity 0.35s ease, transform 0.35s ease; }.hero-time.fade { opacity: 0; transform: translateY(6px); }.hero-time.checkin-mode { font-size: 36px !important; letter-spacing: 0 !important; white-space: nowrap; margin-top: 16px; margin-bottom: 16px; }.action-card { display: block; width: 100%; padding: 14px; margin-bottom: 8px; border-radius: 12px; border: 1px solid rgba(150, 150, 150, 0.2); background: rgba(150, 150, 150, 0.05); color: var(--text-main); font-size: 14px; font-weight: 600; cursor: pointer; transition: opacity 0.15s; text-align: center; }.action-card:active { opacity: 0.6; }.action-card.secondary { background: transparent; border: none; color: var(--text-sub); font-size: 12px; font-weight: 400; margin-top: -4px; padding: 8px; }body.dark-mode .action-card { border-color: rgba(255, 255, 255, 0.1); background: rgba(255, 255, 255, 0.05); }.hero-sub { font-size: 13px; color: var(--text-sub); display: flex; justify-content: center; align-items: center; gap: 6px; }.status-dot { width: 10px; height: 10px; border-radius: 50%; background: #D1D1D6; display: inline-block; flex-shrink: 0; }.status-dot.green { background: var(--status-green); }.status-dot.yellow { background: var(--status-yellow); }.status-dot.red { background: var(--status-red); }.status-dot.gray { background: #D1D1D6; }.holiday-card { display: flex; align-items: center; gap: 12px; padding: 16px 20px; }.holiday-icon { color: var(--text-sub); display: flex; align-items: center; }.holiday-text { flex: 1; font-size: 14px; font-weight: 600; }.port-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }.port-card { padding: 18px 16px; text-align: center; }.port-name { font-size: 14px; font-weight: 600; margin-bottom: 10px; }.port-status { display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 15px; font-weight: 600; }.weather-card { padding: 18px 24px; }.weather-row { display: flex; align-items: center; }.weather-city { flex: 1; text-align: center; }.weather-city-name { font-size: 14px; font-weight: 600; margin-bottom: 6px; }.weather-temp { font-size: 32px; font-weight: 700; letter-spacing: -1px; }.weather-temp span { font-size: 18px; font-weight: 500; color: var(--text-sub); }.weather-desc { font-size: 12px; color: var(--text-sub); margin-top: 4px; }.weather-desc.rain { color: var(--warning-color); }.weather-divider { width: 1px; height: 48px; background: #E5E5EA; }.tool-btn { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; min-height: 96px; padding: 18px 14px; border-radius: 24px; color: var(--text-main); font-size: 15px; font-weight: 600; text-decoration: none; cursor: pointer; background: rgba(255,255,255,0.65); border: 1px solid rgba(255,255,255,0.8); backdrop-filter: blur(40px) saturate(180%); -webkit-backdrop-filter: blur(40px) saturate(180%); box-shadow: 0 8px 24px rgba(0,0,0,0.03); }.tool-btn:active { transform: scale(0.97); }.tool-btn svg { color: var(--text-main); }body.dark-mode .tool-btn { background: rgba(20,24,34,0.45); border-color: rgba(255,255,255,0.15); box-shadow: 0 16px 40px rgba(0,0,0,0.5); backdrop-filter: blur(40px) saturate(150%); -webkit-backdrop-filter: blur(40px) saturate(150%); }body.dark-mode.theme-chase .tool-btn { background: rgba(20,24,34,0.55); border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 16px 40px rgba(0,0,0,0.5); backdrop-filter: blur(40px) saturate(150%); -webkit-backdrop-filter: blur(40px) saturate(150%); }.tool-btn:focus:not(:focus-visible) { outline: none; }.tool-btn:focus-visible { outline: 2px solid var(--accent-color); outline-offset: 2px; }.sz-port-link { background-color: var(--card-bg); border-radius: 24px; padding: 16px; text-align: center; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02); cursor: pointer; text-decoration: none; color: var(--text-main); display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 14px; font-weight: 600; transition: transform 0.1s; }.sz-port-link:active { transform: scale(0.98); }.sz-port-link-row { display: flex; align-items: center; justify-content: center; gap: 6px; }.sz-port-link-row svg { color: var(--accent-color); }.sz-port-link-sub { font-size: 11px; color: var(--text-sub); font-weight: 400; }.modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.4); display: none; justify-content: center; align-items: center; padding: 20px; backdrop-filter: blur(5px); z-index: 100; }.modal-overlay.active { display: flex; }.modal-content { background: var(--card-bg); width: 100%; max-width: 340px; border-radius: 24px; padding: 24px; max-height: 90vh; overflow-y: auto; }.modal-title { font-size: 18px; font-weight: 600; margin-bottom: 20px; text-align: center; }.input-group { margin-bottom: 16px; }.input-group label { display: block; font-size: 13px; color: var(--text-sub); margin-bottom: 6px; }.input-group input { width: 100%; box-sizing: border-box; min-width: 0; padding: 12px; border-radius: 10px; border: 1px solid #E5E5EA; font-size: 16px; outline: none; background: #FFF; }.input-group input:focus { border-color: var(--accent-color); }.coord-input-wrap { display: flex; align-items: center; gap: 8px; }.coord-input-wrap input { flex: 1; min-width: 0; width: auto; height: 44px; }.locate-btn { box-sizing: border-box; height: 44px; width: 64px; flex: 0 0 auto; padding: 0; background: rgba(150, 150, 150, 0.1); border: 1px solid var(--line); border-radius: 10px; font-size: 13px; color: var(--text-main); display: flex; align-items: center; justify-content: center; white-space: nowrap; cursor: pointer; transition: width 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s; }.locate-btn.loading { width: 76px; opacity: 0.7; }body.dark-mode .locate-btn { background: rgba(255, 255, 255, 0.08); }input[type="time"] {
             -webkit-appearance: none;
             appearance: none;
             text-align: left;
             direction: ltr;
+            height: 44px;
+            min-height: 44px;
+            box-sizing: border-box;
+            display: block;
+            width: 100%;
+            padding: 0 12px;
+            line-height: 42px;
         }.input-error { display: none; font-size: 11px; color: var(--danger-color); margin-top: 4px; }.input-error.show { display: block; }.chip-group { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }.chip { padding: 10px 8px; border-radius: 12px; border: 1px solid #E5E5EA; background: #F5F5F7; color: var(--text-main); font-size: 13px; font-weight: 500; cursor: pointer; transition: background 0.15s, color 0.15s, border-color 0.15s; }.chip.selected { background: var(--text-main); color: #FFF; border-color: var(--text-main); }.chip.disabled { opacity: 0.35; cursor: not-allowed; }.btn-save { width: 100%; padding: 14px; border-radius: 10px; background: var(--accent-color); color: white; font-size: 16px; font-weight: 600; border: none; margin-top: 10px; cursor: pointer; }.btn-save:active { opacity: 0.85; }.btn-hint { font-size: 11px; color: var(--text-sub); text-align: center; margin-top: 8px; }.version-text { font-size: 10px; color: var(--text-sub); text-align: center; margin-top: 16px; opacity: 0.6; }.info-title { font-size: 18px; font-weight: 600; text-align: center; }.info-version { font-size: 12px; color: var(--text-sub); text-align: center; margin-top: 4px; }.info-divider { height: 1px; background: #E5E5EA; margin: 16px 0; }.changelog-entry { margin-bottom: 18px; }.changelog-entry:last-child { margin-bottom: 0; }.changelog-version { font-size: 13px; font-weight: 600; margin-bottom: 6px; }.changelog-list { list-style: none; padding: 0; margin: 0; }.changelog-list li { font-size: 12px; color: var(--text-sub); line-height: 1.7; padding-left: 12px; position: relative; }.changelog-list li::before { content: "·"; position: absolute; left: 0; color: var(--text-sub); }/* ===== SPA 视图 ===== */
         .view { display: flex; flex-direction: column; gap: 16px; }.view-enter { animation: view-in var(--t-norm) var(--ease); }@keyframes view-in {
             from { opacity: 0; transform: translateY(8px); }
@@ -415,7 +421,7 @@
         }/* ===== 离线地图（二级页 · 由 map-1.7 合并） ===== */
         #view-map {
             --m-sea: #E8EDF3; --m-sz: #FFFFFF; --m-hk: #CCD8E6; --m-coast: #A8B5C4;
-            --m-region: rgba(29, 29, 31, 0.32); --m-region-sub: rgba(29, 29, 31, 0.17);
+            --m-region: rgba(29, 29, 31, 0.32);
             --m-key: #8E97A4; --m-key-stroke: #FFFFFF;
             --m-label: #6E6E73; --m-label-stroke: rgba(255, 255, 255, 0.9);
             --m-accent: #E4693C; --m-ring: rgba(228, 105, 60, 0.58); --m-halo-op: 0.13;
@@ -423,7 +429,7 @@
             --m-plate-hair: rgba(29, 29, 31, 0.05); --m-plate-shadow: rgba(29, 29, 31, 0.04);
         }body.dark-mode #view-map {
             --m-sea: #0D1015; --m-sz: #1A1F28; --m-hk: #232A37; --m-coast: #3A4453;
-            --m-region: rgba(255, 255, 255, 0.30); --m-region-sub: rgba(255, 255, 255, 0.14);
+            --m-region: rgba(255, 255, 255, 0.30);
             --m-key: #8794A6; --m-key-stroke: #0D1015;
             --m-label: #B9C1CD; --m-label-stroke: rgba(10, 12, 18, 0.9);
             --m-accent: #FF8A5B; --m-ring: rgba(255, 138, 91, 0.55); --m-halo-op: 0.20;
@@ -441,7 +447,7 @@
         }#view-map .glass-btn:active { background: rgba(255, 255, 255, 0.85); }body.dark-mode #view-map .glass-btn {
             background: rgba(38, 44, 56, 0.55); border: 1.5px solid rgba(255, 255, 255, 0.26);
             box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5), 0 8px 20px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.16);
-        }body.dark-mode #view-map .glass-btn:active { background: rgba(58, 66, 84, 0.65); }#view-map .note { font-size: 10px; color: var(--text-sub); line-height: 1.6; text-align: center; margin-top: 10px; opacity: 0.6; }#view-map .status { font-size: 11px; color: var(--text-sub); text-align: center; margin-top: 8px; }#view-map .status.on { color: var(--text-main); }#omMap .land { fill-rule: evenodd; stroke: var(--m-coast); stroke-width: 1.1; stroke-linejoin: round; paint-order: fill stroke; }#omMap .land.sz path { fill: var(--m-sz); }#omMap .land.hk path { fill: var(--m-hk); }#omMap .rg { fill: var(--m-region); font-size: 24px; font-weight: 600; letter-spacing: 4px; }#omMap .rs { fill: var(--m-region-sub); font-size: 12px; letter-spacing: 4px; }#omMap .rk { fill: var(--m-key); stroke: var(--m-key-stroke); stroke-width: 1.2; }#omMap .rt {
+        }body.dark-mode #view-map .glass-btn:active { background: rgba(58, 66, 84, 0.65); }#view-map .note { font-size: 10px; color: var(--text-sub); line-height: 1.6; text-align: center; margin-top: 10px; opacity: 0.6; }#view-map .status { font-size: 11px; color: var(--text-sub); text-align: center; margin-top: 8px; }#view-map .status.on { color: var(--text-main); }#omMap .land { fill-rule: evenodd; stroke: var(--m-coast); stroke-width: 1.1; stroke-linejoin: round; paint-order: fill stroke; }#omMap .land.sz path { fill: var(--m-sz); }#omMap .land.hk path { fill: var(--m-hk); }#omMap .rg { fill: var(--m-region); font-size: 24px; font-weight: 600; letter-spacing: 4px; }#omMap .rk { fill: var(--m-key); stroke: var(--m-key-stroke); stroke-width: 1.2; }#omMap .rt {
             fill: var(--m-label); font-size: 19px; letter-spacing: 0.4px;
             paint-order: stroke; stroke: var(--m-label-stroke); stroke-width: 5; stroke-linejoin: round;
         }#omMap .rt.k { fill: var(--text-main); font-weight: 600; }#omHalo { fill: var(--m-accent); opacity: var(--m-halo-op); }#omRing { fill: none; stroke: var(--m-ring); stroke-width: 1.5; stroke-dasharray: 3.2 3.2; }#omDot { fill: var(--m-accent); stroke: #FFF; stroke-width: 1.6; }body.dark-mode #omDot { stroke: #12161D; }/* ===== 启程检查单（Checklist）===== */
@@ -1151,7 +1157,10 @@
         </div>
             <div class="input-group">
                 <label>住宅坐标（选填）</label>
-                <input type="text" id="input-origin-coord" placeholder="纬度, 经度" inputmode="decimal">
+                <div class="coord-input-wrap">
+                    <input type="text" id="input-origin-coord" placeholder="纬度, 经度" inputmode="decimal">
+                    <button type="button" class="locate-btn" onclick="getCoord('input-origin-coord','err-origin-coord',this)">定位</button>
+                </div>
                 <div class="input-error" id="err-origin-coord"></div>
             </div>
 
@@ -1162,7 +1171,10 @@
         </div>
             <div class="input-group">
                 <label>学校坐标（选填）</label>
-                <input type="text" id="input-destination-coord" placeholder="纬度, 经度" inputmode="decimal">
+                <div class="coord-input-wrap">
+                    <input type="text" id="input-destination-coord" placeholder="纬度, 经度" inputmode="decimal">
+                    <button type="button" class="locate-btn" onclick="getCoord('input-destination-coord','err-destination-coord',this)">定位</button>
+                </div>
                 <div class="input-error" id="err-destination-coord"></div>
             </div>
 
@@ -1221,11 +1233,11 @@
 
         <div class="changelog">
              <div class="changelog-entry">
-                <div class="changelog-version">Version 1.9 稳定版｜2026.11.11</div>
+                <div class="changelog-version">Version 1.9 稳定版｜2026.11.12</div>
                 <ul class="changelog-list">
                     <li><b>引擎升级</b><br>推理引擎升级，新增口岸分段预测，口岸到达时间更准确。</li>
                     <li><b>独立域名</b><br>启用独立域名 terminusx.one，访问更稳定。</li>
-                    <li><b>口岸代理</b><br>口岸数据新增一个代理，失败时自动切换，不再单点依赖。</li>
+                    <li><b>坐标一键定位</b><br>设置页住宅 / 学校坐标新增「定位」按钮，一键填入当前经纬度。</li>
                 </ul>
             </div>
              <div class="changelog-entry">
@@ -1440,6 +1452,8 @@
         '更新日志': 'Changelog', '启程检查单': 'Departure checklist',
         // 地图
         '我的位置': 'My location', '定位': 'Location',
+        '获取中': 'Locating', '已获取': 'Got it',
+        '定位失败，请检查权限': 'Location failed — check permissions',
         '所在区域': 'Area', '待定位': 'Not located',
         '定位精度': 'Accuracy', '直线距离': 'Straight-line distance',
         '预计到达口岸': 'Port ETA',
@@ -1550,14 +1564,14 @@
         '香港侧无专营巴士，请前往乘坐东铁线。': 'No franchised bus on the HK side — take the East Rail.',
         '天水围 (天慈邨)': 'Tin Shui Wai (Tin Tsz)',
         '元朗港铁站': 'Yuen Long MTR',
-        '天水围 (天耀邨)': 'Tin Shui Wai (Tin Yiu)',
+        '天水围 (天耀邨)': 'Tin Yiu',
         '屯门市中心': 'Tuen Mun Town Centre',
         '屯门码头': 'Tuen Mun Ferry Pier',
         '山景邨': 'Shan King Estate',
         '乌溪沙站': 'Wu Kai Sha Station',
         '小西湾蓝湾半岛': 'Siu Sai Wan (Island Resort)',
         '启德世运道': 'Kai Tak Sports Avenue',
-        '周末线': 'Weekend service',
+        '周末线': 'Weekend',
         '天富 (天水围)': 'Tin Fu (Tin Shui Wai)',
         '葵芳 (葵翠邨)': 'Kwai Fong (Kwai Tsui)',
         '粉岭站': 'Fanling Station',
@@ -1585,8 +1599,8 @@
         '深圳香港离线地图': 'Shenzhen–Hong Kong offline map',
         '末班車已過': 'Last bus passed', '最後一班': 'Last bus',
         '已過': 'Passed', '行駛中': 'In service',
-        '暂无巴士数据': 'No bus data', '今日无班次': 'No service today',
-        '周末及公众假期': 'Weekends & public holidays',
+        '暂无巴士数据': 'No bus data', '今日无班次': 'No service',
+        '周末及公众假期': 'Weekend / holiday',
         '暂无专营巴士预计到站时间。': 'No franchised bus arrivals.',
         '停止定位': 'Stop locating', '已停止定位': 'Location stopped',
         '正在定位…': 'Locating…',
@@ -1705,10 +1719,10 @@
     }
 
     var EN_CHANGELOG = [
-        '<div class="changelog-entry"><div class="changelog-version">Version 1.9 stable｜Nov 11, 2026</div><ul class="changelog-list">',
+        '<div class="changelog-entry"><div class="changelog-version">Version 1.9 stable｜Nov 12, 2026</div><ul class="changelog-list">',
         '<li><b>Engine upgrade</b><br>The inference engine is upgraded with port-segment prediction for more accurate port ETAs.</li>',
         '<li><b>Dedicated domain</b><br>A dedicated domain, terminusx.one, for more stable access.</li>',
-        '<li><b>Port proxy</b><br>One more proxy for port data, with automatic failover.</li>',
+        '<li><b>One-tap coordinates</b><br>A Locate button next to the home / school coordinates fills in your current position.</li>',
         '</ul></div>',
         '<div class="changelog-entry"><div class="changelog-version">Version 1.9 · Lite &amp; new shell｜Nov 9, 2026</div><ul class="changelog-list">',
         '<li><b>New shell</b><br>Four-tab layout: Home / Map / Commute / Settings, with a floating tab bar.</li>',
@@ -2409,45 +2423,28 @@
         "https://corsproxy.io/?url="
     ];
 
-    /* 静态镜像兜底：GitHub Actions 每 15 分钟刷新，三家代理全失败后才使用 */
-    const PORT_STATIC_URL = 'https://raw.githubusercontent.com/seanhalo/terminus-x/main/port-data.json';
-
     function withDeadline(promise, ms) {
         return Promise.race([promise, new Promise((_, rej) => setTimeout(() => rej(new Error('deadline')), ms))]);
     }
 
     async function fetchPortData() {
         if (fetchPortData._cache && Date.now() - fetchPortData._t < 5 * 60000) return fetchPortData._cache;
-        // 刚失败过：60 秒内不再连打
+        // 刚失败过：60 秒内不再连打三个代理
         if (fetchPortData._failedAt && Date.now() - fetchPortData._failedAt < 60000) return null;
         const valid = j => j && typeof j === 'object' && Object.keys(j).some(k => j[k] && typeof j[k].arrQueue === 'number');
-
-        // 1) 三个公共代理竞速（4 秒预算）
+        const tasks = PORT_CORS_PROXIES.map(p =>
+            fetchJSON(p + encodeURIComponent(PORT_API_RESIDENT), {}, 5000)
+                .then(j => { if (!valid(j)) throw new Error('invalid'); return j; })
+        );
         try {
-            const tasks = PORT_CORS_PROXIES.map(p =>
-                fetchJSON(p + encodeURIComponent(PORT_API_RESIDENT), {}, 4000)
-                    .then(j => { if (!valid(j)) throw new Error('invalid'); return j; })
-            );
-            const j = await withDeadline(Promise.any(tasks), 4000);
-            fetchPortData._cache = j;
-            fetchPortData._t = Date.now();
-            fetchPortData._failedAt = 0;
-            return j;
-        } catch (e) {
-            // 三家全失败，走静态镜像
-        }
-
-        // 2) 静态镜像兜底（3 秒）
-        try {
-            const j = await fetchJSON(PORT_STATIC_URL, { cache: 'no-store' }, 3000);
-            if (!valid(j)) throw new Error('invalid');
+            const j = await withDeadline(Promise.any(tasks), 5000);
             fetchPortData._cache = j;
             fetchPortData._t = Date.now();
             fetchPortData._failedAt = 0;
             return j;
         } catch (e) {
             fetchPortData._failedAt = Date.now();
-            return null; // 全部失败：沿用上一次成功结果
+            return null; // 5 秒内全失败：沿用上一次成功结果
         }
     }
 
@@ -4025,7 +4022,7 @@
                     tasks.push(
                         fetchKmb(r.stopId, [r.route]).then(res => {
                             const head = res[0];
-                            return { route: r.route, dest: head.dest || r.dest, weekendOnly: r.weekendOnly,
+                            return { route: r.route, dest: r.dest, weekendOnly: r.weekendOnly,
                                 etas: head.etas, remark: head.remark, error: false };
                         }).catch(() => ({ route: r.route, dest: r.dest, weekendOnly: r.weekendOnly, etas: [], remark: null, error: true }))
                     );
@@ -4255,6 +4252,47 @@
         }, 2000);
     }
 
+    /* 坐标输入框“一键定位”：单次定位，不复用地图的持续定位 */
+    function getCoord(inputId, errId, btnEl) {
+        if (location.protocol === 'file:') {
+            showToast('本地文件无法调用定位，需 https 或 localhost');
+            return;
+        }
+        if (!navigator.geolocation) {
+            showToast('当前浏览器不支持定位');
+            return;
+        }
+        const input = document.getElementById(inputId);
+        const errEl = document.getElementById(errId);
+        if (!input || !btnEl) return;
+        if (btnEl._resetTimer) { clearTimeout(btnEl._resetTimer); btnEl._resetTimer = null; }
+        btnEl.classList.add('loading');
+        btnEl.textContent = '获取中';
+        btnEl.disabled = true;
+        navigator.geolocation.getCurrentPosition(
+            function (pos) {
+                const lat = pos.coords.latitude.toFixed(5);
+                const lon = pos.coords.longitude.toFixed(5);
+                input.value = lat + ',' + lon;
+                if (errEl) errEl.textContent = '';
+                btnEl.classList.remove('loading');
+                btnEl.textContent = '已获取';
+                btnEl.disabled = false;
+                btnEl._resetTimer = setTimeout(function () {
+                    btnEl.textContent = '定位';
+                    btnEl._resetTimer = null;
+                }, 2000);
+            },
+            function () {
+                showToast('定位失败，请检查权限');
+                btnEl.classList.remove('loading');
+                btnEl.textContent = '定位';
+                btnEl.disabled = false;
+            },
+            { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+        );
+    }
+
     /* 长按 / 右键卡片唤起备注弹窗 */
     function openNote(date) {
         const item = historyData.find(x => x.date === date);
@@ -4405,8 +4443,8 @@
     var NS = 'http://www.w3.org/2000/svg';
 
     var REGIONS = [
-        { name: '深圳', sub: 'SHENZHEN',  lat: 22.6433, lon: 114.1432 },
-        { name: '香港', sub: 'HONG KONG', lat: 22.3773, lon: 114.1343 }
+        { name: '深圳', lat: 22.6433, lon: 114.1432 },
+        { name: '香港', lat: 22.3773, lon: 114.1343 }
     ];
 
     /* 口岸：固定标注，统一用通用称呼，不写具体地址 */
@@ -4453,11 +4491,7 @@
             t.setAttribute('class', 'rg'); t.setAttribute('text-anchor', 'middle');
             t.setAttribute('x', p.x); t.setAttribute('y', p.y);
             t.textContent = r.name;
-            var u = document.createElementNS(NS, 'text');
-            u.setAttribute('class', 'rs'); u.setAttribute('text-anchor', 'middle');
-            u.setAttribute('x', p.x); u.setAttribute('y', p.y + 16);
-            u.textContent = r.sub;
-            g.appendChild(t); g.appendChild(u);
+            g.appendChild(t);
         });
     }
 
@@ -4840,7 +4874,6 @@
     window.OmMap = {
         onShow: function () { syncConfig(); },
         syncConfig: syncConfig,
-        distM: distM,
         zoneOf: zoneOf,
         setStatus: setStatus,
         setPos: function (lat, lon, acc) { paintFix(lat, lon, (acc == null) ? 300 : acc); },
