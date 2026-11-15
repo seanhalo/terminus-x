@@ -1163,14 +1163,16 @@
 
         <div class="changelog">
              <div class="changelog-entry">
-                <div class="changelog-version">Version 1.10 · 口岸 ETA 可用｜2026.11.15</div>
+                <div class="changelog-version">Version 1.10 · 口岸分段预测重写｜2026.11.15</div>
                 <ul class="changelog-list">
-                    <li><b>口岸预测首次可用</b><br>精度门槛放宽到 150 米，并移除与「到达」相矛盾的步行速度条件。</li>
-                    <li><b>只检测主口岸</b><br>备选口岸与主口岸距离不足两倍判定半径时不挂载，避免一次穿行同时命中两个口岸。</li>
-                    <li><b>晚间不进围栏</b><br>新增方向门与 05:00–11:30 采集窗口，晚归行程不再写入样本，也不再参与训练。</li>
-                    <li><b>预测不再随样本数变差</b><br>模型冷启动输出接近 0，混合权重改为随样本数递增、并把模型值约束在中位数附近，第三次起不再偏低十余分钟。</li>
-                    <li><b>去抖写入样本层</b><br>去抖改为读取已保存的最近一条样本，刷新页面后同一趟行程不会被重复记录。</li>
-                    <li><b>英文版补齐</b><br>首页口岸 ETA 与引擎状态文案跟随语言切换，更新日志补上本版本条目。</li>
+                    <li><b>口岸段预测重写</b><br>剩余时间拆成「已走时长」与「口岸段剩余」：剩余量按「还剩多远 ÷ 当前速度」和「历史全程」按距离加权，离口岸越近越信距离、越远越信历史，到达时间不再用「现在 + 全程耗时」硬推。以 12 天虚拟时钟回归，三个检查点平均误差 1.5 分钟、最大 3 分钟。</li>
+                    <li><b>一天只记一条</b><br>同一口岸当天只保留一条样本，在口岸停留再久也不会重复入库；样本满 200 条后丢弃最早的一条。</li>
+                    <li><b>关一次定位，当天停算</b><br>关闭定位即封停当天：ETA 收起、不再自动重连，次日自动恢复。</li>
+                    <li><b>速度抗抖</b><br>取近三帧速度的中位数参与计算；低于 0.8 m/s 按步行下限计，站着不动不会显示「马上到」。</li>
+                    <li><b>只采早高峰</b><br>05:00–11:30 采集窗口配方向门，晚归行程不写样本、不参与训练。</li>
+                    <li><b>只认主口岸</b><br>备选口岸与主口岸距离不足两倍判定半径时不挂载，避免一次穿行同时命中两处；精度门槛 150 米。</li>
+                    <li><b>冷启动不再偏低</b><br>混合权重随样本数递增，模型输出约束在中位数附近，第三条样本起不再偏低十余分钟。</li>
+                    <li><b>英文版同步</b><br>口岸 ETA 与引擎状态文案跟随语言切换，本条目一并本地化。</li>
                 </ul>
             </div>
              <div class="changelog-entry">
@@ -1660,13 +1662,15 @@
     }
 
     var EN_CHANGELOG = [
-        '<div class="changelog-entry"><div class="changelog-version">Version 1.10 · Port ETA live｜Nov 15, 2026</div><ul class="changelog-list">',
-        '<li><b>Port ETA works for the first time</b><br>The accuracy cap is relaxed to 150 m and the walking-speed rule that contradicted “arrived” is removed.</li>',
-        '<li><b>Main port only</b><br>The backup port is not mounted when it sits closer than twice the trigger radius, so one crossing cannot hit two ports.</li>',
-        '<li><b>No evening collection</b><br>A direction gate plus a 05:00–11:30 window keeps evening trips out of the samples and out of training.</li>',
-        '<li><b>Prediction no longer degrades with samples</b><br>The model starts near zero, so the blend weight now grows with sample count and the model value is bounded around the median; from the third sample on the ETA no longer runs ten-plus minutes early.</li>',
-        '<li><b>Debounce reads the samples</b><br>Reloading the page no longer records the same trip twice.</li>',
-        '<li><b>English completed</b><br>The Home port ETA and engine status follow the language switch, and this changelog entry is now localized.</li>',
+        '<div class="changelog-entry"><div class="changelog-version">Version 1.10 · Port segment rewritten｜Nov 15, 2026</div><ul class="changelog-list">',
+        '<li><b>Port segment rewritten</b><br>Remaining time now splits into elapsed time and the port leg: the remainder is a distance-weighted blend of “distance left ÷ current speed” and the historical whole trip — distance wins near the port, history wins far out — instead of “now + total duration”. A 12-day virtual-clock regression lands at 1.5 min mean error, 3 min max.</li>',
+        '<li><b>One sample a day</b><br>One sample per port per day; staying at the port no longer records duplicates, and the 200-sample cap drops the oldest.</li>',
+        '<li><b>GPS off stops the day</b><br>Turning GPS off freezes the day: ETA hides, watch does not restart on its own, and it resumes the next day.</li>',
+        '<li><b>Speed smoothing</b><br>The median of the last three fixes drives the estimate; below 0.8 m/s the walking floor applies, so standing still no longer reads as “arriving now”.</li>',
+        '<li><b>Morning window only</b><br>A 05:00–11:30 window plus a direction gate keeps evening trips out of samples and training.</li>',
+        '<li><b>Main port only</b><br>The backup port is not mounted within twice the trigger radius, so one crossing cannot hit two ports; accuracy cap 150 m.</li>',
+        '<li><b>Cold start no longer early</b><br>The blend weight grows with sample count and the model is bounded around the median, so the ETA no longer runs ten-plus minutes early from the third sample on.</li>',
+        '<li><b>English updated</b><br>Port ETA and engine status follow the language switch, and this entry is localized.</li>',
         '</ul></div>',
         '<div class="changelog-entry"><div class="changelog-version">Version 1.9 stable｜Nov 12, 2026</div><ul class="changelog-list">',
         '<li><b>Engine upgrade</b><br>The inference engine is upgraded with port-segment prediction for more accurate port ETAs.</li>',
@@ -3074,7 +3078,7 @@
     const PORT_ACC_MAX = 150;
     const PORT_DWELL_MS = 8000;
     const PORT_MIN_FIXES = 3;
-    const PORT_MIN_MOVE = 0.25;
+    const PORT_MIN_MOVE = 0.8;   // 速度低于此值时按此值算，避免站着不动把剩余时间估成无穷大
     const PORT_DEBOUNCE_MS = 5 * 60000;
     // 采集窗口（本地钟点，分钟）：晚间不采集，避免污染早间样本
     const PORT_WIN_START = 5 * 60;
@@ -3084,6 +3088,10 @@
     const PORT_BLEND_STEP = 20;
     // 在途估算只在口岸前这个半径内成立，更远处按整段模型走
     const PORT_WALK_ZONE_M = 3000;
+    // 已超时仍要给一个保底，避免明明还在路上却显示“现在”
+    const PORT_REST_FLOOR_MIN = 2;
+    // 当天关过定位后全天停算（跨天自动解除）
+    const PORT_GPS_OFF_KEY = 'terminus_mlp_port_gps_off';
 
     class PortInferenceEngine {
         constructor() { this.initWeights(); }
@@ -3176,6 +3184,36 @@
     let globalWatchId = null;
     let globalLastFix = null;
     let portGeo = {};
+    let portSpeedHist = [];   // 近 3 帧速度，用于取中位数抗抖
+
+    // 单帧 GPS 速度抖得厉害，取近 3 帧中位数再参与计算
+    function portSpeedMedian() {
+        if (!portSpeedHist.length) return null;
+        const a = portSpeedHist.slice().sort(function (x, y) { return x - y; });
+        return a[(a.length - 1) >> 1];
+    }
+    function portYmd(ms) {
+        const d = new Date(ms);
+        return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
+    }
+    function portGpsOffToday() {
+        try { return localStorage.getItem(PORT_GPS_OFF_KEY) === portYmd(Date.now()); } catch (e) { return false; }
+    }
+    function portMarkGpsOff(on) {
+        try {
+            if (on) localStorage.setItem(PORT_GPS_OFF_KEY, portYmd(Date.now()));
+            else localStorage.removeItem(PORT_GPS_OFF_KEY);
+        } catch (e) {}
+    }
+    // 一天只留一条：同口岸当天已有样本就不再记
+    function portSampledToday(port, now) {
+        const ymd = portYmd(now);
+        for (let i = portSamples.length - 1; i >= 0; i--) {
+            const s = portSamples[i];
+            if (s && s.port === port && typeof s.ts === 'number' && portYmd(s.ts) === ymd) return true;
+        }
+        return false;
+    }
 
     function haversineM(lat1, lon1, lat2, lon2) {
         const R = 6371000, rad = Math.PI / 180;
@@ -3258,6 +3296,7 @@
                 if (calc >= 0 && calc <= 25) speed = calc;
             }
         }
+        if (speed != null) { portSpeedHist.push(speed); if (portSpeedHist.length > 3) portSpeedHist.shift(); }
         globalLastFix = { lat: lat, lon: lon, ts: now, acc: acc, speed: speed };
         checkPortGeofence(lat, lon, acc, speed, now);
         updatePortEta();
@@ -3325,6 +3364,7 @@
         const dir = tripDir();
         const start = portTripStart();
         if (!start) return;
+        if (portSampledToday(port, now)) return;   // 一天一条：在口岸站着等也不会重复记账
         const duration = Math.round((now - start) / 60000);
         if (!isFinite(duration) || duration <= 0 || duration > 300) return;
         let cong = portCongestionNow(port);
@@ -3384,6 +3424,7 @@
     }
     function computePortEta() {
         if (!engineEnabled || !portFenceOn) return null;
+        if (portGpsOffToday()) return null;          // 当天关过定位：全天不再推算
         if (portCount <= 0) return null;
 
         const dir = tripDir();
@@ -3406,41 +3447,68 @@
 
         const now = Date.now();
 
-        // 已经站在口岸门口：ETA 就是现在，不再算剩余路程
+        // 已经站在口岸门口：ETA 就是现在，不再算剩余路程（与是否打卡无关）
         if (distToPort != null && distToPort <= 60) return now;
 
-        // 样本不足 3 条：只做复用，不做预测（第三次才轮到模型）
-        if (portCount < 3) {
-            const cold = portColdEstimate(dir);
-            if (cold == null) return null;
-            return now + cold * 60000;
-        }
+        const start = portTripStart();
+        if (start == null) return null;
+        const elapsedMin = Math.max(0, (now - start) / 60000);
 
-        const cold = portColdEstimate(dir);
-        let etaMs = null;
-        if (fix && fix.speed != null && fix.speed > PORT_MIN_MOVE &&
-            distToPort != null && distToPort >= 60 && distToPort <= PORT_WALK_ZONE_M) {
-            // 在途：只算剩余路程，不与「家-口岸总耗时」相加，避免行驶时间重复计入
-            // 仅限口岸前 3 公里：更远处是车程，速度不可代表整段通勤
-            const sp = Math.max(0.3, Math.min(15, fix.speed));
-            etaMs = (distToPort / sp) * 1000;
-            if (cold != null) etaMs = Math.min(etaMs, cold * 60000);
-        } else {
+        // 全程时长只当先验：模型与中位数混合（α 逻辑沿用原来的）
+        let totalMin = null;
+        if (portCount >= 3) {
+            const cold = portColdEstimate(dir);
             const modelMin = portEngine.predict(portFeatureVec(port, portCongestionNow(port), dir));
-            // 冷启动模型输出接近 0：权重随样本数递增，并把模型值约束在中位数附近
-            let total;
             if (cold == null) {
-                total = modelMin;
+                totalMin = modelMin;
             } else {
                 const alpha = Math.min(PORT_BLEND_MAX, Math.max(0, (portCount - 3) / PORT_BLEND_STEP));
                 const modelSafe = Math.max(0.6 * cold, Math.min(1.4 * cold, modelMin));
-                total = alpha * modelSafe + (1 - alpha) * cold;
+                totalMin = alpha * modelSafe + (1 - alpha) * cold;
             }
-            if (isFinite(total) && total > 0) etaMs = total * 60000;
+        } else {
+            totalMin = portColdEstimate(dir);        // 不足 3 条：只复用中位数
         }
-        if (etaMs == null || !isFinite(etaMs) || etaMs <= 0) return null;
-        return now + etaMs;
+        if (totalMin != null && (!isFinite(totalMin) || totalMin <= 0)) totalMin = null;
+
+        // 剩余时间：以「还剩多远」为主，先验做兜底与平滑
+        const speed = portSpeedMedian();
+        const priorRest = totalMin == null ? null : Math.max(0, totalMin - elapsedMin);
+        // 速度低于步行下限时不再整段丢弃这条信息，只把速度钳到 0.25 m/s，避免"一停就换算法"
+        const distRest = (distToPort != null && speed != null)
+            ? (distToPort / Math.min(15, Math.max(PORT_MIN_MOVE, speed))) / 60
+            : null;
+
+        let restMin;
+        if (distRest != null && priorRest != null) {
+            // 越靠近口岸越信「还剩多远」，越接近 3 km 越信历史先验，避免近处被先验拖晚
+            let w = 1 - Math.min(1, distToPort / PORT_WALK_ZONE_M);
+            const capped = Math.max(0, Math.min(1.6 * totalMin, distRest));
+            // 今天明显比平时慢（按距离算出的剩余大于先验剩余）时，改成更信距离
+            if (distRest > priorRest) w = Math.max(w, 0.75);
+            restMin = w * capped + (1 - w) * priorRest;
+        } else if (distRest != null) {
+            restMin = distRest;
+        } else if (priorRest != null) {
+            restMin = priorRest;
+        } else if (distToPort != null) {
+            restMin = (distToPort / 1.2) / 60;       // 无模型无速度：按步行 4.3 km/h 兜底
+        } else {
+            return null;
+        }
+        if (!isFinite(restMin)) return null;
+
+        // 已经超过平时耗时：按当前速度继续估，并留保底，不再冻在“现在”
+        if (restMin <= 0) {
+            const sp = Math.max(speed == null ? 1.2 : speed, 1.2);
+            restMin = (distToPort != null && distToPort <= PORT_WALK_ZONE_M)
+                ? Math.max((distToPort / sp) / 60, PORT_REST_FLOOR_MIN)
+                : PORT_REST_FLOOR_MIN;
+        }
+        restMin = Math.min(restMin, 180);
+        return now + restMin * 60000;
     }
+
     function updatePortEta() {
         const row = document.getElementById('portEtaRow');
         const val = document.getElementById('portEta');
@@ -3457,8 +3525,9 @@
     }
 
     window.__portEta = {
-        start: startGlobalWatch,
-        stop: stopGlobalWatch,
+        start: function () { portMarkGpsOff(false); startGlobalWatch(); return true; },
+        // 手动关一次定位：当天全天停止推算，切后台回来也不会自己开
+        stop: function () { stopGlobalWatch(); portMarkGpsOff(true); updatePortEta(); return true; },
         isOn: function () { return globalWatchId != null; },
         fence: function (on) { portFenceOn = (on !== false); return portFenceOn; },
         // 演示用行程起点：仅当真实打卡缺失时生效，不写入打卡档案
@@ -3510,6 +3579,7 @@
                 fence: portFenceOn,
                 demoStart: portDemoStart,
                 watch: globalWatchId != null,
+                gpsOff: portGpsOffToday(),
                 engine: engineEnabled,
                 count: portCount,
                 samples: portSamples.length,
@@ -3532,13 +3602,13 @@
     };
 
     (function initPortEta() {
-        if (engineEnabled) startGlobalWatch();
+        if (engineEnabled && !portGpsOffToday()) startGlobalWatch();
         updatePortEta();
         var btn = document.getElementById('omBtnStart');
         if (btn && navigator.geolocation) btn.textContent = (globalWatchId != null) ? '关闭定位' : '获取定位';
         document.addEventListener('visibilitychange', function () {
             if (document.hidden) stopGlobalWatch();
-            else { if (engineEnabled) startGlobalWatch(); updatePortEta(); }
+            else { if (engineEnabled && !portGpsOffToday()) startGlobalWatch(); updatePortEta(); }
         });
         setInterval(function () { if (!document.hidden && engineEnabled) updatePortEta(); }, 30000);
     })();
@@ -3605,7 +3675,7 @@
         engineEnabled = !engineEnabled;
         try { localStorage.setItem(EDGE_TOGGLE_KEY, engineEnabled ? '1' : '0'); } catch (e) {}
         // 口岸子引擎跟随总开关：开则启动定位监听，关则停掉并立即清空展示
-        if (engineEnabled) startGlobalWatch(); else stopGlobalWatch();
+        if (engineEnabled && !portGpsOffToday()) startGlobalWatch(); else stopGlobalWatch();
         updateEngineToggle();
         renderUI();
         updatePortEta();
