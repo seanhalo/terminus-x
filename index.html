@@ -522,7 +522,34 @@
         }body.theme-simple .chip {
             background: #F5F5F7;
             border-color: var(--line);
-        }/* ===== 轻简小游戏：呼吸 / 叠 ===== */
+        }/* 轻简：打卡状态机按钮改为与「获取定位」一致的细线描边 */
+        body.theme-simple #view-home #checkin-action-area .action-card {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 44px;
+            padding: 0 10px;
+            background: rgba(150, 150, 150, .1) !important;
+            border: 1px solid var(--line) !important;
+            border-radius: 10px !important;
+            box-shadow: none !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+            color: var(--text-main) !important;
+            font-size: 13px !important;
+            font-weight: 500 !important;
+            white-space: nowrap;
+            opacity: 1 !important;
+            transform: none !important;
+            transition: background-color .15s, border-color .15s !important;
+        }
+        body.theme-simple #view-home #checkin-action-area .action-card:active {
+            background: rgba(150, 150, 150, .16) !important;
+            border-color: #D1D1D6 !important;
+            opacity: 1 !important;
+            transform: none !important;
+        }
+        /* ===== 轻简小游戏：呼吸 / 叠 ===== */
         .game-stage.lite {
             --breathe-sq: clamp(120px, 40vmin, 200px);
             flex: none;
@@ -559,7 +586,44 @@
             border: none; background: var(--text-main); color: var(--bg-color);
             font-size: 14px; font-weight: 600; border-radius: 999px; cursor: pointer;
         }.lite-over-btn:active { transform: scale(.96); }.lite-meta { display: flex; align-items: center; justify-content: space-between; padding: 0 4px; }.breathe-lives { display: flex; gap: 6px; }.breathe-life { width: 8px; height: 8px; border-radius: 50%; background: #111111; }.breathe-life.off { background: var(--line); }.lite-score { font-size: 20px; font-weight: 700; font-variant-numeric: tabular-nums; }.stack-tower { position: absolute; inset: 0; will-change: transform; }.stack-block, .stack-moving { position: absolute; height: 27px; background: #111111; border-radius: 3px; }.stack-hint { position: absolute; bottom: 10px; left: 0; right: 0; text-align: center; font-size: 11px; color: var(--text-sub); letter-spacing: .06em; pointer-events: none; transition: opacity .24s; }/* ===== 统一排版与组件（token 驱动） ===== */
-        .header { min-height: var(--header-h); padding: var(--sp-2) 0; }.header-title { font-size: var(--fs-lg); font-weight: var(--fw-semibold); }.header-sub { font-size: var(--fs-xs); color: var(--text-sub); }.subview-header { min-height: var(--header-h); padding: var(--sp-2) 0; gap: var(--sp-2); }.subview-title { flex: 1; text-align: left; font-size: var(--fs-lg); font-weight: var(--fw-semibold); }.section-title { font-size: var(--fs-sm); font-weight: var(--fw-semibold); }.modal-title { font-size: var(--fs-xl); font-weight: var(--fw-semibold); }.info-title { font-size: var(--fs-xl); font-weight: var(--fw-semibold); }.card-title { font-size: var(--fs-md); font-weight: var(--fw-semibold); }.setting-row { font-size: var(--fs-lg); padding: var(--sp-4) 0; }.hero-title { font-size: var(--fs-md); }.hero-sub { font-size: var(--fs-sm); }.chip { font-size: var(--fs-md); border-radius: var(--radius-sm); }.cl-chip { border-radius: var(--radius-pill); }.cl-add-btn { border-radius: var(--radius-sm); }.day-btn { font-size: var(--fs-sm); }.btn-save { border-radius: var(--radius-md); font-size: var(--fs-md); }.action-card { border-radius: var(--radius-md); font-size: var(--fs-md); }.glass-btn { border-radius: var(--radius-md); }.input-group input { border-radius: var(--radius-sm); border-color: var(--line); }.engine-switch { border-radius: var(--radius-pill); }.port-name { font-size: var(--fs-md); }.port-status { font-size: var(--fs-lg); }.weather-city-name { font-size: var(--fs-md); }.weather-temp { font-size: var(--fs-3xl); }.weather-desc { font-size: var(--fs-sm); }.game-ov-title, .lite-over-title { font-size: var(--fs-2xl); }.game-ov-sub, .lite-over-sub, .game-hint, .breathe-hint, .stack-hint { font-size: var(--fs-sm); }</style>
+        .header { min-height: var(--header-h); padding: var(--sp-2) 0; }.header-title { font-size: var(--fs-lg); font-weight: var(--fw-semibold); }.header-sub { font-size: var(--fs-xs); color: var(--text-sub); }.subview-header { min-height: var(--header-h); padding: var(--sp-2) 0; gap: var(--sp-2); }.subview-title { flex: 1; text-align: left; font-size: var(--fs-lg); font-weight: var(--fw-semibold); }.section-title { font-size: var(--fs-sm); font-weight: var(--fw-semibold); }.modal-title { font-size: var(--fs-xl); font-weight: var(--fw-semibold); }.info-title { font-size: var(--fs-xl); font-weight: var(--fw-semibold); }.card-title { font-size: var(--fs-md); font-weight: var(--fw-semibold); }.setting-row { font-size: var(--fs-lg); padding: var(--sp-4) 0; }.hero-title { font-size: var(--fs-md); }.hero-sub { font-size: var(--fs-sm); }.chip { font-size: var(--fs-md); border-radius: var(--radius-sm); }.cl-chip { border-radius: var(--radius-pill); }.cl-add-btn { border-radius: var(--radius-sm); }.day-btn { font-size: var(--fs-sm); }.btn-save { border-radius: var(--radius-md); font-size: var(--fs-md); }.action-card { border-radius: var(--radius-md); font-size: var(--fs-md); }.glass-btn { border-radius: var(--radius-md); }.input-group input { border-radius: var(--radius-sm); border-color: var(--line); }.engine-switch { border-radius: var(--radius-pill); }.port-name { font-size: var(--fs-md); }.port-status { font-size: var(--fs-lg); }.weather-city-name { font-size: var(--fs-md); }.weather-temp { font-size: var(--fs-3xl); }.weather-desc { font-size: var(--fs-sm); }.game-ov-title, .lite-over-title { font-size: var(--fs-2xl); }.game-ov-sub, .lite-over-sub, .game-hint, .breathe-hint, .stack-hint { font-size: var(--fs-sm); }
+#view-fleet{--fleet-ice:rgba(248,160,96,.18);--fleet-ice-press:rgba(248,160,96,.10);--fleet-ice-line:rgba(248,160,96,.34);--fleet-ice-shadow:none;--fleet-top:rgba(255,255,255,.90);--fleet-sheen-a:rgba(255,255,255,.55);--fleet-sheen-b:rgba(255,255,255,.26);--fleet-off-bg:rgba(29,29,31,.06);--fleet-off-text:rgba(29,29,31,.34);--fleet-seg-inactive:#8A8A8F;--fleet-mark:rgba(248,160,96,.82);--fleet-press-line:rgba(248,160,96,.22);--fleet-hover:rgba(255,255,255,.52);font-variant-numeric:tabular-nums}
+body.dark-mode #view-fleet{--fleet-ice:rgba(232,164,76,.13);--fleet-ice-press:rgba(232,164,76,.09);--fleet-ice-line:rgba(232,164,76,.32);--fleet-ice-shadow:none;--fleet-top:rgba(255,255,255,.20);--fleet-sheen-a:rgba(255,255,255,.14);--fleet-sheen-b:rgba(255,255,255,.07);--fleet-off-bg:rgba(255,255,255,.08);--fleet-off-text:rgba(229,231,235,.38);--fleet-seg-inactive:#98989D;--fleet-mark:rgba(232,164,76,.78);--fleet-press-line:rgba(232,164,76,.18);--fleet-hover:rgba(255,255,255,.10)}
+body.dark-mode.theme-chase #view-fleet{--fleet-ice:rgba(232,164,76,.13);--fleet-ice-line:rgba(232,164,76,.34);--fleet-ice-shadow:none;--fleet-sheen-a:rgba(255,255,255,.08);--fleet-sheen-b:rgba(255,255,255,.04);--fleet-mark:rgba(232,164,76,.78);--fleet-press-line:rgba(232,164,76,.18);--fleet-hover:rgba(255,255,255,.08)}
+body.theme-simple #view-fleet{--fleet-ice:#F0F0EE;--fleet-ice-press:#EDEDEB;--fleet-ice-line:#E5E5EA;--fleet-ice-shadow:none;--fleet-top:transparent;--fleet-sheen-a:transparent;--fleet-sheen-b:transparent;--fleet-off-bg:#F5F5F7;--fleet-off-text:#86868B;--fleet-seg-inactive:#8A8A8F;--fleet-mark:rgba(29,29,31,.30);--fleet-press-line:rgba(29,29,31,.10);--fleet-hover:#FAFAF8}
+#view-fleet .subview-title{font-size:clamp(14px,4.2vw,16px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#view-fleet .fleet-seg{position:relative;flex:0 0 auto;display:flex;gap:2px;padding:3px;background:var(--seg-bg);border:1px solid var(--seg-border);border-radius:var(--radius-pill);box-shadow:var(--glass-shadow);backdrop-filter:blur(var(--glass-blur)) saturate(var(--glass-sat));-webkit-backdrop-filter:blur(var(--glass-blur)) saturate(var(--glass-sat))}
+#view-fleet .fleet-pill{position:absolute;top:3px;left:3px;height:calc(100% - 6px);border-radius:var(--radius-pill);background:var(--seg-active-bg);border:1px solid var(--seg-active-border);transition:transform var(--t-norm) var(--ease),width var(--t-norm) var(--ease);pointer-events:none;z-index:0}
+#view-fleet .fleet-seg-btn{position:relative;z-index:1;border:1px solid transparent;background:transparent;border-radius:var(--radius-pill);padding:4px 12px;font-size:var(--fs-sm);font-weight:500;letter-spacing:.02em;color:var(--fleet-seg-inactive);cursor:pointer;transition:color .18s ease}
+#view-fleet .fleet-seg-btn.active{color:var(--seg-active-text)}
+#view-fleet .fleet-group+.fleet-group{margin-top:18px}
+#view-fleet .fleet-group-label{font-size:11px;font-weight:500;letter-spacing:.08em;color:var(--text-sub);margin-bottom:3px}
+#view-fleet .fleet-row{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:3px 0}
+#view-fleet .fleet-row-label{font-size:var(--fs-md);color:var(--text-sub);line-height:1.45}
+#view-fleet .fleet-row-val{flex:0 0 auto;font-size:15px;font-weight:600;letter-spacing:.01em;color:var(--text-main);line-height:1.45;white-space:nowrap}
+#view-fleet .fleet-list{display:flex;flex-direction:column;gap:12px}
+#view-fleet .fleet-card{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 22px;background-color:var(--glass-bg);border:1px solid var(--glass-border);border-bottom-color:var(--glass-border-soft);border-radius:var(--radius-md);box-shadow:var(--glass-shadow);backdrop-filter:blur(var(--glass-blur)) saturate(var(--glass-sat));-webkit-backdrop-filter:blur(var(--glass-blur)) saturate(var(--glass-sat));cursor:pointer;-webkit-tap-highlight-color:transparent;user-select:none;transition:background-color .38s var(--ease),border-color .38s var(--ease),box-shadow .38s var(--ease),transform .32s var(--ease)}
+#view-fleet .fleet-card::before{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(140% 160% at 8% -20%,var(--fleet-sheen-a),transparent 58%),linear-gradient(180deg,var(--fleet-sheen-b),transparent 46%);opacity:0;transition:opacity .5s var(--ease);pointer-events:none;z-index:0}
+#view-fleet .fleet-card::after{content:"";position:absolute;left:0;top:50%;width:2px;height:24px;border-radius:0 2px 2px 0;background:var(--fleet-mark);opacity:0;transform:translateY(-50%) scaleY(.35);transform-origin:center;transition:opacity .35s var(--ease),transform .45s var(--ease);pointer-events:none;z-index:1}
+#view-fleet .fleet-card:active{transform:translateY(1px) scale(.992);background-color:var(--fleet-ice-press);box-shadow:inset 0 1px 0 var(--fleet-top),inset 0 0 0 1px var(--fleet-press-line);transition-duration:.14s}
+@media (hover:hover){#view-fleet .fleet-card:hover{background-color:var(--fleet-hover)}}
+#view-fleet .fleet-card:hover:active{background-color:var(--fleet-ice-press);transform:translateY(1px) scale(.992);box-shadow:inset 0 1px 0 var(--fleet-top),inset 0 0 0 1px var(--fleet-press-line);transition-duration:.14s}
+#view-fleet .fleet-card.is-on{background-color:var(--fleet-ice);border-color:var(--fleet-ice-line);box-shadow:inset 0 1px 0 var(--fleet-top)}
+#view-fleet .fleet-card.is-on::before{opacity:1}
+#view-fleet .fleet-card.is-on::after{opacity:1;transform:translateY(-50%) scaleY(1)}
+#view-fleet .fleet-card.is-on:active{background-color:var(--fleet-ice-press);transform:translateY(1px) scale(.992);transition-duration:.14s}
+#view-fleet .fleet-name{position:relative;z-index:1;flex:1;min-width:0;font-size:var(--fs-md);font-weight:600;letter-spacing:.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#view-fleet .fleet-go{position:relative;z-index:1;flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;gap:6px;height:30px;padding:0 12px;border:1px solid transparent;border-radius:var(--radius-pill);font-size:var(--fs-sm);font-weight:500;letter-spacing:.02em;white-space:nowrap;background:transparent;color:var(--fleet-off-text);cursor:default;transition:background-color .3s var(--ease),color .3s var(--ease),transform .2s var(--ease),box-shadow .3s var(--ease)}
+#view-fleet .fleet-go svg{width:14px;height:14px;flex:0 0 auto;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;fill:none;opacity:.7;transition:opacity .3s var(--ease),transform .3s var(--ease)}
+#view-fleet .fleet-go:disabled{pointer-events:none}
+#view-fleet .fleet-go.is-live{background:var(--text-main);color:var(--bg-color);font-weight:600;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.18)}
+#view-fleet .fleet-go.is-live svg{opacity:1}
+#view-fleet .fleet-go.is-live:active{transform:scale(.96)}
+body.theme-simple #view-fleet .card,body.theme-simple #view-fleet .fleet-card,body.theme-simple #view-fleet .fleet-seg{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+body.theme-simple #view-fleet .fleet-card::before{display:none}
+@media (max-width:360px){#view-fleet .subview-header{gap:6px}#view-fleet .fleet-seg-btn{padding:4px 8px;font-size:11px}}
+
+</style>
 </head>
 <body>
 <script>
@@ -710,13 +774,14 @@
             </svg>
             <span>巴士时刻表</span>
         </a>
-        <a class="tool-btn" href="https://www.octopus.com.hk/sc/consumer/mobile-payment/easy-ride/about/index.html" target="_blank" rel="noopener">
+        <a class="tool-btn" href="#" onclick="switchView('view-fleet');return false;">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="7" width="18" height="10" rx="3"></rect>
-                <path d="M6 7 L8 4 H16 L18 7"></path>
-                <rect x="9" y="1.5" width="6" height="2.5" rx="1"></rect>
-                <circle cx="7.5" cy="17" r="1.8"></circle>
-                <circle cx="16.5" cy="17" r="1.8"></circle>
+                <path d="M4 16.5V13.3L6.4 8.5H17.6L20 13.3V16.5"></path>
+                <line x1="4" y1="16.5" x2="20" y2="16.5"></line>
+                <line x1="6.8" y1="13.3" x2="17.2" y2="13.3"></line>
+                <rect x="9.5" y="5.8" width="5" height="2.7" rx="1"></rect>
+                <circle cx="8" cy="18.5" r="1.5"></circle>
+                <circle cx="16" cy="18.5" r="1.5"></circle>
             </svg>
             <span>预约车队的士</span>
         </a>
@@ -777,7 +842,6 @@
             <div class="back-btn-spacer"></div>
         </div>
         <div id="bus-cards"></div>
-        <div class="bus-note">* 显示时间为巴士预计到站时间｜数据来源：香港政府开放数据 (DATA.GOV.HK)</div>
     </div>
 
     <div id="view-weather" class="view" style="display:none;">
@@ -792,9 +856,63 @@
             <div id="hourly-wrap"></div>
         </div>
         <div class="card">
-            <div class="card-title">香港（屯门·元朗观测点）</div>
+            <div class="card-title">香港</div>
             <div id="hk-real-time"></div>
-            <div style="color:var(--text-sub); font-size:12px; margin-top:8px;">*香港天文台开放接口不提供小时预报，仅展示实时观测</div>
+        </div>
+    </div>
+
+    <div id="view-fleet" class="view" style="display:none;">
+        <div class="subview-header">
+            <button class="back-btn" type="button" onclick="goBack()">&lt;</button>
+            <div class="subview-title">预约车队的士</div>
+            <div class="fleet-seg" id="fleetSeg">
+                <span class="fleet-pill" id="fleetPill"></span>
+                <button class="fleet-seg-btn active" type="button" data-cur="HKD" onclick="fleetSetCurrency('HKD')">HKD</button>
+                <button class="fleet-seg-btn" type="button" data-cur="CNY" onclick="fleetSetCurrency('CNY')">CNY</button>
+                <button class="fleet-seg-btn" type="button" data-cur="USD" onclick="fleetSetCurrency('USD')">USD</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">预约的士收费表</div>
+
+            <div class="fleet-group">
+                <div class="fleet-group-label">基础计费</div>
+                <div class="fleet-row"><span class="fleet-row-label">首2公里起步费</span><span class="fleet-row-val" data-hkd="29">HK $29.00</span></div>
+                <div class="fleet-row"><span class="fleet-row-label">门槛分界线</span><span class="fleet-row-val" data-hkd="102.5">HK $102.50</span></div>
+                <div class="fleet-row"><span class="fleet-row-label">未达门槛 每公里费用</span><span class="fleet-row-val" data-hkd="10.5">HK $10.50</span></div>
+                <div class="fleet-row"><span class="fleet-row-label">未达门槛 每分钟等候费</span><span class="fleet-row-val" data-hkd="2.1">HK $2.10</span></div>
+                <div class="fleet-row"><span class="fleet-row-label">达到门槛 每公里费用</span><span class="fleet-row-val" data-hkd="7">HK $7.00</span></div>
+                <div class="fleet-row"><span class="fleet-row-label">达到门槛 每分钟等候费</span><span class="fleet-row-val" data-hkd="1.4">HK $1.40</span></div>
+            </div>
+
+            <div class="fleet-group">
+                <div class="fleet-group-label">附加收费</div>
+                <div class="fleet-row"><span class="fleet-row-label">行李附加费</span><span class="fleet-row-val" data-hkd="6">HK $6.00</span></div>
+                <div class="fleet-row"><span class="fleet-row-label">宠物附加费</span><span class="fleet-row-val" data-hkd="5">HK $5.00</span></div>
+                <div class="fleet-row"><span class="fleet-row-label">预约附加费</span><span class="fleet-row-val" data-hkd="5">HK $5.00</span></div>
+            </div>
+        </div>
+
+        <div class="section-title">可选预约车队</div>
+
+        <div class="fleet-list" id="fleetList">
+            <div class="fleet-card" data-url="https://portal.syncab.com.hk/sc/">
+                <div class="fleet-name">星群的士</div>
+                <button class="fleet-go" type="button" disabled>前往网页预约<svg viewBox="0 0 14 14" aria-hidden="true" fill="none"><path d="M4 10L10 4M5.5 4h4.5v4.5"/></svg></button>
+            </div>
+            <div class="fleet-card" data-url="https://bigbosstaxi.hk">
+                <div class="fleet-name">Big Boss Taxi</div>
+                <button class="fleet-go" type="button" disabled>前往网页预约<svg viewBox="0 0 14 14" aria-hidden="true" fill="none"><path d="M4 10L10 4M5.5 4h4.5v4.5"/></svg></button>
+            </div>
+            <div class="fleet-card" data-url="https://www.amigo.taxi/">
+                <div class="fleet-name">Amigo</div>
+                <button class="fleet-go" type="button" disabled>前往网页预约<svg viewBox="0 0 14 14" aria-hidden="true" fill="none"><path d="M4 10L10 4M5.5 4h4.5v4.5"/></svg></button>
+            </div>
+            <div class="fleet-card" data-url="https://booking.joie.io">
+                <div class="fleet-name">JOIE 乐行</div>
+                <button class="fleet-go" type="button" disabled>前往网页预约<svg viewBox="0 0 14 14" aria-hidden="true" fill="none"><path d="M4 10L10 4M5.5 4h4.5v4.5"/></svg></button>
+            </div>
         </div>
     </div>
 
@@ -939,7 +1057,6 @@
             <div class="kv" id="portEtaRow" style="display:none;"><span>预计到达口岸</span><b id="portEta">—</b></div>
             <button class="glass-btn" id="omBtnStart">获取定位</button>
             <div class="status" id="omStatus">尚未获取定位</div>
-            <div class="note">误差 ±300 m 内视为同一位置，红点外圈为精度示意</div>
         </div>
     </div>
 
@@ -1151,28 +1268,34 @@
         <div style="text-align:center;margin-top:8px;">
             <button type="button" class="engine-reset" onclick="resetEngine()">重置推理引擎模型</button>
         </div>
-        <div class="version-text">Version 1.10</div>
+        <div class="version-text">Version 1.11</div>
     </div>
 </div>
 
 <div class="modal-overlay" id="info-modal">
     <div class="modal-content">
         <div class="info-title">更新日志</div>
-        <div class="info-version">Version 1.10</div>
+        <div class="info-version">Version 1.11</div>
         <div class="info-divider"></div>
 
         <div class="changelog">
              <div class="changelog-entry">
+                <div class="changelog-version">Version 1.11 · 的士页与自动打卡｜2026.11.18</div>
+                <ul class="changelog-list">
+                    <li><b>预约车队的士</b><br>入口不再跳转八达通介绍，改为应用内二级页；市区收费表、四支车队与官网跳转收在一页。</li>
+                    <li><b>三币种与单选</b><br>HKD / CNY / USD 实时换算，保留两位小数；四支市区车队单选，选中后新开标签页预约。</li>
+                    <li><b>四主题与英文</b><br>适配浅色、深色、逐光与轻简；轻简卡片去玻璃，打卡按钮改为与「获取定位」同款细线描边。</li>
+                    <li><b>自动到校打卡</b><br>上课日到上课时间自动进入「上学待保存」，30 分钟无操作保存为「今日待放学」；撤销后当日不再触发。</li>
+                    <li><b>补记与边界</b><br>准点自动保存训练 MLP；晚 10 分钟以上补记只留记录、不训练。手动到校不套用自动保存；关页不后台执行，同日 18:00 前重开补算。</li>
+                </ul>
+            </div>
+             <div class="changelog-entry">
                 <div class="changelog-version">Version 1.10 · 口岸分段预测重写｜2026.11.15</div>
                 <ul class="changelog-list">
-                    <li><b>口岸段预测重写</b><br>剩余时间拆成「已走时长」与「口岸段剩余」：剩余量按「还剩多远 ÷ 当前速度」和「历史全程」按距离加权，离口岸越近越信距离、越远越信历史，到达时间不再用「现在 + 全程耗时」硬推。以 12 天虚拟时钟回归，三个检查点平均误差 1.5 分钟、最大 3 分钟。</li>
-                    <li><b>一天只记一条</b><br>同一口岸当天只保留一条样本，在口岸停留再久也不会重复入库；样本满 200 条后丢弃最早的一条。</li>
-                    <li><b>关一次定位，当天停算</b><br>关闭定位即封停当天：ETA 收起、不再自动重连，次日自动恢复。</li>
-                    <li><b>速度抗抖</b><br>取近三帧速度的中位数参与计算；低于 0.8 m/s 按步行下限计，站着不动不会显示「马上到」。</li>
-                    <li><b>只采早高峰</b><br>05:00–11:30 采集窗口配方向门，晚归行程不写样本、不参与训练。</li>
-                    <li><b>只认主口岸</b><br>备选口岸与主口岸距离不足两倍判定半径时不挂载，避免一次穿行同时命中两处；精度门槛 150 米。</li>
-                    <li><b>冷启动不再偏低</b><br>混合权重随样本数递增，模型输出约束在中位数附近，第三条样本起不再偏低十余分钟。</li>
-                    <li><b>英文版同步</b><br>口岸 ETA 与引擎状态文案跟随语言切换，本条目一并本地化。</li>
+                    <li><b>口岸段预测重写</b><br>剩余时间拆成已走时长与口岸段剩余，按距离和历史加权；12 天回归平均误差 1.5 分钟。</li>
+                    <li><b>样本纪律</b><br>同一口岸每天只留一条样本，满 200 条丢最早；关闭定位当天停算，次日恢复。</li>
+                    <li><b>速度与采样</b><br>速度取三帧中位数，低于 0.8 m/s 按步行；只采早高峰、只认主口岸，精度门槛 150 米。</li>
+                    <li><b>冷启动与英文</b><br>混合权重随样本递增，第三条起不再偏低；英文 ETA 与引擎状态同步。</li>
                 </ul>
             </div>
              <div class="changelog-entry">
@@ -1358,7 +1481,6 @@
         // 首页
         '建议出门时间': 'Leave by', '明日建议出门时间': 'Tomorrow · leave by',
         '请设置通勤参数': 'Set up your commute',
-        '推理引擎正在学习中': 'Engine is learning',
         '自学习端侧推理引擎': 'Self-learning on-device engine',
         '本地微型神经网络，动态校准通勤时间': 'A small local network that calibrates your commute',
         '刷新': 'Refresh', '加载日期…': 'Loading date…',
@@ -1401,7 +1523,6 @@
         '定位精度': 'Accuracy', '直线距离': 'Straight-line distance',
         '预计到达口岸': 'Port ETA',
         '获取定位': 'Get location', '关闭定位': 'Turn off location', '尚未获取定位': 'Not located yet',
-        '误差 ±300 m 内视为同一位置，红点外圈为精度示意': 'Within ±300 m counts as the same place; the ring shows accuracy',
         '当前浏览器不支持定位': 'Geolocation not supported',
         '定位权限被拒绝': 'Location permission denied',
         '暂时无法获取位置': 'Location unavailable',
@@ -1409,9 +1530,6 @@
         // 二级页
         '港铁东铁线': 'MTR East Rail Line', '口岸巴士': 'Cross-border buses',
         '今日天气详情': 'Weather details',
-        '香港（屯门·元朗观测点）': 'Hong Kong (Tuen Mun · Yuen Long)',
-        '* 显示时间为巴士预计到站时间｜数据来源：香港政府开放数据 (DATA.GOV.HK)': '* Times are estimated arrivals | Source: DATA.GOV.HK',
-        '*香港天文台开放接口不提供小时预报，仅展示实时观测': '* HKO API provides real-time observations only',
         // 弹窗
         '住宅名称': 'Home name', '例如：XX花园': 'e.g. XX Garden',
         '住宅坐标（选填）': 'Home coordinates (optional)',
@@ -1567,7 +1685,18 @@
         '出门时间': 'Departure', '离校时间': 'Left school',
         '到校时间': 'Arrival', '到家时间': 'Home',
         '早间耗时': 'Morning', '晚间耗时': 'Evening',
-        '日期': 'Date', '暂无历史记录': 'No records yet'
+        '日期': 'Date', '暂无历史记录': 'No records yet',
+        '预约的士收费表': 'Booked taxi fares',
+        '基础计费': 'Metered fare', '附加收费': 'Additional charges',
+        '首2公里起步费': 'Flag fall · first 2 km', '门槛分界线': 'Fare threshold',
+        '未达门槛 每公里费用': 'Per km · below',
+        '未达门槛 每分钟等候费': 'Per min · below',
+        '达到门槛 每公里费用': 'Per km · above',
+        '达到门槛 每分钟等候费': 'Per min · above',
+        '行李附加费': 'Baggage surcharge', '宠物附加费': 'Pet surcharge',
+        '预约附加费': 'Booking surcharge', '可选预约车队': 'Available fleets',
+        '前往网页预约': 'Book online',
+        '星群的士': 'SynCab', 'JOIE 乐行': 'JOIE'
     };
 
     var EN_PAT = [
@@ -1662,15 +1791,18 @@
     }
 
     var EN_CHANGELOG = [
+        '<div class="changelog-entry"><div class="changelog-version">Version 1.11 · Taxi &amp; auto check-in｜Nov 18, 2026</div><ul class="changelog-list">',
+        '<li><b>Book a taxi</b><br>No longer opens the Octopus intro; a dedicated in-app page now holds the urban fare table, four fleets and official links.</li>',
+        '<li><b>Three currencies, one fleet</b><br>HKD / CNY / USD convert instantly to two decimals; only one urban fleet can be selected, then booking opens in a new tab.</li>',
+        '<li><b>Four themes and English</b><br>Light, Dark, Chase and Lite; Lite drops the glass, and check-in buttons match Get location with a hairline outline.</li>',
+        '<li><b>Automatic school check-in</b><br>On school days the app moves to “Save morning trip” at school time, then saves to “Waiting for school to end” after 30 minutes; undoing arrival cancels automation for the day.</li>',
+        '<li><b>Catch-up and limits</b><br>On-time saves train the MLP; catch-up over 10 minutes keeps the record without training. Manual arrival skips auto-save; the page does not run in the background, and reopening before 18:00 catches up the same day.</li>',
+        '</ul></div>',
         '<div class="changelog-entry"><div class="changelog-version">Version 1.10 · Port segment rewritten｜Nov 15, 2026</div><ul class="changelog-list">',
-        '<li><b>Port segment rewritten</b><br>Remaining time now splits into elapsed time and the port leg: the remainder is a distance-weighted blend of “distance left ÷ current speed” and the historical whole trip — distance wins near the port, history wins far out — instead of “now + total duration”. A 12-day virtual-clock regression lands at 1.5 min mean error, 3 min max.</li>',
-        '<li><b>One sample a day</b><br>One sample per port per day; staying at the port no longer records duplicates, and the 200-sample cap drops the oldest.</li>',
-        '<li><b>GPS off stops the day</b><br>Turning GPS off freezes the day: ETA hides, watch does not restart on its own, and it resumes the next day.</li>',
-        '<li><b>Speed smoothing</b><br>The median of the last three fixes drives the estimate; below 0.8 m/s the walking floor applies, so standing still no longer reads as “arriving now”.</li>',
-        '<li><b>Morning window only</b><br>A 05:00–11:30 window plus a direction gate keeps evening trips out of samples and training.</li>',
-        '<li><b>Main port only</b><br>The backup port is not mounted within twice the trigger radius, so one crossing cannot hit two ports; accuracy cap 150 m.</li>',
-        '<li><b>Cold start no longer early</b><br>The blend weight grows with sample count and the model is bounded around the median, so the ETA no longer runs ten-plus minutes early from the third sample on.</li>',
-        '<li><b>English updated</b><br>Port ETA and engine status follow the language switch, and this entry is localized.</li>',
+        '<li><b>Port segment rewritten</b><br>Remaining time splits into elapsed time and the port leg, weighted by distance and history; 12-day regression averages 1.5 min error.</li>',
+        '<li><b>Sample discipline</b><br>One sample per port per day; the 200-sample cap drops the oldest. Turning GPS off stops the day and resumes the next day.</li>',
+        '<li><b>Speed and sampling</b><br>Median of three fixes, with a 0.8 m/s walking floor; 05:00–11:30 window only, main port only, 150 m accuracy cap.</li>',
+        '<li><b>Cold start and English</b><br>Blend weight grows with samples, so the estimate no longer runs early from the third sample; English ETA and engine status sync.</li>',
         '</ul></div>',
         '<div class="changelog-entry"><div class="changelog-version">Version 1.9 stable｜Nov 12, 2026</div><ul class="changelog-list">',
         '<li><b>Engine upgrade</b><br>The inference engine is upgraded with port-segment prediction for more accurate port ETAs.</li>',
@@ -1913,7 +2045,8 @@
         return {
             date: todayYMD(),
             morningOut: null, morningIn: null, morningSaved: false,
-            eveningOut: null, eveningIn: null, eveningSaved: false
+            eveningOut: null, eveningIn: null, eveningSaved: false,
+            autoIn: false, autoInAt: null, autoDue: null, autoLate: false, autoCanceled: false
         };
     }
 
@@ -1928,7 +2061,8 @@
                 return {
                     date: todayYMD(),
                     morningOut: raw.outTime, morningIn: raw.inTime, morningSaved: true,
-                    eveningOut: null, eveningIn: null, eveningSaved: false
+                    eveningOut: null, eveningIn: null, eveningSaved: false,
+                    autoIn: false, autoInAt: null, autoDue: null, autoLate: false, autoCanceled: false
                 };
             }
             return emptyCheckIn();
@@ -1936,7 +2070,9 @@
         return {
             date: todayYMD(),
             morningOut: raw.morningOut || null, morningIn: raw.morningIn || null, morningSaved: raw.morningSaved === true,
-            eveningOut: raw.eveningOut || null, eveningIn: raw.eveningIn || null, eveningSaved: raw.eveningSaved === true
+            eveningOut: raw.eveningOut || null, eveningIn: raw.eveningIn || null, eveningSaved: raw.eveningSaved === true,
+            autoIn: raw.autoIn === true, autoInAt: raw.autoInAt || null, autoDue: raw.autoDue || null,
+            autoLate: raw.autoLate === true, autoCanceled: raw.autoCanceled === true
         };
     }
 
@@ -1995,6 +2131,7 @@
     function tickHome() {
         if (document.hidden) return;
         applyChaseTint();
+        if (autoCheckinTick()) return;
         if (getEffectiveDay() === 'today' && !checkInData.eveningSaved && (checkInData.morningOut || checkInData.eveningOut)) {
             renderUI();
             return;
@@ -2002,6 +2139,10 @@
         renderDate();
         renderDayToggle();
     }
+
+    document.addEventListener('visibilitychange', function () {
+        if (!document.hidden) autoCheckinTick();
+    });
 
     function loadConfig() {
         const saved = localStorage.getItem('terminus_config_v1_2');
@@ -2294,13 +2435,14 @@
 
     /* ===== 香港天文台警告：台风 / 暴雨 → 停课判断 ===== */
     const WARNING_API = 'https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=warnsum&lang=tc';
-    let warningData = { list: [], suspended: false, label: '' };
+    let warningData = { list: [], suspended: false, label: '', loading: true };
 
     function isTyphoon8(code) {
         return code === 'TC8' || code === 'TC8NE' || code === 'TC8SE' || code === 'TC8SW' || code === 'TC8NW' || code === 'TC9' || code === 'TC10';
     }
 
     async function fetchWarnings() {
+        warningData.loading = true;
         try {
             const data = await fetchJSON(WARNING_API, {}, 8000);
             const list = [];
@@ -2318,8 +2460,10 @@
             warningData.suspended = false;
             warningData.label = '';
         }
+        warningData.loading = false;
         renderHoliday();
         renderUI();
+        autoCheckinTick();
     }
 
     function renderHoliday() {
@@ -2682,7 +2826,7 @@
         if (bar) { bar.style.width = '0%'; bar.style.background = 'var(--text-sub)'; bar.classList.remove('urgent'); }
     }
 
-    /* ============ 打卡动作：所有时间戳只来自按钮点击的 Date.now() ============ */
+    /* ============ 打卡动作：手动时间戳来自按钮点击；自动到校按上课时间推定 ============ */
     function persistCheckIn() {
         localStorage.setItem('terminus_checkin', JSON.stringify(checkInData));
         renderUI();
@@ -2714,6 +2858,92 @@
         return d > 0 && d < 10 * 3600 * 1000;
     }
 
+    const AUTO_GRACE_MS = 30 * 60 * 1000;
+    const AUTO_ON_TIME_MS = 10 * 60 * 1000;
+    const AUTO_CATCHUP_END_HOUR = 18;
+    let autoTickLock = false;
+
+    function todaySchoolAtMs() {
+        if (!userConfig.schoolTime) return null;
+        const [h, m] = userConfig.schoolTime.split(':').map(Number);
+        if (!isFinite(h) || !isFinite(m)) return null;
+        const d = new Date();
+        d.setHours(h, m, 0, 0);
+        return d.getTime();
+    }
+
+    function isTodaySchoolDay() {
+        if (holidayData.loading || warningData.loading) return false;
+        if (getRestStatus(new Date(), holidayData.list).isRest) return false;
+        return !warningData.suspended;
+    }
+
+    function morningCanTrain() {
+        if (!checkInData.autoIn) return true;
+        if (checkInData.autoLate) return false;
+        const due = Number(checkInData.autoDue);
+        if (!due) return true;
+        return Date.now() - due <= AUTO_ON_TIME_MS;
+    }
+
+    function autoSaveMorning() {
+        const ci = checkInData;
+        if (!ci.morningOut || !ci.morningIn || ci.morningSaved) return false;
+        if (!tripValid(ci.morningOut, ci.morningIn)) {
+            ci.autoCanceled = true;
+            persistCheckIn();
+            return true;
+        }
+        const train = morningCanTrain();
+        ci.morningSaved = true;
+        if (train) trainEngineOnTrip(tripMinutes(ci.morningOut, ci.morningIn), new Date(ci.morningOut), false, true);
+        persistCheckIn();
+        return true;
+    }
+
+    function autoCheckinTick() {
+        if (autoTickLock || document.hidden) return false;
+        if (!isTodaySchoolDay()) return false;
+        if (checkInData.date !== todayYMD()) return false;
+        if (checkInData.eveningSaved) return false;
+        const schoolAt = todaySchoolAtMs();
+        if (schoolAt === null) return false;
+        const now = Date.now();
+
+        if (checkInData.autoIn && checkInData.morningOut && checkInData.morningIn && !checkInData.morningSaved) {
+            if (checkInData.autoCanceled) return false;
+            const due = Number(checkInData.autoDue) || ((Number(checkInData.autoInAt) || now) + AUTO_GRACE_MS);
+            if (now < due) return false;
+            autoTickLock = true;
+            try { autoSaveMorning(); } finally { autoTickLock = false; }
+            return true;
+        }
+
+        if (checkInData.morningOut && !checkInData.morningIn && !checkInData.morningSaved) {
+            if (checkInData.autoCanceled) return false;
+            if (now < schoolAt) return false;
+            const catchupEnd = new Date();
+            catchupEnd.setHours(AUTO_CATCHUP_END_HOUR, 0, 0, 0);
+            if (now >= catchupEnd.getTime()) return false;
+            if (checkInData.morningOut >= schoolAt) return false;
+            autoTickLock = true;
+            try {
+                checkInData.morningIn = schoolAt;
+                checkInData.autoIn = true;
+                checkInData.autoInAt = now;
+                checkInData.autoDue = now + AUTO_GRACE_MS;
+                checkInData.autoLate = (now - schoolAt) > AUTO_ON_TIME_MS;
+                checkInData.autoCanceled = false;
+                if (window.OmMap && window.OmMap.footprintDissolve) window.OmMap.footprintDissolve();
+                persistCheckIn();
+            } finally {
+                autoTickLock = false;
+            }
+            return true;
+        }
+        return false;
+    }
+
     function checkIn(action) {
         if (action === 'morningOut') {
             // 不直接记录时间戳：先弹启程检查单，全部点亮后由 commitMorningOut() 落表
@@ -2721,6 +2951,10 @@
             return;
         } else if (action === 'morningIn') {
             checkInData.morningIn = Date.now();
+            checkInData.autoIn = false;
+            checkInData.autoInAt = null;
+            checkInData.autoDue = null;
+            checkInData.autoLate = false;
             if (window.OmMap && window.OmMap.footprintDissolve) window.OmMap.footprintDissolve();
         } else if (action === 'saveMorning') {
             if (!checkInData.morningOut || !checkInData.morningIn || !tripValid(checkInData.morningOut, checkInData.morningIn)) {
@@ -2728,14 +2962,25 @@
                 return;
             }
             checkInData.morningSaved = true;
-            trainEngineOnTrip(tripMinutes(checkInData.morningOut, checkInData.morningIn), new Date(checkInData.morningOut), false);
+            if (morningCanTrain()) trainEngineOnTrip(tripMinutes(checkInData.morningOut, checkInData.morningIn), new Date(checkInData.morningOut), false);
         } else if (action === 'resetMorningOut') {
             checkInData.morningOut = null;
             checkInData.morningIn = null;
             checkInData.morningSaved = false;
+            checkInData.autoIn = false;
+            checkInData.autoInAt = null;
+            checkInData.autoDue = null;
+            checkInData.autoLate = false;
+            checkInData.autoCanceled = false;
             if (window.OmMap && window.OmMap.footprintClear) window.OmMap.footprintClear();
         } else if (action === 'resetMorningIn') {
+            const schoolAt = todaySchoolAtMs();
+            if (checkInData.autoIn || (schoolAt !== null && Date.now() >= schoolAt)) checkInData.autoCanceled = true;
             checkInData.morningIn = null;
+            checkInData.autoIn = false;
+            checkInData.autoInAt = null;
+            checkInData.autoDue = null;
+            checkInData.autoLate = false;
         } else if (action === 'eveningOut') {
             checkInData.eveningOut = Date.now();
             checkInData.eveningIn = null;
@@ -2917,6 +3162,11 @@
         checkInData.morningOut = Date.now();
         checkInData.morningIn = null;
         checkInData.morningSaved = false;
+        checkInData.autoIn = false;
+        checkInData.autoInAt = null;
+        checkInData.autoDue = null;
+        checkInData.autoLate = false;
+        checkInData.autoCanceled = false;
         checkInData.date = todayYMD();
         departurePort = portData.main;   // 出门时刻快照口岸，作为「过境」代理
         fetchPortQueue();
@@ -3647,7 +3897,7 @@
     }
 
     // ===== 训练入口：保存记录时调用（优雅降级：数据不完整 → 静默跳过，绝不报错）=====
-    function trainEngineOnTrip(duration, dateObj, isReturn) {
+    function trainEngineOnTrip(duration, dateObj, isReturn, silent) {
         try {
             if (!isFinite(duration) || duration <= 0) return;
             const base = Number(userConfig.baseTime);
@@ -3658,7 +3908,7 @@
             departurePort = null;   // 快照用完即弃
             const predicted = engine.predict(features);
             if (Math.abs(target - predicted) > 45) {
-                showToast('误差过大，推理引擎已忽略本次学习');
+                if (!silent) showToast('误差过大，推理引擎已忽略本次学习');
                 return;
             }
             engine.train(features, target);
@@ -3699,8 +3949,7 @@
     }
 
     function renderEngineStatus(aiDelta) {
-        if (!engineEnabled || !portFenceOn) return '';
-        return '<span>' + (LANG === 'en' ? 'Engine is learning' : '推理引擎正在学习中') + '</span>';
+        return '';
     }
 
     // ============ 时间倒推 & 渲染 ============
@@ -3975,6 +4224,8 @@
             fetchBusData();
         } else if (targetId === 'view-weather') {
             renderWeatherSubview();
+        } else if (targetId === 'view-fleet') {
+            if (window.fleetOnEnter) window.fleetOnEnter();
         } else if (targetId === 'view-map') {
             if (window.OmMap && window.OmMap.onShow) window.OmMap.onShow();
         } else if (targetId === 'view-game-train') {
@@ -6165,6 +6416,103 @@
             showToast('再点一次，看看会发生什么');
         }
     });
+})();
+</script>
+
+<script>
+(function () {
+    var FX = { HKD: 1, CNY: 0.84961, USD: 0.12745 };
+    var SIGN = { HKD: 'HK $', CNY: 'CN ¥', USD: 'US $' };
+    var CUR = 'HKD';
+
+    function money(hkd) { return SIGN[CUR] + (hkd * FX[CUR]).toFixed(2); }
+
+    function renderMoney() {
+        var vals = document.querySelectorAll('#view-fleet [data-hkd]');
+        for (var i = 0; i < vals.length; i++) {
+            vals[i].textContent = money(parseFloat(vals[i].getAttribute('data-hkd')));
+        }
+    }
+
+    function placePill() {
+        var seg = document.getElementById('fleetSeg');
+        if (!seg) return;
+        var on = seg.querySelector('.fleet-seg-btn.active');
+        var pill = document.getElementById('fleetPill');
+        if (!on || !pill) return;
+        pill.style.width = on.offsetWidth + 'px';
+        pill.style.transform = 'translateX(' + (on.offsetLeft - 3) + 'px)';
+    }
+
+    window.fleetSetCurrency = function (cur) {
+        if (!(cur in FX)) return;
+        CUR = cur;
+        var btns = document.querySelectorAll('#view-fleet .fleet-seg-btn');
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].classList.toggle('active', btns[i].getAttribute('data-cur') === cur);
+        }
+        renderMoney();
+        placePill();
+    };
+
+    window.fleetOnEnter = function () {
+        try { window.scrollTo(0, 0); } catch (e) {}
+        CUR = 'HKD';
+        var btns = document.querySelectorAll('#view-fleet .fleet-seg-btn');
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].classList.toggle('active', btns[i].getAttribute('data-cur') === 'HKD');
+        }
+        renderMoney();
+        requestAnimationFrame(placePill);
+        setTimeout(placePill, 120);
+    };
+
+    function loadRates() {
+        if (!window.fetch) return;
+        fetch('https://api.frankfurter.dev/v1/latest?base=HKD&symbols=CNY,USD', { cache: 'no-store' })
+            .then(function (res) { return res.json(); })
+            .then(function (json) {
+                if (!json || !json.rates) return;
+                if (typeof json.rates.CNY === 'number') FX.CNY = json.rates.CNY;
+                if (typeof json.rates.USD === 'number') FX.USD = json.rates.USD;
+                renderMoney();
+            })
+            .catch(function () {});
+    }
+
+    (function bindFleet() {
+        var list = document.getElementById('fleetList');
+        if (!list) return;
+        var cards = list.querySelectorAll('.fleet-card');
+        list.addEventListener('click', function (e) {
+            var btn = e.target.closest('.fleet-go');
+            if (btn) {
+                if (!btn.classList.contains('is-live')) return;
+                window.open(btn.parentNode.getAttribute('data-url'), '_blank', 'noopener,noreferrer');
+                return;
+            }
+            var card = e.target.closest('.fleet-card');
+            if (!card) return;
+            var isOn = card.classList.contains('is-on');
+            for (var i = 0; i < cards.length; i++) {
+                cards[i].classList.remove('is-on');
+                var b = cards[i].querySelector('.fleet-go');
+                b.classList.remove('is-live');
+                b.disabled = true;
+            }
+            if (!isOn) {
+                card.classList.add('is-on');
+                var live = card.querySelector('.fleet-go');
+                live.classList.add('is-live');
+                live.disabled = false;
+            }
+        });
+    })();
+
+    renderMoney();
+    loadRates();
+    window.addEventListener('resize', placePill);
+    window.addEventListener('orientationchange', placePill);
 })();
 </script>
 </body>
