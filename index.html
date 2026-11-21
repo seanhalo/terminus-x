@@ -109,14 +109,13 @@
             --m-accent: #E4693C; --m-ring: rgba(228, 105, 60, 0.58); --m-halo-op: 0.13;
             --m-hair: #F0F0F2; --m-sw-border: #BFC9D6;
             --m-plate-hair: rgba(29, 29, 31, 0.05); --m-plate-shadow: rgba(29, 29, 31, 0.04);
-        }body.dark-mode.theme-chase.map-day #view-map .glass-btn {
-            background: rgba(255, 255, 255, 0.6) !important;
-            border: 1px solid rgba(0, 0, 0, 0.08) !important;
-            color: #1D1D1F !important;
-        }#view-map .land, #view-map .rg, #view-map .rs, #view-map .rk, #view-map .rt, #view-map .plate, #view-map .glass-btn {
+        }body.dark-mode.theme-chase.map-day #view-map .glass-btn {background: rgba(255, 255, 255, 0.6) !important; border: 1px solid rgba(0, 0, 0, 0.08) !important; color: #1D1D1F !important; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8) !important; backdrop-filter: blur(24px) saturate(180%) !important; -webkit-backdrop-filter: blur(24px) saturate(180%) !important;}#view-map .land, #view-map .rg, #view-map .rs, #view-map .rk, #view-map .rt, #view-map .plate, #view-map .glass-btn {
             transition: fill .6s ease, stroke .6s ease, background .6s ease, color .6s ease;
         }* { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif; -webkit-tap-highlight-color: transparent; }/* iOS Safari 默认按钮样式（蓝色文字 / 系统底色）重置 */
-        button { -webkit-appearance: none; appearance: none; font-family: inherit; color: inherit; }body { background: linear-gradient(180deg, var(--bg-tint-a), var(--bg-tint-b)); background-attachment: fixed; color: var(--text-main); display: flex; justify-content: center; padding: 20px; min-height: 100vh; min-height: 100dvh; transition: color 0.3s ease; }.app-container { width: 100%; max-width: 400px; display: flex; flex-direction: column; gap: 16px; }.header { display: flex; justify-content: space-between; align-items: center; padding: 10px 5px; font-size: 16px; font-weight: 600; }.header-brand { display: flex; align-items: baseline; gap: 8px; }.header-sub { font-size: 10px; color: var(--text-sub); font-weight: 400; letter-spacing: 0.5px; }.settings-icon { color: var(--text-sub); cursor: pointer; display: flex; align-items: center; transition: color 0.2s, transform 0.3s; }.settings-icon:hover { color: var(--text-main); }.settings-icon:active { transform: rotate(45deg); }.header-actions { display: flex; align-items: center; gap: 14px; }.date-row { display: flex; align-items: center; justify-content: space-between; padding: 0 5px; margin-top: -8px; }.date-line { font-size: 13px; color: var(--text-sub); }.day-toggle { display: flex; gap: 4px; }.day-btn { padding: 3px 10px; border-radius: 10px; border: 1px solid #E5E5EA; background: #F5F5F7; color: var(--text-sub); font-size: 11px; cursor: pointer; transition: background 0.15s, color 0.15s, border-color 0.15s; }.section-title { font-size: 12px; color: var(--text-sub); font-weight: 600; letter-spacing: 0.3px; padding-left: 8px; margin-bottom: -8px; }.card { background-color: var(--card-bg); border-radius: 24px; padding: 24px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03); }.hero-card { text-align: center; }.hero-title { font-size: 14px; color: var(--text-sub); margin-bottom: 8px; }.hero-time { font-size: 72px; font-weight: 700; line-height: 1; letter-spacing: -2px; margin-bottom: 12px; color: var(--text-main); transition: opacity 0.35s ease, transform 0.35s ease; }.hero-time.checkin-mode { font-size: 36px !important; letter-spacing: 0 !important; white-space: nowrap; margin-top: 16px; margin-bottom: 16px; }.action-card { display: block; width: 100%; padding: 14px; margin-bottom: 8px; border-radius: 12px; border: 1px solid rgba(150, 150, 150, 0.2); background: rgba(150, 150, 150, 0.05); color: var(--text-main); font-size: 14px; font-weight: 600; cursor: pointer; transition: opacity 0.15s; text-align: center; }.action-card:active { opacity: 0.6; }body.dark-mode .action-card { border-color: rgba(255, 255, 255, 0.1); background: rgba(255, 255, 255, 0.05); }.hero-sub { font-size: 13px; color: var(--text-sub); display: flex; justify-content: center; align-items: center; gap: 6px; }.status-dot { width: 10px; height: 10px; border-radius: 50%; background: #D1D1D6; display: inline-block; flex-shrink: 0; }.status-dot.green { background: var(--status-green); }.status-dot.yellow { background: var(--status-yellow); }.status-dot.red { background: var(--status-red); }.status-dot.gray { background: #D1D1D6; }.holiday-card { display: flex; align-items: center; gap: 12px; padding: 16px 20px; }.holiday-icon { color: var(--text-sub); display: flex; align-items: center; }.holiday-text { flex: 1; font-size: 14px; font-weight: 600; }.port-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }.port-card { padding: 18px 16px; text-align: center; }.port-name { font-size: 14px; font-weight: 600; margin-bottom: 10px; }.port-status { display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 15px; font-weight: 600; }.weather-card { padding: 18px 24px; }.weather-row { display: flex; align-items: center; }.weather-city { flex: 1; text-align: center; }.weather-city-name { font-size: 14px; font-weight: 600; margin-bottom: 6px; }.weather-temp { font-size: 32px; font-weight: 700; letter-spacing: -1px; }.weather-temp span { font-size: 18px; font-weight: 500; color: var(--text-sub); }.weather-desc { font-size: 12px; color: var(--text-sub); margin-top: 4px; }.weather-divider { width: 1px; height: 48px; background: #E5E5EA; }.tool-btn { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; min-height: 96px; padding: 18px 14px; border-radius: 24px; color: var(--text-main); font-size: 15px; font-weight: 600; text-decoration: none; cursor: pointer; background: rgba(255,255,255,0.65); border: 1px solid rgba(255,255,255,0.8); backdrop-filter: blur(40px) saturate(180%); -webkit-backdrop-filter: blur(40px) saturate(180%); box-shadow: 0 8px 24px rgba(0,0,0,0.03); }.tool-btn:active { transform: scale(0.97); }.tool-btn svg { color: var(--text-main); }body.dark-mode .tool-btn { background: rgba(20,24,34,0.45); border-color: rgba(255,255,255,0.15); box-shadow: 0 16px 40px rgba(0,0,0,0.5); backdrop-filter: blur(40px) saturate(150%); -webkit-backdrop-filter: blur(40px) saturate(150%); }body.dark-mode.theme-chase .tool-btn { background: rgba(20,24,34,0.55); border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 16px 40px rgba(0,0,0,0.5); backdrop-filter: blur(40px) saturate(150%); -webkit-backdrop-filter: blur(40px) saturate(150%); }.tool-btn:focus:not(:focus-visible) { outline: none; }.tool-btn:focus-visible { outline: 2px solid var(--accent-color); outline-offset: 2px; }.sz-port-link { background-color: var(--card-bg); border-radius: 24px; padding: 16px; text-align: center; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02); cursor: pointer; text-decoration: none; color: var(--text-main); display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 14px; font-weight: 600; transition: transform 0.1s; }.sz-port-link:active { transform: scale(0.98); }.sz-port-link-row { display: flex; align-items: center; justify-content: center; gap: 6px; }.sz-port-link-row svg { color: var(--accent-color); }.sz-port-link-sub { font-size: 11px; color: var(--text-sub); font-weight: 400; }.modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.4); display: none; justify-content: center; align-items: center; padding: 20px; backdrop-filter: blur(5px); z-index: 100; }.modal-overlay.active { display: flex; }.modal-content { background: var(--card-bg); width: 100%; max-width: 340px; border-radius: 24px; padding: 24px; max-height: 90vh; overflow-y: auto; }.modal-title { font-size: 18px; font-weight: 600; margin-bottom: 20px; text-align: center; }.input-group { margin-bottom: 16px; }.input-group label { display: block; font-size: 13px; color: var(--text-sub); margin-bottom: 6px; }.input-group input { width: 100%; box-sizing: border-box; min-width: 0; padding: 12px; border-radius: 10px; border: 1px solid #E5E5EA; font-size: 16px; outline: none; background: #FFF; }.input-group input:focus { border-color: var(--accent-color); }.coord-input-wrap { display: flex; align-items: center; gap: 8px; }.coord-input-wrap input { flex: 1; min-width: 0; width: auto; height: 44px; }.locate-btn { box-sizing: border-box; height: 44px; width: 64px; flex: 0 0 auto; padding: 0; background: rgba(150, 150, 150, 0.1); border: 1px solid var(--line); border-radius: 10px; font-size: 13px; color: var(--text-main); display: flex; align-items: center; justify-content: center; white-space: nowrap; cursor: pointer; transition: width 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s; }.locate-btn.loading { width: 76px; opacity: 0.7; }body.dark-mode .locate-btn { background: rgba(255, 255, 255, 0.08); }input[type="time"] {
+        button { -webkit-appearance: none; appearance: none; font-family: inherit; color: inherit; }body { background: linear-gradient(180deg, var(--bg-tint-a), var(--bg-tint-b)); background-attachment: fixed; color: var(--text-main); display: flex; justify-content: center; padding: 20px; min-height: 100vh; min-height: 100dvh; transition: color 0.3s ease; }.app-container { width: 100%; max-width: 400px; display: flex; flex-direction: column; gap: 16px; }.header { display: flex; justify-content: space-between; align-items: center; padding: 10px 5px; font-size: 16px; font-weight: 600; }.header-brand { display: flex; align-items: baseline; gap: 8px; }.header-sub { font-size: 10px; color: var(--text-sub); font-weight: 400; letter-spacing: 0.5px; }.settings-icon { color: var(--text-sub); cursor: pointer; display: flex; align-items: center; transition: color 0.2s, transform 0.3s; }.settings-icon:hover { color: var(--text-main); }.settings-icon:active { transform: rotate(45deg); }.header-actions { display: flex; align-items: center; gap: 14px; }.date-row { display: flex; align-items: center; justify-content: space-between; padding: 0 5px; margin-top: -8px; }.date-line { font-size: 13px; color: var(--text-sub); }.day-toggle { display: flex; gap: 4px; }.day-btn { padding: 3px 10px; border-radius: 10px; border: 1px solid #E5E5EA; background: #F5F5F7; color: var(--text-sub); font-size: 11px; cursor: pointer; transition: background 0.15s, color 0.15s, border-color 0.15s; }.section-title { font-size: 12px; color: var(--text-sub); font-weight: 600; letter-spacing: 0.3px; padding-left: 8px; margin-bottom: -8px; }.card { background-color: var(--card-bg); border-radius: 24px; padding: 24px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03); }.hero-card { text-align: center; }.hero-title { font-size: 14px; color: var(--text-sub); margin-bottom: 8px; }.hero-time { font-size: 72px; font-weight: 700; line-height: 1; letter-spacing: -2px; margin-bottom: 12px; color: var(--text-main); transition: opacity 0.35s ease, transform 0.35s ease; }.hero-time.checkin-mode { font-size: 36px !important; letter-spacing: 0 !important; white-space: nowrap; margin-top: 16px; margin-bottom: 16px; }.action-card { display: block; width: 100%; padding: 14px; margin-bottom: 8px; border-radius: 12px; border: 1px solid rgba(150, 150, 150, 0.2); background: rgba(150, 150, 150, 0.05); color: var(--text-main); font-size: 14px; font-weight: 600; cursor: pointer; transition: opacity 0.15s; text-align: center; }.action-card:active { opacity: 0.6; }body.dark-mode .action-card { border-color: rgba(255, 255, 255, 0.1); background: rgba(255, 255, 255, 0.05); }.hero-sub { font-size: 13px; color: var(--text-sub); display: flex; justify-content: center; align-items: center; gap: 6px; }.status-dot { width: 10px; height: 10px; border-radius: 50%; background: #D1D1D6; display: inline-block; flex-shrink: 0; }.status-dot.green { background: var(--status-green); }.status-dot.yellow { background: var(--status-yellow); }.status-dot.red { background: var(--status-red); }.status-dot.gray { background: #D1D1D6; }.holiday-card { display: flex; align-items: center; gap: 12px; padding: 16px 20px; }.holiday-icon { color: var(--text-sub); display: flex; align-items: center; }.holiday-text { flex: 1; font-size: 14px; font-weight: 600; }.port-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }.port-card { padding: 18px 16px; text-align: center; }.port-name { font-size: 14px; font-weight: 600; margin-bottom: 10px; }.port-status { display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 15px; font-weight: 600; }.weather-card { padding: 18px 24px; }.weather-row { display: flex; align-items: center; }.weather-city { flex: 1; text-align: center; }.weather-city-name { font-size: 14px; font-weight: 600; margin-bottom: 6px; }.weather-temp { font-size: 32px; font-weight: 700; letter-spacing: -1px; }.weather-temp span { font-size: 18px; font-weight: 500; color: var(--text-sub); }.weather-desc { font-size: 12px; color: var(--text-sub); margin-top: 4px; }.weather-divider { width: 1px; height: 48px; background: #E5E5EA; }.tool-btn { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; min-height: 96px; padding: 18px 14px; border-radius: 24px; color: var(--text-main); font-size: 15px; font-weight: 600; text-decoration: none; cursor: pointer; background: rgba(255,255,255,0.65); border: 1px solid rgba(255,255,255,0.8); backdrop-filter: blur(40px) saturate(180%); -webkit-backdrop-filter: blur(40px) saturate(180%); box-shadow: 0 8px 24px rgba(0,0,0,0.03); }.tool-btn:active { transform: scale(0.97); }.tool-btn svg { color: var(--text-main); }body.dark-mode .tool-btn { background: rgba(20,24,34,0.45); border-color: rgba(255,255,255,0.15); box-shadow: 0 16px 40px rgba(0,0,0,0.5); backdrop-filter: blur(40px) saturate(150%); -webkit-backdrop-filter: blur(40px) saturate(150%); }body.dark-mode.theme-chase .tool-btn { background: rgba(20,24,34,0.55); border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 16px 40px rgba(0,0,0,0.5); backdrop-filter: blur(40px) saturate(150%); -webkit-backdrop-filter: blur(40px) saturate(150%); }.tool-btn:focus:not(:focus-visible) { outline: none; }.tool-btn:focus-visible { outline: 2px solid var(--accent-color); outline-offset: 2px; }.sz-port-link { background-color: var(--card-bg); border-radius: 24px; padding: 16px; text-align: center; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02); cursor: pointer; text-decoration: none; color: var(--text-main); display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 14px; font-weight: 600; transition: transform 0.1s; }.sz-port-link:active { transform: scale(0.98); }.sz-port-link-row { display: flex; align-items: center; justify-content: center; gap: 6px; }.sz-port-link-row svg { color: var(--accent-color); }.sz-port-link-sub { font-size: 11px; color: var(--text-sub); font-weight: 400; }.modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.4); display: none; justify-content: center; align-items: center; padding: 20px; backdrop-filter: blur(5px); z-index: 100; }.modal-overlay.active { display: flex; }.modal-content { background: var(--card-bg); width: 100%; max-width: 340px; border-radius: 24px; padding: 24px; max-height: 90vh; overflow-y: auto; }.modal-title { font-size: 18px; font-weight: 600; margin-bottom: 20px; text-align: center; }.input-group { margin-bottom: 16px; }.input-group label { display: block; font-size: 13px; color: var(--text-sub); margin-bottom: 6px; }.input-group input { width: 100%; box-sizing: border-box; min-width: 0; padding: 12px; border-radius: 10px; border: 1px solid #E5E5EA; font-size: 16px; outline: none; background: #FFF; }.input-group input:focus { border-color: var(--accent-color); }.coord-input-wrap { display: flex; align-items: center; gap: 8px; }.coord-input-wrap input { flex: 1; min-width: 0; width: auto; height: 44px; }.locate-btn { box-sizing: border-box; height: 44px; width: 64px; flex: 0 0 auto; padding: 0; background: rgba(150, 150, 150, 0.1); border: 1px solid var(--line); border-radius: 10px; font-size: 13px; color: var(--text-main); display: flex; align-items: center; justify-content: center; white-space: nowrap; cursor: pointer; transition: width 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s; }.locate-btn.loading { width: 76px; opacity: 0.7; }body.dark-mode .locate-btn { background: rgba(255, 255, 255, 0.08); }body:not(.dark-mode) .locate-btn { background: rgba(0, 0, 0, 0.03); border-color: rgba(0, 0, 0, 0.10); }body:not(.dark-mode) .locate-btn:active { background: rgba(0, 0, 0, 0.06); }input[type="number"]{-moz-appearance:textfield}
+input[type="number"]::-webkit-outer-spin-button,input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+input[type="time"]::-webkit-calendar-picker-indicator{opacity:.55;cursor:pointer}
+input[type="time"] {
             -webkit-appearance: none;
             appearance: none;
             text-align: left;
@@ -132,7 +131,7 @@
         .view { display: flex; flex-direction: column; gap: 16px; }.view-enter { animation: view-in var(--t-norm) var(--ease); }@keyframes view-in {
             from { opacity: 0; transform: translateY(8px); }
             to { opacity: 1; transform: none; }
-        }.subview-header { display: flex; align-items: center; gap: 8px; padding: 6px 0; }.back-btn { width: 32px; height: 32px; border-radius: 50%; border: none; background: transparent; color: var(--text-main); font-size: 22px; cursor: pointer; display: flex; align-items: center; justify-content: center; line-height: 1; }.back-btn:active { background: #E5E5EA; }.back-btn-spacer { width: 32px; }.card-title { font-size: 14px; font-weight: 600; margin-bottom: 12px; }.mtr-line { display: flex; justify-content: space-between; align-items: center; padding: 4px 0; }.mtr-dest { font-size: 14px; font-weight: 600; }.mtr-eta { font-size: 15px; font-weight: 600; color: var(--text-main); }.mtr-eta.dim { color: var(--text-sub); font-weight: 400; }.mtr-eta-wrap { display: flex; align-items: center; gap: 5px; }.mtr-delay { font-size: 11px; color: var(--warning-color); font-weight: 500; }#mtr-cards { display: flex; flex-direction: column; gap: 16px; }.bus-line { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid #F0F0F2; }.bus-line:last-child { border-bottom: none; }.bus-route { font-weight: 700; font-size: 15px; min-width: 44px; }.bus-dest { flex: 1; font-size: 13px; color: var(--text-sub); }.bus-eta { font-size: 14px; font-weight: 600; color: var(--text-main); }.bus-etas { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }.bus-eta.dim { color: var(--text-sub); font-weight: 400; }.bus-remark { font-size: 11px; color: var(--text-sub); font-weight: 400; }.bus-port-title { cursor: pointer; }.bus-port-title::after { content: " ↗"; font-size: 11px; color: var(--text-sub); font-weight: 400; }.bus-no-service { text-align: center; font-size: 13px; color: var(--text-sub); padding: 12px 0; }#bus-cards { display: flex; flex-direction: column; gap: 16px; }.bus-note { font-size: 11px; color: var(--text-sub); text-align: center; opacity: 0.7; }.progress-container { width: 100%; height: 4px; background: #E5E5EA; border-radius: 2px; margin-bottom: 12px; overflow: hidden; }.progress-bar { height: 100%; border-radius: 2px; width: 0%; background: var(--status-green); transition: width 0.4s ease, background-color 0.3s ease; }/* ===== 深色模式专属细节 ===== */
+        }.subview-header { display: flex; align-items: center; gap: 8px; padding: 6px 0; }.back-btn { width: 32px; height: 32px; border-radius: 50%; border: none; background: transparent; color: var(--text-main); font-size: 22px; cursor: pointer; display: flex; align-items: center; justify-content: center; line-height: 1; }.back-btn:active { background: #E5E5EA; }.back-btn-spacer { width: 32px; }.card-title { font-size: 14px; font-weight: 600; margin-bottom: 12px; }#mtr-cards { display: flex; flex-direction: column; gap: 16px; }.bus-line { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid #F0F0F2; }.bus-line:last-child { border-bottom: none; }.bus-route { font-weight: 700; font-size: 15px; min-width: 80px; white-space: nowrap; }.bus-dest { flex: 1; font-size: 13px; color: var(--text-sub); }.bus-eta { font-size: 14px; font-weight: 600; color: var(--text-main); }.bus-etas { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }.bus-eta.dim { color: var(--text-sub); font-weight: 400; }.bus-remark { font-size: 11px; color: var(--text-sub); font-weight: 400; }.bus-gmb { display: inline-block; margin-left: 6px; padding: 0 4px; border: 1px solid var(--line); border-radius: 4px; font-size: 10px; font-weight: 500; line-height: 14px; color: var(--text-sub); vertical-align: 1px; }.bus-line.minibus-first { margin-top: 4px; padding-top: 12px; }.bus-port-title { cursor: pointer; }.bus-port-title::after { content: " ↗"; font-size: 11px; color: var(--text-sub); font-weight: 400; }.bus-no-service { text-align: center; font-size: 13px; color: var(--text-sub); padding: 12px 0; }#bus-cards { display: flex; flex-direction: column; gap: 16px; }.bus-note { font-size: 11px; color: var(--text-sub); text-align: center; opacity: 0.7; }.progress-container { width: 100%; height: 4px; background: #E5E5EA; border-radius: 2px; margin-bottom: 12px; overflow: hidden; }.progress-bar { height: 100%; border-radius: 2px; width: 0%; background: var(--status-green); transition: width 0.4s ease, background-color 0.3s ease; }/* ===== 深色模式专属细节 ===== */
         body.dark-mode .progress-container { background: #333333; }body.dark-mode .hero-time {
             color: #FFFFFF;
             text-shadow: 0 0 30px rgba(94, 156, 255, 0.4), 0 0 10px rgba(255, 255, 255, 0.2);
@@ -368,16 +367,7 @@
         }#view-map .map-card { padding: 12px; }#view-map .plate {
             border-radius: 10px; overflow: hidden; background: var(--m-sea);
             box-shadow: inset 0 0 0 1px var(--m-plate-hair), inset 0 2px 8px var(--m-plate-shadow);
-        }#omMap { display: block; width: 100%; height: auto; touch-action: pan-y; user-select: none; -webkit-user-select: none; }#view-map .legend { display: flex; align-items: center; gap: 14px; padding: 10px 8px 4px; }#view-map .lg { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--text-sub); }#view-map .sw { width: 9px; height: 9px; border-radius: 3px; }#view-map .sw.sz { background: var(--m-sz); box-shadow: inset 0 0 0 1px var(--m-sw-border); }#view-map .sw.hk { background: var(--m-hk); box-shadow: inset 0 0 0 1px var(--m-sw-border); }#view-map .sw.me { background: var(--m-accent); border-radius: 50%; }#view-map .card-pad { padding: 20px 20px 18px; }#view-map .kv { display: flex; justify-content: space-between; align-items: baseline; padding: 7px 0; font-size: 13px; color: var(--text-sub); }#view-map .kv + .kv { border-top: 1px solid var(--m-hair); }#view-map .kv b { font-weight: 600; color: var(--text-main); font-size: 14px; }#view-map .kv b small { font-size: 11px; font-weight: 400; color: var(--text-sub); margin-left: 3px; }#view-map .glass-btn {
-            width: 100%; margin-top: 14px; padding: 14px; border-radius: 12px;
-            font-size: 14px; font-weight: 600; font-family: inherit; color: var(--text-main);
-            background: rgba(255, 255, 255, 0.55); border: 1.5px solid rgba(255, 255, 255, 0.95);
-            box-shadow: 0 0 0 1px rgba(29, 29, 31, 0.06), 0 8px 20px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 1);
-            cursor: pointer; transition: background 0.15s ease;
-        }#view-map .glass-btn:active { background: rgba(255, 255, 255, 0.85); }body.dark-mode #view-map .glass-btn {
-            background: rgba(38, 44, 56, 0.55); border: 1.5px solid rgba(255, 255, 255, 0.26);
-            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5), 0 8px 20px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.16);
-        }body.dark-mode #view-map .glass-btn:active { background: rgba(58, 66, 84, 0.65); }#view-map .note { font-size: 10px; color: var(--text-sub); line-height: 1.6; text-align: center; margin-top: 10px; opacity: 0.6; }#view-map .status { font-size: 11px; color: var(--text-sub); text-align: center; margin-top: 8px; }#view-map .status.on { color: var(--text-main); }#omMap .land { fill-rule: evenodd; stroke: var(--m-coast); stroke-width: 1.1; stroke-linejoin: round; paint-order: fill stroke; }#omMap .land.sz path { fill: var(--m-sz); }#omMap .land.hk path { fill: var(--m-hk); }#omMap .rg { fill: var(--m-region); font-size: 24px; font-weight: 600; letter-spacing: 4px; }#omMap .rk { fill: var(--m-key); stroke: var(--m-key-stroke); stroke-width: 1.2; }#omMap .rt {
+        }#omMap { display: block; width: 100%; height: auto; touch-action: pan-y; user-select: none; -webkit-user-select: none; }#view-map .legend { display: flex; align-items: center; gap: 14px; padding: 10px 8px 4px; }#view-map .lg { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--text-sub); }#view-map .sw { width: 9px; height: 9px; border-radius: 3px; }#view-map .sw.sz { background: var(--m-sz); box-shadow: inset 0 0 0 1px var(--m-sw-border); }#view-map .sw.hk { background: var(--m-hk); box-shadow: inset 0 0 0 1px var(--m-sw-border); }#view-map .sw.me { background: var(--m-accent); border-radius: 50%; }#view-map .card-pad { padding: 20px 20px 18px; }#view-map .kv { display: flex; justify-content: space-between; align-items: baseline; padding: 7px 0; font-size: 13px; color: var(--text-sub); }#view-map .kv + .kv { border-top: 1px solid var(--m-hair); }#view-map .kv b { font-weight: 600; color: var(--text-main); font-size: 14px; }#view-map .kv b small { font-size: 11px; font-weight: 400; color: var(--text-sub); margin-left: 3px; }#view-map .glass-btn {width: 100%; margin-top: 14px; padding: 14px; border-radius: 12px; font-size: 14px; font-weight: 600; font-family: inherit; color: var(--text-main); background: rgba(255, 255, 255, 0.55); border: 1px solid rgba(255, 255, 255, 0.9); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 1); backdrop-filter: blur(24px) saturate(180%); -webkit-backdrop-filter: blur(24px) saturate(180%); cursor: pointer; transition: background 0.15s ease;}#view-map .glass-btn:active { background: rgba(255, 255, 255, 0.85); }body.dark-mode #view-map .glass-btn {background: rgba(38, 44, 56, 0.55); border: 1.5px solid rgba(255, 255, 255, 0.26); box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5), 0 8px 20px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.16); backdrop-filter: none; -webkit-backdrop-filter: none;}body.dark-mode #view-map .glass-btn:active { background: rgba(58, 66, 84, 0.65); }#view-map .note { font-size: 10px; color: var(--text-sub); line-height: 1.6; text-align: center; margin-top: 10px; opacity: 0.6; }#view-map .status { font-size: 11px; color: var(--text-sub); text-align: center; margin-top: 8px; }#view-map .status.on { color: var(--text-main); }#omMap .land { fill-rule: evenodd; stroke: var(--m-coast); stroke-width: 1.1; stroke-linejoin: round; paint-order: fill stroke; }#omMap .land.sz path { fill: var(--m-sz); }#omMap .land.hk path { fill: var(--m-hk); }#omMap .rg { fill: var(--m-region); font-size: 24px; font-weight: 600; letter-spacing: 4px; }#omMap .rk { fill: var(--m-key); stroke: var(--m-key-stroke); stroke-width: 1.2; }#omMap .rt {
             fill: var(--m-label); font-size: 19px; letter-spacing: 0.4px;
             paint-order: stroke; stroke: var(--m-label-stroke); stroke-width: 5; stroke-linejoin: round;
         }#omMap .rt.k { fill: var(--text-main); font-weight: 600; }#omHalo { fill: var(--m-accent); opacity: var(--m-halo-op); }#omRing { fill: none; stroke: var(--m-ring); stroke-width: 1.5; stroke-dasharray: 3.2 3.2; }#omDot { fill: var(--m-accent); stroke: #FFF; stroke-width: 1.6; }body.dark-mode #omDot { stroke: #12161D; }/* ===== 启程检查单（Checklist）===== */
@@ -515,11 +505,9 @@
             background: #F5F5F7;
             backdrop-filter: none;
             -webkit-backdrop-filter: none;
-        }body.theme-simple #view-map .glass-btn {
-            background: #FFFFFF !important;
+        }body.theme-simple #view-map .glass-btn {background: #FFFFFF !important;
             border-color: var(--line) !important;
-            box-shadow: none !important;
-        }body.theme-simple .chip {
+            box-shadow: none !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important;}body.theme-simple .chip {
             background: #F5F5F7;
             border-color: var(--line);
         }/* 轻简：打卡状态机按钮改为与「获取定位」一致的细线描边 */
@@ -623,6 +611,180 @@ body.theme-simple #view-fleet .card,body.theme-simple #view-fleet .fleet-card,bo
 body.theme-simple #view-fleet .fleet-card::before{display:none}
 @media (max-width:360px){#view-fleet .subview-header{gap:6px}#view-fleet .fleet-seg-btn{padding:4px 8px;font-size:11px}}
 
+
+        /* ===== 港铁时刻表（多线） ===== */
+        .refresh-btn{width:32px;height:32px;border-radius:50%;border:none;background:transparent;color:var(--text-sub);display:flex;align-items:center;justify-content:center;cursor:pointer;flex:0 0 auto;transition:color .15s ease,background .15s ease}
+        .refresh-btn:active,.refresh-btn.pressed{color:var(--text-main)}
+        .refresh-btn.spin svg{animation:spin 1s linear infinite}
+        @keyframes spin{to{transform:rotate(360deg)}}
+        .mtr-line-strip{display:flex;gap:2px;overflow-x:auto;padding:3px;background:var(--seg-bg);border:1px solid var(--seg-border);border-radius:var(--radius-pill);box-shadow:var(--glass-shadow);backdrop-filter:blur(var(--glass-blur)) saturate(var(--glass-sat));-webkit-backdrop-filter:blur(var(--glass-blur)) saturate(var(--glass-sat));scrollbar-width:none;-ms-overflow-style:none;scroll-snap-type:x proximity}
+        .mtr-line-strip::-webkit-scrollbar{display:none}
+        .mtr-line-chip{flex:0 0 auto;display:flex;align-items:center;gap:6px;border:1px solid transparent;border-radius:var(--radius-pill);background:transparent;padding:6px 10px;font-size:var(--fs-sm);font-weight:var(--fw-semibold);color:var(--text-sub);cursor:pointer;white-space:nowrap;scroll-snap-align:start;font-family:inherit;transition:background var(--t-fast),color var(--t-fast),border-color var(--t-fast)}
+        .mtr-line-chip .dot{width:7px;height:7px;border-radius:50%;background:var(--c);flex:0 0 auto}
+        .mtr-line-chip.on{background:var(--seg-active-bg);border-color:var(--seg-active-border);color:var(--seg-active-text)}
+        .mtr-station-card{width:100%;display:flex;align-items:center;gap:12px;text-align:left;border:0;cursor:pointer;font-family:inherit;color:var(--text-main)}
+        .mtr-station-card .info{flex:1;min-width:0}
+        .mtr-station-card .st-name{font-size:var(--fs-2xl);font-weight:700;letter-spacing:-.02em;line-height:1.2}
+        .mtr-station-card .st-en{font-size:var(--fs-sm);color:var(--text-sub);margin-top:4px}
+        .mtr-station-card .chev{color:var(--text-sub);font-size:24px;font-weight:300;line-height:1;flex:0 0 auto;margin-left:2px;padding-right:2px}
+        .mtr-dir-seg{display:flex;gap:2px;padding:3px;background:var(--seg-bg);border:1px solid var(--seg-border);border-radius:var(--radius-pill);box-shadow:var(--glass-shadow);backdrop-filter:blur(var(--glass-blur)) saturate(var(--glass-sat));-webkit-backdrop-filter:blur(var(--glass-blur)) saturate(var(--glass-sat))}
+        .mtr-dir-btn{flex:1;border:1px solid transparent;background:transparent;border-radius:var(--radius-pill);padding:8px 10px;font-size:var(--fs-sm);font-weight:var(--fw-semibold);color:var(--text-sub);cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:inherit;transition:background var(--t-fast),color var(--t-fast),border-color var(--t-fast)}
+        .mtr-dir-btn.on{background:var(--seg-active-bg);border-color:var(--seg-active-border);color:var(--seg-active-text)}
+        .mtr-train-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+        .mtr-train-row:first-child{padding-top:0}
+        .mtr-train-row:last-child{padding-bottom:0;border-bottom:none}
+        .mtr-train-row .left{flex:1;min-width:0}
+        .mtr-train-row .dest{font-size:var(--fs-md);font-weight:var(--fw-semibold);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+        .mtr-train-row .dest-en{font-size:var(--fs-xs);color:var(--text-sub);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+        .mtr-train-row .delay{font-size:var(--fs-xs);color:var(--warning-color);font-weight:500;margin-top:3px}
+        .mtr-train-row .right{flex:0 0 auto;text-align:right}
+        .mtr-train-row .eta{font-size:var(--fs-lg);font-weight:var(--fw-semibold);font-variant-numeric:tabular-nums;white-space:nowrap}
+        .mtr-train-row .eta small{font-size:var(--fs-xs);font-weight:400;color:var(--text-sub);margin-left:2px}
+        .mtr-st-row{width:100%;display:flex;align-items:center;gap:10px;padding:11px 0;border:0;border-bottom:1px solid rgba(128,128,128,.15);background:transparent;cursor:pointer;font-family:inherit;text-align:left;color:var(--text-main)}
+        .mtr-st-row:last-child{border-bottom:none}
+        .mtr-st-row .zh{font-size:var(--fs-md);font-weight:600;flex:1;min-width:0}
+        .mtr-st-row .en{font-size:var(--fs-xs);color:var(--text-sub);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:48%}
+        .mtr-st-row .check{color:var(--text-main);font-size:var(--fs-md);width:16px;text-align:right;flex:0 0 auto}
+/* ===== 通勤路径模块（来源：通勤路径demo_风格版，样式全部限定在 .path-scope 内） ===== */
+.path-scope{--path-line-soft:rgba(0,0,0,.06);--path-violet:#7D5BD6}
+body.dark-mode .path-scope{--path-line-soft:rgba(255,255,255,.08);--path-violet:#A78BFA}
+body.theme-simple .path-scope{--path-line-soft:rgba(0,0,0,.06)}
+body.theme-simple .path-scope .chips .chip.on{background:var(--text-main);color:#fff;border-color:var(--text-main)}
+body.dark-mode .path-scope .chips .chip.on{background:var(--text-main);color:var(--bg-color);border-color:var(--text-main)}
+body.theme-simple .path-scope .seg, body.theme-simple .path-scope .hist, body.theme-simple .path-scope.livebar, body.theme-simple .path-scope.sheet, body.theme-simple .path-scope.sheet-overlay{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+body.theme-simple .path-scope .seg{box-shadow:none;border-color:var(--line)}
+body.theme-simple .path-scope .hist{box-shadow:none;border-color:var(--line)}
+body.theme-simple .path-scope.livebar{box-shadow:none;border-color:var(--line)}
+body.theme-simple .path-scope.sheet{box-shadow:none;border-color:var(--line)}
+body.theme-simple .path-scope .chip{background:#F5F5F7}
+.path-scope html{margin:0;padding:0}
+.path-scope .group-label{font-size:11px;color:var(--text-sub);font-weight:600;letter-spacing:.1em; padding:14px 6px 8px;display:flex;align-items:center;gap:8px}
+.path-scope .group-label::after{content:"";flex:1;height:1px;background:var(--line)}
+.path-scope .seg{display:flex;gap:12px;padding:14px;margin-bottom:8px;border-radius:var(--radius-md); border:1px solid var(--glass-border);background:var(--glass-bg); box-shadow:var(--glass-shadow); backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%); cursor:pointer;transition:transform .16s var(--ease),background .16s var(--ease); position:relative}
+.path-scope .seg:active{transform:scale(.992);background:var(--seg-active-bg)}
+.path-scope .seg .idx{flex:0 0 26px;height:26px;border-radius:50%;border:1px solid var(--line); display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:var(--text-sub); margin-top:2px}
+.path-scope .seg .body{flex:1;min-width:0}
+.path-scope .seg .top{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.path-scope .seg .type{font-size:13px;font-weight:650}
+.path-scope .seg .tag{font-size:10px;font-weight:600;padding:2px 7px;border-radius:999px;color:var(--text-sub); border:1px solid var(--line);white-space:nowrap}
+.path-scope .seg .tag.sz{color:#0A84FF;border-color:rgba(10,132,255,.22);background:rgba(10,132,255,.06)}
+.path-scope .seg .tag.hk{color:#E4693C;border-color:rgba(228,105,60,.26);background:rgba(228,105,60,.07)}
+.path-scope .seg .tag.port{color:#34A853;border-color:rgba(52,168,83,.26);background:rgba(52,168,83,.07)}
+body.dark-mode .path-scope .seg .tag.sz{color:#5E9CFF;border-color:rgba(94,156,255,.30);background:rgba(94,156,255,.10)}
+body.dark-mode .path-scope .seg .tag.hk{color:#F08A5E;border-color:rgba(240,138,94,.30);background:rgba(240,138,94,.10)}
+body.dark-mode .path-scope .seg .tag.port{color:#30D158;border-color:rgba(48,209,88,.30);background:rgba(48,209,88,.10)}
+.path-scope .seg{border-radius:var(--radius-lg)}
+.path-scope .seg .tag.sz,.path-scope .seg .tag.hk,.path-scope .seg .tag.port{color:var(--text-sub);border-color:var(--line);background:rgba(128,128,128,.07)}
+body.dark-mode .path-scope .seg .tag.sz,body.dark-mode .path-scope .seg .tag.hk,body.dark-mode .path-scope .seg .tag.port{color:var(--text-sub);border-color:var(--line);background:rgba(255,255,255,.07)}
+.path-scope .seg .main{font-size:14px;font-weight:550;margin-top:5px;line-height:1.35;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.path-scope .seg .sub{font-size:12px;color:var(--text-sub);margin-top:4px}
+.path-scope .seg .right{flex:0 0 auto;text-align:right;align-self:center}
+.path-scope .seg .plan{font-size:15px;font-weight:650;font-variant-numeric:tabular-nums}
+.path-scope .seg .plan small{font-size:10px;color:var(--text-sub);font-weight:500;margin-left:2px}
+.path-scope .seg .marker{font-size:12px;color:var(--text-sub)}
+.path-scope .seg.live{border-color:rgba(0,113,227,.45);background:rgba(0,113,227,.06); box-shadow:0 0 0 3px rgba(0,113,227,.08),0 8px 22px rgba(0,0,0,.04)}
+body.dark-mode .path-scope .seg.live{border-color:rgba(94,156,255,.55);background:rgba(94,156,255,.10); box-shadow:0 0 0 3px rgba(94,156,255,.12),0 8px 22px rgba(0,0,0,.30)}
+body.dark-mode.theme-chase .path-scope .seg.live{border-color:rgba(232,164,76,.55);background:rgba(232,164,76,.10); box-shadow:0 0 0 3px rgba(232,164,76,.12),0 8px 22px rgba(0,0,0,.30)}
+.path-scope .seg.done .idx{background:var(--text-main);color:var(--bg-color);border-color:var(--text-main)}
+.path-scope .seg.done .plan{color:var(--text-sub)}
+.path-scope .seg .del{position:absolute;right:10px;top:8px;border:none;background:transparent;color:var(--text-sub); font-size:16px;cursor:pointer;padding:2px 4px;display:none}
+.path-scope .seg.editing .del{display:block}
+.path-scope .add{width:100%;padding:12px;border-radius:var(--radius-sm);border:1px dashed rgba(150,150,150,.45); background:transparent;color:var(--text-sub);font-size:14px;font-weight:500;cursor:pointer;margin-top:2px; display:flex;align-items:center;justify-content:center;gap:6px;transition:color .15s,border-color .15s}
+.path-scope .add:hover{color:var(--text-main);border-color:rgba(150,150,150,.7)}
+.path-scope .add.loose{padding:18px;font-size:15px;border-radius:var(--radius-md);margin-top:12px}
+.path-scope .actions{display:flex;gap:10px;margin-top:18px}
+.path-scope .btn{flex:1;border:1px solid var(--glass-border);border-radius:16px;padding:14px;font-size:15px;font-weight:600;cursor:pointer; font-family:inherit;background:var(--glass-bg);color:var(--text-main); box-shadow:var(--glass-shadow); backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%); transition:transform .14s var(--ease),opacity .14s}
+.path-scope .btn:active{transform:scale(.97)}
+.path-scope .btn.primary{background:var(--glass-float-bg);font-weight:700}
+body.theme-simple .path-scope .btn{box-shadow:none;border-color:var(--line);background:#FFFFFF;backdrop-filter:none;-webkit-backdrop-filter:none}
+.path-scope .cum{margin-top:18px;text-align:center;font-size:13px;color:var(--text-sub)}
+.path-scope .cum b{font-size:16px;font-weight:650;color:var(--text-main);font-variant-numeric:tabular-nums;margin:0 3px}
+.path-scope.livebar{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(env(safe-area-inset-bottom) + 12px); width:min(92vw,380px);z-index:60;border-radius:22px;padding:12px 14px; background:var(--glass-float-bg);backdrop-filter:blur(30px) saturate(180%); -webkit-backdrop-filter:blur(30px) saturate(180%); border:1px solid var(--glass-border);box-shadow:var(--shadow-float),inset 0 1px 0 rgba(255,255,255,.8); display:none;align-items:center;gap:10px}
+body.dark-mode .path-scope.livebar{box-shadow:var(--shadow-float),inset 0 1px 0 rgba(255,255,255,.06)}
+.path-scope.livebar.show{display:flex}
+.path-scope.livebar .lb-main{flex:1;min-width:0}
+.path-scope.livebar .lb-k{font-size:10px;color:var(--text-sub);font-weight:600;letter-spacing:.06em}
+.path-scope.livebar .lb-t{font-size:14px;font-weight:650;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.path-scope.livebar .lb-time{font-size:12px;color:var(--text-sub);font-variant-numeric:tabular-nums;margin-top:2px}
+.path-scope.livebar button{border:none;border-radius:14px;padding:10px 14px;font-size:13px;font-weight:600; cursor:pointer;font-family:inherit;white-space:nowrap}
+.path-scope.livebar .arrive{background:var(--text-main);color:var(--bg-color)}
+.path-scope.livebar .skip{background:rgba(150,150,150,.12);color:var(--text-main)}
+.path-scope.sheet-overlay{position:fixed;inset:0;background:rgba(0,0,0,.32);z-index:80;display:none; backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.path-scope.sheet-overlay.show{display:block}
+.path-scope.sheet{position:fixed;left:50%;bottom:var(--kb,0px);transform:translateX(-50%) translateY(100%); width:min(100vw,400px);max-height:88vh;overflow-y:auto;z-index:90; background:var(--glass-float-bg);backdrop-filter:blur(40px) saturate(180%); -webkit-backdrop-filter:blur(40px) saturate(180%); border-radius:26px 26px 0 0;border:1px solid var(--glass-border); box-shadow:0 -20px 60px rgba(0,0,0,.18);padding:18px 18px calc(20px + env(safe-area-inset-bottom)); visibility:hidden;pointer-events:none;transition:transform .32s var(--ease),visibility .32s}
+body.dark-mode .path-scope.sheet{box-shadow:0 -20px 60px rgba(0,0,0,.55)}
+.path-scope.sheet.show{transform:translateX(-50%) translateY(0);visibility:visible;pointer-events:auto}
+.path-scope.sheet .grab{width:36px;height:4px;border-radius:2px;background:rgba(150,150,150,.35);margin:0 auto 14px}
+.path-scope.sheet h2{font-size:18px;font-weight:650;margin:0 0 14px;text-align:center}
+.path-scope .field{margin-bottom:14px}
+.path-scope .field label{display:block;font-size:11px;color:var(--text-sub);font-weight:600;margin-bottom:6px;letter-spacing:.03em}
+.path-scope .field input, .path-scope .field select{width:100%;height:44px;border-radius:12px;border:1px solid var(--line); background:rgba(150,150,150,.06);padding:0 12px;font-size:16px;color:var(--text-main);font-family:inherit;outline:none}
+body.dark-mode .path-scope .field input, body.dark-mode .path-scope .field select{background-color:rgba(255,255,255,.06)}
+.path-scope .field input:focus, .path-scope .field select:focus{border-color:var(--text-main);background-color:var(--card-bg)}
+.path-scope .field input::placeholder{color:var(--text-sub)}
+.path-scope .field select{display:none}
+.path-scope .picker-field{min-width:0}
+.path-scope .picker-trigger{width:100%;height:44px;border-radius:12px;border:1px solid var(--line);background:rgba(150,150,150,.06);padding:0 12px;font-size:16px;color:var(--text-main);font-family:inherit;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:8px;text-align:left}
+body.dark-mode .path-scope .picker-trigger{background:rgba(255,255,255,.06)}
+.path-scope .picker-trigger:active{background:var(--seg-active-bg)}
+.path-scope .picker-trigger .trigger-text{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.path-scope .picker-trigger .chev{color:var(--text-sub);font-size:18px;line-height:1;flex:0 0 auto}
+.path-scope .picker-trigger.placeholder .trigger-text{color:var(--text-sub)}
+.path-scope #pickerSearch{width:100%;height:42px;flex:0 0 auto;border-radius:12px;border:1px solid var(--line);background:rgba(150,150,150,.06);padding:0 12px;font-size:16px;color:var(--text-main);font-family:inherit;outline:none}
+body.dark-mode .path-scope #pickerSearch{background:rgba(255,255,255,.06)}
+.path-scope #pickerSearch:focus{border-color:var(--text-main);background:var(--card-bg)}
+.path-scope #pathPicker{z-index:220}
+.path-scope .lm-row .picker-check{margin-left:auto;color:var(--text-main);font-size:14px;flex:0 0 auto}
+.input-group .time-trigger{width:100%;height:44px;box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:0 12px;border:1px solid var(--line);border-radius:10px;background:rgba(0,0,0,.03);color:var(--text-main);font-family:inherit;font-size:16px;cursor:pointer}
+body.dark-mode .input-group .time-trigger{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.1)}
+.input-group .time-trigger .chev{color:var(--text-sub);font-size:18px;line-height:1}
+.input-group input[type="hidden"]{display:none}
+#timePicker .time-card{max-height:64vh}
+#timePicker .time-cols{display:flex;gap:8px;height:260px;min-height:0;flex:1 1 auto;margin:4px 0 10px}
+#timePicker .time-col{flex:1;overflow-y:auto;overscroll-behavior:contain;scroll-snap-type:y mandatory;border:1px solid var(--line);border-radius:12px;background:rgba(150,150,150,.06);padding:4px}
+body.dark-mode #timePicker .time-col{background:rgba(255,255,255,.06)}
+#timePicker .time-cell{width:100%;height:40px;border:0;background:transparent;color:var(--text-main);font-family:inherit;font-size:17px;font-weight:550;border-radius:8px;scroll-snap-align:center;cursor:pointer;font-variant-numeric:tabular-nums}
+#timePicker .time-cell.on{background:var(--text-main);color:var(--bg-color)}
+#timePicker .time-actions{display:flex;gap:10px}
+#timePicker .time-actions button{flex:1;height:44px;border-radius:12px;border:1px solid var(--line);font-family:inherit;font-size:15px;font-weight:600;cursor:pointer}
+#timePicker .time-cancel{background:transparent;color:var(--text-sub)}
+#timePicker .time-ok{background:var(--text-main);color:var(--bg-color);border-color:var(--text-main)}
+.path-scope .field select{-webkit-appearance:none;appearance:none;padding-right:34px;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2386868B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;background-size:12px}
+body.dark-mode .path-scope .field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23A1A1A6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;background-size:12px}
+.path-scope .line-trigger{display:none;width:100%;height:44px;border-radius:12px;border:1px solid var(--line); background:rgba(150,150,150,.06);padding:0 12px;font-size:16px;color:var(--text-main);font-family:inherit; align-items:center;justify-content:space-between;cursor:pointer;text-align:left}
+body.dark-mode .path-scope .line-trigger{background:rgba(255,255,255,.06)}
+.path-scope .line-trigger .chev{color:var(--text-sub);font-size:18px}
+.path-scope .line-trigger .ph{color:var(--text-sub)}
+.path-scope.lm-overlay{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:210;display:none;align-items:flex-end;justify-content:center;padding-bottom:var(--kb,0px)}
+.path-scope.lm-overlay.show{display:flex}
+.path-scope .lm-card{width:min(100vw,400px);max-height:72vh;background:var(--glass-float-bg); backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%); border-radius:26px 26px 0 0;border:1px solid var(--glass-border); box-shadow:0 -20px 60px rgba(0,0,0,.18);padding:14px 16px calc(16px + env(safe-area-inset-bottom)); display:flex;flex-direction:column;gap:10px}
+body.dark-mode .path-scope .lm-card{box-shadow:0 -20px 60px rgba(0,0,0,.55)}
+body.theme-simple .path-scope .lm-card{backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:none;border-color:var(--line)}
+.path-scope .lm-head{display:flex;align-items:center;justify-content:space-between;font-size:16px;font-weight:650;flex:0 0 auto}
+.path-scope .lm-head button{border:none;background:transparent;color:var(--text-sub);font-size:20px;line-height:1;cursor:pointer;padding:2px 6px}
+.path-scope #lmSearch{width:100%;height:42px;flex:0 0 auto;border-radius:12px;border:1px solid var(--line);background:rgba(150,150,150,.06); padding:0 12px;font-size:16px;color:var(--text-main);font-family:inherit;outline:none}
+body.dark-mode .path-scope #lmSearch{background:rgba(255,255,255,.06)}
+.path-scope #lmSearch:focus{border-color:var(--text-main);background:var(--card-bg)}
+.path-scope .lm-list{overflow-y:auto;flex:1 1 auto;min-height:0}
+.path-scope .lm-group{font-size:11px;font-weight:650;color:var(--text-sub);padding:10px 2px 6px;letter-spacing:.03em}
+.path-scope .lm-row{display:flex;align-items:center;justify-content:flex-start;gap:6px;width:100%;padding:11px 12px; border-radius:12px;border:1px solid var(--glass-border);background:var(--glass-bg); font-size:14px;font-weight:550;color:var(--text-main);margin-bottom:6px;cursor:pointer;font-family:inherit;text-align:left}
+.path-scope .lm-row .op{font-size:11px;font-weight:600;color:var(--text-sub)}
+.path-scope .lm-empty{padding:26px 8px;text-align:center;font-size:13px;color:var(--text-sub)}
+.path-scope .chips{display:flex;gap:6px;flex-wrap:wrap}
+.path-scope .chip{border:1px solid var(--line);background:rgba(150,150,150,.06);border-radius:999px; padding:7px 12px;font-size:12px;font-weight:550;color:var(--text-sub);cursor:pointer;font-family:inherit}
+body.dark-mode .path-scope .chip{background:rgba(255,255,255,.06)}
+.path-scope .chip.on{background:var(--text-main);color:var(--bg-color);border-color:var(--text-main)}
+.path-scope .chip:active{transform:scale(.97)}
+.path-scope .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.path-scope .hint{font-size:11px;color:var(--text-sub);line-height:1.55;margin-top:-4px;margin-bottom:12px}
+.path-scope .err{font-size:11px;color:var(--status-red);margin-top:6px;display:none}
+.path-scope .err.show{display:block}
+.path-scope .sheet-actions{display:flex;gap:10px;margin-top:6px}
+.path-scope .sheet-actions .btn{padding:13px;border-radius:14px;font-size:14px}
+.path-scope .sheet-actions .danger{flex:0 0 auto;background:transparent;color:var(--status-red);border:1px solid rgba(255,59,48,.3)}
+.path-scope.toast{position:fixed;top:68px;left:50%;transform:translateX(-50%) translateY(-8px); background:rgba(29,29,31,.94);color:#fff;font-size:12px;font-weight:600;padding:10px 18px;border-radius:999px; z-index:120;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;max-width:80vw;text-align:center}
+.path-scope.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+body.dark-mode .path-scope.toast{background:rgba(255,255,255,.16);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
 </style>
 </head>
 <body>
@@ -820,6 +982,7 @@ body.theme-simple #view-fleet .fleet-card::before{display:none}
                 </div>
             </div>
             <button type="button" class="setting-row" onclick="openSettings()"><span>通勤设置</span><span class="setting-chev">›</span></button>
+            <button type="button" class="setting-row" onclick="switchView('view-path')"><span>通勤路径</span><span class="setting-chev">›</span></button>
             <button type="button" class="setting-row" onclick="openHistory()"><span>通勤档案</span><span class="setting-chev">›</span></button>
             <button type="button" class="setting-row" onclick="openInfo()"><span>更新日志</span><span class="setting-chev">›</span></button>
             <button type="button" class="setting-row" onclick="openChecklist()"><span>启程检查单</span><span class="setting-chev">›</span></button>
@@ -829,17 +992,38 @@ body.theme-simple #view-fleet .fleet-card::before{display:none}
     <div id="view-mtr" class="view" style="display:none;">
         <div class="subview-header">
             <button class="back-btn" onclick="goBack()">&lt;</button>
-            <div class="subview-title">港铁东铁线</div>
-            <div class="back-btn-spacer"></div>
+            <div class="subview-title">港铁时刻表</div>
+            <button class="refresh-btn" id="mtr-refresh" onclick="fetchMtrData()" title="刷新" aria-label="刷新">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="23 4 23 10 17 10"></polyline>
+                    <polyline points="1 20 1 14 7 14"></polyline>
+                    <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                </svg>
+            </button>
         </div>
+        <div class="mtr-line-strip" id="mtr-line-strip"></div>
+        <button class="card mtr-station-card" onclick="openMtrStationModal()">
+            <div class="info">
+                <div class="st-name" id="mtr-station-name">—</div>
+                <div class="st-en" id="mtr-station-en">—</div>
+            </div>
+            <div class="chev">›</div>
+        </button>
+        <div class="mtr-dir-seg" id="mtr-dir-seg"></div>
         <div id="mtr-cards"></div>
     </div>
 
     <div id="view-bus" class="view" style="display:none;">
         <div class="subview-header">
             <button class="back-btn" onclick="goBack()">&lt;</button>
-            <div class="subview-title">口岸巴士</div>
-            <div class="back-btn-spacer"></div>
+            <div class="subview-title">巴士时刻表</div>
+            <button class="refresh-btn" onclick="fetchBusData()" title="刷新" aria-label="刷新">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="23 4 23 10 17 10"></polyline>
+                    <polyline points="1 20 1 14 7 14"></polyline>
+                    <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                </svg>
+            </button>
         </div>
         <div id="bus-cards"></div>
     </div>
@@ -1128,10 +1312,10 @@ body.theme-simple #view-fleet .fleet-card::before{display:none}
             <div class="breathe-wrap" id="breathe-wrap">
                 <div class="breathe-shake" id="breathe-shake"><div class="breathe-square" id="breathe-square"></div></div>
             </div>
-            <div class="breathe-hint" id="breathe-hint">方块碰到细线时，轻点一下</div>
+            <div class="breathe-hint" id="breathe-hint">方块触碰细线时，请轻点屏幕</div>
             <div class="lite-overlay show" id="breathe-overlay">
                 <div class="lite-over-title" id="breathe-over-title">呼吸</div>
-                <div class="lite-over-sub" id="breathe-over-sub">方块碰到细线时，轻点一下</div>
+                <div class="lite-over-sub" id="breathe-over-sub">方块触碰细线时，请轻点屏幕</div>
                 <div class="lite-over-score" id="breathe-final" style="display:none;">0</div>
                 <button class="lite-over-btn" id="breathe-btn">开始</button>
             </div>
@@ -1163,6 +1347,21 @@ body.theme-simple #view-fleet .fleet-card::before{display:none}
         </div>
     </div>
 
+
+    <div id="view-path" class="view path-scope" style="display:none;">
+        <div class="subview-header">
+            <button class="back-btn" id="backBtn" aria-label="返回">&lt;</button>
+            <div class="subview-title">去程通勤路径</div>
+            <span class="back-btn-spacer"></span>
+        </div>
+        <div id="list"></div>
+        <button class="add" id="addBtn">＋ 添加行程</button>
+        <div class="actions">
+            <button class="btn solid" id="saveBtn">保存路线</button>
+            <button class="btn primary" id="startBtn">开始行程</button>
+        </div>
+        <div class="cum">累积时间 <b id="cumNum">0</b> 分钟</div>
+    </div>
 </div>
 
 <nav class="tabbar" id="tabbar">
@@ -1192,6 +1391,119 @@ body.theme-simple #view-fleet .fleet-card::before{display:none}
         </span>
     </button>
 </nav>
+
+<div class="sheet-overlay path-scope" id="overlay"></div>
+<div class="sheet path-scope" id="sheet">
+  <div class="grab"></div>
+  <h2 id="sheetTitle">编辑这一段</h2>
+  <div class="field">
+    <label>出行方式</label>
+    <div class="chips" id="typeChips"></div>
+  </div>
+  <div class="field" id="regionField">
+    <label>区域</label>
+    <div class="chips" id="regionChips"></div>
+  </div>
+  <div class="field" id="lineField">
+    <label>线路</label>
+    <select id="lineSel"></select>
+    <button class="line-trigger" id="lineTrigger" aria-haspopup="dialog"><span id="lineTriggerText" class="ph">选择线路</span><span class="chev">›</span></button>
+  </div>
+  <div class="field" id="fromField">
+    <label id="fromLabel">始发站</label>
+    <select id="fromSel"></select>
+    <button type="button" class="picker-trigger" aria-haspopup="dialog" data-select="fromSel"><span class="trigger-text">始发站</span><span class="chev">›</span></button>
+  </div>
+  <div class="field" id="toField">
+    <label id="toLabel">到达站</label>
+    <select id="toSel"></select>
+    <button type="button" class="picker-trigger" aria-haspopup="dialog" data-select="toSel"><span class="trigger-text">到达站</span><span class="chev">›</span></button>
+  </div>
+  <div class="field" id="busFromField">
+    <label>上车站</label>
+    <input id="busFrom" type="text" placeholder="例如：福民新村">
+  </div>
+  <div class="field" id="busToField">
+    <label>下车站</label>
+    <input id="busTo" type="text" placeholder="例如：福田口岸">
+  </div>
+  <div class="field" id="walkFromField">
+    <label>起点</label>
+    <input id="walkFrom" type="text" placeholder="例如：家">
+  </div>
+  <div class="field" id="walkToField">
+    <label>终点</label>
+    <input id="walkTo" type="text" placeholder="例如：福民站">
+  </div>
+  <div class="field" id="transferField">
+    <label>换乘站</label>
+    <select id="transferStation"></select>
+    <button type="button" class="picker-trigger" aria-haspopup="dialog" data-select="transferStation"><span class="trigger-text">换乘站</span><span class="chev">›</span></button>
+  </div>
+  <div class="field" id="transferToField">
+    <label>到达站</label>
+    <select id="transferToStation"></select>
+    <button type="button" class="picker-trigger" aria-haspopup="dialog" data-select="transferToStation"><span class="trigger-text">到达站</span><span class="chev">›</span></button>
+  </div>
+  <div class="field" id="transferLinesField">
+    <label>线路变化</label>
+    <div class="two">
+      <div class="picker-field"><select id="fromLineSel"></select><button type="button" class="picker-trigger" aria-haspopup="dialog" data-select="fromLineSel"><span class="trigger-text">线路</span><span class="chev">›</span></button></div>
+      <div class="picker-field"><select id="toLineSel"></select><button type="button" class="picker-trigger" aria-haspopup="dialog" data-select="toLineSel"><span class="trigger-text">线路</span><span class="chev">›</span></button></div>
+    </div>
+  </div>
+  <div class="field" id="planField">
+    <label>预计用时（分钟）</label>
+    <input id="planInput" type="number" inputmode="numeric" min="1" max="240" placeholder="例如：12">
+  </div>
+  <div class="hint" id="typeHint"></div>
+  <div class="err" id="errBox"></div>
+  <div class="sheet-actions">
+    <button class="btn danger" id="delBtn">删除</button>
+    <button class="btn solid" id="cancelBtn">取消</button>
+    <button class="btn primary" id="okBtn">保存</button>
+  </div>
+</div>
+
+<div class="lm-overlay path-scope" id="lineModal">
+  <div class="lm-card">
+    <div class="lm-head"><span>选择线路</span><button id="lmClose" aria-label="关闭">×</button></div>
+    <input id="lmSearch" type="text" placeholder="输入线路号搜索" autocomplete="off">
+    <div class="lm-list" id="lmList"></div>
+  </div>
+</div>
+<div class="lm-overlay path-scope" id="pathPicker" role="dialog" aria-modal="true" aria-labelledby="pickerTitle">
+  <div class="lm-card">
+    <div class="lm-head"><span id="pickerTitle">选择</span><button type="button" id="pickerClose" aria-label="关闭">×</button></div>
+    <input id="pickerSearch" type="text" placeholder="搜索" autocomplete="off">
+    <div class="lm-list" id="pickerList"></div>
+  </div>
+</div>
+<div class="lm-overlay path-scope" id="timePicker" role="dialog" aria-modal="true" aria-labelledby="timePickerTitle">
+  <div class="lm-card time-card">
+    <div class="lm-head"><span id="timePickerTitle">选择上课时间</span><button type="button" id="timePickerClose" aria-label="关闭">×</button></div>
+    <div class="time-cols">
+      <div class="time-col" id="timeHourCol"></div>
+      <div class="time-col" id="timeMinuteCol"></div>
+    </div>
+    <div class="time-actions">
+      <button type="button" class="time-cancel" id="timeCancel">取消</button>
+      <button type="button" class="time-ok" id="timeOk">确定</button>
+    </div>
+  </div>
+</div>
+
+<div class="livebar path-scope" id="livebar">
+  <div class="lb-main">
+    <div class="lb-k" id="lbKicker">当前段</div>
+    <div class="lb-t" id="lbTitle">—</div>
+    <div class="lb-time" id="lbTime">—</div>
+  </div>
+  <button class="skip" id="skipBtn">跳过</button>
+  <button class="arrive" id="arriveBtn">到达</button>
+</div>
+
+<div class="toast path-scope" id="toast"></div>
 
 <div class="modal-overlay" id="settings-modal">
     <div class="modal-content">
@@ -1227,7 +1539,8 @@ body.theme-simple #view-fleet .fleet-card::before{display:none}
 
         <div class="input-group">
             <label>上课时间</label>
-            <input type="time" id="input-school-time">
+            <input type="hidden" id="input-school-time">
+            <button type="button" class="time-trigger" id="schoolTimeTrigger" aria-haspopup="dialog"><span id="schoolTimeText">选择时间</span><span class="chev">›</span></button>
             <div class="input-error" id="err-school-time"></div>
         </div>
 
@@ -1268,18 +1581,31 @@ body.theme-simple #view-fleet .fleet-card::before{display:none}
         <div style="text-align:center;margin-top:8px;">
             <button type="button" class="engine-reset" onclick="resetEngine()">重置推理引擎模型</button>
         </div>
-        <div class="version-text">Version 1.11</div>
+        <div class="version-text">Version 1.12</div>
     </div>
 </div>
 
 <div class="modal-overlay" id="info-modal">
     <div class="modal-content">
         <div class="info-title">更新日志</div>
-        <div class="info-version">Version 1.11</div>
+        <div class="info-version">Version 1.12</div>
         <div class="info-divider"></div>
 
         <div class="changelog">
              <div class="changelog-entry">
+                <div class="changelog-version">Version 1.12 · 通勤路径与多线时刻表｜2026.11.21</div>
+                <ul class="changelog-list">
+                    <li><b>通勤路径</b><br>设置页新增「通勤路径」，按段记录去程路线并累加总时长；仅作个人记录，不参与首页建议出门时间的计算。</li>
+                    <li><b>六类行程段</b><br>步行、地铁、公交 / 巴士、转乘、到达口岸、过关；每段填线路与起讫点、预计用时，转乘必须同站（香港 ↔ 中环例外）。</li>
+                    <li><b>线路与站点</b><br>深圳地铁 17 条线与港铁 10 条线可直接选站；深圳 867 条、香港 1055 条巴士线路可搜索；香港巴士选线后自动带出站点，断网回退手填。</li>
+                    <li><b>实测回写</b><br>开始行程后逐段「到达」或「跳过」；实测分钟直接写回该段预计用时，跳过的段保留原值，累积时间同步更新。</li>
+                    <li><b>港铁多线时刻表</b><br>由东铁线扩展为十条线，可选线路、车站与方向；官方实时到站只显示分钟，顶部新增刷新，刷新图标常态灰、按下变黑。</li>
+                    <li><b>巴士时刻表</b><br>「口岸巴士」更名为「巴士时刻表」，顶部补同款刷新按钮，到站时间保持只显示分钟。</li>
+                    <li><b>打卡即归档与皇岗小巴</b><br>保存上学记录（含自动保存）即写入通勤档案；皇岗口岸 B 字头下新增 44B1、N44B、79S、616S 四条小巴，统一「小巴」标签。</li>
+                    <li><b>英文与视觉</b><br>通勤路径与港铁时刻表补齐中英文；路径卡片改为液态玻璃与 24px 圆角，区域标签中性化，底部编辑弹层保持原样。</li>
+                </ul>
+            </div>
+            <div class="changelog-entry">
                 <div class="changelog-version">Version 1.11 · 的士页与自动打卡｜2026.11.18</div>
                 <ul class="changelog-list">
                     <li><b>预约车队的士</b><br>入口不再跳转八达通介绍，改为应用内二级页；市区收费表、四支车队与官网跳转收在一页。</li>
@@ -1435,6 +1761,14 @@ body.theme-simple #view-fleet .fleet-card::before{display:none}
     </div>
 </div>
 
+<div class="modal-overlay" id="mtr-station-modal" onclick="if(event.target===this)closeMtrStationModal()">
+    <div class="modal-content">
+        <div class="modal-title" id="mtr-modal-title">选择车站</div>
+        <div class="input-group"><input id="mtr-station-search" type="text" placeholder="搜索站名" autocomplete="off" oninput="renderMtrStationList(this.value)"></div>
+        <div id="mtr-station-list"></div>
+    </div>
+</div>
+
 <script>
     // ============ 常量 ============
     const HOLIDAY_API = 'https://www.1823.gov.hk/common/ical/sc.json';
@@ -1486,7 +1820,7 @@ body.theme-simple #view-fleet .fleet-card::before{display:none}
         '刷新': 'Refresh', '加载日期…': 'Loading date…',
         '今日': 'Today', '明日': 'Tomorrow',
         '查询香港假期中…': 'Checking HK holidays…',
-        '今日周末，不用上学': 'Weekend — no school',
+        '今日周末，无需上学': 'Weekend — no school today',
         '今日香港：红日放假': 'HK public holiday — no school',
         '正常上课': 'School today',
         '停课': 'Suspended', '恶劣天气': 'Severe weather',
@@ -1513,7 +1847,46 @@ body.theme-simple #view-fleet .fleet-card::before{display:none}
         // 设置
         '主题': 'Theme', '浅色': 'Light', '深色': 'Dark', '逐光': 'Chase', '轻简': 'Lite',
         '语言': 'Language',
-        '通勤设置': 'Commute setup', '通勤档案': 'Commute log',
+        '通勤设置': 'Commute setup', '通勤档案': 'Commute log', '通勤路径': 'Commute path', '去程通勤路径': 'Outbound commute path',
+        '添加行程': 'Add leg', '＋ 添加行程': '+ Add leg', '保存路线': 'Save route', '开始行程': 'Start trip',
+        '累积时间': 'Cumulative', '分钟': 'min',
+        '出行方式': 'Mode', '区域': 'Area', '线路': 'Route', '上车站': 'Board', '下车站': 'Alight',
+        '始发站': 'From', '到达站': 'To', '换乘站': 'Interchange', '线路变化': 'Line change',
+        '选择线路': 'Choose route', '输入线路号搜索': 'Search route number', '没有找到': 'No results',
+        '预计用时（分钟）': 'Time (min)', '起点': 'Origin', '终点': 'Destination',
+        '步行': 'Walk', '地铁': 'Metro', '公交': 'Bus', '巴士': 'Bus', '公交 / 巴士': 'Bus',
+        '转乘': 'Transfer', '到达口岸': 'Arrive at port', '过关': 'Crossing',
+        '深圳段': 'Shenzhen leg', '香港段': 'Hong Kong leg', '口岸': 'Port',
+        '排队与查验': 'Queue & inspection', '时间点': 'Time', '未填': 'Not set',
+        '编辑这一段': 'Edit this leg', '当前段': 'Current leg', '跳过': 'Skip', '到达': 'Arrive',
+        '行程进行中': 'Trip in progress', '行程已完成': 'Trip completed',
+        '路线已保存': 'Route saved', '已删除该段行程': 'Leg deleted',
+        '至少添加一段行程': 'Add at least one leg',
+        '行程进行中，请先完成或跳过当前段': 'Please finish or skip the current leg first',
+        '行程已开始，请逐段点击「到达」': 'Trip started. Tap Arrive for each leg.',
+        '站点加载失败，请手动填写上、下车站': 'Failed to load stops; enter boarding and alighting stops manually',
+        '请填写 1–240 分钟的预计用时': 'Enter 1–240 minutes',
+        '请填写起点和终点': 'Enter origin and destination',
+        '请选择始发站和到达站': 'Choose both stations',
+        '始发站和到达站不能相同': 'Stations must differ',
+        '请选择线路': 'Choose a route',
+        '请选择上车站和下车站': 'Choose both stops',
+        '请填写上车站和下车站': 'Enter both stops',
+        '上车站和下车站不能相同': 'Stops must differ',
+        '这两条线没有同站换乘，请换一组线路': 'No shared interchange — pick another pair',
+        '转乘的两条线路不能相同': 'The two lines must differ',
+        '转乘必须同站，请重新选择到达站': 'Transfer must stay at one station',
+        '无同站换乘': 'No shared interchange',
+        '口岸到达时刻': 'Port arrival time', '记录时刻': 'Record time', '本段': 'This leg',
+        '选择上课时间': 'Select school time', '选择时间': 'Select time', '确定': 'OK',
+        '常规': 'Regular', '干线': 'Trunk', '快线': 'Express', '支线': 'Branch', '夜班': 'Night', '假日旅游': 'Holiday', '机场': 'Airport',
+        '九巴': 'KMB', '城巴': 'Citybus', '屿巴': 'NLB', '深圳公交': 'Shenzhen bus', '香港巴士': 'Hong Kong bus',
+        '例如：福民新村': 'e.g. Fumin Xincun', '例如：福田口岸': 'e.g. Futian Port',
+        '例如：家': 'e.g. Home', '例如：福民站': 'e.g. Fumin Station', '例如：12': 'e.g. 12',
+        '东铁线': 'East Rail Line', '屯马线': 'Tuen Ma Line', '东涌线': 'Tung Chung Line',
+        '机场快线': 'Airport Express', '港岛线': 'Island Line', '荃湾线': 'Tsuen Wan Line',
+        '观塘线': 'Kwun Tong Line', '将军澳线': 'Tseung Kwan O Line', '南港岛线': 'South Island Line',
+        '迪士尼线': 'Disneyland Resort Line',
         '更新日志': 'Changelog', '启程检查单': 'Departure checklist',
         // 地图
         '我的位置': 'My location', '定位': 'Location',
@@ -1572,7 +1945,7 @@ body.theme-simple #view-fleet .fleet-card::before{display:none}
         '点击画面切换光 / 影': 'Tap to switch light / shadow',
         '点击切换光 / 影，穿过同色的拱门': 'Tap to switch light / shadow. Pass matching gates.',
         '撑到天亮': 'Survive till dawn',
-        '方块碰到细线时，轻点一下': 'Tap when the square touches the line',
+        '方块触碰细线时，请轻点屏幕': 'Tap the screen when the square touches the line',
         '点击放下方块，尽量对齐': 'Tap to drop; line it up',
         '剩余': 'Remaining', '发车': 'Depart', '黎明': 'Dawn', '守夜': 'Night watch',
         '点击画面跳跃': 'Tap to jump',
@@ -1631,6 +2004,10 @@ body.theme-simple #view-fleet .fleet-card::before{display:none}
         '山景邨': 'Shan King Estate',
         '乌溪沙站': 'Wu Kai Sha Station',
         '小西湾蓝湾半岛': 'Siu Sai Wan (Island Resort)',
+        '青山湾': 'Castle Peak Bay', '青山灣': 'Castle Peak Bay',
+        '天水围 (俊宏轩)': 'Tin Shui Wai (Grandeur Terrace)',
+        '旺角': 'Mong Kok',
+        '小巴': 'Minibus',
         '启德世运道': 'Kai Tak Sports Avenue',
         '周末线': 'Weekend',
         '天富 (天水围)': 'Tin Fu (Tin Shui Wai)',
@@ -1713,7 +2090,9 @@ body.theme-simple #view-fleet .fleet-card::before{display:none}
         [/^往 (.+)$/, function (m) { return 'To ' + translateDest(m[1]); }],
         [/^(.+) 站出发$/, function (m) { return 'From ' + (EN[m[1]] || m[1]); }],
         [/^距\s*(.+)$/, function (m) { return 'Dist. ' + translateDest(m[1]); }],
-        [/^(早间耗时|晚间耗时) (\d+) 分钟$/, function (m) { return (EN[m[1]] || m[1]) + ' ' + m[2] + ' min'; }]
+        [/^(早间耗时|晚间耗时) (\d+) 分钟$/, function (m) { return (EN[m[1]] || m[1]) + ' ' + m[2] + ' min'; }],
+        [/^第 (\d+) \/ (\d+) 段$/, 'Leg $1 / $2'],
+        [/^本段 (\d+) 分 (\d+) 秒$/, '$1 min $2 s']
     ];
 
     function translateText(s) {
@@ -1752,6 +2131,7 @@ body.theme-simple #view-fleet .fleet-card::before{display:none}
                 var tag = p.nodeName;
                 if (tag === 'SCRIPT' || tag === 'STYLE' || tag === 'TEXTAREA') return NodeFilter.FILTER_REJECT;
                 if (p.closest && p.closest('#info-modal .changelog')) return NodeFilter.FILTER_REJECT;
+                if (p.closest && (p.closest('#view-mtr') || p.closest('#mtr-station-modal'))) return NodeFilter.FILTER_REJECT;
                 return NodeFilter.FILTER_ACCEPT;
             }
         });
@@ -1791,6 +2171,16 @@ body.theme-simple #view-fleet .fleet-card::before{display:none}
     }
 
     var EN_CHANGELOG = [
+        '<div class="changelog-entry"><div class="changelog-version">Version 1.12 · Commute path & multi-line timetable｜Nov 21, 2026</div><ul class="changelog-list">',
+        '<li><b>Commute path</b><br>A new Commute path row in Settings records the outbound route leg by leg with a total; it is a personal record and does not change the suggested departure time.</li>',
+        '<li><b>Six leg types</b><br>Walk, metro, bus, transfer, arrive at port and crossing; each leg stores line, stops and duration; transfers stay at one station, except Hong Kong and Central.</li>',
+        '<li><b>Lines and stops</b><br>Shenzhen Metro 17 lines and all ten MTR lines are selectable; search 867 Shenzhen and 1055 Hong Kong bus route numbers; Hong Kong buses load stops from the operator API, with manual fallback offline.</li>',
+        '<li><b>Timing write-back</b><br>Tap Arrive or Skip per leg; measured minutes replace that leg duration, skipped legs keep their estimate, and the total updates.</li>',
+        '<li><b>Multi-line MTR timetable</b><br>East Rail only becomes all ten lines with line, station and direction selection; official real-time arrivals show minutes only, with a refresh button that is grey at rest and black on press.</li>',
+        '<li><b>Bus timetable</b><br>Cross-border buses is renamed Bus timetable; a matching refresh button is added, and arrivals stay minutes-only.</li>',
+        '<li><b>Instant archive & GMB routes</b><br>Saving a morning check-in (manual or automatic) now writes straight to the commute log; four GMB routes 44B1, N44B, 79S and 616S join the B routes at Huanggang with a Minibus tag.</li>',
+        '<li><b>English & visuals</b><br>Commute path and the MTR timetable are fully bilingual; path cards use liquid glass and 24px corners with neutral region tags, while the bottom sheet is unchanged.</li>',
+        '</ul></div>',
         '<div class="changelog-entry"><div class="changelog-version">Version 1.11 · Taxi &amp; auto check-in｜Nov 18, 2026</div><ul class="changelog-list">',
         '<li><b>Book a taxi</b><br>No longer opens the Octopus intro; a dedicated in-app page now holds the urban fare table, four fleets and official links.</li>',
         '<li><b>Three currencies, one fleet</b><br>HKD / CNY / USD convert instantly to two decimals; only one urban fleet can be selected, then booking opens in a new tab.</li>',
@@ -1917,6 +2307,9 @@ body.theme-simple #view-fleet .fleet-card::before{display:none}
             try { renderHoliday(); } catch (e) {}
             try { renderPorts(); } catch (e) {}
             try { renderHistory(); } catch (e) {}
+            try { renderMtr(); } catch (e) {}
+            try { if (window.syncTimeTrigger) window.syncTimeTrigger(); } catch (e) {}
+            try { if (window.syncPickerTriggers) window.syncPickerTriggers(); } catch (e) {}
         }
         walkTranslate(LANG === 'en');
         swapChangelog(LANG === 'en');
@@ -1966,12 +2359,6 @@ body.theme-simple #view-fleet .fleet-card::before{display:none}
         "莲塘口岸": { lng: 114.1616, lat: 22.5545 }
     };
 
-    // 东铁线目的地翻译
-    const MTR_DEST_MAP = { ADM: '金钟', TUM: '屯门', TUC: '屯门', TIS: '天水围', SHS: '上水', TAW: '大围' };
-    const MTR_STATIONS = [
-        { title: '落马洲站出发', sta: 'LMC' },
-        { title: '罗湖站出发', sta: 'LOW' }
-    ];
 
     // 巴士站点线路配置（实测数据，来自 bus-constants-1.2.json）
     const BUS_CONFIG = {
@@ -1995,11 +2382,17 @@ body.theme-simple #view-fleet .fleet-card::before{display:none}
             ctb: { leaveDir: "O", routes: [
                 { route: "B13", stopId: "001382", dest: "小西湾蓝湾半岛", weekendOnly: false },
                 { route: "B14", stopId: "003934", dest: "启德世运道", weekendOnly: false },
-                { route: "B15", stopId: "003976", dest: "周末线", weekendOnly: true }
+                { route: "B15", stopId: "003976", dest: "青山湾", weekendOnly: true }
             ]},
             kmb: { routes: [
                 { route: "B11", stopId: "0E38C53383FCAC6C", dest: "天富 (天水围)", weekendOnly: false },
                 { route: "B10", stopId: "D7E9208A2B3A457A", dest: "葵芳 (葵翠邨)", weekendOnly: false }
+            ]},
+            gmb: { stopId: 20023758, routes: [
+                { route: "44B1", routeId: 2004197, seq: 1, stopSeq: 1, dest: "屯门码头" },
+                { route: "N44B", routeId: 2004165, seq: 1, stopSeq: 1, dest: "屯门码头" },
+                { route: "79S", routeId: 2007630, seq: 2, stopSeq: 1, dest: "天水围 (俊宏轩)" },
+                { route: "616S", routeId: 2004762, seq: 2, stopSeq: 1, dest: "旺角" }
             ]}
         },
         "莲塘口岸": {
@@ -2035,7 +2428,6 @@ body.theme-simple #view-fleet .fleet-card::before{display:none}
     let holidayData = { loading: true, list: [] };
     let portData = { loading: true, main: null, backup: null, raw: null };
     let busData = { loading: true, cards: null };
-    let mtrData = { loading: true, cards: null };
     let dayMode = 'auto'; // 'auto' | 'today' | 'tomorrow'
     let footprintPoints = [];      // 赛博足迹采样点
     let footprintWatchId = null;   // 赛博足迹定位监听句柄
@@ -2167,6 +2559,7 @@ body.theme-simple #view-fleet .fleet-card::before{display:none}
         document.getElementById('input-origin-coord').value = userConfig.originCoord || '';
         document.getElementById('input-destination-coord').value = userConfig.destinationCoord || '';
         document.getElementById('input-school-time').value = userConfig.schoolTime;
+        if (window.syncTimeTrigger) window.syncTimeTrigger();
         document.getElementById('input-base-time').value = userConfig.baseTime;
         setSelectedPort('main', userConfig.mainPort);
         setSelectedPort('backup', userConfig.backupPort);
@@ -2485,7 +2878,7 @@ body.theme-simple #view-fleet .fleet-card::before{display:none}
         const status = getRestStatus(new Date(), holidayData.list);
         let label;
         if (status.isRest) {
-            label = (status.restType === 'weekend') ? '今日周末，不用上学' : '今日香港：红日放假';
+            label = (status.restType === 'weekend') ? '今日周末，无需上学' : '今日香港：红日放假';
             setDot(dot, 'red');
         } else {
             label = '正常上课';
@@ -2896,6 +3289,7 @@ body.theme-simple #view-fleet .fleet-card::before{display:none}
         }
         const train = morningCanTrain();
         ci.morningSaved = true;
+        pushEveningToHistory();
         if (train) trainEngineOnTrip(tripMinutes(ci.morningOut, ci.morningIn), new Date(ci.morningOut), false, true);
         persistCheckIn();
         return true;
@@ -2962,6 +3356,7 @@ body.theme-simple #view-fleet .fleet-card::before{display:none}
                 return;
             }
             checkInData.morningSaved = true;
+            pushEveningToHistory();
             if (morningCanTrain()) trainEngineOnTrip(tripMinutes(checkInData.morningOut, checkInData.morningIn), new Date(checkInData.morningOut), false);
         } else if (action === 'resetMorningOut') {
             checkInData.morningOut = null;
@@ -4218,6 +4613,7 @@ body.theme-simple #view-fleet .fleet-card::before{display:none}
         });
         moveIndicator();
 
+        if (targetId === 'view-mtr') { mtrAutoRefreshStart(); } else { mtrAutoRefreshStop(); }
         if (targetId === 'view-mtr') {
             fetchMtrData();
         } else if (targetId === 'view-bus') {
@@ -4238,6 +4634,8 @@ body.theme-simple #view-fleet .fleet-card::before{display:none}
             if (window.__gameBreathe) window.__gameBreathe.start();
         } else if (targetId === 'view-game-stack') {
             if (window.__gameStack) window.__gameStack.start();
+        } else if (targetId === 'view-path') {
+            if (window.PathApp) window.PathApp.enter();
         }
 
         // 离开游戏页时暂停游戏循环，避免后台空转
@@ -4259,72 +4657,187 @@ body.theme-simple #view-fleet .fleet-card::before{display:none}
         placeSegIndicator();
     }
 
-    // ============ 港铁东铁线（直连） ============
-    async function fetchMtr(sta) {
-        const j = await fetchJSON(`https://rt.data.gov.hk/v1/transport/mtr/getSchedule.php?line=EAL&sta=${sta}`);
-        const down = (j && j.data && j.data['EAL-' + sta] && j.data['EAL-' + sta].DOWN) || [];
-        return down.slice(0, 4).map(x => ({
-            minutes: (x.ttnt === '' || x.ttnt == null) ? null : Number(x.ttnt),
-            dest: MTR_DEST_MAP[x.dest] || x.dest,
-            delayed: x.isdelay === 'Y'
-        }));
+    // ============ 港铁时刻表（多线，官方 Next Train） ============
+    const MTR_DATA = {"lines":{"EAL":{"code":"EAL","name":"东铁线","en":"East Rail Line","color":"#53B7E8","default":"ADM","stations":[{"code":"ADM","zh":"金钟","en":"Admiralty","id":"2"},{"code":"EXC","zh":"会展","en":"Exhibition Centre","id":"94"},{"code":"HUH","zh":"红磡","en":"Hung Hom","id":"64"},{"code":"MKK","zh":"旺角东","en":"Mong Kok East","id":"65"},{"code":"KOT","zh":"九龙塘","en":"Kowloon Tong","id":"8"},{"code":"TAW","zh":"大围","en":"Tai Wai","id":"67"},{"code":"SHT","zh":"沙田","en":"Sha Tin","id":"68"},{"code":"FOT","zh":"火炭","en":"Fo Tan","id":"69"},{"code":"RAC","zh":"马场","en":"Racecourse","id":"70"},{"code":"UNI","zh":"大学","en":"University","id":"71"},{"code":"TAP","zh":"大埔墟","en":"Tai Po Market","id":"72"},{"code":"TWO","zh":"太和","en":"Tai Wo","id":"73"},{"code":"FAN","zh":"粉岭","en":"Fanling","id":"74"},{"code":"SHS","zh":"上水","en":"Sheung Shui","id":"75"},{"code":"LOW","zh":"罗湖","en":"Lo Wu","id":"76"},{"code":"LMC","zh":"落马洲","en":"Lok Ma Chau","id":"78"}],"dirs":{"UP":{"label":"上行","terminals":["罗湖","落马洲"]},"DOWN":{"label":"下行","terminals":["金钟"]}}},"TML":{"code":"TML","name":"屯马线","en":"Tuen Ma Line","color":"#9A3B26","default":"HUH","stations":[{"code":"WKS","zh":"乌溪沙","en":"Wu Kai Sha","id":"103"},{"code":"MOS","zh":"马鞍山","en":"Ma On Shan","id":"102"},{"code":"HEO","zh":"恒安","en":"Heng On","id":"101"},{"code":"TSH","zh":"大水坑","en":"Tai Shui Hang","id":"100"},{"code":"SHM","zh":"石门","en":"Shek Mun","id":"99"},{"code":"CIO","zh":"第一城","en":"City One","id":"98"},{"code":"STW","zh":"沙田围","en":"Sha Tin Wai","id":"97"},{"code":"CKT","zh":"车公庙","en":"Che Kung Temple","id":"96"},{"code":"TAW","zh":"大围","en":"Tai Wai","id":"67"},{"code":"HIK","zh":"显径","en":"Hin Keng","id":"90"},{"code":"DIH","zh":"钻石山","en":"Diamond Hill","id":"11"},{"code":"KAT","zh":"启德","en":"Kai Tak","id":"91"},{"code":"SUW","zh":"宋皇台","en":"Sung Wong Toi","id":"92"},{"code":"TKW","zh":"土瓜湾","en":"To Kwa Wan","id":"93"},{"code":"HOM","zh":"何文田","en":"Ho Man Tin","id":"84"},{"code":"HUH","zh":"红磡","en":"Hung Hom","id":"64"},{"code":"ETS","zh":"尖东","en":"East Tsim Sha Tsui","id":"80"},{"code":"AUS","zh":"柯士甸","en":"Austin","id":"111"},{"code":"NAC","zh":"南昌","en":"Nam Cheong","id":"53"},{"code":"MEF","zh":"美孚","en":"Mei Foo","id":"20"},{"code":"TWW","zh":"荃湾西","en":"Tsuen Wan West","id":"114"},{"code":"KSR","zh":"锦上路","en":"Kam Sheung Road","id":"115"},{"code":"YUL","zh":"元朗","en":"Yuen Long","id":"116"},{"code":"LOP","zh":"朗屏","en":"Long Ping","id":"117"},{"code":"TIS","zh":"天水围","en":"Tin Shui Wai","id":"118"},{"code":"SIH","zh":"兆康","en":"Siu Hong","id":"119"},{"code":"TUM","zh":"屯门","en":"Tuen Mun","id":"120"}],"dirs":{"UP":{"label":"上行","terminals":["屯门"]},"DOWN":{"label":"下行","terminals":["乌溪沙"]}}},"TCL":{"code":"TCL","name":"东涌线","en":"Tung Chung Line","color":"#F7943E","default":"HOK","stations":[{"code":"HOK","zh":"香港","en":"Hong Kong","id":"39"},{"code":"KOW","zh":"九龙","en":"Kowloon","id":"40"},{"code":"OLY","zh":"奥运","en":"Olympic","id":"41"},{"code":"NAC","zh":"南昌","en":"Nam Cheong","id":"53"},{"code":"LAK","zh":"荔景","en":"Lai King","id":"21"},{"code":"TSY","zh":"青衣","en":"Tsing Yi","id":"42"},{"code":"SUN","zh":"欣澳","en":"Sunny Bay","id":"54"},{"code":"TUC","zh":"东涌","en":"Tung Chung","id":"43"}],"dirs":{"UP":{"label":"上行","terminals":["东涌"]},"DOWN":{"label":"下行","terminals":["香港"]}}},"AEL":{"code":"AEL","name":"机场快线","en":"Airport Express","color":"#00888E","default":"HOK","stations":[{"code":"HOK","zh":"香港","en":"Hong Kong","id":"44"},{"code":"KOW","zh":"九龙","en":"Kowloon","id":"45"},{"code":"TSY","zh":"青衣","en":"Tsing Yi","id":"46"},{"code":"AIR","zh":"机场","en":"Airport","id":"47"},{"code":"AWE","zh":"博览馆","en":"AsiaWorld-Expo","id":"56"}],"dirs":{"UP":{"label":"上行","terminals":["博览馆"]},"DOWN":{"label":"下行","terminals":["香港"]}}},"ISL":{"code":"ISL","name":"港岛线","en":"Island Line","color":"#0075C2","default":"CEN","stations":[{"code":"KET","zh":"坚尼地城","en":"Kennedy Town","id":"83"},{"code":"HKU","zh":"香港大学","en":"HKU","id":"82"},{"code":"SYP","zh":"西营盘","en":"Sai Ying Pun","id":"81"},{"code":"SHW","zh":"上环","en":"Sheung Wan","id":"26"},{"code":"CEN","zh":"中环","en":"Central","id":"1"},{"code":"ADM","zh":"金钟","en":"Admiralty","id":"2"},{"code":"WAC","zh":"湾仔","en":"Wan Chai","id":"27"},{"code":"CAB","zh":"铜锣湾","en":"Causeway Bay","id":"28"},{"code":"TIH","zh":"天后","en":"Tin Hau","id":"29"},{"code":"FOH","zh":"炮台山","en":"Fortress Hill","id":"30"},{"code":"NOP","zh":"北角","en":"North Point","id":"31"},{"code":"QUB","zh":"鲗鱼涌","en":"Quarry Bay","id":"32"},{"code":"TAK","zh":"太古","en":"Tai Koo","id":"33"},{"code":"SWH","zh":"西湾河","en":"Sai Wan Ho","id":"34"},{"code":"SKW","zh":"筲箕湾","en":"Shau Kei Wan","id":"35"},{"code":"HFC","zh":"杏花邨","en":"Heng Fa Chuen","id":"36"},{"code":"CHW","zh":"柴湾","en":"Chai Wan","id":"37"}],"dirs":{"UP":{"label":"上行","terminals":["柴湾"]},"DOWN":{"label":"下行","terminals":["坚尼地城"]}}},"TWL":{"code":"TWL","name":"荃湾线","en":"Tsuen Wan Line","color":"#E2231A","default":"CEN","stations":[{"code":"CEN","zh":"中环","en":"Central","id":"1"},{"code":"ADM","zh":"金钟","en":"Admiralty","id":"2"},{"code":"TST","zh":"尖沙咀","en":"Tsim Sha Tsui","id":"3"},{"code":"JOR","zh":"佐敦","en":"Jordan","id":"4"},{"code":"YMT","zh":"油麻地","en":"Yau Ma Tei","id":"5"},{"code":"MOK","zh":"旺角","en":"Mong Kok","id":"6"},{"code":"PRE","zh":"太子","en":"Prince Edward","id":"16"},{"code":"SSP","zh":"深水埗","en":"Sham Shui Po","id":"17"},{"code":"CSW","zh":"长沙湾","en":"Cheung Sha Wan","id":"18"},{"code":"LCK","zh":"荔枝角","en":"Lai Chi Kok","id":"19"},{"code":"MEF","zh":"美孚","en":"Mei Foo","id":"20"},{"code":"LAK","zh":"荔景","en":"Lai King","id":"21"},{"code":"KWF","zh":"葵芳","en":"Kwai Fong","id":"22"},{"code":"KWH","zh":"葵兴","en":"Kwai Hing","id":"23"},{"code":"TWH","zh":"大窝口","en":"Tai Wo Hau","id":"24"},{"code":"TSW","zh":"荃湾","en":"Tsuen Wan","id":"25"}],"dirs":{"UP":{"label":"上行","terminals":["荃湾"]},"DOWN":{"label":"下行","terminals":["中环"]}}},"KTL":{"code":"KTL","name":"观塘线","en":"Kwun Tong Line","color":"#00AB4E","default":"MOK","stations":[{"code":"WHA","zh":"黄埔","en":"Whampoa","id":"85"},{"code":"HOM","zh":"何文田","en":"Ho Man Tin","id":"84"},{"code":"YMT","zh":"油麻地","en":"Yau Ma Tei","id":"5"},{"code":"MOK","zh":"旺角","en":"Mong Kok","id":"6"},{"code":"PRE","zh":"太子","en":"Prince Edward","id":"16"},{"code":"SKM","zh":"石硖尾","en":"Shek Kip Mei","id":"7"},{"code":"KOT","zh":"九龙塘","en":"Kowloon Tong","id":"8"},{"code":"LOF","zh":"乐富","en":"Lok Fu","id":"9"},{"code":"WTS","zh":"黄大仙","en":"Wong Tai Sin","id":"10"},{"code":"DIH","zh":"钻石山","en":"Diamond Hill","id":"11"},{"code":"CHH","zh":"彩虹","en":"Choi Hung","id":"12"},{"code":"KOB","zh":"九龙湾","en":"Kowloon Bay","id":"13"},{"code":"NTK","zh":"牛头角","en":"Ngau Tau Kok","id":"14"},{"code":"KWT","zh":"观塘","en":"Kwun Tong","id":"15"},{"code":"LAT","zh":"蓝田","en":"Lam Tin","id":"38"},{"code":"YAT","zh":"油塘","en":"Yau Tong","id":"48"},{"code":"TIK","zh":"调景岭","en":"Tiu Keng Leng","id":"49"}],"dirs":{"UP":{"label":"上行","terminals":["调景岭"]},"DOWN":{"label":"下行","terminals":["黄埔"]}}},"TKL":{"code":"TKL","name":"将军澳线","en":"Tseung Kwan O Line","color":"#7D499D","default":"NOP","stations":[{"code":"NOP","zh":"北角","en":"North Point","id":"31"},{"code":"QUB","zh":"鲗鱼涌","en":"Quarry Bay","id":"32"},{"code":"YAT","zh":"油塘","en":"Yau Tong","id":"48"},{"code":"TIK","zh":"调景岭","en":"Tiu Keng Leng","id":"49"},{"code":"TKO","zh":"将军澳","en":"Tseung Kwan O","id":"50"},{"code":"HAH","zh":"坑口","en":"Hang Hau","id":"51"},{"code":"POA","zh":"宝琳","en":"Po Lam","id":"52"},{"code":"LHP","zh":"康城","en":"LOHAS Park","id":"57"}],"dirs":{"UP":{"label":"上行","terminals":["宝琳","康城"]},"DOWN":{"label":"下行","terminals":["北角"]}}},"SIL":{"code":"SIL","name":"南港岛线","en":"South Island Line","color":"#B5BD00","default":"ADM","stations":[{"code":"ADM","zh":"金钟","en":"Admiralty","id":"2"},{"code":"OCP","zh":"海洋公园","en":"Ocean Park","id":"86"},{"code":"WCH","zh":"黄竹坑","en":"Wong Chuk Hang","id":"87"},{"code":"LET","zh":"利东","en":"Lei Tung","id":"88"},{"code":"SOH","zh":"海怡半岛","en":"South Horizons","id":"89"}],"dirs":{"UP":{"label":"上行","terminals":["海怡半岛"]},"DOWN":{"label":"下行","terminals":["金钟"]}}},"DRL":{"code":"DRL","name":"迪士尼线","en":"Disneyland Resort Line","color":"#F173AC","default":"SUN","stations":[{"code":"DIS","zh":"迪士尼","en":"Disneyland Resort","id":"55"},{"code":"SUN","zh":"欣澳","en":"Sunny Bay","id":"54"}],"dirs":{"UP":{"label":"上行","terminals":["欣澳"]},"DOWN":{"label":"下行","terminals":["迪士尼"]}}}},"codeToStation":{"LOW":{"code":"LOW","zh":"罗湖","en":"Lo Wu","id":"76"},"SHS":{"code":"SHS","zh":"上水","en":"Sheung Shui","id":"75"},"FAN":{"code":"FAN","zh":"粉岭","en":"Fanling","id":"74"},"TWO":{"code":"TWO","zh":"太和","en":"Tai Wo","id":"73"},"TAP":{"code":"TAP","zh":"大埔墟","en":"Tai Po Market","id":"72"},"UNI":{"code":"UNI","zh":"大学","en":"University","id":"71"},"FOT":{"code":"FOT","zh":"火炭","en":"Fo Tan","id":"69"},"RAC":{"code":"RAC","zh":"马场","en":"Racecourse","id":"70"},"SHT":{"code":"SHT","zh":"沙田","en":"Sha Tin","id":"68"},"TAW":{"code":"TAW","zh":"大围","en":"Tai Wai","id":"67"},"KOT":{"code":"KOT","zh":"九龙塘","en":"Kowloon Tong","id":"8"},"MKK":{"code":"MKK","zh":"旺角东","en":"Mong Kok East","id":"65"},"HUH":{"code":"HUH","zh":"红磡","en":"Hung Hom","id":"64"},"EXC":{"code":"EXC","zh":"会展","en":"Exhibition Centre","id":"94"},"ADM":{"code":"ADM","zh":"金钟","en":"Admiralty","id":"2"},"LMC":{"code":"LMC","zh":"落马洲","en":"Lok Ma Chau","id":"78"},"WKS":{"code":"WKS","zh":"乌溪沙","en":"Wu Kai Sha","id":"103"},"MOS":{"code":"MOS","zh":"马鞍山","en":"Ma On Shan","id":"102"},"HEO":{"code":"HEO","zh":"恒安","en":"Heng On","id":"101"},"TSH":{"code":"TSH","zh":"大水坑","en":"Tai Shui Hang","id":"100"},"SHM":{"code":"SHM","zh":"石门","en":"Shek Mun","id":"99"},"CIO":{"code":"CIO","zh":"第一城","en":"City One","id":"98"},"STW":{"code":"STW","zh":"沙田围","en":"Sha Tin Wai","id":"97"},"CKT":{"code":"CKT","zh":"车公庙","en":"Che Kung Temple","id":"96"},"HIK":{"code":"HIK","zh":"显径","en":"Hin Keng","id":"90"},"DIH":{"code":"DIH","zh":"钻石山","en":"Diamond Hill","id":"11"},"KAT":{"code":"KAT","zh":"启德","en":"Kai Tak","id":"91"},"SUW":{"code":"SUW","zh":"宋皇台","en":"Sung Wong Toi","id":"92"},"TKW":{"code":"TKW","zh":"土瓜湾","en":"To Kwa Wan","id":"93"},"HOM":{"code":"HOM","zh":"何文田","en":"Ho Man Tin","id":"84"},"ETS":{"code":"ETS","zh":"尖东","en":"East Tsim Sha Tsui","id":"80"},"AUS":{"code":"AUS","zh":"柯士甸","en":"Austin","id":"111"},"NAC":{"code":"NAC","zh":"南昌","en":"Nam Cheong","id":"53"},"MEF":{"code":"MEF","zh":"美孚","en":"Mei Foo","id":"20"},"TWW":{"code":"TWW","zh":"荃湾西","en":"Tsuen Wan West","id":"114"},"KSR":{"code":"KSR","zh":"锦上路","en":"Kam Sheung Road","id":"115"},"YUL":{"code":"YUL","zh":"元朗","en":"Yuen Long","id":"116"},"LOP":{"code":"LOP","zh":"朗屏","en":"Long Ping","id":"117"},"TIS":{"code":"TIS","zh":"天水围","en":"Tin Shui Wai","id":"118"},"SIH":{"code":"SIH","zh":"兆康","en":"Siu Hong","id":"119"},"TUM":{"code":"TUM","zh":"屯门","en":"Tuen Mun","id":"120"},"TUC":{"code":"TUC","zh":"东涌","en":"Tung Chung","id":"43"},"SUN":{"code":"SUN","zh":"欣澳","en":"Sunny Bay","id":"54"},"TSY":{"code":"TSY","zh":"青衣","en":"Tsing Yi","id":"42"},"LAK":{"code":"LAK","zh":"荔景","en":"Lai King","id":"21"},"OLY":{"code":"OLY","zh":"奥运","en":"Olympic","id":"41"},"KOW":{"code":"KOW","zh":"九龙","en":"Kowloon","id":"40"},"HOK":{"code":"HOK","zh":"香港","en":"Hong Kong","id":"39"},"AWE":{"code":"AWE","zh":"博览馆","en":"AsiaWorld-Expo","id":"56"},"AIR":{"code":"AIR","zh":"机场","en":"Airport","id":"47"},"CHW":{"code":"CHW","zh":"柴湾","en":"Chai Wan","id":"37"},"HFC":{"code":"HFC","zh":"杏花邨","en":"Heng Fa Chuen","id":"36"},"SKW":{"code":"SKW","zh":"筲箕湾","en":"Shau Kei Wan","id":"35"},"SWH":{"code":"SWH","zh":"西湾河","en":"Sai Wan Ho","id":"34"},"TAK":{"code":"TAK","zh":"太古","en":"Tai Koo","id":"33"},"QUB":{"code":"QUB","zh":"鲗鱼涌","en":"Quarry Bay","id":"32"},"NOP":{"code":"NOP","zh":"北角","en":"North Point","id":"31"},"FOH":{"code":"FOH","zh":"炮台山","en":"Fortress Hill","id":"30"},"TIH":{"code":"TIH","zh":"天后","en":"Tin Hau","id":"29"},"CAB":{"code":"CAB","zh":"铜锣湾","en":"Causeway Bay","id":"28"},"WAC":{"code":"WAC","zh":"湾仔","en":"Wan Chai","id":"27"},"CEN":{"code":"CEN","zh":"中环","en":"Central","id":"1"},"SHW":{"code":"SHW","zh":"上环","en":"Sheung Wan","id":"26"},"SYP":{"code":"SYP","zh":"西营盘","en":"Sai Ying Pun","id":"81"},"HKU":{"code":"HKU","zh":"香港大学","en":"HKU","id":"82"},"KET":{"code":"KET","zh":"坚尼地城","en":"Kennedy Town","id":"83"},"TSW":{"code":"TSW","zh":"荃湾","en":"Tsuen Wan","id":"25"},"TWH":{"code":"TWH","zh":"大窝口","en":"Tai Wo Hau","id":"24"},"KWH":{"code":"KWH","zh":"葵兴","en":"Kwai Hing","id":"23"},"KWF":{"code":"KWF","zh":"葵芳","en":"Kwai Fong","id":"22"},"LCK":{"code":"LCK","zh":"荔枝角","en":"Lai Chi Kok","id":"19"},"CSW":{"code":"CSW","zh":"长沙湾","en":"Cheung Sha Wan","id":"18"},"SSP":{"code":"SSP","zh":"深水埗","en":"Sham Shui Po","id":"17"},"PRE":{"code":"PRE","zh":"太子","en":"Prince Edward","id":"16"},"MOK":{"code":"MOK","zh":"旺角","en":"Mong Kok","id":"6"},"YMT":{"code":"YMT","zh":"油麻地","en":"Yau Ma Tei","id":"5"},"JOR":{"code":"JOR","zh":"佐敦","en":"Jordan","id":"4"},"TST":{"code":"TST","zh":"尖沙咀","en":"Tsim Sha Tsui","id":"3"},"TIK":{"code":"TIK","zh":"调景岭","en":"Tiu Keng Leng","id":"49"},"YAT":{"code":"YAT","zh":"油塘","en":"Yau Tong","id":"48"},"LAT":{"code":"LAT","zh":"蓝田","en":"Lam Tin","id":"38"},"KWT":{"code":"KWT","zh":"观塘","en":"Kwun Tong","id":"15"},"NTK":{"code":"NTK","zh":"牛头角","en":"Ngau Tau Kok","id":"14"},"KOB":{"code":"KOB","zh":"九龙湾","en":"Kowloon Bay","id":"13"},"CHH":{"code":"CHH","zh":"彩虹","en":"Choi Hung","id":"12"},"WTS":{"code":"WTS","zh":"黄大仙","en":"Wong Tai Sin","id":"10"},"LOF":{"code":"LOF","zh":"乐富","en":"Lok Fu","id":"9"},"SKM":{"code":"SKM","zh":"石硖尾","en":"Shek Kip Mei","id":"7"},"WHA":{"code":"WHA","zh":"黄埔","en":"Whampoa","id":"85"},"POA":{"code":"POA","zh":"宝琳","en":"Po Lam","id":"52"},"HAH":{"code":"HAH","zh":"坑口","en":"Hang Hau","id":"51"},"TKO":{"code":"TKO","zh":"将军澳","en":"Tseung Kwan O","id":"50"},"LHP":{"code":"LHP","zh":"康城","en":"LOHAS Park","id":"57"},"OCP":{"code":"OCP","zh":"海洋公园","en":"Ocean Park","id":"86"},"WCH":{"code":"WCH","zh":"黄竹坑","en":"Wong Chuk Hang","id":"87"},"LET":{"code":"LET","zh":"利东","en":"Lei Tung","id":"88"},"SOH":{"code":"SOH","zh":"海怡半岛","en":"South Horizons","id":"89"},"DIS":{"code":"DIS","zh":"迪士尼","en":"Disneyland Resort","id":"55"}}};
+
+    const mtrState = { line:'EAL', station:'ADM', dir:'UP', dirTouched:false, loading:true, error:false, trains:[], dirsAvail:null };
+    let mtrReq = 0;
+    const MTR_AUTO_REFRESH_MS = 30000; // 港铁 30 秒自动刷新，可手动调整
+    let mtrTimer = null;
+    function mtrAutoRefreshStart() {
+        if (mtrTimer) return;
+        mtrTimer = setInterval(function () {
+            if (document.hidden) return;
+            const v = document.getElementById('view-mtr');
+            if (v && v.style.display !== 'none') fetchMtrData();
+        }, MTR_AUTO_REFRESH_MS);
+    }
+    function mtrAutoRefreshStop() {
+        if (mtrTimer) { clearInterval(mtrTimer); mtrTimer = null; }
     }
 
-    async function fetchMtrData() {
-        mtrData.loading = true;
-        renderMtr();
-
-        const cards = await Promise.all(MTR_STATIONS.map(async s => {
-            try {
-                const trains = await fetchMtr(s.sta);
-                return { title: s.title, trains, error: false };
-            } catch (e) {
-                return { title: s.title, trains: [], error: true };
-            }
-        }));
-
-        mtrData.cards = cards;
-        mtrData.loading = false;
-        renderMtr();
+    function mtrT(zh, en) { return LANG === 'en' ? en : zh; }
+    function mtrLineData() { return MTR_DATA.lines[mtrState.line]; }
+    function mtrStationData(code) { return mtrLineData().stations.find(s => s.code === code); }
+    function mtrDest(code) {
+        const st = MTR_DATA.codeToStation[code];
+        return st ? { zh: st.zh, en: st.en } : { zh: code || '—', en: '' };
     }
-
-    function formatTtnt(minutes) {
-        if (minutes === null || minutes === undefined) return '--';
-        if (minutes < 1) return '即将到站';
-        if (minutes > 60) return '--';
-        return `${minutes} 分钟`;
+    function mtrTerminals(dir) {
+        const line = mtrLineData();
+        return line.dirs[dir].terminals.map(n => {
+            if (LANG !== 'en') return n;
+            const st = line.stations.find(s => s.zh === n);
+            return st ? st.en : n;
+        });
     }
-
+    function renderMtrLineStrip() {
+        const el = document.getElementById('mtr-line-strip');
+        if (!el) return;
+        el.innerHTML = Object.values(MTR_DATA.lines).map(l =>
+            `<button class="mtr-line-chip${l.code===mtrState.line?' on':''}" onclick="mtrSelectLine('${l.code}')" style="--c:${l.color}"><span class="dot"></span>${LANG==='en'?l.en:l.name}</button>`
+        ).join('');
+        const active = el.querySelector('.mtr-line-chip.on');
+        if (active) active.scrollIntoView({inline:'center', block:'nearest'});
+    }
+    function renderMtrStation() {
+        const st = mtrStationData(mtrState.station);
+        const nameEl = document.getElementById('mtr-station-name');
+        const enEl = document.getElementById('mtr-station-en');
+        if (nameEl) nameEl.textContent = st ? st.zh : '—';
+        if (enEl) enEl.textContent = st ? st.en : '—';
+    }
+    function renderMtrDirs() {
+        const el = document.getElementById('mtr-dir-seg');
+        if (!el) return;
+        const avail = mtrState.dirsAvail;
+        const dirs = ['UP','DOWN'].filter(d => !avail || avail[d]);
+        el.innerHTML = dirs.map(d =>
+            `<button class="mtr-dir-btn${mtrState.dir===d?' on':''}" onclick="mtrSetDir('${d}')">${mtrT('往','To')} ${mtrTerminals(d).join(' / ')}</button>`
+        ).join('');
+        el.style.display = dirs.length ? '' : 'none';
+    }
     function renderMtr() {
-        const container = document.getElementById('mtr-cards');
-        if (mtrData.loading || !mtrData.cards) {
-            container.innerHTML = MTR_STATIONS.map(s =>
-                `<div class="card"><div class="card-title">${s.title}</div><div class="bus-no-service">加载中…</div></div>`
-            ).join('');
+        const titleEl = document.querySelector('#view-mtr .subview-title');
+        if (titleEl) titleEl.textContent = mtrT('港铁时刻表','MTR timetable');
+        const modalTitle = document.getElementById('mtr-modal-title');
+        if (modalTitle) modalTitle.textContent = mtrT('选择车站','Select station');
+        const search = document.getElementById('mtr-station-search');
+        if (search) search.placeholder = mtrT('搜索站名','Search station');
+        const refresh = document.getElementById('mtr-refresh');
+        if (refresh) {
+            refresh.title = mtrT('刷新','Refresh');
+            refresh.setAttribute('aria-label', mtrT('刷新','Refresh'));
+            refresh.classList.toggle('spin', mtrState.loading);
+        }
+        renderMtrLineStrip(); renderMtrStation(); renderMtrDirs();
+        const box = document.getElementById('mtr-cards');
+        if (!box) return;
+        if (mtrState.loading) {
+            box.innerHTML = `<div class="card"><div class="bus-no-service">${mtrT('加载中…','Loading…')}</div></div>`;
             return;
         }
-        container.innerHTML = mtrData.cards.map(renderMtrCard).join('');
-    }
-
-    function renderMtrCard(card) {
-        let body;
-        if (card.error) {
-            body = `<div class="bus-no-service">暂无数据</div>`;
-        } else if (!card.trains.length) {
-            body = `<div class="bus-no-service">暂无班次</div>`;
-        } else {
-            body = card.trains.map(t => {
-                const etaText = formatTtnt(t.minutes);
-                const cls = (etaText === '--') ? 'mtr-eta dim' : 'mtr-eta';
-                const delayTag = t.delayed ? `<span class="mtr-delay">延误</span>` : '';
-                return `<div class="mtr-line">
-                    <span class="mtr-dest">往 ${escapeHtml(t.dest == null ? '—' : t.dest)}</span>
-                    <span class="mtr-eta-wrap"><span class="${cls}">${etaText}</span>${delayTag}</span>
-                </div>`;
-            }).join('');
+        if (mtrState.error) {
+            box.innerHTML = `<div class="card"><div class="bus-no-service">${mtrT('暂时无法获取','Unable to load')}</div></div>`;
+            return;
         }
-        return `<div class="card"><div class="card-title">${card.title}</div>${body}</div>`;
+        if (!mtrState.trains.length) {
+            box.innerHTML = `<div class="card"><div class="bus-no-service">${mtrT('此方向暂无班次','No trains in this direction')}</div></div>`;
+            return;
+        }
+        box.innerHTML = `<div class="card">${mtrState.trains.map(tr => {
+            const soon = tr.ttnt !== null && tr.ttnt < 1;
+            const mins = tr.ttnt === null ? '--' : (soon ? mtrT('即将到站','Arriving') : tr.ttnt);
+            const unit = (mins === '--' || soon) ? '' : `<small>${mtrT('分钟','min')}</small>`;
+            return `<div class="mtr-train-row">
+                <div class="left">
+                    <div class="dest">${escapeHtml(tr.dest)}</div>
+                    <div class="dest-en">${escapeHtml(tr.destEn)}</div>
+                    ${tr.delayed ? `<div class="delay">${mtrT('延误','Delayed')}</div>` : ''}
+                </div>
+                <div class="right"><div class="eta">${mins}${unit}</div></div>
+            </div>`;
+        }).join('')}</div>`;
     }
+    async function fetchMtrData() {
+        const req = ++mtrReq;
+        mtrState.loading = true; mtrState.error = false; mtrState.dirsAvail = null;
+        renderMtr();
+        try {
+            const url = `https://rt.data.gov.hk/v1/transport/mtr/getSchedule.php?line=${mtrState.line}&sta=${mtrState.station}`;
+            const j = await fetchJSON(url, {}, 8000);
+            if (req !== mtrReq) return;
+            const key = mtrState.line + '-' + mtrState.station;
+            const block = (j && j.data && j.data[key]) || {};
+            let arr = Array.isArray(block[mtrState.dir]) ? block[mtrState.dir] : [];
+            if (!mtrState.dirTouched && !arr.length) {
+                const other = mtrState.dir === 'UP' ? 'DOWN' : 'UP';
+                if (Array.isArray(block[other]) && block[other].length) { mtrState.dir = other; arr = block[other]; }
+            }
+            mtrState.dirsAvail = {
+                UP: Array.isArray(block.UP) && block.UP.length > 0,
+                DOWN: Array.isArray(block.DOWN) && block.DOWN.length > 0
+            };
+            mtrState.trains = arr.slice(0,4).map(x => {
+                const d = mtrDest(x.dest);
+                const ttnt = (x.ttnt === '' || x.ttnt == null) ? null : Number(x.ttnt);
+                return { dest:d.zh, destEn:d.en, ttnt:isFinite(ttnt)?ttnt:null, delayed:x.isdelay === 'Y' };
+            });
+            mtrState.loading = false; mtrState.error = false;
+            renderMtr();
+        } catch (e) {
+            if (req !== mtrReq) return;
+            mtrState.loading = false; mtrState.error = true; mtrState.dirsAvail = null;
+            renderMtr();
+        }
+    }
+    function mtrSelectLine(code) {
+        mtrState.line = code;
+        mtrState.station = MTR_DATA.lines[code].default;
+        mtrState.dir = 'UP'; mtrState.dirTouched = false;
+        closeMtrStationModal(); fetchMtrData();
+    }
+    function mtrSelectStation(code) {
+        mtrState.station = code; mtrState.dirTouched = false;
+        closeMtrStationModal(); fetchMtrData();
+    }
+    function mtrSetDir(dir) {
+        if (mtrState.dir === dir) return;
+        mtrState.dir = dir; mtrState.dirTouched = true;
+        fetchMtrData();
+    }
+    function openMtrStationModal() {
+        const modal = document.getElementById('mtr-station-modal');
+        if (!modal) return;
+        const input = document.getElementById('mtr-station-search');
+        if (input) input.value = '';
+        renderMtrStationList('');
+        modal.classList.add('active');
+        if (input) setTimeout(() => input.focus(), 220);
+    }
+    function closeMtrStationModal() {
+        const modal = document.getElementById('mtr-station-modal');
+        if (modal) modal.classList.remove('active');
+    }
+    function renderMtrStationList(q) {
+        const box = document.getElementById('mtr-station-list');
+        if (!box) return;
+        const query = String(q || '').trim().toLowerCase();
+        const list = mtrLineData().stations.filter(s => !query || s.zh.toLowerCase().includes(query) || s.en.toLowerCase().includes(query) || s.code.toLowerCase().includes(query));
+        box.innerHTML = list.length ? list.map(s =>
+            `<button class="mtr-st-row" onclick="mtrSelectStation('${s.code}')"><span class="zh">${escapeHtml(s.zh)}</span><span class="en">${escapeHtml(s.en)}</span><span class="check">${s.code===mtrState.station?'✓':''}</span></button>`
+        ).join('') : `<div class="bus-no-service">${mtrT('没有找到','No results')}</div>`;
+    }
+    (function initRefreshPress(){
+        document.querySelectorAll('.refresh-btn').forEach(function(btn){
+            var press = function(){ btn.classList.add('pressed'); };
+            var release = function(){ btn.classList.remove('pressed'); };
+            ['pointerdown','mousedown','touchstart'].forEach(function(ev){ btn.addEventListener(ev, press, {passive:true}); });
+            ['pointerup','pointercancel','pointerleave','mouseup','mouseleave','touchend','touchcancel'].forEach(function(ev){ btn.addEventListener(ev, release, {passive:true}); });
+        });
+    })();
+
+    renderMtr();
 
     // ============ 巴士（城巴/九巴/屿巴 直连） ============
     async function fetchCtb(stopId, route, leaveDir) {
@@ -4377,6 +4890,18 @@ body.theme-simple #view-fleet .fleet-card::before{display:none}
             .slice(0, 3);
     }
 
+    async function fetchGmb(stopId) {
+        const j = await fetchJSON(`https://data.etagmb.gov.hk/eta/stop/${stopId}`, {}, 8000);
+        const rows = (j && j.data) || [];
+        const map = {};
+        rows.forEach(row => {
+            if (row && typeof row.route_id === 'number') {
+                map[row.route_id + ':' + row.route_seq + ':' + row.stop_seq] = row;
+            }
+        });
+        return map;
+    }
+
     async function fetchBusData() {
         busData.loading = true;
         renderBusCards();
@@ -4404,7 +4929,7 @@ body.theme-simple #view-fleet .fleet-card::before{display:none}
                 cfg.ctb.routes.forEach(r => {
                     tasks.push(
                         fetchCtb(r.stopId, r.route, cfg.ctb.leaveDir).then(res => ({
-                            route: r.route, dest: res.dest || r.dest, weekendOnly: r.weekendOnly,
+                            route: r.route, dest: r.dest, weekendOnly: r.weekendOnly,
                             etas: res.etas, remark: res.remark, error: false
                         })).catch(() => ({ route: r.route, dest: r.dest, weekendOnly: r.weekendOnly, etas: [], remark: null, error: true }))
                     );
@@ -4422,8 +4947,28 @@ body.theme-simple #view-fleet .fleet-card::before{display:none}
                 });
             }
 
+            if (cfg.gmb) {
+                const gmbMap = fetchGmb(cfg.gmb.stopId);
+                cfg.gmb.routes.forEach((r, i) => {
+                    tasks.push(gmbMap.then(map => {
+                        const row = map[r.routeId + ':' + r.seq + ':' + r.stopSeq];
+                        if (!row || row.enabled === false) {
+                            return { route: r.route, dest: r.dest, weekendOnly: false, etas: [], remark: null, error: true, minibus: true, order: i };
+                        }
+                        const raw = Array.isArray(row.eta) ? row.eta : [];
+                        const etas = raw.map(e => Number(e && e.diff)).filter(n => isFinite(n) && n >= 0).sort((a, b) => a - b).slice(0, 3);
+                        const remark = raw.some(e => /未開|未开/.test(String((e && (e.remarks_sc || e.remarks_tc)) || ''))) ? '原定班次' : null;
+                        return { route: r.route, dest: r.dest, weekendOnly: false, etas, remark, error: false, minibus: true, order: i, emptyText: '非服务时间' };
+                    }).catch(() => ({ route: r.route, dest: r.dest, weekendOnly: false, etas: [], remark: null, error: true, minibus: true, order: i })));
+                });
+            }
+
             const lines = await Promise.all(tasks);
-            lines.sort(compareRoute);
+            lines.sort((a, b) => {
+                if (!!a.minibus !== !!b.minibus) return a.minibus ? 1 : -1;
+                if (a.minibus) return (a.order || 0) - (b.order || 0);
+                return compareRoute(a, b);
+            });
             return { name: port, lines, special: null };
         }));
 
@@ -4484,7 +5029,7 @@ body.theme-simple #view-fleet .fleet-card::before{display:none}
         } else if (!line.etas.length && line.weekendOnly) {
             etaHtml = `<span class="bus-eta dim">周末及公众假期</span>`;
         } else if (!line.etas.length) {
-            etaHtml = `<span class="bus-eta dim">今日无班次</span>`;
+            etaHtml = `<span class="bus-eta dim">${escapeHtml(line.emptyText || '今日无班次')}</span>`;
         } else {
             etaHtml = line.etas.slice().sort((a, b) => a - b).map(m => {
                 const txt = m < 1 ? '即将到站' : `${m} 分钟`;
@@ -4494,8 +5039,10 @@ body.theme-simple #view-fleet .fleet-card::before{display:none}
 
         const remarkHtml = (line.remark === '原定班次' && line.etas.length) ? `<span class="bus-remark">原定班次</span>` : '';
 
-        return `<div class="bus-line">
-            <span class="bus-route">${escapeHtml(line.route)}</span>
+        const tag = line.minibus ? '<span class="bus-gmb">小巴</span>' : '';
+        const cls = 'bus-line' + (line.minibus ? ' minibus' : '') + (line.minibus && line.order === 0 ? ' minibus-first' : '');
+        return `<div class="${cls}">
+            <span class="bus-route">${escapeHtml(line.route)}${tag}</span>
             <span class="bus-dest">往 ${escapeHtml(line.dest == null ? '—' : line.dest)}</span>
             <span class="bus-etas">${etaHtml}${remarkHtml}</span>
         </div>`;
@@ -6194,7 +6741,7 @@ body.theme-simple #view-fleet .fleet-card::before{display:none}
         state.paused = true;
         overTitle.textContent = '呼吸';
         overSub.style.display = '';
-        overSub.textContent = '方块碰到细线时，轻点一下';
+        overSub.textContent = '方块触碰细线时，请轻点屏幕';
         finalEl.style.display = 'none';
         btn.textContent = '开始';
         overlay.classList.add('show');
@@ -6513,6 +7060,1242 @@ body.theme-simple #view-fleet .fleet-card::before{display:none}
     loadRates();
     window.addEventListener('resize', placePill);
     window.addEventListener('orientationchange', placePill);
+})();
+</script>
+<script>
+(function(){
+/* ===== 通勤路径模块 ===== */
+
+/* ---------------- 演示数据 ----------------
+   正式版这里替换成线路/站点 API：
+   fetchStations(region, line) -> Promise<string[]>
+   线路本身可以写死（用户固定路线只涉及少量线路）。
+-------------------------------------------- */
+const SZ_METRO = {
+  "1号线": [
+    "罗湖",
+    "国贸",
+    "老街",
+    "大剧院",
+    "科学馆",
+    "华强路",
+    "岗厦",
+    "会展中心",
+    "购物公园",
+    "香蜜湖",
+    "车公庙",
+    "竹子林",
+    "侨城东",
+    "华侨城",
+    "世界之窗",
+    "白石洲",
+    "高新园",
+    "深大",
+    "桃园",
+    "大新",
+    "鲤鱼门",
+    "前海湾",
+    "新安",
+    "宝安中心",
+    "宝体",
+    "坪洲",
+    "西乡",
+    "固戍",
+    "后瑞",
+    "机场东"
+  ],
+  "2号线": [
+    "赤湾",
+    "蛇口港",
+    "海上世界",
+    "水湾",
+    "东角头",
+    "湾厦",
+    "海月",
+    "登良",
+    "后海",
+    "科苑",
+    "红树湾",
+    "世界之窗",
+    "侨城北",
+    "深康",
+    "安托山",
+    "侨香",
+    "香蜜",
+    "香梅北",
+    "景田",
+    "莲花西",
+    "福田",
+    "市民中心",
+    "岗厦北",
+    "华强北",
+    "燕南",
+    "大剧院",
+    "湖贝",
+    "黄贝岭",
+    "新秀",
+    "莲塘口岸",
+    "仙湖路",
+    "莲塘"
+  ],
+  "3号线": [
+    "福保",
+    "益田",
+    "石厦",
+    "购物公园",
+    "福田",
+    "少年宫",
+    "莲花村",
+    "华新",
+    "通新岭",
+    "红岭",
+    "老街",
+    "晒布",
+    "翠竹",
+    "田贝",
+    "水贝",
+    "草埔",
+    "布吉",
+    "木棉湾",
+    "大芬",
+    "丹竹头",
+    "六约",
+    "塘坑",
+    "横岗",
+    "永湖",
+    "荷坳",
+    "大运",
+    "爱联",
+    "吉祥",
+    "龙城广场",
+    "南联",
+    "双龙",
+    "梨园",
+    "新生",
+    "坪西",
+    "低碳城",
+    "白石塘",
+    "富坪",
+    "坪地六联"
+  ],
+  "4号线": [
+    "福田口岸",
+    "福民",
+    "会展中心",
+    "市民中心",
+    "少年宫",
+    "莲花北",
+    "上梅林",
+    "民乐",
+    "白石龙",
+    "深圳北站",
+    "红山",
+    "上塘",
+    "龙胜",
+    "龙华",
+    "清湖",
+    "清湖北",
+    "竹村",
+    "茜坑",
+    "长湖",
+    "观澜",
+    "松元厦",
+    "观澜湖",
+    "牛湖"
+  ],
+  "5号线": [
+    "赤湾",
+    "荔湾",
+    "铁路公园",
+    "妈湾",
+    "前湾公园",
+    "前湾",
+    "桂湾",
+    "前海湾",
+    "临海",
+    "宝华",
+    "宝安中心",
+    "翻身",
+    "灵芝",
+    "洪浪北",
+    "兴东",
+    "留仙洞",
+    "西丽",
+    "大学城",
+    "塘朗",
+    "长岭陂",
+    "深圳北站",
+    "民治",
+    "五和",
+    "坂田",
+    "杨美",
+    "上水径",
+    "下水径",
+    "长龙",
+    "布吉",
+    "百鸽笼",
+    "布心",
+    "太安",
+    "怡景",
+    "黄贝岭",
+    "湖 贝",
+    "东门",
+    "大剧院"
+  ],
+  "6号线": [
+    "松岗",
+    "溪头",
+    "松岗公园",
+    "薯田埔",
+    "合水口",
+    "公明广场",
+    "红花山",
+    "楼村",
+    "科学公园",
+    "光明",
+    "光明大街",
+    "凤凰城",
+    "长圳",
+    "上屋",
+    "官田",
+    "阳台山东",
+    "元芬",
+    "上芬",
+    "红山",
+    "深圳北站",
+    "梅林关",
+    "翰岭",
+    "银湖",
+    "八卦岭",
+    "体育中心",
+    "通新岭",
+    "科学馆"
+  ],
+  "6号线支线": [
+    "深理工",
+    "中大",
+    "圳美",
+    "光明",
+    "碧眼",
+    "虹桥公园",
+    "光明城"
+  ],
+  "7号线": [
+    "深大丽湖",
+    "北大",
+    "西丽湖",
+    "西丽",
+    "茶光",
+    "珠光",
+    "龙井",
+    "桃源村",
+    "深云",
+    "安托山",
+    "农林",
+    "车公庙",
+    "上沙",
+    "沙尾",
+    "石厦",
+    "皇岗村",
+    "福民",
+    "皇岗口岸",
+    "赤尾",
+    "华强南",
+    "华强北",
+    "华新",
+    "黄木岗",
+    "八卦岭",
+    "红岭北",
+    "笋岗",
+    "洪湖",
+    "田贝",
+    "太安"
+  ],
+  "8号线": [
+    "莲塘",
+    "梧桐山南",
+    "沙头角",
+    "海山",
+    "盐田港西",
+    "深外高中",
+    "盐田路",
+    "鸿安围",
+    "盐田墟",
+    "大梅沙",
+    "小梅沙",
+    "溪涌"
+  ],
+  "9号线": [
+    "前湾",
+    "梦海",
+    "怡海",
+    "荔林",
+    "南油西",
+    "南油",
+    "南山书城",
+    "深大南",
+    "粤海门",
+    "高新南",
+    "红树湾南",
+    "深湾",
+    "深圳湾公园",
+    "下沙",
+    "车公庙",
+    "香梅",
+    "景田",
+    "梅景",
+    "下梅林",
+    "梅村",
+    "上梅林",
+    "孖岭",
+    "银湖",
+    "泥岗",
+    "红岭北",
+    "园岭",
+    "红岭",
+    "红岭南",
+    "鹿丹村",
+    "人民南",
+    "向西村",
+    "文锦"
+  ],
+  "10号线": [
+    "双拥街",
+    "平湖",
+    "禾花",
+    "华南城",
+    "木古",
+    "上李朗",
+    "凉帽山",
+    "甘坑",
+    "雪象",
+    "岗头",
+    "华为",
+    "贝尔路",
+    "坂田北",
+    "五和",
+    "光雅园",
+    "南坑",
+    "雅宝",
+    "孖岭",
+    "冬瓜岭",
+    "莲花村",
+    "岗厦北",
+    "岗厦",
+    "福民",
+    "福田口岸"
+  ],
+  "11号线": [
+    "碧头",
+    "松岗",
+    "后亭",
+    "沙井",
+    "马安山",
+    "塘尾",
+    "桥头",
+    "福永",
+    "机场北",
+    "机场",
+    "碧海湾",
+    "宝安",
+    "前海湾",
+    "南山",
+    "后海",
+    "红树湾南",
+    "车公庙",
+    "福田",
+    "岗厦北",
+    "福星",
+    "华强南",
+    "红 岭 南",
+    "红岭南"
+  ],
+  "12号线": [
+    "左炮台东",
+    "太子湾",
+    "海上世界",
+    "花果山",
+    "四海",
+    "南油",
+    "南光",
+    "南山",
+    "桃园",
+    "南头古城",
+    "中山公园",
+    "同乐南",
+    "新安公园",
+    "灵芝",
+    "上川",
+    "流塘",
+    "宝安客运站",
+    "宝田一路",
+    "平峦山",
+    "西乡桃源",
+    "钟屋南",
+    "黄田",
+    "兴围",
+    "机场东",
+    "福围",
+    "怀德",
+    "福永",
+    "桥头西",
+    "福海西",
+    "国展",
+    "国展北",
+    "海上田园南",
+    "海上田园东",
+    "蚝乡",
+    "沙蚝",
+    "沙井古墟",
+    "步涌",
+    "朗下",
+    "松岗"
+  ],
+  "13号线": [
+    "李松蓢",
+    "下村",
+    "上村",
+    "公明广场",
+    "新庄",
+    "将围",
+    "月亮路",
+    "凤凰城",
+    "德雅路",
+    "光明城",
+    "红坳公园",
+    "上屋",
+    "石岩",
+    "罗租",
+    "应人石",
+    "百旺",
+    "留仙洞",
+    "石鼓",
+    "高新北",
+    "高新中",
+    "深大",
+    "粤海门",
+    "科苑",
+    "后海",
+    "人才公园",
+    "深圳湾口岸"
+  ],
+  "14号线": [
+    "岗厦北",
+    "黄木岗",
+    "罗湖北",
+    "布吉",
+    "石芽岭",
+    "六约北",
+    "四联",
+    "坳背",
+    "大运",
+    "嶂背",
+    "南约",
+    "宝龙",
+    "锦龙",
+    "坪山围",
+    "坪山广场",
+    "坪山中心",
+    "坑梓",
+    "沙田"
+  ],
+  "16号线": [
+    "园山西坑",
+    "安良",
+    "福坑",
+    "大康",
+    "园山",
+    "大安",
+    "吉溪",
+    "金源",
+    "大运",
+    "大运中心",
+    "龙城公园",
+    "黄阁坑",
+    "愉园",
+    "回龙埔",
+    "尚景",
+    "盛平",
+    "龙园",
+    "双龙",
+    "新塘围",
+    "龙东",
+    "宝龙同乐",
+    "坪山",
+    "新和",
+    "六和",
+    "坪山围",
+    "坪环",
+    "东纵纪念馆",
+    "沙壆",
+    "燕子湖",
+    "石井",
+    "技术大学",
+    "田心"
+  ],
+  "20号线": [
+    "机场北",
+    "国展南",
+    "国展",
+    "国展北",
+    "会展城"
+  ]
+};
+
+const LINES = { sz: SZ_METRO, hk: buildHkMetro() };
+(function normalizeMetroStations(){
+  Object.keys(LINES).forEach(function(region){
+    Object.keys(LINES[region]).forEach(function(line){
+      var seen = Object.create(null);
+      LINES[region][line] = LINES[region][line].map(function(st){
+        return String(st).replace(/\s+/g, '');
+      }).filter(function(st){
+        if(seen[st]) return false;
+        seen[st] = 1;
+        return true;
+      });
+    });
+  });
+})();
+function buildHkMetro(){
+  const out = {};
+  try{
+    const src = (typeof MTR_DATA !== 'undefined' && MTR_DATA.lines) ? MTR_DATA.lines : {};
+    Object.keys(src).forEach(function(k){
+      const l = src[k];
+      if(!l || !Array.isArray(l.stations)) return;
+      out[l.name] = l.stations.map(function(s){ return s.zh; });
+    });
+  }catch(e){}
+  return out;
+}
+// 深圳按线路类型分类，香港按运营方分类（深圳：2026年10月官方一览表；香港：data.gov.hk 官方线路数据）
+const BUS_DATA = {"sz":{"常规":["1","2","3","5","8","10","11","12","13","14","17","18","19","21","22","23","26","27","29","37","38","42","43","49","57","58","60","61","62","63","64","66","67","68","69","72","73","74","81","82","83","85","97","101","104","111","113","201","203","204","211","216","218","222","223","226","229","236","303","306","307","308","312","316","320","321","323","324","326","328","334","337","338","339","351","357","358","362","366","369","371","376","377","381","603","605","606","610","612","615","620","621","624","627","629","650","652","653","655","704","707","718","720","767","779","781","789","791","802","810","811","818","822","833","836","862","882","906","907","915","923","937","939","941","956","963","964","977","978","979","980","982","A10","A4","A5","A6","A7"],"干线":["M102","M103","M105","M106","M109","M112","M113","M120","M124","M125","M126","M127","M130","M131","M132","M133","M134","M135","M136","M137","M138","M139","M140","M141","M142","M143","M145","M146","M147","M148","M150","M151","M152","M153","M154","M155","M156","M157","M158","M159","M160","M161","M162","M164","M165","M166","M167","M168","M169","M170","M172","M173","M175","M176","M177","M178","M179","M180","M181","M182","M183","M184","M185","M187","M188","M189","M190","M191","M192","M193","M194","M195","M197","M198","M199","M201","M202","M203","M204","M205","M206","M207","M208","M209","M210","M211","M212","M213","M214","M216","M217","M218","M219","M220","M221","M222","M224","M225","M226","M227","M228","M229","M230","M231","M232","M233","M234","M235","M239","M240","M241","M242","M244","M245","M246","M247","M248","M249","M250","M251","M252","M253","M255","M256","M257","M258","M259","M260","M261","M262","M263","M264","M265","M266","M267","M268","M269","M270","M271","M272","M273","M274","M275","M276","M277","M279","M280","M281","M282","M283","M284","M285","M286","M287","M288","M289","M291","M292","M293","M294","M295","M296","M297","M298","M300","M301","M302","M303","M304","M305","M306","M307","M308","M309","M310","M311","M312","M314","M315","M316","M317","M318","M319","M320","M321","M322","M323","M324","M325","M326","M327","M329","M330","M331","M332","M333","M334","M335","M336","M337","M338","M339","M340","M341","M342","M344","M345","M346","M347","M348","M349","M350","M351","M352","M353","M354","M355","M356","M357","M358","M359","M360","M361","M362","M363","M364","M365","M366","M367","M369","M370","M371","M372","M373","M375","M376","M377","M378","M379","M380","M381","M382","M384","M385","M386","M387","M388","M389","M390","M391","M392","M394","M395","M396","M397","M398","M399","M400","M401","M402","M403","M404","M405","M406","M407","M408","M409","M410","M411","M412","M413","M414","M415","M416","M418","M419","M420","M421","M422","M423","M424","M425","M426","M427","M428","M429","M430","M434","M435","M436","M437","M438","M439","M440","M441","M442","M443","M444","M445","M446","M448","M449","M450","M453","M454","M455","M456","M457","M458","M461","M462","M463","M464","M465","M466","M467","M468","M469","M470","M471","M472","M473","M475","M476","M477","M478","M479","M480","M481","M482","M483","M484","M485","M486","M487","M488","M489","M490","M491","M492","M493","M494","M495","M496","M497","M498","M499","M500","M501","M502","M503","M505","M506","M507","M508","M509","M510","M511","M512","M513","M514","M515","M516","M517","M518","M520","M521","M523","M524","M525","M526","M527","M529","M530","M531","M532","M533","M534","M535","M536","M537","M538","M539","M540","M542","M543","M544","M545","M546","M547","M548","M549","M551","M555","M556","M557","M558","M559","M560","M561","M562","M563","M564","M565","M566","M567","M569","M570","M571","M572","M573","M574","M575","M576","M577","M578","M579","M580","M581","M582","M583","M584","M585","M587","M588","M589","M590","M591","M592","M593","M594","M595","M596","M597","M598","M599"],"支线":["B601","B603","B605","B607","B611","B613","B614","B615","B616","B617","B619","B620","B623","B625","B627","B632","B633","B634","B635","B638","B639","B641","B643","B654","B656","B657","B660","B661","B665","B666","B667","B668","B669","B676","B678","B680","B681","B683","B686","B688","B699","B709","B710","B711","B712","B713","B714","B715","B716","B718","B728","B742","B777","B800","B810","B811","B812","B828","B830","B833","B834","B835","B836","B838","B855","B858","B860","B861","B865","B866","B867","B869","B875","B877","B881","B882","B891","B898","B905","B911","B912","B913","B916","B917","B923","B924","B925","B926","B929","B931","B932","B937","B938","B939","B945","B946","B950","B953","B954","B956","B961","B962","B964","B971","B973","B977","B978","B979","B981","B985","B990","B991","B992","B993","B995"],"快线":["E1","E11","E13","E17","E19","E22","E23","E25","E26","E27","E28","E3","E33","E34","E36","E37","E38","E39","E40","E7","E8","E9","E90","E91","E92"],"高峰专线":["高峰专线100号","高峰专线101号","高峰专线105号","高峰专线107号","高峰专线111号","高峰专线113号","高峰专线116号","高峰专线117号","高峰专线118号","高峰专线119号","高峰专线120号","高峰专线121号","高峰专线122号","高峰专线123号","高峰专线125号","高峰专线126号","高峰专线127号","高峰专线129号","高峰专线130号","高峰专线131号","高峰专线132号","高峰专线133号","高峰专线135号","高峰专线136号","高峰专线140号","高峰专线145号","高峰专线147号","高峰专线151号","高峰专线152号","高峰专线153号","高峰专线154号","高峰专线155号","高峰专线156号","高峰专线159号","高峰专线160号","高峰专线161号","高峰专线162号","高峰专线163号","高峰专线164号","高峰专线165号","高峰专线169号","高峰专线16号","高峰专线171号","高峰专线173号","高峰专线176号","高峰专线177号","高峰专线179号","高峰专线17号","高峰专线180号","高峰专线183号","高峰专线184号","高峰专线186号","高峰专线187号","高峰专线189号","高峰专线18号","高峰专线191号","高峰专线192号","高峰专线194号","高峰专线195号","高峰专线199号","高峰专线200号","高峰专线215号","高峰专线219号","高峰专线21号","高峰专线221号","高峰专线22号","高峰专线230号","高峰专线231号","高峰专线232号","高峰专线235号","高峰专线236号","高峰专线237号","高峰专线23号","高峰专线243号","高峰专线244号","高峰专线245号","高峰专线25号","高峰专线262号","高峰专线26号","高峰专线27号","高峰专线28号","高峰专线290号","高峰专线29号","高峰专线304号","高峰专线32号","高峰专线35号","高峰专线36号","高峰专线407号","高峰专线40号","高峰专线42号","高峰专线46号","高峰专线474号","高峰专线47号","高峰专线48号","高峰专线49号","高峰专线55号","高峰专线59号","高峰专线62号","高峰专线655号","高峰专线65号","高峰专线66号","高峰专线67号","高峰专线68号","高峰专线69号","高峰专线72号","高峰专线73号","高峰专线77号","高峰专线82号","高峰专线83号","高峰专线84号","高峰专线89号","高峰专线92号","高峰专线93号","高峰专线957号","高峰专线95号","高峰专线96号"],"夜班":["N68","N73","NA1","NA11","NA2"],"假日旅游":["国际会展接驳专线1号","坪梅假日快线","大学城通勤专线","大顶岭绿道接驳假日专线","大鹏假日接驳专线2号","大鹏假日接驳专线4号","大鹏假日接驳专线6号","梧桐山假日专线2号","观澜古墟假日专线","观澜山水田园假日专线","青青世界公园接驳专线","高快巴士14号","高快巴士15号","高快巴士16号","高快巴士18号","高快巴士27号","高快巴士28号","高快巴士32号","高快巴士33号","高快巴士37号","高快巴士41号","高快巴士42号","高快巴士43号","高快巴士45号","高快巴士47号","高快巴士48号","高快巴士53号","高快巴士58号","高快巴士60号","高快巴士6号","高快巴士70号","高快巴士81号","龙岗儿童公园假日专线"]},"hk":{"九巴":["1","1A","2","2A","2B","2D","2E","2F","2P","2X","3B","3C","3D","3M","3X","5","5A","5C","5D","5M","5P","5R","6","6C","6D","6E","6F","6P","6R","7","7B","7M","8","8P","9","10","11","11A","11B","11C","11D","11K","11X","12","12A","13","13D","13M","13P","13X","14","14B","14D","14H","14X","15","15A","15X","16","16M","16P","16X","17","17A","17P","18","19","21","23","23M","24","26","26M","26X","27","27X","28","28B","28S","29M","30","30X","31","31A","31B","31M","31P","32","32H","32M","33","33A","33B","33R","33X","34","34M","35A","35X","36","36A","36B","36M","36R","36X","37","37M","37X","38","38A","38B","38P","39A","39M","40","40A","40B","40E","40P","40X","41A","41M","41R","42","42A","42C","42M","43","43A","43B","43C","43D","43M","43P","43S","43X","44","44M","45","46","46P","46R","46S","46X","47A","47X","48P","48X","49","49A","49M","49P","49X","51","52P","52X","53","54","57M","58M","58P","58X","59A","59M","59X","60M","60X","61M","61P","61X","62P","62X","63","63X","64K","64P","64S","64X","65K","65X","66M","66X","67M","67X","68","68A","68E","68F","68M","68X","69","69C","69M","69P","69X","70K","71A","71B","71K","71P","71S","72","72A","72C","72K","72X","73","73A","73B","73D","73F","73K","73P","73S","73X","74","74A","74B","74C","74D","74E","74F","74K","74P","74R","74X","75F","75K","75P","75X","76","76A","76K","76S","77","77K","78","78A","78B","78K","78S","79K","80","80A","80K","80P","80X","81","81C","81K","82B","82C","82D","82K","82X","83A","83K","83P","83S","83X","84M","85","85A","85B","85K","85M","85P","85S","85X","86","86A","86C","86K","86S","87B","87C","87D","87E","87K","87P","87R","87S","88","88K","88X","89","89B","89C","89D","89P","89S","89X","90","91","91B","91M","91P","91S","92","92R","93A","93K","93M","93P","94","95","96","96R","97","98","98A","98C","98D","98E","98P","98R","98S","99","99R","101","101R","101X","102","102P","102R","103","104","106","106A","106P","107","107P","108","109","110","111","111P","112","113","115","115P","116","117","118","118P","170","171","171A","171P","182","182X","203C","203E","203S","208","211","211A","213A","213B","213D","213E","213M","213S","213X","214","214P","215P","215R","215X","216M","219X","224R","224X","230R","230X","234A","234B","234C","234D","234P","234X","235","235M","238M","238P","238X","240X","241X","242X","243M","243P","248M","249M","249X","251A","251B","251C","251M","252","252B","252S","252X","253","258A","258D","258P","258S","258X","259B","259C","259D","259R","259S","259X","260B","260C","260R","260X","261","261B","261P","261S","261X","263","263A","263B","263C","264X","265B","265M","265P","265S","267X","268","268A","268B","268C","268M","268P","268X","269B","269C","269D","269M","269P","269R","269S","269X","270","270A","270B","270C","270D","270E","270P","270R","270S","271","271A","271B","271P","271R","271S","271X","272A","272E","272K","272P","272S","272X","273","273A","273B","273C","273D","273P","273S","274","274P","274X","275R","275X","276","276A","276B","276C","276P","277A","277B","277E","277P","277X","278A","278K","278P","278X","279A","279B","279X","280X","281","281A","281B","281E","281X","282","283","284","285","285A","286A","286C","286D","286P","286X","287","287D","287P","287X","288","288A","288B","288C","288D","289K","289R","290","290A","290E","290X","291P","292P","293S","296A","296C","296D","296M","296P","297","297P","298","298E","298F","298X","299X","302","302A","307","307A","307D","307P","331","331S","373","600","600X","601","601P","603","603A","603P","603S","606","606A","606X","613","613A","619","619P","619X","621","641","671","671X","673","673A","673P","678","680","680B","680P","680X","681","681P","690","690P","690S","848","868","869","872","872X","887","888","889","891","893","900","900X","904","905","905A","905P","907C","914","914P","914X","917","918","934","934A","935","936","936A","945","948","948A","948B","948E","948P","948X","960","960A","960B","960C","960P","960S","960X","961","961P","961S","968","968A","968X","978","978A","978B","980A","980X","981P","982X","985","985A","985B","A30","A31","A32","A33","A33X","A34","A36","A37","A38","A41","A41P","A42","A43","A43P","A46","A47X","B1","B10","B11","B9","B9A","E31","E32","E32A","E33","E33P","E36","E36A","E36C","E36P","E36S","E37","E37C","E41","E42","E42C","E42P","E43","HK1","N118","N121","N122","N170","N171","N182","N213","N214","N216","N237","N241","N252","N260","N269","N271","N281","N283","N287","N290","N293","N30","N307","N31","N36","N368","N373","N39","N3D","N41X","N42","N42A","N619","N64","N680","N691","N78","N960","NA30","NA31","NA32","NA33","NA36","NA37","NA40","NA41","NA43","NA47","NA52","NB73","P960","P968","PB1","PB2","PB3","PB4","PB5","R33","R42","R8","S1","S64","S64C","S64P","S64X","SP1","SP10","SP3","SP5A","SP6","SP7","T270","T277","T74","T80","W2","W3","W4","X1","X33","X36","X40","X42C","X42P","X43","X47","X6C","X89D"],"城巴":["1","1M","1P","2","2A","2X","3A","4","4X","5B","5X","6","6A","6X","7","8","8H","8P","8X","9","9C","10","11","12","12A","12M","13","14","15","15B","15C","18","18P","18X","19P","20","20A","20R","20X","22","22D","22M","22R","22S","22X","23","23B","23X","25","25A","26","27","30X","33X","37A","37B","37X","38","38S","40","40M","40P","41A","42","42C","43R","47P","48","49X","50","50M","50R","55","56","56A","61R","63","65","70","70P","71","71P","72","72A","73","73P","73S","75","76","77","77X","78","78C","78P","78X","79","79P","79X","81","81A","82","82S","82X","85","85A","85P","88R","88X","90","90B","90C","91","91A","93","93A","93C","94A","95C","95P","97","98","99","99X","101","101R","101X","102","102P","102R","103","104","104R","106","106A","106P","107","107P","109","110","111","111P","112","113","115","115P","116","117","118","118P","118R","170","171","171A","171P","182","182X","260","302","302A","307","307A","307D","307P","347","382","388","389","511","580","581","582","586","587","589","592","595","601","601P","606","606A","606X","608","608P","619","619P","619X","621","629","629M","641","671","671X","678","679","680","680B","680P","680X","681","681P","682","682A","682B","682P","690","690P","690S","694","694S","701","701A","701S","702","702A","702B","702S","720","720A","720P","720X","722","770","780","780P","788","789","790","792M","793","795","795X","796P","796R","796S","796X","797","798","798A","798P","798X","904","905","905A","905P","907C","914","914P","914X","930","930A","930B","930X","933","948","948A","948B","948E","948P","948X","950","952","952C","952P","955","962","962A","962C","962G","962P","962X","967","967X","969","969B","969C","969N","969P","969X","970","970X","971","971R","973","976S","979","980A","980X","981P","982C","982X","985","985A","985B","986","987","989","A10","A11","A12","A17","A20","A21","A22","A23","A25","A25S","A26","A28","A28X","A29","B13","B14","B15","B3","B3A","B3M","B3X","B5","B7","B7X","B8","E11","E11A","E11B","E11S","E18","E21","E21A","E21B","E21C","E21D","E21X","E22","E22A","E22C","E22P","E22S","E22X","E23","E23A","E28","H0","H1","H2","H20","H2K","H3","H4","N11","N118","N121","N122","N170","N171","N182","N20","N21","N21A","N23","N26","N29","N307","N50","N619","N680","N691","N72","N796","N8","N8P","N8X","N90","N930","N952","N962","N969","NA10","NA11","NA12","NA20","NA21","NA29","NB3","NT3","ONPA","R11","R22","R8","S1","S52","S52A","S52P","S56","SP10","SP11","SP12","SP2","SP2A","SP5B","SP9","TCD4","X1","X15","X55","X797","X8","X9","X962","X970"],"屿巴":["1","1R","2","3M","4","7S","11","11A","21","23","34","34S","36","36M","36X","37","37A","37H","37M","37P","37S","38","38X","39M","A35","B12","B2","B2P","B2X","B4","B6","B6S","N1","N35","N37","N38","NB2","X11R","XB2"]}};
+const TYPE_META = {
+  walk:      { label:'步行', cls:'walk', icon:'步', hint:'' },
+  metro:     { label:'地铁', cls:'metro', icon:'铁', hint:'' },
+  bus:       { label:'公交 / 巴士', cls:'bus', icon:'巴', hint:'' },
+  transfer:  { label:'转乘', cls:'transfer', icon:'转', hint:'' },
+  portArrive:{ label:'到达口岸', cls:'port', icon:'岸', hint:'' },
+  port:      { label:'过关', cls:'port', icon:'关', hint:'' }
+};
+const REGION_META = { sz:{label:'深圳',cls:'sz'}, hk:{label:'香港',cls:'hk'}, port:{label:'口岸',cls:'port'} };
+
+const STORE_T = 'terminus_path_route_v1';
+
+let segments = [];
+let editingId = null;
+let live = null;
+let demoSpeed = 1; // 实时计时
+let sheetLine = '';       // 当前编辑中的线路号
+let sheetOp = '';         // 香港运营方：九巴/城巴/屿巴
+let busStops = [];        // 香港巴士当前线路站点
+let busStopsLoaded = false;
+
+function uid(){ return 's' + Date.now().toString(36) + Math.random().toString(36).slice(2,5); }
+(function syncKeyboard(){
+  const vv = window.visualViewport;
+  if(!vv) return;
+  const apply = () => {
+    const kb = Math.max(0, Math.round(window.innerHeight - (vv.height + vv.offsetTop)));
+    document.documentElement.style.setProperty('--kb', kb + 'px');
+  };
+  vv.addEventListener('resize', apply);
+  vv.addEventListener('scroll', apply);
+  window.addEventListener('orientationchange', () => setTimeout(apply, 260));
+  apply();
+})();
+function esc(s){ return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function cnNum(n){
+  const d = ['','一','二','三','四','五','六','七','八','九'];
+  if(n < 10) return d[n];
+  if(n < 20) return '十' + (n % 10 ? d[n % 10] : '');
+  return d[Math.floor(n/10)] + '十' + (n % 10 ? d[n % 10] : '');
+}
+function load(){
+  try{
+    const t = JSON.parse(localStorage.getItem(STORE_T) || 'null');
+    segments = Array.isArray(t) && t.length ? t : [];
+  }catch(e){ segments = []; }
+}
+function saveTemplate(){ try{ localStorage.setItem(STORE_T, JSON.stringify(segments)); }catch(e){} }
+function segText(s){
+  if(s.type === 'walk') return (s.from || pt('起点','From')) + ' → ' + (s.to || pt('终点','To'));
+  if(s.type === 'metro' || s.type === 'bus') return (s.line || pt('线路','Line')) + (s.op ? ' ' + s.op : '') + ' · ' + (s.from || pt('始发站','Origin')) + ' → ' + (s.to || pt('到达站','Destination'));
+  if(s.type === 'transfer') return (s.station || pt('换乘站','Interchange')) + ' · ' + (s.fromLine || pt('线路','Line')) + ' → ' + (s.toLine || pt('线路','Line'));
+  if(s.type === 'portArrive') return pt('口岸到达时刻','Port arrival time');
+  if(s.type === 'port') return pt('排队与查验','Queue & inspection');
+  return '';
+}
+function segPlan(s){
+  if(s.type === 'portArrive') return '<span class="marker">' + pt('时间点','Time') + '</span>';
+  return s.plan ? `<span class="plan">${s.plan}<small>${pt('分钟','min')}</small></span>` : '<span class="marker">' + pt('未填','Not set') + '</span>';
+}
+const TYPE_EN = { '步行':'Walk', '地铁':'Metro', '公交':'Bus', '巴士':'Bus', '转乘':'Transfer', '到达口岸':'Arrive at port', '过关':'Crossing' };
+function pt(zh,en){ return window.LANG === 'en' ? en : zh; }
+function typeLabel(s){
+  if(s.type === 'bus') return s.region === 'hk' ? '巴士' : '公交';
+  return TYPE_META[s.type] ? TYPE_META[s.type].label : s.type;
+}
+function typeLabelOut(s){ const l = typeLabel(s); return (window.LANG === 'en') ? (TYPE_EN[l] || l) : l; }
+function render(){
+  const list = document.getElementById('list');
+  const total = segments.reduce((a,s)=>a + (Number(s.plan)||0), 0);
+  document.getElementById('cumNum').textContent = total;
+  if(!segments.length){ list.innerHTML=''; document.getElementById('addBtn').classList.add('loose'); return; }
+  document.getElementById('addBtn').classList.remove('loose');
+  let html = '';
+  let lastRegion = null;
+  segments.forEach((s, i) => {
+    if(s.region !== lastRegion){
+      const label = s.region === 'sz' ? pt('深圳段','Shenzhen leg') : s.region === 'hk' ? pt('香港段','Hong Kong leg') : pt('口岸','Port');
+      html += `<div class="group-label">${label}</div>`;
+      lastRegion = s.region;
+    }
+    const region = REGION_META[s.region] || {label:'',cls:''};
+    const plan = segPlan(s);
+    const liveCls = live && live.index === i ? ' live' : '';
+    const doneCls = live && i < live.index ? ' done' : '';
+    html += `<div class="seg${liveCls}${doneCls}" data-id="${s.id}" data-i="${i}">
+      <div class="idx">${String(i+1).padStart(2,'0')}</div>
+      <div class="body">
+        <div class="top"><span class="type">${typeLabelOut(s)}</span><span class="tag ${region.cls}">${pt(region.label, region.cls==='sz'?'Shenzhen':region.cls==='hk'?'Hong Kong':'Port')}</span></div>
+        <div class="main">${esc(segText(s))}</div>
+      </div>
+      <div class="right">${plan}</div>
+      <button class="del" data-del="${s.id}" aria-label="删除">×</button>
+    </div>`;
+  });
+  list.innerHTML = html;
+}
+
+/* ---------- 编辑器 ---------- */
+function openSheet(id){
+  editingId = id;
+  const s = id ? segments.find(x=>x.id===id) : null;
+  const cur = s || { type:'walk', region: 'sz', plan: '' };
+  const _n = id ? segments.findIndex(x=>x.id===id)+1 : 0;
+  document.getElementById('sheetTitle').textContent = id ? pt('编辑第' + cnNum(_n) + '段行程','Edit leg ' + _n) : pt('添加行程','Add leg');
+  document.getElementById('errBox').className = 'err';
+  renderTypeChips(cur.type, cur.region === 'hk' ? 'hk' : 'sz');
+  renderRegionChips(cur.region, cur.type);
+  document.getElementById('planInput').value = cur.plan || '';
+  document.getElementById('walkFrom').value = cur.from || '';
+  document.getElementById('walkTo').value = cur.to || '';
+  document.getElementById('busFrom').value = cur.from || '';
+  document.getElementById('busTo').value = cur.to || '';
+  sheetLine = (cur.type === 'bus' && cur.line) ? cur.line : '';
+  sheetOp = cur.op || '';
+  busStops = []; busStopsLoaded = false;
+  const hintText = TYPE_META[cur.type]?.hint || '';
+  document.getElementById('typeHint').textContent = hintText;
+  document.getElementById('typeHint').style.display = hintText ? '' : 'none';
+  syncTypeFields(cur);
+  if(cur.type === 'bus' && cur.region === 'hk' && sheetLine){
+    ensureStops(sheetOp, sheetLine).then(ok => { if(ok) syncTypeFields({ type:'bus', region:'hk', from: cur.from, to: cur.to }); });
+  }
+  document.getElementById('overlay').classList.add('show');
+  document.getElementById('sheet').classList.add('show');
+}
+function closeSheet(){
+  closePicker();
+  document.getElementById('overlay').classList.remove('show');
+  document.getElementById('sheet').classList.remove('show');
+  editingId = null;
+}
+function renderTypeChips(type, region){
+  document.getElementById('typeChips').innerHTML = Object.keys(TYPE_META).map(k => {
+    const zh = k === 'bus' ? (region === 'hk' ? '巴士' : '公交') : TYPE_META[k].label;
+    const en = TYPE_EN[zh] || zh;
+    return `<button class="chip${k===type?' on':''}" data-type="${k}">${pt(zh,en)}</button>`;
+  }).join('');
+}
+function renderRegionChips(region, type){
+  const field = document.getElementById('regionField');
+  if(type === 'portArrive' || type === 'port'){ field.style.display='none'; return; }
+  field.style.display='';
+  document.getElementById('regionChips').innerHTML = ['sz','hk'].map(k =>
+    `<button class="chip${k===region?' on':''}" data-region="${k}">${k==='sz'?pt('深圳','Shenzhen'):pt('香港','Hong Kong')}</button>`).join('');
+}
+function syncTypeFields(s){
+  const t = s.type, region = s.region === 'hk' ? 'hk' : 'sz';
+  const isMetro = t === 'metro';
+  const isBus = t === 'bus';
+  const isRide = isMetro || isBus;
+  const isTransfer = t === 'transfer';
+  const isWalk = t === 'walk';
+  document.getElementById('lineField').style.display = isRide ? '' : 'none';
+  document.getElementById('fromField').style.display = isMetro ? '' : 'none';
+  document.getElementById('toField').style.display = isMetro ? '' : 'none';
+  document.getElementById('busFromField').style.display = 'none';
+  document.getElementById('busToField').style.display = 'none';
+  document.getElementById('lineTrigger').style.display = isRide ? 'flex' : 'none';
+  document.getElementById('walkFromField').style.display = isWalk ? '' : 'none';
+  document.getElementById('walkToField').style.display = isWalk ? '' : 'none';
+  document.getElementById('transferField').style.display = isTransfer ? '' : 'none';
+  document.getElementById('transferToField').style.display = isTransfer ? '' : 'none';
+  document.getElementById('transferLinesField').style.display = isTransfer ? '' : 'none';
+  document.getElementById('planField').style.display = (t === 'portArrive') ? 'none' : '';
+  if(isBus){
+    document.getElementById('lineSel').style.display = 'none';
+    document.getElementById('lineTrigger').style.display = 'flex';
+    renderLineTrigger();
+    const useStops = (region === 'hk') && busStopsLoaded && busStops.length > 0;
+    document.getElementById('fromField').style.display = useStops ? '' : 'none';
+    document.getElementById('toField').style.display = useStops ? '' : 'none';
+    document.getElementById('busFromField').style.display = useStops ? 'none' : '';
+    document.getElementById('busToField').style.display = useStops ? 'none' : '';
+    document.getElementById('fromLabel').textContent = '上车站';
+    document.getElementById('toLabel').textContent = '下车站';
+    if(useStops){
+      const f = document.getElementById('fromSel'), tt = document.getElementById('toSel');
+      const fv = (s.from && busStops.includes(s.from)) ? s.from : busStops[0];
+      const tv = (s.to && busStops.includes(s.to)) ? s.to : (busStops.length > 1 ? busStops[busStops.length - 1] : busStops[0]);
+      f.innerHTML = busStops.map(x=>`<option${x===fv?' selected':''}>${esc(x)}</option>`).join('');
+      tt.innerHTML = busStops.map(x=>`<option${x===tv?' selected':''}>${esc(x)}</option>`).join('');
+    }
+  } else if(isMetro){
+    document.getElementById('lineSel').style.display = 'none';
+    document.getElementById('fromLabel').textContent = '始发站';
+    document.getElementById('toLabel').textContent = '到达站';
+    const lines = Object.keys(LINES[region]);
+    document.getElementById('lineSel').innerHTML = lines.map(l=>`<option${l===s.line?' selected':''}>${l}</option>`).join('');
+    const line = s.line || lines[0];
+    loadStations(region, t, line, s.from, s.to);
+  }
+  if(isTransfer){
+    const lines = Object.keys(LINES[region]);
+    const fromLine = lines.includes(s.fromLine) ? s.fromLine : lines[0];
+    const toLine = lines.includes(s.toLine) ? s.toLine : (lines[1] || lines[0]);
+    document.getElementById('fromLineSel').innerHTML = lines.map(l=>`<option${l===fromLine?' selected':''}>${l}</option>`).join('');
+    document.getElementById('toLineSel').innerHTML = lines.map(l=>`<option${l===toLine?' selected':''}>${l}</option>`).join('');
+    fillTransferStations(region, fromLine, toLine, s.station, s.toStation);
+  }
+  syncPickerTriggers();
+}
+function transferStations(region, a, b){
+  const A = LINES[region][a] || [], B = LINES[region][b] || [];
+  return A.filter(x => B.includes(x));
+}
+function fillTransferStations(region, fromLine, toLine, station, toStation){
+  const inter = transferStations(region, fromLine, toLine);
+  const opts = inter.length ? inter : ['无同站换乘'];
+  const f = inter.includes(station) ? station : opts[0];
+  const t = inter.includes(toStation) ? toStation : f;
+  document.getElementById('transferStation').innerHTML = opts.map(x=>`<option${x===f?' selected':''}>${x}</option>`).join('');
+  document.getElementById('transferToStation').innerHTML = opts.map(x=>`<option${x===t?' selected':''}>${x}</option>`).join('');
+  syncPickerTriggers();
+}
+async function loadStations(region, type, line, from, to){
+  const fromSel = document.getElementById('fromSel');
+  const toSel = document.getElementById('toSel');
+  fromSel.innerHTML = '<option>加载中…</option>';
+  toSel.innerHTML = '<option>加载中…</option>';
+  const stations = await fetchStations(region, type, line);
+  const fv = (from && stations.includes(from)) ? from : (stations[0] || '');
+  const tv = (to && stations.includes(to)) ? to : (stations.length > 1 ? stations[stations.length - 1] : (stations[0] || ''));
+  fromSel.innerHTML = stations.map(x=>`<option${x===fv?' selected':''}>${esc(x)}</option>`).join('');
+  toSel.innerHTML = stations.map(x=>`<option${x===tv?' selected':''}>${esc(x)}</option>`).join('');
+  syncPickerTriggers();
+}
+function fetchStations(region, type, line){
+  // 正式版替换为真实站点 API；这里用静态表模拟异步返回
+  return new Promise(resolve => setTimeout(() => {
+    const src = LINES[region];
+    const st = (src && src[line]);
+    resolve(Array.isArray(st) ? st : []);
+  }, 120));
+}
+
+/* ---------- 香港巴士站点（官方 API，失败回退手填） ---------- */
+const BUS_STOPS_CACHE_KEY = 'terminus_path_bus_stops_v1';
+function readStopCache(){
+  try{ return JSON.parse(localStorage.getItem(BUS_STOPS_CACHE_KEY) || '{}') || {}; }catch(e){ return {}; }
+}
+function writeStopCache(o){ try{ localStorage.setItem(BUS_STOPS_CACHE_KEY, JSON.stringify(o)); }catch(e){} }
+function fetchJSON(url){
+  return fetch(url, { cache:'no-store' }).then(r => {
+    if(!r.ok) throw new Error('HTTP ' + r.status);
+    return r.json();
+  });
+}
+async function fetchKmbStops(route){
+  const ids = [];
+  for(const d of ['outbound','inbound']){
+    try{
+      const j = await fetchJSON(`https://data.etabus.gov.hk/v1/transport/kmb/route-stop/${encodeURIComponent(route)}/${d}/1`);
+      (j.data || []).forEach(x => ids.push(x.stop));
+    }catch(e){}
+  }
+  const uniq = [...new Set(ids)];
+  if(!uniq.length) throw new Error('no route-stop');
+  const names = await Promise.all(uniq.map(async id => {
+    try{
+      const j = await fetchJSON(`https://data.etabus.gov.hk/v1/transport/kmb/stop/${id}`);
+      return (j.data && (j.data.name_sc || j.data.name_tc)) || '';
+    }catch(e){ return ''; }
+  }));
+  return names.filter(Boolean);
+}
+async function fetchCtbStops(route){
+  const ids = [];
+  for(const d of ['outbound','inbound']){
+    try{
+      const j = await fetchJSON(`https://rt.data.gov.hk/v1/transport/citybus-nwfb/route-stop/CTB/${encodeURIComponent(route)}/${d}`);
+      (j.data || []).forEach(x => ids.push(x.stop));
+    }catch(e){}
+  }
+  const uniq = [...new Set(ids)];
+  if(!uniq.length) throw new Error('no route-stop');
+  const names = await Promise.all(uniq.map(async id => {
+    try{
+      const j = await fetchJSON(`https://rt.data.gov.hk/v1/transport/citybus-nwfb/stop/${id}`);
+      return (j.data && (j.data.name_sc || j.data.name_tc)) || '';
+    }catch(e){ return ''; }
+  }));
+  return names.filter(Boolean);
+}
+async function fetchNlbStops(routeNo){
+  const rj = await fetchJSON('https://rt.data.gov.hk/v1/transport/nlb/route.php?action=list');
+  const ids = (rj.routes || []).filter(r => String(r.routeNo).trim() === String(routeNo).trim()).map(r => r.routeId);
+  if(!ids.length) throw new Error('no nlb route');
+  const names = [];
+  for(const rid of [...new Set(ids)]){
+    try{
+      const j = await fetchJSON(`https://rt.data.gov.hk/v2/transport/nlb/stop.php?action=list&routeId=${rid}`);
+      (j.stops || []).forEach(x => names.push(x.stopName_s || x.stopName_c || ''));
+    }catch(e){}
+  }
+  return names.filter(Boolean);
+}
+async function ensureStops(op, line){
+  if(!op || !line) return false;
+  const key = op + ':' + line;
+  const cache = readStopCache();
+  if(Array.isArray(cache[key]) && cache[key].length){
+    busStops = cache[key]; busStopsLoaded = true; return true;
+  }
+  try{
+    let names = [];
+    if(op === '九巴') names = await fetchKmbStops(line);
+    else if(op === '城巴') names = await fetchCtbStops(line);
+    else if(op === '屿巴') names = await fetchNlbStops(line);
+    names = [...new Set(names)];
+    if(!names.length) throw new Error('empty');
+    busStops = names; busStopsLoaded = true;
+    cache[key] = names; writeStopCache(cache);
+    return true;
+  }catch(e){
+    busStops = []; busStopsLoaded = false;
+    toast('站点加载失败，请手动填写上、下车站');
+    return false;
+  }
+}
+
+/* ---------- 线路搜索 ---------- */
+function renderLineTrigger(){
+  const el = document.getElementById('lineTriggerText');
+  if(!el) return;
+  const type = document.querySelector('#typeChips .chip.on')?.dataset.type;
+  if(type === 'bus'){
+    if(!sheetLine){ el.textContent = pt('选择线路','Choose line'); el.classList.add('ph'); }
+    else { el.textContent = sheetOp ? sheetLine + ' ' + sheetOp : sheetLine; el.classList.remove('ph'); }
+    return;
+  }
+  const sel = document.getElementById('lineSel');
+  const opt = sel && sel.options[sel.selectedIndex];
+  if(opt && opt.value){ el.textContent = opt.text; el.classList.remove('ph'); }
+  else { el.textContent = pt('选择线路','Choose line'); el.classList.add('ph'); }
+}
+function currentRegion(){ return document.querySelector('#regionChips .chip.on')?.dataset.region || 'sz'; }
+function lineGroups(){
+  const region = currentRegion();
+  if(region === 'hk'){
+    return Object.keys(BUS_DATA.hk).map(op => ({ title: op, op: op, nums: BUS_DATA.hk[op] }));
+  }
+  return Object.keys(BUS_DATA.sz).map(cat => ({ title: cat, op: '', nums: BUS_DATA.sz[cat] }));
+}
+function openLineModal(){
+  document.getElementById('lineModal').classList.add('show');
+  const inp = document.getElementById('lmSearch');
+  inp.value = '';
+  renderLineResults('');
+  setTimeout(()=>{ try{ inp.focus(); }catch(e){} }, 0);
+}
+function closeLineModal(){ document.getElementById('lineModal').classList.remove('show'); }
+function renderLineResults(q){
+  const box = document.getElementById('lmList');
+  const query = String(q || '').trim().toLowerCase();
+  if(!query){ box.innerHTML = ''; return; }
+  let html = '', found = 0;
+  lineGroups().forEach(g => {
+    const hits = g.nums.filter(n => n.toLowerCase().includes(query));
+    if(!hits.length) return;
+    found += hits.length;
+    html += `<div class="lm-group">${esc(g.title)}</div>`;
+    html += hits.slice(0, 60).map(n =>
+      `<button class="lm-row" data-line="${esc(n)}" data-op="${esc(g.op)}"><span>${esc(n)}</span>${g.op ? `<span class="op">${esc(g.op)}</span>` : ''}</button>`
+    ).join('');
+  });
+  box.innerHTML = found ? html : '<div class="lm-empty">' + pt('没有找到','No results') + '</div>';
+}
+let timePickH = 8, timePickM = 0;
+function timeP2(n){ return String(n).padStart(2, '0'); }
+function syncTimeTrigger(){
+  const v = document.getElementById('input-school-time')?.value || '';
+  const el = document.getElementById('schoolTimeText');
+  if(el) el.textContent = v || pt('选择时间','Select time');
+}
+window.syncTimeTrigger = syncTimeTrigger;
+function renderTimeCells(){
+  const hcol = document.getElementById('timeHourCol');
+  const mcol = document.getElementById('timeMinuteCol');
+  if(!hcol || !mcol) return;
+  hcol.innerHTML = Array.from({length:24}, function(_, i){
+    return `<button type="button" class="time-cell${i===timePickH?' on':''}" data-h="${i}">${timeP2(i)}</button>`;
+  }).join('');
+  mcol.innerHTML = Array.from({length:60}, function(_, i){
+    return `<button type="button" class="time-cell${i===timePickM?' on':''}" data-m="${i}">${timeP2(i)}</button>`;
+  }).join('');
+}
+function openTimePicker(){
+  const v = document.getElementById('input-school-time')?.value || '08:00';
+  const parts = String(v).split(':');
+  const h = parseInt(parts[0], 10), m = parseInt(parts[1], 10);
+  timePickH = (isFinite(h) && h >= 0 && h < 24) ? h : 8;
+  timePickM = (isFinite(m) && m >= 0 && m < 60) ? m : 0;
+  renderTimeCells();
+  document.getElementById('timePicker').classList.add('show');
+  setTimeout(function(){
+    document.querySelector('#timeHourCol .time-cell.on')?.scrollIntoView({block:'center'});
+    document.querySelector('#timeMinuteCol .time-cell.on')?.scrollIntoView({block:'center'});
+  }, 30);
+}
+function closeTimePicker(){
+  document.getElementById('timePicker').classList.remove('show');
+}
+function chooseTime(){
+  const v = timeP2(timePickH) + ':' + timeP2(timePickM);
+  document.getElementById('input-school-time').value = v;
+  syncTimeTrigger();
+  closeTimePicker();
+}
+document.getElementById('schoolTimeTrigger').addEventListener('click', openTimePicker);
+document.getElementById('timePickerClose').addEventListener('click', closeTimePicker);
+document.getElementById('timeCancel').addEventListener('click', closeTimePicker);
+document.getElementById('timeOk').addEventListener('click', chooseTime);
+document.getElementById('timePicker').addEventListener('click', function(e){ if(e.target === this) closeTimePicker(); });
+document.getElementById('timeHourCol').addEventListener('click', function(e){
+  const b = e.target.closest('[data-h]'); if(!b) return;
+  timePickH = parseInt(b.dataset.h, 10);
+  document.querySelectorAll('#timeHourCol .time-cell').forEach(function(x){ x.classList.toggle('on', x === b); });
+});
+document.getElementById('timeMinuteCol').addEventListener('click', function(e){
+  const b = e.target.closest('[data-m]'); if(!b) return;
+  timePickM = parseInt(b.dataset.m, 10);
+  document.querySelectorAll('#timeMinuteCol .time-cell').forEach(function(x){ x.classList.toggle('on', x === b); });
+});
+
+let pickerSelectId = null;
+function pickerLabelFor(id){
+  if(id === 'fromSel') return document.getElementById('fromLabel')?.textContent || pt('始发站','Origin');
+  if(id === 'toSel') return document.getElementById('toLabel')?.textContent || pt('到达站','Destination');
+  if(id === 'transferStation') return pt('换乘站','Interchange');
+  if(id === 'transferToStation') return pt('到达站','Destination');
+  if(id === 'fromLineSel' || id === 'toLineSel' || id === 'lineSel') return pt('线路','Line');
+  return pt('选择','Select');
+}
+function syncPickerTriggers(){
+  document.querySelectorAll('.picker-trigger').forEach(function(btn){
+    const id = btn.dataset.select;
+    const sel = document.getElementById(id);
+    if(!sel) return;
+    const opt = sel.options[sel.selectedIndex];
+    const label = pickerLabelFor(id);
+    const text = (opt && opt.value) ? opt.text : label;
+    const span = btn.querySelector('.trigger-text');
+    if(span) span.textContent = text;
+    btn.classList.toggle('placeholder', !opt || !opt.value);
+  });
+  renderLineTrigger();
+}
+window.syncPickerTriggers = syncPickerTriggers;
+function openPickerFor(id){
+  const sel = document.getElementById(id);
+  if(!sel) return;
+  const opts = Array.from(sel.options).filter(function(o){ return o.value && !/加载中/.test(o.text) && o.value !== '无同站换乘'; });
+  if(!opts.length){ toast(pt('暂无可选项','No options available')); return; }
+  pickerSelectId = id;
+  document.getElementById('pickerTitle').textContent = pickerLabelFor(id);
+  document.getElementById('pickerSearch').value = '';
+  document.getElementById('pickerSearch').placeholder = pt('搜索','Search');
+  renderPickerList('');
+  document.getElementById('pathPicker').classList.add('show');
+  setTimeout(function(){ try{ document.getElementById('pickerSearch').focus(); }catch(e){} }, 0);
+}
+function renderPickerList(q){
+  const list = document.getElementById('pickerList');
+  const target = pickerSelectId ? document.getElementById(pickerSelectId) : null;
+  if(!target) return;
+  const query = String(q || '').trim().toLowerCase();
+  const opts = Array.from(target.options).filter(function(o){ return o.value && !/加载中/.test(o.text) && o.value !== '无同站换乘'; });
+  const filtered = query ? opts.filter(function(o){ return String(o.text).toLowerCase().indexOf(query) >= 0; }) : opts;
+  list.innerHTML = filtered.length ? filtered.map(function(o){
+    const on = (o.value === target.value);
+    return `<button type="button" class="lm-row" data-value="${esc(o.value)}"><span>${esc(o.text)}</span>${on ? '<span class="picker-check">✓</span>' : ''}</button>`;
+  }).join('') : `<div class="lm-empty">${pt('没有找到','No results')}</div>`;
+}
+function choosePickerValue(v){
+  const target = pickerSelectId ? document.getElementById(pickerSelectId) : null;
+  if(!target) return;
+  target.value = v;
+  target.dispatchEvent(new Event('change', { bubbles:true }));
+  closePicker();
+  syncPickerTriggers();
+}
+function closePicker(){
+  const el = document.getElementById('pathPicker');
+  if(el) el.classList.remove('show');
+  pickerSelectId = null;
+}
+document.querySelectorAll('.picker-trigger').forEach(function(btn){
+  btn.addEventListener('click', function(){ openPickerFor(btn.dataset.select); });
+});
+document.getElementById('pickerClose').addEventListener('click', closePicker);
+document.getElementById('pathPicker').addEventListener('click', function(e){ if(e.target === this) closePicker(); });
+document.getElementById('pickerSearch').addEventListener('input', function(e){ renderPickerList(e.target.value); });
+document.getElementById('pickerList').addEventListener('click', function(e){
+  const row = e.target.closest('.lm-row');
+  if(!row) return;
+  choosePickerValue(row.dataset.value);
+});
+document.getElementById('lineTrigger').addEventListener('click', function(){
+  const type = document.querySelector('#typeChips .chip.on')?.dataset.type;
+  if(type === 'bus') openLineModal();
+  else openPickerFor('lineSel');
+});
+document.getElementById('lmClose').addEventListener('click', closeLineModal);
+document.getElementById('lineModal').addEventListener('click', e => { if(e.target === e.currentTarget) closeLineModal(); });
+document.getElementById('lmSearch').addEventListener('input', e => renderLineResults(e.target.value));
+document.getElementById('lmList').addEventListener('click', e => {
+  const row = e.target.closest('.lm-row'); if(!row) return;
+  sheetLine = row.dataset.line;
+  sheetOp = row.dataset.op || '';
+  busStops = []; busStopsLoaded = false;
+  closeLineModal();
+  const region = currentRegion();
+  syncTypeFields({ type:'bus', region, from:'', to:'' });
+  if(region === 'hk' && sheetOp){
+    ensureStops(sheetOp, sheetLine).then(ok => { if(ok) syncTypeFields({ type:'bus', region:'hk', from:'', to:'' }); });
+  }
+});
+
+function validateAndSave(){
+  const type = document.querySelector('#typeChips .chip.on')?.dataset.type;
+  const region = (type === 'portArrive' || type === 'port') ? 'port' : (document.querySelector('#regionChips .chip.on')?.dataset.region || 'sz');
+  const planRaw = document.getElementById('planInput').value.trim();
+  const plan = type === 'portArrive' ? null : parseInt(planRaw, 10);
+  const err = (m)=>{ const e=document.getElementById('errBox'); e.textContent=m; e.className='err show'; document.getElementById('typeHint').style.display='none'; };
+  if(type !== 'portArrive' && (!plan || plan < 1 || plan > 240)) return err('请填写 1–240 分钟的预计用时');
+  const base = { type, region, plan };
+  if(type === 'walk'){
+    base.from = document.getElementById('walkFrom').value.trim();
+    base.to = document.getElementById('walkTo').value.trim();
+    if(!base.from || !base.to) return err('请填写起点和终点');
+  } else if(type === 'metro'){
+    base.line = document.getElementById('lineSel').value;
+    base.from = document.getElementById('fromSel').value;
+    base.to = document.getElementById('toSel').value;
+    if(!base.from || !base.to) return err('请选择始发站和到达站');
+    if(base.from === base.to) return err('始发站和到达站不能相同');
+  } else if(type === 'bus'){
+    base.line = sheetLine;
+    if(sheetOp) base.op = sheetOp;
+    if(!base.line) return err('请选择线路');
+    const useStops = base.region === 'hk' && busStopsLoaded && busStops.length > 0;
+    base.from = useStops ? document.getElementById('fromSel').value : document.getElementById('busFrom').value.trim();
+    base.to = useStops ? document.getElementById('toSel').value : document.getElementById('busTo').value.trim();
+    if(!base.from || !base.to) return err(useStops ? '请选择上车站和下车站' : '请填写上车站和下车站');
+    if(base.from === base.to) return err('上车站和下车站不能相同');
+  } else if(type === 'transfer'){
+    base.station = document.getElementById('transferStation').value;
+    base.toStation = document.getElementById('transferToStation').value;
+    base.fromLine = document.getElementById('fromLineSel').value;
+    base.toLine = document.getElementById('toLineSel').value;
+    if(base.station === '无同站换乘') return err('这两条线没有同站换乘，请换一组线路');
+    if(base.fromLine === base.toLine) return err('转乘的两条线路不能相同');
+    const same = base.station === base.toStation;
+    const exception = (base.station === '香港' && base.toStation === '中环') || (base.station === '中环' && base.toStation === '香港');
+    if(!same && !exception) return err('转乘必须同站，请重新选择到达站');
+  }
+  if(editingId){
+    const idx = segments.findIndex(x=>x.id===editingId);
+    segments[idx] = { ...segments[idx], ...base, id: editingId };
+  } else {
+    segments.push({ ...base, id: uid() });
+  }
+  saveTemplate();
+  closeSheet();
+  render();
+  toast('路线已保存');
+}
+function deleteSegment(){
+  if(!editingId) return;
+  segments = segments.filter(x=>x.id!==editingId);
+  saveTemplate();
+  closeSheet();
+  render();
+  toast('已删除该段行程');
+}
+
+/* ---------- 实测 ---------- */
+function startLive(){
+  if(live) return;
+  if(!segments.length) return toast('至少添加一段行程');
+  live = { index: 0, start: Date.now(), results: [] };
+  render();
+  updateLiveBar();
+  document.getElementById('livebar').classList.add('show');
+  const btn = document.getElementById('startBtn');
+  btn.disabled = true; btn.textContent = pt('行程进行中','Trip in progress');
+  focusLive();
+  toast(pt('行程已开始，请逐段点击「到达」','Start the trip and tap Arrive at each leg'));
+}
+function focusLive(){
+  const el = document.querySelector('.seg.live');
+  if(el) el.scrollIntoView({behavior:'smooth', block:'center'});
+}
+function currentSeg(){ return live ? segments[live.index] : null; }
+function updateLiveBar(){
+  const s = currentSeg();
+  if(!s){ finishLive(); return; }
+  document.getElementById('lbKicker').textContent = pt('第 ' + (live.index+1) + ' / ' + segments.length + ' 段','Leg ' + (live.index+1) + ' / ' + segments.length);
+  document.getElementById('lbTitle').textContent = typeLabelOut(s) + ' · ' + segText(s);
+  const arr = document.getElementById('arriveBtn');
+  arr.textContent = s.type === 'portArrive' ? pt('到达口岸','Arrive at port') : pt('到达','Arrive');
+  tickLive();
+}
+function tickLive(){
+  if(!live || !currentSeg()) return;
+  const s = currentSeg();
+  const sec = Math.floor((Date.now() - live.start) / 1000 * demoSpeed);
+  const mm = Math.floor(sec/60), ss = sec%60;
+  document.getElementById('lbTime').textContent = s.type === 'portArrive' ? pt('记录时刻','Record time') : pt('本段 ' + mm + ' 分 ' + String(ss).padStart(2,'0') + ' 秒','This leg ' + mm + ' min ' + String(ss).padStart(2,'0') + ' sec');
+}
+function arriveLive(){
+  const s = currentSeg();
+  if(!s) return;
+  let actual = null;
+  if(s.type !== 'portArrive'){
+    actual = Math.max(1, Math.round((Date.now() - live.start) / 1000 * demoSpeed / 60));
+  }
+  live.results.push({ ...s, actual });
+  live.index++;
+  live.start = Date.now();
+  render();
+  if(live.index >= segments.length){ finishLive(); }
+  else { updateLiveBar(); focusLive(); }
+}
+function skipLive(){
+  const s = currentSeg();
+  if(!s) return;
+  live.results.push({ ...s, actual: null });
+  live.index++;
+  live.start = Date.now();
+  render();
+  if(live.index >= segments.length) finishLive();
+  else { updateLiveBar(); focusLive(); }
+}
+function finishLive(){
+  const results = live ? live.results : [];
+  let changed = 0;
+  results.forEach(r => {
+    const idx = segments.findIndex(x => x.id === r.id);
+    if(idx > -1 && r.actual != null && r.type !== 'portArrive'){
+      segments[idx].plan = r.actual;
+      changed++;
+    }
+  });
+  if(changed) saveTemplate();
+  live = null;
+  document.getElementById('livebar').classList.remove('show');
+  const btn = document.getElementById('startBtn');
+  btn.disabled = false; btn.textContent = pt('开始行程','Start trip');
+  render();
+  toast(changed ? pt('已按实测更新 ' + changed + ' 段用时','Updated ' + changed + ' legs from timing') : pt('行程已完成','Trip complete'));
+}
+
+/* ---------- 事件 ---------- */
+document.getElementById('list').addEventListener('click', e => {
+  const del = e.target.closest('[data-del]');
+  if(del){ e.stopPropagation(); const id = del.getAttribute('data-del');
+    segments = segments.filter(x=>x.id!==id); saveTemplate(); render(); toast('已删除该段行程'); return; }
+  const card = e.target.closest('.seg');
+  if(!card) return;
+  if(live) return toast('行程进行中，请先完成或跳过当前段');
+  openSheet(card.getAttribute('data-id'));
+});
+document.getElementById('addBtn').addEventListener('click', ()=>{ if(live) return toast('行程进行中'); openSheet(null); });
+document.getElementById('typeChips').addEventListener('click', e => {
+  const b = e.target.closest('[data-type]'); if(!b) return;
+  const type = b.dataset.type;
+  const prevType = document.querySelector('#typeChips .chip.on')?.dataset.type;
+  if(prevType !== type && type === 'bus'){ sheetLine=''; sheetOp=''; busStops=[]; busStopsLoaded=false; }
+  const region = document.querySelector('#regionChips .chip.on')?.dataset.region || 'sz';
+  renderTypeChips(type, region);
+  renderRegionChips(region, type);
+  const hintText = TYPE_META[type]?.hint || '';
+  document.getElementById('typeHint').textContent = hintText;
+  document.getElementById('typeHint').style.display = hintText ? '' : 'none';
+  syncTypeFields({ type, region });
+});
+document.getElementById('regionChips').addEventListener('click', e => {
+  const b = e.target.closest('[data-region]'); if(!b) return;
+  const type = document.querySelector('#typeChips .chip.on')?.dataset.type || 'walk';
+  if(type === 'bus'){ sheetLine=''; sheetOp=''; busStops=[]; busStopsLoaded=false; }
+  renderTypeChips(type, b.dataset.region);
+  renderRegionChips(b.dataset.region, type);
+  syncTypeFields({ type, region:b.dataset.region });
+});
+document.getElementById('lineSel').addEventListener('change', ()=>{
+  const type = document.querySelector('#typeChips .chip.on')?.dataset.type;
+  if(type === 'bus') return; // 巴士不内置站点，上/下车站由用户手填
+  const region = document.querySelector('#regionChips .chip.on')?.dataset.region || 'sz';
+  const line = document.getElementById('lineSel').value;
+  loadStations(region, type, line);
+});
+document.getElementById('fromLineSel').addEventListener('change', ()=>{
+  const region = document.querySelector('#regionChips .chip.on')?.dataset.region || 'sz';
+  fillTransferStations(region, document.getElementById('fromLineSel').value, document.getElementById('toLineSel').value,
+    document.getElementById('transferStation').value, document.getElementById('transferToStation').value);
+});
+document.getElementById('toLineSel').addEventListener('change', ()=>{
+  const region = document.querySelector('#regionChips .chip.on')?.dataset.region || 'sz';
+  fillTransferStations(region, document.getElementById('fromLineSel').value, document.getElementById('toLineSel').value,
+    document.getElementById('transferStation').value, document.getElementById('transferToStation').value);
+});
+document.getElementById('overlay').addEventListener('click', closeSheet);
+document.getElementById('cancelBtn').addEventListener('click', closeSheet);
+document.getElementById('okBtn').addEventListener('click', validateAndSave);
+document.getElementById('delBtn').addEventListener('click', deleteSegment);
+document.getElementById('saveBtn').addEventListener('click', ()=>{ saveTemplate(); toast('路线已保存'); });
+document.getElementById('startBtn').addEventListener('click', startLive);
+document.getElementById('arriveBtn').addEventListener('click', arriveLive);
+document.getElementById('skipBtn').addEventListener('click', skipLive);
+document.getElementById('backBtn').addEventListener('click', ()=>{ if(window.switchView) window.switchView('view-settings'); });
+let toastTimer = null;
+function toast(msg){
+  if(typeof window.showToast === 'function'){ window.showToast(msg); return; }
+  const el = document.getElementById('toast');
+  el.textContent = msg; el.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>el.classList.remove('show'), 1800);
+}
+setInterval(tickLive, 1000);
+load();
+render();
+window.PathApp = { enter: function(){ render(); } };
+
 })();
 </script>
 </body>
