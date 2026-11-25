@@ -618,7 +618,7 @@ body.theme-chase .path-scope .picker-trigger{background:rgba(255,255,255,.06)}
 .path-scope .picker-trigger .trigger-text{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .path-scope .picker-trigger .chev{color:var(--text-sub);font-size:18px;line-height:1;flex:0 0 auto}
 .path-scope .picker-trigger.placeholder .trigger-text{color:var(--text-sub)}
-.path-scope #pickerSearch{width:100%;height:42px;flex:0 0 auto;border-radius:12px;border:1px solid var(--line);background:rgba(150,150,150,.06);padding:0 12px;font-size:16px;color:var(--text-main);font-family:inherit;outline:none}
+.path-scope #pickerSearch{width:100%;height:44px;flex:0 0 auto;border-radius:12px;border:1px solid var(--line);background:rgba(150,150,150,.06);padding:0 14px;font-size:16px;color:var(--text-main);font-family:inherit;outline:none}
 body.theme-chase .path-scope #pickerSearch{background:rgba(255,255,255,.06)}
 .path-scope #pickerSearch:focus{border-color:var(--text-main);background:var(--card-bg)}
 .path-scope #pathPicker{z-index:220}
@@ -646,24 +646,24 @@ body.theme-chase .path-scope .line-trigger{background:rgba(255,255,255,.06)}
 .path-scope .line-trigger .ph{color:var(--text-sub)}
 .path-scope.lm-overlay{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:210;display:flex;align-items:flex-end;justify-content:center;padding-bottom:var(--kb,0px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .22s var(--ease),visibility .22s}
 .path-scope.lm-overlay.show{opacity:1;visibility:visible;pointer-events:auto}
-.path-scope .lm-card{width:min(100vw,400px);max-height:72vh;background:var(--glass-float-bg); backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%); border-radius:26px 26px 0 0;border:1px solid var(--glass-border); box-shadow:0 -20px 60px rgba(0,0,0,.18);padding:14px 16px calc(16px + env(safe-area-inset-bottom)); display:flex;flex-direction:column;gap:10px;transform:translateY(20px);opacity:0;transition:transform .3s var(--ease),opacity .24s var(--ease)}
+.path-scope .lm-card{width:min(100vw,400px);max-height:78vh;background:var(--glass-float-bg); backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%); border-radius:26px 26px 0 0;border:1px solid var(--glass-border); box-shadow:0 -20px 60px rgba(0,0,0,.18);padding:18px 18px calc(20px + env(safe-area-inset-bottom)); display:flex;flex-direction:column;gap:14px;transform:translateY(20px);opacity:0;transition:transform .3s var(--ease),opacity .24s var(--ease)}
 .path-scope.lm-overlay.show .lm-card{transform:none;opacity:1}
 .path-scope.lm-overlay.tall{padding-bottom:0;align-items:flex-end}
-.path-scope.lm-overlay.tall .lm-card{height:min(72vh,620px);max-height:72vh;border-radius:26px 26px 0 0}
+.path-scope.lm-overlay.tall .lm-card{height:min(78vh,660px);max-height:78vh;border-radius:26px 26px 0 0}
 body.theme-chase .path-scope .lm-card{box-shadow:0 -20px 60px rgba(0,0,0,.55)}
 
-.path-scope .lm-head{display:flex;align-items:center;justify-content:space-between;font-size:16px;font-weight:650;flex:0 0 auto}
+.path-scope .lm-head{display:flex;align-items:center;justify-content:space-between;font-size:17px;font-weight:650;line-height:1.25;flex:0 0 auto;padding:0 2px}
 @media (prefers-reduced-motion: reduce){
   .view-enter{animation:none !important}
   .modal-overlay,.modal-content,.path-scope.lm-overlay,.path-scope .lm-card,.path-scope.sheet-overlay,.path-scope.sheet{transition:none !important}
 }
 .path-scope .lm-head button{border:none;background:transparent;color:var(--text-sub);font-size:20px;line-height:1;cursor:pointer;padding:2px 6px}
-.path-scope #lmSearch{width:100%;height:42px;flex:0 0 auto;border-radius:12px;border:1px solid var(--line);background:rgba(150,150,150,.06); padding:0 12px;font-size:16px;color:var(--text-main);font-family:inherit;outline:none}
+.path-scope #lmSearch{width:100%;height:44px;flex:0 0 auto;border-radius:12px;border:1px solid var(--line);background:rgba(150,150,150,.06); padding:0 14px;font-size:16px;color:var(--text-main);font-family:inherit;outline:none}
 body.theme-chase .path-scope #lmSearch{background:rgba(255,255,255,.06)}
 .path-scope #lmSearch:focus{border-color:var(--text-main);background:var(--card-bg)}
-.path-scope .lm-list{overflow-y:auto;flex:1 1 auto;min-height:0}
-.path-scope .lm-group{font-size:11px;font-weight:650;color:var(--text-sub);padding:10px 2px 6px;letter-spacing:.03em}
-.path-scope .lm-row{display:flex;align-items:center;justify-content:flex-start;gap:6px;width:100%;padding:11px 12px; border-radius:12px;border:1px solid var(--glass-border);background:var(--glass-bg); font-size:14px;font-weight:550;color:var(--text-main);margin-bottom:6px;cursor:pointer;font-family:inherit;text-align:left}
+.path-scope .lm-list{overflow-y:auto;flex:1 1 auto;min-height:0;padding:4px 0 8px}
+.path-scope .lm-group{font-size:11px;font-weight:650;color:var(--text-sub);padding:12px 2px 8px;letter-spacing:.03em}
+.path-scope .lm-row{display:flex;align-items:center;justify-content:flex-start;gap:8px;width:100%;padding:13px 14px; border-radius:14px;border:1px solid var(--glass-border);background:var(--glass-bg); font-size:15px;font-weight:550;color:var(--text-main);margin-bottom:9px;cursor:pointer;font-family:inherit;text-align:left}
 .path-scope .lm-row .op{font-size:11px;font-weight:600;color:var(--text-sub)}
 .path-scope .lm-empty{padding:26px 8px;text-align:center;font-size:13px;color:var(--text-sub)}
 .path-scope .chips{display:flex;gap:6px;flex-wrap:wrap}
@@ -683,6 +683,77 @@ body.theme-chase .path-scope .chip{background:rgba(255,255,255,.06)}
 .path-scope.toast{position:fixed;top:68px;left:50%;transform:translateX(-50%) translateY(-8px); background:rgba(29,29,31,.94);color:#fff;font-size:12px;font-weight:600;padding:10px 18px;border-radius:999px; z-index:120;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;max-width:80vw;text-align:center}
 .path-scope.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 body.theme-chase .path-scope.toast{background:rgba(255,255,255,.16);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+/* ===== 车费计算器 ===== */
+#view-fare .fare-title{font-size:28px;line-height:1.15;font-weight:700;letter-spacing:-.03em;margin:4px 4px 0}
+#view-fare .fare-net-tabs{display:flex;gap:4px;padding:4px;border-radius:999px;background:var(--seg-bg);border:1px solid var(--seg-border);box-shadow:var(--glass-shadow);backdrop-filter:blur(var(--glass-blur)) saturate(var(--glass-sat));-webkit-backdrop-filter:blur(var(--glass-blur)) saturate(var(--glass-sat))}
+#view-fare .fare-net-tabs button{flex:1;height:42px;border:1px solid transparent;border-radius:999px;background:transparent;color:var(--text-sub);font:inherit;font-size:13px;font-weight:600;cursor:pointer;transition:background .18s,color .18s}
+#view-fare .fare-net-tabs button.on{background:var(--seg-active-bg);color:var(--seg-active-text);border-color:var(--seg-active-border);box-shadow:0 1px 4px rgba(0,0,0,.08),inset 0 1px 0 #fff}
+#view-fare .fare-route-card{position:relative;padding:10px;display:flex;flex-direction:column;gap:6px}
+#view-fare .fare-field{width:100%;min-height:78px;border:1px solid rgba(255,255,255,.65);border-radius:14px;background:rgba(255,255,255,.28);padding:12px 16px 12px 58px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;text-align:left;font:inherit;color:var(--text-main);cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.85),0 4px 12px rgba(0,0,0,.03);backdrop-filter:blur(20px) saturate(160%);-webkit-backdrop-filter:blur(20px) saturate(160%)}
+#view-fare .fare-field:active{background:rgba(255,255,255,.45)}
+body.theme-chase #view-fare .fare-field{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.16);box-shadow:inset 0 1px 0 rgba(255,255,255,.12)}
+#view-fare .fare-field-label{font-size:11px;font-weight:600;color:var(--text-sub);letter-spacing:.08em;margin-bottom:3px}
+#view-fare .fare-field-value{font-size:21px;line-height:1.2;font-weight:700;letter-spacing:-.02em;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#view-fare .fare-field-value.placeholder{color:var(--text-sub);font-weight:600}
+#view-fare .fare-swap{position:absolute;left:18px;top:50%;transform:translateY(-50%);width:34px;height:34px;border-radius:50%;border:1px solid var(--glass-border);background:var(--glass-float-bg);color:var(--text-sub);font:inherit;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2;box-shadow:0 4px 12px rgba(0,0,0,.06)}
+#view-fare .fare-options{padding:14px 16px;display:flex;flex-direction:column;gap:12px}
+#view-fare .fare-option-row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+#view-fare .fare-option-label{font-size:12px;font-weight:600;color:var(--text-sub)}
+#view-fare .fare-seg{display:flex;gap:3px;padding:3px;border-radius:999px;border:1px solid var(--seg-border);background:var(--seg-bg);box-shadow:inset 0 1px 0 rgba(255,255,255,.85);backdrop-filter:blur(20px) saturate(160%);-webkit-backdrop-filter:blur(20px) saturate(160%)}
+#view-fare .fare-seg button{border:1px solid transparent;border-radius:999px;background:transparent;color:var(--text-sub);font:inherit;font-size:12px;font-weight:600;padding:7px 13px;cursor:pointer;transition:background .18s,color .18s}
+#view-fare .fare-seg button.on{background:var(--seg-active-bg);color:var(--seg-active-text);border-color:var(--seg-active-border);box-shadow:0 1px 4px rgba(0,0,0,.08),inset 0 1px 0 #fff}
+#view-fare .fare-switch{display:flex;align-items:center;gap:8px}
+#view-fare .fare-switch input{appearance:none;-webkit-appearance:none;width:36px;height:22px;border-radius:999px;background:rgba(128,128,128,.25);position:relative;cursor:pointer;transition:background .2s;flex:0 0 auto;border:none;outline:none}
+#view-fare .fare-switch input:after{content:"";position:absolute;width:18px;height:18px;border-radius:50%;background:#fff;top:2px;left:2px;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.18)}
+#view-fare .fare-switch input:checked{background:var(--text-main)}
+#view-fare .fare-switch input:checked:after{transform:translateX(14px)}
+#view-fare .fare-switch input:disabled{opacity:.35;cursor:not-allowed}
+#view-fare .fare-result{padding:18px 16px 16px;display:flex;flex-direction:column;gap:12px}
+#view-fare .fare-result-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+#view-fare .fare-result-label{font-size:11px;font-weight:600;color:var(--text-sub);letter-spacing:.08em}
+#view-fare .fare-amount{font-size:46px;font-weight:700;line-height:1;letter-spacing:-.04em;margin-top:6px;font-variant-numeric:tabular-nums}
+#view-fare .fare-amount small{font-size:20px;font-weight:600;letter-spacing:-.02em;margin-right:0;color:var(--text-sub)}
+#view-fare .fare-route{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:11px 12px;border-radius:14px;background:rgba(255,255,255,.28);border:1px solid rgba(255,255,255,.65);box-shadow:inset 0 1px 0 rgba(255,255,255,.85),0 4px 12px rgba(0,0,0,.03);backdrop-filter:blur(20px) saturate(160%);-webkit-backdrop-filter:blur(20px) saturate(160%);font-size:12px;font-weight:600}
+body.theme-chase #view-fare .fare-route{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.16)}
+#view-fare .fare-route .arrow{color:var(--text-sub);font-weight:400}
+#view-fare .fare-line,#farePickerOverlay .fare-line{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:600;padding:4px 7px;border-radius:999px;background:rgba(255,255,255,.6);border:1px solid var(--line);white-space:nowrap;color:var(--text-main)}
+body.theme-chase #view-fare .fare-line,body.theme-chase #farePickerOverlay .fare-line{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.14)}
+#view-fare .fare-line-dot,#farePickerOverlay .fare-line-dot{width:7px;height:7px;border-radius:50%;background:var(--c,#888);flex:0 0 auto}
+#view-fare .fare-break{border-top:1px solid var(--line);padding-top:10px;display:flex;flex-direction:column;gap:7px}
+#view-fare .fare-break-row{display:flex;align-items:baseline;justify-content:space-between;gap:12px;font-size:12px;color:var(--text-sub);line-height:1.45}
+#view-fare .fare-break-row b{font-size:13px;color:var(--text-main);font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums}
+#view-fare .fare-break-row.total{border-top:1px solid var(--line);padding-top:8px;margin-top:2px;color:var(--text-main);font-weight:600}
+#view-fare .fare-break-row.total b{font-size:15px}
+/* picker */
+.path-scope #fareSearch{width:100%;height:44px;flex:0 0 auto;border-radius:12px;border:1px solid var(--line);background:rgba(150,150,150,.06);padding:0 14px;font-size:16px;color:var(--text-main);font-family:inherit;outline:none}
+body.theme-chase .path-scope #fareSearch{background:rgba(255,255,255,.06)}
+.path-scope #fareSearch:focus{border-color:var(--text-main);background:var(--card-bg)}
+#view-fare .fare-pick-main,#farePickerOverlay .fare-pick-main{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px;text-align:left}
+#view-fare .fare-pick-main b,#farePickerOverlay .fare-pick-main b{font-size:15px;font-weight:550;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#view-fare .fare-pick-main small,#farePickerOverlay .fare-pick-main small{font-size:11px;color:var(--text-sub);font-weight:400;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#view-fare .fare-pick-lines,#farePickerOverlay .fare-pick-lines{display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end;max-width:50%;flex:0 0 auto}
+#view-fare .fare-empty,#farePickerOverlay .fare-empty{font-size:12px;color:var(--text-sub);text-align:center;padding:28px 8px}
+@media (max-width:360px){#view-fare .fare-title{font-size:24px}#view-fare .fare-amount{font-size:40px}}
+/* 逐光模式：去掉浅色高光，胶囊统一为深色玻璃 */
+body.theme-chase #view-fare .fare-net-tabs,
+body.theme-chase #view-fare .fare-seg,
+body.theme-chase #view-fare .fare-field,
+body.theme-chase #view-fare .fare-route,
+body.theme-chase #view-fare .fare-line,
+body.theme-chase #farePickerOverlay .fare-line,
+body.theme-chase #view-fare .fare-swap{border-color:rgba(255,255,255,.10)!important;box-shadow:none!important}
+body.theme-chase #view-fare .fare-field{box-shadow:0 4px 14px rgba(0,0,0,.22)!important}
+body.theme-chase #view-fare .fare-route{box-shadow:0 4px 14px rgba(0,0,0,.18)!important}
+body.theme-chase #view-fare .fare-net-tabs button.on,
+body.theme-chase #view-fare .fare-seg button.on{border-color:rgba(255,255,255,.13)!important;box-shadow:none!important}
+body.theme-chase #view-fare .card{border-color:rgba(255,255,255,.10)!important}
+
+/* ===== 路径/线路选择微调 ===== */
+.path-scope .field label{padding-left:2px}
+.path-scope .picker-trigger{padding-left:14px;padding-right:12px}
+.path-scope .line-trigger{padding-left:14px;padding-right:12px}
+#lineModal .lm-card{gap:14px}
+#lineModal .lm-head{padding-left:2px}
 </style>
 </head>
 <body>
@@ -878,6 +949,42 @@ body.theme-chase .path-scope.toast{background:rgba(255,255,255,.16);backdrop-fil
             <button type="button" class="setting-row" onclick="openHistory()"><span>通勤档案</span><span class="setting-chev">›</span></button>
             <button type="button" class="setting-row" onclick="openInfo()"><span>更新日志</span><span class="setting-chev">›</span></button>
             <button type="button" class="setting-row" onclick="openChecklist()"><span>启程检查单</span><span class="setting-chev">›</span></button>
+            <button type="button" class="setting-row" onclick="switchView('view-fare')"><span>车费计算器</span><span class="setting-chev">›</span></button>
+        </div>
+    </div>
+
+    <div id="view-fare" class="view" style="display:none;">
+        <div class="subview-header">
+            <button class="back-btn" onclick="goBack()">&lt;</button>
+            <div class="subview-title">车费计算器</div>
+            <span class="back-btn-spacer"></span>
+        </div>
+        <div class="fare-title" id="fareTitle">今天这一程，<br>大概多少钱？</div>
+        <div class="fare-net-tabs" id="fareNetTabs">
+            <button type="button" data-network="sz" class="on">深圳地铁</button>
+            <button type="button" data-network="mtr">香港地铁</button>
+        </div>
+        <div class="card fare-route-card">
+            <button class="fare-field" id="fareFromBtn" type="button"><span class="fare-field-label" id="fareFromLabel">出发</span><span class="fare-field-value placeholder" id="fareFromName">选择车站</span></button>
+            <button class="fare-swap" id="fareSwapBtn" type="button" title="交换起终点">⇅</button>
+            <button class="fare-field" id="fareToBtn" type="button"><span class="fare-field-label" id="fareToLabel">抵达</span><span class="fare-field-value placeholder" id="fareToName">选择车站</span></button>
+        </div>
+        <div class="card fare-options">
+            <div class="fare-option-row">
+                <span class="fare-option-label">乘客类型</span>
+                <div class="fare-seg" id="farePassengerSeg"><button type="button" data-pass="adult" class="on">成人</button><button type="button" data-pass="student">学生</button></div>
+            </div>
+            <div class="fare-option-row" id="fareFirstRow" style="display:none">
+                <span class="fare-option-label">东铁线头等车厢</span>
+                <label class="fare-switch"><input type="checkbox" id="fareFirstClass"></label>
+            </div>
+        </div>
+        <div class="card fare-result">
+            <div class="fare-result-head">
+                <div><div class="fare-result-label">预计车费</div><div class="fare-amount" id="fareAmount"><small>CN ¥</small>—</div></div>
+            </div>
+            <div class="fare-route" id="fareRoute"></div>
+            <div class="fare-break" id="fareBreakdown"></div>
         </div>
     </div>
 
@@ -1304,6 +1411,14 @@ body.theme-chase .path-scope.toast{background:rgba(255,255,255,.16);backdrop-fil
     <div class="lm-list" id="pickerList"></div>
   </div>
 </div>
+        <div class="lm-overlay path-scope" id="farePickerOverlay">
+            <div class="lm-card">
+                <div class="lm-head"><span id="farePickerTitle">选择起点</span><button type="button" id="farePickerClose" aria-label="关闭">×</button></div>
+                <input id="fareSearch" type="text" placeholder="搜索车站" autocomplete="off">
+                <div class="lm-list" id="fareList"></div>
+            </div>
+        </div>
+
 <div class="lm-overlay path-scope" id="timePicker" role="dialog" aria-modal="true" aria-labelledby="timePickerTitle">
   <div class="lm-card time-card">
     <div class="lm-head"><span id="timePickerTitle">选择上课时间</span><button type="button" id="timePickerClose" aria-label="关闭">×</button></div>
@@ -1406,17 +1521,27 @@ body.theme-chase .path-scope.toast{background:rgba(255,255,255,.16);backdrop-fil
         <div style="text-align:center;margin-top:8px;">
             <button type="button" class="engine-reset" onclick="resetEngine()">重置推理引擎模型</button>
         </div>
-        <div class="version-text">Version 1.12</div>
+        <div class="version-text">Version 1.13</div>
     </div>
 </div>
 
 <div class="modal-overlay" id="info-modal">
     <div class="modal-content">
         <div class="info-title">更新日志</div>
-        <div class="info-version">Version 1.12</div>
+        <div class="info-version">Version 1.13</div>
         <div class="info-divider"></div>
 
         <div class="changelog">
+             <div class="changelog-entry">
+                <div class="changelog-version">Version 1.13 · 归并与呼吸｜2026.11.24</div>
+                <ul class="changelog-list">
+                    <li><b>车费计算器</b><br>新增车费计算器，覆盖深圳地铁与港铁；选择起终点并切换成人 / 学生后，按官方票价表计算，并拆分普通票价、学生优惠、东铁线头等车厢附加费与机场快线票价。</li>
+                    <li><b>票价口径</b><br>深圳地铁使用官方票价表，港铁使用官方票价与机场快线数据；按最短路径 / 官方站对价计算，暂不含商务车厢；机场快线不设学生优惠。</li>
+                    <li><b>双主题下线</b><br>为了方便后续改进调整，减少重复适配与工作量；同时统一设计风格，去掉过于花哨的视觉分支。基于以上考虑，正式下线深色与轻简主题。</li>
+                    <li><b>口岸预测简化</b><br>MLP-B 只在真实去程状态下触发；GPS 精度 &lt;300m 且距最近口岸 &lt;300m 时，首帧即记录；一次去程只记一条（以 morningOut 作为 tripId），撤销出门不删除已记录样本；取消 8 秒停留、3 帧定位与 05:00–11:30 时间窗。</li>
+                    <li><b>通勤定位省电</b><br>GPS 只在上学 / 放学路上开启，到校 / 到家打卡后自动暂停，撤销到校 / 到家后恢复；地图可单独获取定位，通勤期间由通勤定位接管，避免重复定位。</li>
+                </ul>
+             </div>
              <div class="changelog-entry">
                 <div class="changelog-version">Version 1.12 · 通勤路径与多线时刻表｜2026.11.21</div>
                 <ul class="changelog-list">
@@ -1633,281 +1758,440 @@ body.theme-chase .path-scope.toast{background:rgba(255,255,255,.16);backdrop-fil
         try { return localStorage.getItem('terminus_lang') === 'en' ? 'en' : 'zh'; } catch (e) { return 'zh'; }
     })();
 
-    var EN = {
-        // 导航 / 页面
-        '首页': 'Home', '地图': 'Map', '通勤': 'Commute', '设置': 'Settings',
-        '离线地图': 'Offline map', '通勤工具': 'Commute',
-        // 首页
-        '建议出门时间': 'Leave by', '明日建议出门时间': 'Tomorrow · leave by',
-        '请设置通勤参数': 'Set up your commute',
-        '自学习端侧推理引擎': 'Self-learning on-device engine',
-        '本地微型神经网络，动态校准通勤时间': 'A small local network that calibrates your commute',
-        '刷新': 'Refresh', '加载日期…': 'Loading date…',
-        '今日': 'Today', '明日': 'Tomorrow',
-        '查询香港假期中…': 'Checking HK holidays…',
-        '今日周末，无需上学': 'Weekend — no school today',
-        '今日香港：红日放假': 'HK public holiday — no school',
-        '正常上课': 'School today',
-        '停课': 'Suspended', '恶劣天气': 'Severe weather',
-        '休息日': 'Day off',
-        '今日打卡已完成': 'Done for today',
-        '返程待保存': 'Save return trip', '返程通勤中': 'Heading home',
-        '今日待放学': 'Waiting for school to end', '上学待保存': 'Save morning trip',
-        '正在通勤中': 'On the way',
-        '我已出门': "I'm out", '我已到校': 'Arrived',
-        '我已放学': "School's out", '我已到家': 'Home',
-        '保存记录': 'Save', '撤销出门': 'Undo out', '撤销到校': 'Undo arrival',
-        '撤销离校': 'Undo school', '撤销到家': 'Undo home',
-        // 通勤页
-        '深圳端 · 出境状态': 'Shenzhen · Departure',
-        '香港端 · 入境轮候': 'Hong Kong · Arrival queues',
-        '今日天气': "Today's weather",
-        '查询深圳口岸出境状态': 'Check Shenzhen port status',
-        '或使用微信「i口岸」小程序': 'Or use the “iPort” WeChat mini app',
-        '主口岸': 'Main port', '备选口岸': 'Backup port',
-        '加载中…': 'Loading…', '暂无数据': 'No data',
-        '深圳': 'Shenzhen', '香港': 'Hong Kong',
-        '港铁时刻表': 'MTR timetable', '巴士时刻表': 'Bus timetable',
-        '预约车队的士': 'Book a taxi', '高德地图': 'Amap',
-        // 设置
-        '主题': 'Theme', '浅色': 'Light', '逐光': 'Chase',
-        '语言': 'Language',
-        '通勤设置': 'Commute setup', '通勤档案': 'Commute log', '通勤路径': 'Commute path', '去程通勤路径': 'Outbound commute path',
-        '添加行程': 'Add leg', '＋ 添加行程': '+ Add leg', '保存路线': 'Save route', '开始行程': 'Start trip',
-        '累积时间': 'Cumulative', '分钟': 'min',
-        '出行方式': 'Mode', '区域': 'Area', '线路': 'Route', '上车站': 'Board', '下车站': 'Alight',
-        '始发站': 'From', '到达站': 'To', '换乘站': 'Interchange', '换乘后站点': 'After-transfer station', '线路变化': 'Line change',
-        '请输入住宅名称': 'Enter a home name', '请输入学校名称': 'Enter a school name',
-        '请选择上课时间': 'Select a school time', '请输入 10–300 分钟之间的通勤时间': 'Enter a commute time between 10 and 300 minutes',
-        '请选择主口岸': 'Select a primary port', '请选择备选口岸': 'Select a backup port',
-        '备选口岸不能与主口岸相同': 'The backup port cannot be the same as the primary port',
-        '坐标格式：纬度, 经度（如 22.123, 114.123）': 'Format: latitude, longitude (e.g. 22.123, 114.123)',
-        '坐标格式：纬度, 经度（如 22.000, 114.000）': 'Format: latitude, longitude (e.g. 22.000, 114.000)',
-        '住宅坐标格式有误': 'Invalid home coordinates', '学校坐标格式有误': 'Invalid school coordinates',
-        '请输入合理的通勤时间': 'Enter a valid commute time',
-        '选择线路': 'Choose route', '输入线路号搜索': 'Search route number', '没有找到': 'No results',
-        '预计用时（分钟）': 'Time (min)', '起点': 'Origin', '终点': 'Destination',
-        '步行': 'Walk', '地铁': 'Metro', '公交': 'Bus', '巴士': 'Bus', '公交 / 巴士': 'Bus',
-        '转乘': 'Transfer', '到达口岸': 'Arrive at port', '过关': 'Crossing',
-        '深圳段': 'Shenzhen leg', '香港段': 'Hong Kong leg', '口岸': 'Port',
-        '排队与查验': 'Queue & inspection', '时间点': 'Time', '未填': 'Not set',
-        '编辑这一段': 'Edit this leg', '当前段': 'Current leg', '跳过': 'Skip', '到达': 'Arrive',
-        '行程进行中': 'Trip in progress', '行程已完成': 'Trip completed',
-        '路线已保存': 'Route saved', '已删除该段行程': 'Leg deleted',
-        '至少添加一段行程': 'Add at least one leg',
-        '行程进行中，请先完成或跳过当前段': 'Please finish or skip the current leg first',
-        '行程已开始，请逐段点击「到达」': 'Trip started. Tap Arrive for each leg.',
-        '站点加载失败，请手动填写上、下车站': 'Failed to load stops; enter boarding and alighting stops manually',
-        '请填写 1–240 分钟的预计用时': 'Enter 1–240 minutes',
-        '请填写起点和终点': 'Enter origin and destination',
-        '请选择始发站和到达站': 'Choose both stations',
-        '始发站和到达站不能相同': 'Stations must differ',
-        '请选择线路': 'Choose a route',
-        '请选择上车站和下车站': 'Choose both stops',
-        '请填写上车站和下车站': 'Enter both stops',
-        '上车站和下车站不能相同': 'Stops must differ',
-        '这两条线没有同站换乘，请换一组线路': 'No shared interchange — pick another pair',
-        '转乘的两条线路不能相同': 'The two lines must differ',
-        '转乘必须同站，请重新选择到达站': 'Transfer must stay at one station',
-        '无同站换乘': 'No shared interchange',
-        '口岸到达时刻': 'Port arrival time', '记录时刻': 'Record time', '本段': 'This leg',
-        '选择上课时间': 'Select school time', '选择时间': 'Select time', '确定': 'OK',
-        '常规': 'Regular', '干线': 'Trunk', '快线': 'Express', '支线': 'Branch', '夜班': 'Night', '假日旅游': 'Holiday', '机场': 'Airport',
-        '九巴': 'KMB', '城巴': 'Citybus', '屿巴': 'NLB', '深圳公交': 'Shenzhen bus', '香港巴士': 'Hong Kong bus',
-        '例如：福民新村': 'e.g. Fumin Xincun', '例如：福田口岸': 'e.g. Futian Port',
-        '例如：家': 'e.g. Home', '例如：福民站': 'e.g. Fumin Station', '例如：12': 'e.g. 12',
-        '东铁线': 'East Rail Line', '屯马线': 'Tuen Ma Line', '东涌线': 'Tung Chung Line',
-        '机场快线': 'Airport Express', '港岛线': 'Island Line', '荃湾线': 'Tsuen Wan Line',
-        '观塘线': 'Kwun Tong Line', '将军澳线': 'Tseung Kwan O Line', '南港岛线': 'South Island Line',
-        '迪士尼线': 'Disneyland Resort Line',
-        '更新日志': 'Changelog', '启程检查单': 'Departure checklist',
-        // 地图
-        '我的位置': 'My location', '定位': 'Location',
-        '获取中': 'Locating', '已获取': 'Got it',
-        '定位失败，请检查权限': 'Location failed — check permissions',
-        '所在区域': 'Area', '待定位': 'Not located',
-        '定位精度': 'Accuracy', '直线距离': 'Straight-line distance',
-        '预计到达口岸': 'Port ETA',
-        '获取定位': 'Get location', '关闭定位': 'Turn off location', '尚未获取定位': 'Not located yet',
-        '当前浏览器不支持定位': 'Geolocation not supported',
-        '定位权限被拒绝': 'Location permission denied',
-        '暂时无法获取位置': 'Location unavailable',
-        '定位超时': 'Location timed out', '定位失败': 'Location failed',
-        // 二级页
-        '港铁东铁线': 'MTR East Rail Line', '口岸巴士': 'Cross-border buses',
-        '今日天气详情': 'Weather details',
-        // 弹窗
-        '住宅名称': 'Home name', '例如：XX花园': 'e.g. XX Garden',
-        '住宅坐标（选填）': 'Home coordinates (optional)',
-        '纬度, 经度': 'Lat, Lng',
-        '学校名称': 'School name', '例如：XX学校': 'e.g. XX School',
-        '学校坐标（选填）': 'School coordinates (optional)',
-        '上课时间': 'Class start time',
-        '保底通勤时间 (分钟)': 'Baseline commute (min)',
-        '例如: 95': 'e.g. 95',
-        '主口岸 (首选出境)': 'Main port (preferred)',
-        '备选口岸 (Plan B)': 'Backup port (Plan B)',
-        '建立通勤协议': 'Save',
-        '将为你定制专属倒计时': 'Your commute countdown will be calibrated',
-        '重置推理引擎模型': 'Reset engine model',
-        '关闭': 'Close',
-        '逐一点亮随身物品，全部点亮即自动出发': 'Tap each item to light it up — all lit, you’re off',
-        '保存检查单': 'Save checklist',
-        '+ 添加物品': '+ Add item',
-        '输入物品名称，回车或离开保存': 'Item name — press Enter to save',
-        '通勤备注': 'Commute note',
-        '给这次通勤写点什么…': 'Add a note for this trip…',
-        '取消': 'Cancel', '保存': 'Save',
-        // 校验
-        '请输入住宅名称': 'Enter your home name',
-        '请输入学校名称': 'Enter your school name',
-        '请选择上课时间': 'Choose your class time',
-        '请输入 10–300 分钟之间的通勤时间': 'Enter a commute time between 10 and 300 minutes',
-        '请选择主口岸': 'Choose a main port',
-        '请选择备选口岸': 'Choose a backup port',
-        '备选口岸不能与主口岸相同': 'Backup port must differ from the main port',
-        '坐标格式：纬度, 经度（如 22.123, 114.123）': 'Format: lat, lng (e.g. 22.123, 114.123)',
-        '坐标格式：纬度, 经度（如 22.000, 114.000）': 'Format: lat, lng (e.g. 22.000, 114.000)',
-        '请输入合理的通勤时间': 'Enter a valid commute time',
-        '住宅坐标格式有误': 'Invalid home coordinates',
-        '学校坐标格式有误': 'Invalid school coordinates',
-        // 游戏
-        '末班车': 'Last Train', '守灯人': 'Lamp Keeper', '光暗穿门': 'Light & Shadow',
-        '呼吸': 'Breathe', '叠': 'Stack',
-        '出发': 'Start', '开始': 'Start', '再来一次': 'Play again', '本局': 'Score',
-        '点击画面切换光 / 影': 'Tap to switch light / shadow',
-        '点击切换光 / 影，穿过同色的拱门': 'Tap to switch light / shadow. Pass matching gates.',
-        '撑到天亮': 'Survive till dawn',
-        '方块触碰细线时，请轻点屏幕': 'Tap the screen when the square touches the line',
-        '点击放下方块，尽量对齐': 'Tap to drop; line it up',
-        '剩余': 'Remaining', '发车': 'Depart', '黎明': 'Dawn', '守夜': 'Night watch',
-        '点击画面跳跃': 'Tap to jump',
-        '点击跳跃，别撞上行李、人群和路障': 'Tap to jump — avoid luggage, crowds and barriers',
-        '点击画面提灯': 'Tap to light',
-        '点击提灯，让灯光烧退靠近的暗影': 'Tap to light the lamp and push back the shadows',
-        '撑到天亮，你就赢了': 'Survive until dawn to win',
-        '点击画面切换光影': 'Tap to switch light / shadow',
-        '点击切换光影，穿过同色的拱门': 'Tap to switch light / shadow. Pass matching gates.',
-        // 口岸 / 状态
-        '深圳湾口岸': 'Shenzhen Bay', '皇岗口岸': 'Huanggang',
-        '福田口岸/落马洲': 'Lok Ma Chau', '罗湖口岸': 'Lo Wu',
-        '文锦渡口岸': 'Wenjindu', '莲塘口岸': 'Liantang',
-        '畅通': 'Clear', '繁忙': 'Busy', '拥堵': 'Congested',
-        // 天气
-        '晴': 'Clear', '多云': 'Cloudy', '阴': 'Overcast', '小雨': 'Light rain',
-        '中雨': 'Rain', '大雨': 'Heavy rain', '雷阵雨': 'Thunderstorms',
-        '雾': 'Fog', '霾': 'Haze', '阵雨': 'Showers',
-        // 假期
-        '元旦': 'New Year’s Day', '聖誕節': 'Christmas Day', '中秋節': 'Mid-Autumn Festival',
-        '國慶日': 'National Day', '清明節': 'Ching Ming Festival', '端午節': 'Tuen Ng Festival',
-        '重陽節': 'Chung Yeung Festival', '復活節': 'Easter', '勞動節': 'Labour Day',
-        '香港特別行政區成立紀念日': 'HKSAR Establishment Day', '佛誕': 'Buddha’s Birthday',
-        '農曆年初一': 'Lunar New Year', '農曆年初二': 'Second day of Lunar New Year',
-        '農曆年初三': 'Third day of Lunar New Year', '耶穌受難節': 'Good Friday',
-        '耶穌受難節翌日': 'Day after Good Friday', '復活節星期一': 'Easter Monday',
-        '一般': 'Moderate', '暂无班次': 'No trains', '港铁': 'MTR', '巴士': 'Bus',
-        '落马洲站出发': 'From Lok Ma Chau', '罗湖站出发': 'From Lo Wu',
-        '金钟': 'Admiralty', '屯门': 'Tuen Mun', '天水围': 'Tin Shui Wai',
-        '上水': 'Sheung Shui', '大围': 'Tai Wai',
-        // 小游戏 / 提示
-        '再点一次，看看会发生什么': 'Tap again and see what happens',
-        '行程时长异常，不予保存': 'Trip duration looks off — not saved',
-        '检查单已保存': 'Checklist saved',
-        '误差过大，推理引擎已忽略本次学习': 'Error too large — the engine skipped this sample',
-        '推理引擎已重置': 'Engine reset',
-        '备注已保存': 'Note saved',
-        '赶上了': 'Made it', '没赶上': 'Missed it',
-        '天亮了': 'Dawn broke', '灯灭了': 'The lamp went out',
-        '光暗不合': 'Light and shadow don’t match',
-        // 天气二级页
-        '延误': 'Delayed', '即将到站': 'Arriving',
-        '数据暂不可用': 'Data unavailable',
-        '小时预报加载中…': 'Loading hourly…', '小时预报暂不可用': 'Hourly unavailable',
-        '温度': 'Temp', '体感温度': 'Feels like', '湿度': 'Humidity',
-        '风速': 'Wind', '降雨状态': 'Rain', '有雨': 'Rain', '无雨': 'Dry',
-        '明日降雨概率': 'Tomorrow rain',
-        // 巴士
-        '原定班次': 'Scheduled',
-        '香港侧无专营巴士，请前往乘坐东铁线。': 'No franchised bus on the HK side — take the East Rail.',
-        '天水围 (天慈邨)': 'Tin Shui Wai (Tin Tsz)',
-        '元朗港铁站': 'Yuen Long MTR',
-        '天水围 (天耀邨)': 'Tin Yiu',
-        '屯门市中心': 'Tuen Mun Town Centre',
-        '屯门码头': 'Tuen Mun Ferry Pier',
-        '山景邨': 'Shan King Estate',
-        '乌溪沙站': 'Wu Kai Sha Station',
-        '小西湾蓝湾半岛': 'Siu Sai Wan (Island Resort)',
-        '青山湾': 'Castle Peak Bay', '青山灣': 'Castle Peak Bay',
-        '天水围 (俊宏轩)': 'Tin Shui Wai (Grandeur Terrace)',
-        '旺角': 'Mong Kok',
-        '小巴': 'Minibus',
-        '启德世运道': 'Kai Tak Sports Avenue',
-        '周末线': 'Weekend',
-        '天富 (天水围)': 'Tin Fu (Tin Shui Wai)',
-        '葵芳 (葵翠邨)': 'Kwai Fong (Kwai Tsui)',
-        '粉岭站': 'Fanling Station',
-        '大围站': 'Tai Wai Station',
-        '屯门站 (另经元朗形点)': 'Tuen Mun Station (via YOHO)',
-        '元朗 (西)': 'Yuen Long (West)',
-        '天水圍(天慈邨)': 'Tin Shui Wai (Tin Tsz)',
-        '天水圍(天耀邨)': 'Tin Shui Wai (Tin Yiu)',
-        '元朗港鐵站': 'Yuen Long MTR',
-        '屯門市中心': 'Tuen Mun Town Centre',
-        '屯門碼頭': 'Tuen Mun Ferry Pier',
-        '山景邨': 'Shan King Estate',
-        '烏溪沙站': 'Wu Kai Sha Station',
-        '小西灣藍灣半島': 'Siu Sai Wan (Island Resort)',
-        '啟德世運道': 'Kai Tak Sports Avenue',
-        '天富(天水圍)': 'Tin Fu (Tin Shui Wai)',
-        '葵芳(葵翠邨)': 'Kwai Fong (Kwai Tsui)',
-        '粉嶺站': 'Fanling Station',
-        '大圍站': 'Tai Wai Station',
-        '屯門站(經元朗形點)': 'Tuen Mun Station (via YOHO)',
-        '元朗(西)': 'Yuen Long (West)',
-        // 口岸统一：落马洲
-        '落马洲': 'Lok Ma Chau', '福田口岸': 'Lok Ma Chau',
-        '维护中': 'Maintenance', '非服务时间': 'Closed',
-        '深圳香港离线地图': 'Shenzhen–Hong Kong offline map',
-        '末班車已過': 'Last bus passed', '最後一班': 'Last bus',
-        '已過': 'Passed', '行駛中': 'In service',
-        '暂无巴士数据': 'No bus data', '今日无班次': 'No service',
-        '周末及公众假期': 'Weekend / holiday',
-        '暂无专营巴士预计到站时间。': 'No franchised bus arrivals.',
-        '停止定位': 'Stop locating', '已停止定位': 'Location stopped',
-        '正在定位…': 'Locating…',
-        '已开启 · 回到页面后开始定位': 'On · starts when you return',
-        '已暂停 · 页面转入后台': 'Paused · page in background',
-        '本地文件无法调用定位，需 https 或 localhost': 'Location needs https or localhost',
-        '已定位（参数落点）': 'Located (config point)',
-        '车门在身后合上，末班车准点出发': 'The doors close behind you — the last train departs on time',
-        '被挡在门外，下一班要等很久': 'Locked out — the next one is a long wait',
-        '你追上了晨光，最后一扇门散成光': 'You caught the dawn — the last gate dissolves into light',
-        '你停在门前，晨光还差一点': 'You stopped at the gate — dawn was just out of reach',
-        '你守住了这盏灯，晨光落在肩上': 'You kept the lamp — dawn rests on your shoulders',
-        '暗影涌上来，灯芯熄了': 'Shadows rose — the wick went out',
-        '再守一夜': 'Keep watch again', '再走一次': 'Try again', '再跑一次': 'Run again',
-        '北區': 'North District', '屯門': 'Tuen Mun', '海域': 'Sea', '元朗': 'Yuen Long',
-        '家': 'Home', '学校': 'School', '口岸': 'Port',
-        '香港天文台': 'Hong Kong Observatory', '删除': 'Delete',
-        '八达通': 'Octopus', '学生证': 'Student ID', '港澳通行证': 'HK/Macau permit',
-        '通勤档案 · 上学': 'Commute log · Morning',
-        '通勤档案 · 放学': 'Commute log · Evening',
-        '出门时间': 'Departure', '离校时间': 'Left school',
-        '到校时间': 'Arrival', '到家时间': 'Home',
-        '早间耗时': 'Morning', '晚间耗时': 'Evening',
-        '日期': 'Date', '暂无历史记录': 'No records yet',
-        '预约的士收费表': 'Booked taxi fares',
-        '基础计费': 'Metered fare', '附加收费': 'Additional charges',
-        '首2公里起步费': 'Flag fall · first 2 km', '门槛分界线': 'Fare threshold',
-        '未达门槛 每公里费用': 'Per km · below',
-        '未达门槛 每分钟等候费': 'Per min · below',
-        '达到门槛 每公里费用': 'Per km · above',
-        '达到门槛 每分钟等候费': 'Per min · above',
-        '行李附加费': 'Baggage surcharge', '宠物附加费': 'Pet surcharge',
-        '预约附加费': 'Booking surcharge', '可选预约车队': 'Available fleets',
-        '前往网页预约': 'Book online',
-        '星群的士': 'SynCab', 'JOIE 乐行': 'JOIE'
-    };
+    // 中文<TAB>英文；运行时构建 EN 映射（比对象字面量更紧凑）
+    var EN_RAW = `首页	Home
+地图	Map
+通勤	Commute
+设置	Settings
+离线地图	Offline map
+通勤工具	Commute
+建议出门时间	Leave by
+明日建议出门时间	Tomorrow · leave by
+请设置通勤参数	Set up your commute
+自学习端侧推理引擎	Self-learning on-device engine
+本地微型神经网络，动态校准通勤时间	A small local network that calibrates your commute
+刷新	Refresh
+加载日期…	Loading date…
+今日	Today
+明日	Tomorrow
+查询香港假期中…	Checking HK holidays…
+今日周末，无需上学	Weekend — no school today
+今日香港：红日放假	HK public holiday — no school
+正常上课	School today
+停课	Suspended
+恶劣天气	Severe weather
+休息日	Day off
+今日打卡已完成	Done for today
+返程待保存	Save return trip
+返程通勤中	Heading home
+今日待放学	Waiting for school to end
+上学待保存	Save morning trip
+正在通勤中	On the way
+我已出门	I'm out
+我已到校	Arrived
+我已放学	School's out
+我已到家	Home
+保存记录	Save
+撤销出门	Undo out
+撤销到校	Undo arrival
+撤销离校	Undo school
+撤销到家	Undo home
+深圳端 · 出境状态	Shenzhen · Departure
+香港端 · 入境轮候	Hong Kong · Arrival queues
+今日天气	Today's weather
+查询深圳口岸出境状态	Check Shenzhen port status
+或使用微信「i口岸」小程序	Or use the “iPort” WeChat mini app
+主口岸	Main port
+备选口岸	Backup port
+加载中…	Loading…
+暂无数据	No data
+深圳	Shenzhen
+香港	Hong Kong
+港铁时刻表	MTR timetable
+巴士时刻表	Bus timetable
+预约车队的士	Book a taxi
+高德地图	Amap
+主题	Theme
+浅色	Light
+逐光	Chase
+语言	Language
+车费计算器	Fare calculator
+乘客类型	Passenger
+成人	Adult
+学生	Student
+东铁线头等车厢	East Rail first class
+预计车费	Estimated fare
+普通车厢票价	Ordinary fare
+学生半价优惠	Student half fare
+学生优惠	Student concession
+机场快线票价	Airport Express fare
+东铁线头等车厢附加费	East Rail first class premium
+应付	Total
+选择起点	Choose origin
+选择终点	Choose destination
+搜索车站	Search stations
+没有找到车站	No stations found
+选择起点和终点后计算	Choose origin and destination
+通勤设置	Commute setup
+通勤档案	Commute log
+通勤路径	Commute path
+去程通勤路径	Outbound commute path
+添加行程	Add leg
+＋ 添加行程	+ Add leg
+保存路线	Save route
+开始行程	Start trip
+累积时间	Cumulative
+分钟	min
+出行方式	Mode
+区域	Area
+线路	Route
+上车站	Board
+下车站	Alight
+始发站	From
+到达站	To
+换乘站	Interchange
+换乘后站点	After-transfer station
+线路变化	Line change
+选择线路	Choose route
+输入线路号搜索	Search route number
+没有找到	No results
+预计用时（分钟）	Time (min)
+起点	Origin
+终点	Destination
+步行	Walk
+地铁	Metro
+公交	Bus
+公交 / 巴士	Bus
+转乘	Transfer
+到达口岸	Arrive at port
+过关	Crossing
+深圳段	Shenzhen leg
+香港段	Hong Kong leg
+排队与查验	Queue & inspection
+时间点	Time
+未填	Not set
+编辑这一段	Edit this leg
+当前段	Current leg
+跳过	Skip
+到达	Arrive
+行程进行中	Trip in progress
+行程已完成	Trip completed
+路线已保存	Route saved
+已删除该段行程	Leg deleted
+至少添加一段行程	Add at least one leg
+行程进行中，请先完成或跳过当前段	Please finish or skip the current leg first
+行程已开始，请逐段点击「到达」	Trip started. Tap Arrive for each leg.
+站点加载失败，请手动填写上、下车站	Failed to load stops; enter boarding and alighting stops manually
+请填写 1–240 分钟的预计用时	Enter 1–240 minutes
+请填写起点和终点	Enter origin and destination
+请选择始发站和到达站	Choose both stations
+始发站和到达站不能相同	Stations must differ
+请选择线路	Choose a route
+请选择上车站和下车站	Choose both stops
+请填写上车站和下车站	Enter both stops
+上车站和下车站不能相同	Stops must differ
+这两条线没有同站换乘，请换一组线路	No shared interchange — pick another pair
+转乘的两条线路不能相同	The two lines must differ
+转乘必须同站，请重新选择到达站	Transfer must stay at one station
+无同站换乘	No shared interchange
+口岸到达时刻	Port arrival time
+记录时刻	Record time
+本段	This leg
+选择上课时间	Select school time
+选择时间	Select time
+确定	OK
+常规	Regular
+干线	Trunk
+快线	Express
+支线	Branch
+夜班	Night
+假日旅游	Holiday
+机场	Airport
+九巴	KMB
+城巴	Citybus
+屿巴	NLB
+深圳公交	Shenzhen bus
+香港巴士	Hong Kong bus
+例如：福民新村	e.g. Fumin Xincun
+例如：福田口岸	e.g. Futian Port
+例如：家	e.g. Home
+例如：福民站	e.g. Fumin Station
+例如：12	e.g. 12
+东铁线	East Rail Line
+屯马线	Tuen Ma Line
+东涌线	Tung Chung Line
+机场快线	Airport Express
+港岛线	Island Line
+荃湾线	Tsuen Wan Line
+观塘线	Kwun Tong Line
+将军澳线	Tseung Kwan O Line
+南港岛线	South Island Line
+迪士尼线	Disneyland Resort Line
+更新日志	Changelog
+启程检查单	Departure checklist
+我的位置	My location
+定位	Location
+获取中	Locating
+已获取	Got it
+定位失败，请检查权限	Location failed — check permissions
+所在区域	Area
+待定位	Not located
+定位精度	Accuracy
+直线距离	Straight-line distance
+预计到达口岸	Port ETA
+获取定位	Get location
+关闭定位	Turn off location
+尚未获取定位	Not located yet
+当前浏览器不支持定位	Geolocation not supported
+定位权限被拒绝	Location permission denied
+暂时无法获取位置	Location unavailable
+定位超时	Location timed out
+定位失败	Location failed
+港铁东铁线	MTR East Rail Line
+口岸巴士	Cross-border buses
+今日天气详情	Weather details
+住宅名称	Home name
+例如：XX花园	e.g. XX Garden
+住宅坐标（选填）	Home coordinates (optional)
+纬度, 经度	Lat, Lng
+学校名称	School name
+例如：XX学校	e.g. XX School
+学校坐标（选填）	School coordinates (optional)
+上课时间	Class start time
+保底通勤时间 (分钟)	Baseline commute (min)
+例如: 95	e.g. 95
+主口岸 (首选出境)	Main port (preferred)
+备选口岸 (Plan B)	Backup port (Plan B)
+建立通勤协议	Save
+将为你定制专属倒计时	Your commute countdown will be calibrated
+重置推理引擎模型	Reset engine model
+关闭	Close
+逐一点亮随身物品，全部点亮即自动出发	Tap each item to light it up — all lit, you’re off
+保存检查单	Save checklist
++ 添加物品	+ Add item
+输入物品名称，回车或离开保存	Item name — press Enter to save
+通勤备注	Commute note
+给这次通勤写点什么…	Add a note for this trip…
+取消	Cancel
+保存	Save
+请输入住宅名称	Enter your home name
+请输入学校名称	Enter your school name
+请选择上课时间	Choose your class time
+请输入 10–300 分钟之间的通勤时间	Enter a commute time between 10 and 300 minutes
+请选择主口岸	Choose a main port
+请选择备选口岸	Choose a backup port
+备选口岸不能与主口岸相同	Backup port must differ from the main port
+坐标格式：纬度, 经度（如 22.123, 114.123）	Format: lat, lng (e.g. 22.123, 114.123)
+坐标格式：纬度, 经度（如 22.000, 114.000）	Format: lat, lng (e.g. 22.000, 114.000)
+请输入合理的通勤时间	Enter a valid commute time
+住宅坐标格式有误	Invalid home coordinates
+学校坐标格式有误	Invalid school coordinates
+末班车	Last Train
+守灯人	Lamp Keeper
+光暗穿门	Light & Shadow
+呼吸	Breathe
+叠	Stack
+出发	Start
+开始	Start
+再来一次	Play again
+本局	Score
+点击画面切换光 / 影	Tap to switch light / shadow
+点击切换光 / 影，穿过同色的拱门	Tap to switch light / shadow. Pass matching gates.
+撑到天亮	Survive till dawn
+方块触碰细线时，请轻点屏幕	Tap the screen when the square touches the line
+点击放下方块，尽量对齐	Tap to drop; line it up
+剩余	Remaining
+发车	Depart
+黎明	Dawn
+守夜	Night watch
+点击画面跳跃	Tap to jump
+点击跳跃，别撞上行李、人群和路障	Tap to jump — avoid luggage, crowds and barriers
+点击画面提灯	Tap to light
+点击提灯，让灯光烧退靠近的暗影	Tap to light the lamp and push back the shadows
+撑到天亮，你就赢了	Survive until dawn to win
+点击画面切换光影	Tap to switch light / shadow
+点击切换光影，穿过同色的拱门	Tap to switch light / shadow. Pass matching gates.
+深圳湾口岸	Shenzhen Bay
+皇岗口岸	Huanggang
+福田口岸/落马洲	Lok Ma Chau
+罗湖口岸	Lo Wu
+文锦渡口岸	Wenjindu
+莲塘口岸	Liantang
+畅通	Clear
+繁忙	Busy
+拥堵	Congested
+晴	Clear
+多云	Cloudy
+阴	Overcast
+小雨	Light rain
+中雨	Rain
+大雨	Heavy rain
+雷阵雨	Thunderstorms
+雾	Fog
+霾	Haze
+阵雨	Showers
+元旦	New Year’s Day
+聖誕節	Christmas Day
+中秋節	Mid-Autumn Festival
+國慶日	National Day
+清明節	Ching Ming Festival
+端午節	Tuen Ng Festival
+重陽節	Chung Yeung Festival
+復活節	Easter
+勞動節	Labour Day
+香港特別行政區成立紀念日	HKSAR Establishment Day
+佛誕	Buddha’s Birthday
+農曆年初一	Lunar New Year
+農曆年初二	Second day of Lunar New Year
+農曆年初三	Third day of Lunar New Year
+耶穌受難節	Good Friday
+耶穌受難節翌日	Day after Good Friday
+復活節星期一	Easter Monday
+一般	Moderate
+暂无班次	No trains
+港铁	MTR
+巴士	Bus
+落马洲站出发	From Lok Ma Chau
+罗湖站出发	From Lo Wu
+金钟	Admiralty
+屯门	Tuen Mun
+天水围	Tin Shui Wai
+上水	Sheung Shui
+大围	Tai Wai
+再点一次，看看会发生什么	Tap again and see what happens
+行程时长异常，不予保存	Trip duration looks off — not saved
+检查单已保存	Checklist saved
+误差过大，推理引擎已忽略本次学习	Error too large — the engine skipped this sample
+推理引擎已重置	Engine reset
+备注已保存	Note saved
+赶上了	Made it
+没赶上	Missed it
+天亮了	Dawn broke
+灯灭了	The lamp went out
+光暗不合	Light and shadow don’t match
+延误	Delayed
+即将到站	Arriving
+数据暂不可用	Data unavailable
+小时预报加载中…	Loading hourly…
+小时预报暂不可用	Hourly unavailable
+温度	Temp
+体感温度	Feels like
+湿度	Humidity
+风速	Wind
+降雨状态	Rain
+有雨	Rain
+无雨	Dry
+明日降雨概率	Tomorrow rain
+原定班次	Scheduled
+香港侧无专营巴士，请前往乘坐东铁线。	No franchised bus on the HK side — take the East Rail.
+天水围 (天慈邨)	Tin Shui Wai (Tin Tsz)
+元朗港铁站	Yuen Long MTR
+天水围 (天耀邨)	Tin Yiu
+屯门市中心	Tuen Mun Town Centre
+屯门码头	Tuen Mun Ferry Pier
+乌溪沙站	Wu Kai Sha Station
+小西湾蓝湾半岛	Siu Sai Wan (Island Resort)
+青山湾	Castle Peak Bay
+青山灣	Castle Peak Bay
+天水围 (俊宏轩)	Tin Shui Wai (Grandeur Terrace)
+旺角	Mong Kok
+小巴	Minibus
+启德世运道	Kai Tak Sports Avenue
+周末线	Weekend
+天富 (天水围)	Tin Fu (Tin Shui Wai)
+葵芳 (葵翠邨)	Kwai Fong (Kwai Tsui)
+粉岭站	Fanling Station
+大围站	Tai Wai Station
+屯门站 (另经元朗形点)	Tuen Mun Station (via YOHO)
+元朗 (西)	Yuen Long (West)
+天水圍(天慈邨)	Tin Shui Wai (Tin Tsz)
+天水圍(天耀邨)	Tin Shui Wai (Tin Yiu)
+元朗港鐵站	Yuen Long MTR
+屯門市中心	Tuen Mun Town Centre
+屯門碼頭	Tuen Mun Ferry Pier
+山景邨	Shan King Estate
+烏溪沙站	Wu Kai Sha Station
+小西灣藍灣半島	Siu Sai Wan (Island Resort)
+啟德世運道	Kai Tak Sports Avenue
+天富(天水圍)	Tin Fu (Tin Shui Wai)
+葵芳(葵翠邨)	Kwai Fong (Kwai Tsui)
+粉嶺站	Fanling Station
+大圍站	Tai Wai Station
+屯門站(經元朗形點)	Tuen Mun Station (via YOHO)
+元朗(西)	Yuen Long (West)
+落马洲	Lok Ma Chau
+福田口岸	Lok Ma Chau
+维护中	Maintenance
+非服务时间	Closed
+深圳香港离线地图	Shenzhen–Hong Kong offline map
+末班車已過	Last bus passed
+最後一班	Last bus
+已過	Passed
+行駛中	In service
+暂无巴士数据	No bus data
+今日无班次	No service
+周末及公众假期	Weekend / holiday
+暂无专营巴士预计到站时间。	No franchised bus arrivals.
+停止定位	Stop locating
+已停止定位	Location stopped
+正在定位…	Locating…
+已开启 · 回到页面后开始定位	On · starts when you return
+已暂停 · 页面转入后台	Paused · page in background
+本地文件无法调用定位，需 https 或 localhost	Location needs https or localhost
+已定位（参数落点）	Located (config point)
+车门在身后合上，末班车准点出发	The doors close behind you — the last train departs on time
+被挡在门外，下一班要等很久	Locked out — the next one is a long wait
+你追上了晨光，最后一扇门散成光	You caught the dawn — the last gate dissolves into light
+你停在门前，晨光还差一点	You stopped at the gate — dawn was just out of reach
+你守住了这盏灯，晨光落在肩上	You kept the lamp — dawn rests on your shoulders
+暗影涌上来，灯芯熄了	Shadows rose — the wick went out
+再守一夜	Keep watch again
+再走一次	Try again
+再跑一次	Run again
+北區	North District
+屯門	Tuen Mun
+海域	Sea
+元朗	Yuen Long
+家	Home
+学校	School
+口岸	Port
+香港天文台	Hong Kong Observatory
+删除	Delete
+八达通	Octopus
+学生证	Student ID
+港澳通行证	HK/Macau permit
+通勤档案 · 上学	Commute log · Morning
+通勤档案 · 放学	Commute log · Evening
+出门时间	Departure
+离校时间	Left school
+到校时间	Arrival
+到家时间	Home
+早间耗时	Morning
+晚间耗时	Evening
+日期	Date
+暂无历史记录	No records yet
+预约的士收费表	Booked taxi fares
+基础计费	Metered fare
+附加收费	Additional charges
+首2公里起步费	Flag fall · first 2 km
+门槛分界线	Fare threshold
+未达门槛 每公里费用	Per km · below
+未达门槛 每分钟等候费	Per min · below
+达到门槛 每公里费用	Per km · above
+达到门槛 每分钟等候费	Per min · above
+行李附加费	Baggage surcharge
+宠物附加费	Pet surcharge
+预约附加费	Booking surcharge
+可选预约车队	Available fleets
+前往网页预约	Book online
+星群的士	SynCab
+JOIE 乐行	JOIE
+`;
+    var EN = {};
+    EN_RAW.split('\n').forEach(function (line) {
+        var p = line.indexOf('\t');
+        if (p > 0) EN[line.slice(0, p)] = line.slice(p + 1);
+    });
 
     var EN_PAT = [
         [/^已出门 (\d+) 分钟$/, 'Out for $1 min'],
@@ -1943,6 +2227,11 @@ body.theme-chase .path-scope.toast{background:rgba(255,255,255,.16);backdrop-fil
         return s;
     }
 
+    function T(zh, en) {
+        if (LANG !== 'en') return zh;
+        return (en != null) ? en : translateText(zh);
+    }
+
     function translateDest(d) {
         if (!d) return d;
         if (EN[d]) return EN[d];
@@ -1956,7 +2245,11 @@ body.theme-chase .path-scope.toast{background:rgba(255,255,255,.16);backdrop-fil
 
     var i18nApplying = false;
 
-    function walkTranslate(toEn) {
+    var STATIC_TEXT_NODES = [];
+    var STATIC_ATTRS = [];
+    var STATIC_MAP = new WeakMap();
+    var I18N_SKIP = '#view-mtr,#mtr-station-modal,#view-fare,#farePickerOverlay';
+    function captureStaticI18n() {
         var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
             acceptNode: function (node) {
                 var p = node.parentNode;
@@ -1964,46 +2257,68 @@ body.theme-chase .path-scope.toast{background:rgba(255,255,255,.16);backdrop-fil
                 var tag = p.nodeName;
                 if (tag === 'SCRIPT' || tag === 'STYLE' || tag === 'TEXTAREA') return NodeFilter.FILTER_REJECT;
                 if (p.closest && p.closest('#info-modal .changelog')) return NodeFilter.FILTER_REJECT;
-                if (p.closest && (p.closest('#view-mtr') || p.closest('#mtr-station-modal'))) return NodeFilter.FILTER_REJECT;
+                if (p.closest && p.closest(I18N_SKIP)) return NodeFilter.FILTER_REJECT;
                 return NodeFilter.FILTER_ACCEPT;
             }
         });
-        var nodes = [], n;
-        while ((n = walker.nextNode())) nodes.push(n);
-        nodes.forEach(function (node) {
-            var txt = node.nodeValue;
-            if (!txt || !txt.trim()) return;
-            if (toEn) {
-                var out = translateText(txt);
-                if (out === txt) return;
-                if (node.nodeValue === out) return;
-                node.__zh = txt;
-                node.__en = out;
-                node.nodeValue = out;
-            } else if (node.__zh != null) {
-                if (node.nodeValue === node.__en) node.nodeValue = node.__zh;
-                node.__zh = null;
-                node.__en = null;
-            }
-        });
+        var n;
+        while ((n = walker.nextNode())) {
+            var zh = n.nodeValue;
+            if (!zh || !zh.trim() || !/[\u4e00-\u9fff]/.test(zh)) continue;
+            var rec = STATIC_MAP.get(n);
+            if (rec) { rec.zh = zh; continue; }
+            if (translateText(zh) === zh) continue;
+            rec = { node: n, zh: zh };
+            STATIC_MAP.set(n, rec);
+            STATIC_TEXT_NODES.push(rec);
+        }
         document.querySelectorAll('[aria-label],[placeholder],[title]').forEach(function (el) {
+            if (el.closest && el.closest(I18N_SKIP)) return;
+            if (!el.__i18nAttrs) el.__i18nAttrs = {};
             ['aria-label', 'placeholder', 'title'].forEach(function (a) {
                 var v = el.getAttribute(a);
-                if (!v) return;
-                var key = v.trim();
-                if (!EN[key]) return;
-                if (toEn) {
-                    if (!el.__zhAttr) el.__zhAttr = {};
-                    if (!el.__zhAttr[a]) el.__zhAttr[a] = v;
-                    el.setAttribute(a, EN[key]);
-                } else if (el.__zhAttr && el.__zhAttr[a]) {
-                    el.setAttribute(a, el.__zhAttr[a]);
-                }
+                if (!v || !EN[v.trim()] || el.__i18nAttrs[a]) return;
+                el.__i18nAttrs[a] = true;
+                STATIC_ATTRS.push({ el: el, attr: a, zh: v });
             });
         });
     }
+    function pruneStaticI18n() {
+        if (STATIC_TEXT_NODES.length) {
+            STATIC_TEXT_NODES = STATIC_TEXT_NODES.filter(function (item) {
+                if (item.node && item.node.isConnected) return true;
+                if (item.node) STATIC_MAP.delete(item.node);
+                return false;
+            });
+        }
+        if (STATIC_ATTRS.length) {
+            STATIC_ATTRS = STATIC_ATTRS.filter(function (item) { return item.el && item.el.isConnected; });
+        }
+    }
+    function applyStaticI18n() {
+        pruneStaticI18n();
+        captureStaticI18n();
+        STATIC_TEXT_NODES.forEach(function (item) {
+            if (!item.node || !item.node.parentNode) return;
+            var next = (LANG === 'en') ? translateText(item.zh) : item.zh;
+            if (item.node.nodeValue !== next) item.node.nodeValue = next;
+        });
+        STATIC_ATTRS.forEach(function (item) {
+            if (!item.el) return;
+            var next = (LANG === 'en') ? EN[item.zh.trim()] : item.zh;
+            if (item.el.getAttribute(item.attr) !== next) item.el.setAttribute(item.attr, next);
+        });
+    }
+
 
     var EN_CHANGELOG = [
+        '<div class="changelog-entry"><div class="changelog-version">Version 1.13 · Consolidation &amp; breath｜Nov 24, 2026</div><ul class="changelog-list">',
+        '<li><b>Fare calculator</b><br>A new fare calculator covers Shenzhen Metro and MTR. Choose origin/destination and adult/student to calculate fares from official tables, with itemised ordinary fare, student concession, East Rail first class and Airport Express.</li>',
+        '<li><b>Fare sources</b><br>Shenzhen Metro uses the official fare table; MTR uses official fares and Airport Express data. Pricing follows the shortest path / official station pairs, business carriage is excluded, and Airport Express has no student concession.</li>',
+        '<li><b>Two themes retired</b><br>To simplify future iteration and reduce duplicate adaptation work, the visual language is also being unified and made less decorative. After review, Dark and Lite are officially retired.</li>',
+        '<li><b>Port model simplified</b><br>MLP-B triggers only during a real outbound trip. The first fix within &lt;300m accuracy and &lt;300m of the nearest port is recorded, one record per trip using morningOut as tripId, and undoing departure keeps the sample. The 8-second dwell, 3-fix minimum and 05:00–11:30 window are removed.</li>',
+        '<li><b>Commute-only GPS</b><br>Location runs only on the way to/from school, pauses after arrival check-in and resumes after undoing arrival. The map can locate on its own; during a commute the commuter watch takes over to avoid duplicate tracking.</li>',
+        '</ul></div>',
         '<div class="changelog-entry"><div class="changelog-version">Version 1.12 · Commute path & multi-line timetable｜Nov 21, 2026</div><ul class="changelog-list">',
         '<li><b>Commute path</b><br>A new Commute path row in Settings records the outbound route leg by leg with a total; it is a personal record and does not change the suggested departure time.</li>',
         '<li><b>Six leg types</b><br>Walk, metro, bus, transfer, arrive at port and crossing; each leg stores line, stops and duration; transfers stay at one station by default; Hong Kong ↔ Central and Tsim Sha Tsui ↔ East Tsim Sha Tsui are supported as out-of-station transfers.</li>',
@@ -2144,7 +2459,8 @@ body.theme-chase .path-scope.toast{background:rgba(255,255,255,.16);backdrop-fil
             try { if (window.syncTimeTrigger) window.syncTimeTrigger(); } catch (e) {}
             try { if (window.syncPickerTriggers) window.syncPickerTriggers(); } catch (e) {}
         }
-        walkTranslate(LANG === 'en');
+        applyStaticI18n();
+        try { if (window.FareCalc && window.FareCalc.applyLang) window.FareCalc.applyLang(); } catch (e) {}
         swapChangelog(LANG === 'en');
         document.querySelectorAll('#lang-seg button').forEach(function (b) {
             b.classList.toggle('active', b.dataset.lang === LANG);
@@ -2158,16 +2474,20 @@ body.theme-chase .path-scope.toast{background:rgba(255,255,255,.16);backdrop-fil
         document.querySelectorAll('#lang-seg button').forEach(function (b) {
             b.addEventListener('click', function () { applyLang(b.dataset.lang); });
         });
-        var obs = new MutationObserver(function () {
-            if (i18nApplying || LANG !== 'en') return;
-            i18nApplying = true;
-            requestAnimationFrame(function () {
-                walkTranslate(true);
-                i18nApplying = false;
-            });
-        });
-        obs.observe(document.body, { childList: true, subtree: true, characterData: true });
     })();
+    window.addEventListener('load', function () { applyStaticI18n(); setTimeout(applyStaticI18n, 300); });
+    var i18nDirty = false;
+    var i18nObs = new MutationObserver(function () {
+        if (LANG !== 'en') return;
+        if (i18nApplying) { i18nDirty = true; return; }
+        i18nApplying = true;
+        requestAnimationFrame(function () {
+            applyStaticI18n();
+            i18nApplying = false;
+            if (i18nDirty) { i18nDirty = false; applyStaticI18n(); }
+        });
+    });
+    i18nObs.observe(document.body, { childList: true, subtree: true, characterData: true });
 
     // 入境处「居民」口岸排队数据（全站唯一使用公共代理的地方）
     const PORT_API_RESIDENT = 'https://secure1.info.gov.hk/immd/mobileapps/2bb9ae17/data/CPQueueTimeR.json';
@@ -3079,6 +3399,8 @@ body.theme-chase .path-scope.toast{background:rgba(255,255,255,.16);backdrop-fil
     function persistCheckIn() {
         localStorage.setItem('terminus_checkin', JSON.stringify(checkInData));
         renderUI();
+        if (typeof reconcileCommuteWatch === 'function') reconcileCommuteWatch();
+        if (typeof updatePortEta === 'function') updatePortEta();
     }
 
     function pushEveningToHistory() {
@@ -3237,6 +3559,7 @@ body.theme-chase .path-scope.toast{background:rgba(255,255,255,.16);backdrop-fil
             checkInData.eveningIn = null;
             checkInData.eveningSaved = false;
             departurePort = portData.main;   // 离校时刻快照口岸
+            if (typeof resetPortTripTracking === 'function') resetPortTripTracking();
             fetchPortQueue();
         } else if (action === 'eveningIn') {
             checkInData.eveningIn = Date.now();
@@ -3263,7 +3586,7 @@ body.theme-chase .path-scope.toast{background:rgba(255,255,255,.16);backdrop-fil
 
     // ============ 赛博足迹：通勤状态判断与同步 ============
     function isCommuting() {
-        return (checkInData.morningOut && !checkInData.morningIn) || (checkInData.eveningOut && !checkInData.eveningIn);
+        return !!((checkInData.morningOut && !checkInData.morningIn) || (checkInData.eveningOut && !checkInData.eveningIn));
     }
 
     function footprintSync() {
@@ -3420,6 +3743,7 @@ body.theme-chase .path-scope.toast{background:rgba(255,255,255,.16);backdrop-fil
         checkInData.autoCanceled = false;
         checkInData.date = todayYMD();
         departurePort = portData.main;   // 出门时刻快照口岸，作为「过境」代理
+        if (typeof resetPortTripTracking === 'function') resetPortTripTracking();
         fetchPortQueue();
         closeChecklistAction();
         persistCheckIn();
@@ -3575,15 +3899,9 @@ body.theme-chase .path-scope.toast{background:rgba(255,255,255,.16);backdrop-fil
     const PORT_IN = 7, PORT_HIDDEN = 6;
     // 原 0.01 相对 20–30 分钟的目标尺度过小，b2 每步只增约 0.5，几十条样本都追不上
     const PORT_LR = 0.05;
-    const PORT_TRIGGER_M = 150;
-    const PORT_ACC_MAX = 150;
-    const PORT_DWELL_MS = 8000;
-    const PORT_MIN_FIXES = 3;
+    const PORT_TRIGGER_M = 300;
+    const PORT_ACC_MAX = 300;
     const PORT_MIN_MOVE = 0.8;   // 速度低于此值时按此值算，避免站着不动把剩余时间估成无穷大
-    const PORT_DEBOUNCE_MS = 5 * 60000;
-    // 采集窗口（本地钟点，分钟）：晚间不采集，避免污染早间样本
-    const PORT_WIN_START = 5 * 60;
-    const PORT_WIN_END = 11 * 60 + 30;
     // 模型介入的上限权重：样本越多越信模型，但永不完全接管
     const PORT_BLEND_MAX = 0.45;
     const PORT_BLEND_STEP = 20;
@@ -3683,8 +4001,10 @@ body.theme-chase .path-scope.toast{background:rgba(255,255,255,.16);backdrop-fil
     let portDemoStart = null; // 仅演示用：未打卡时提供行程起点，不写入真实打卡档案
 
     let globalWatchId = null;
+    let globalWatchErrorAt = 0;
+    let globalWatchRetryDelay = 5000;
+    let globalWatchRetryTimer = null;
     let globalLastFix = null;
-    let portGeo = {};
     let portSpeedHist = [];   // 近 3 帧速度，用于取中位数抗抖
 
     // 单帧 GPS 速度抖得厉害，取近 3 帧中位数再参与计算
@@ -3706,14 +4026,20 @@ body.theme-chase .path-scope.toast{background:rgba(255,255,255,.16);backdrop-fil
             else localStorage.removeItem(PORT_GPS_OFF_KEY);
         } catch (e) {}
     }
-    // 一天只留一条：同口岸当天已有样本就不再记
-    function portSampledToday(port, now) {
-        const ymd = portYmd(now);
+    // 一次去程只留一条：以 morningOut 作为 tripId
+    function portSampledTrip(tripId) {
+        if (!tripId) return false;
         for (let i = portSamples.length - 1; i >= 0; i--) {
             const s = portSamples[i];
-            if (s && s.port === port && typeof s.ts === 'number' && portYmd(s.ts) === ymd) return true;
+            if (s && s.tripId === tripId) return true;
         }
         return false;
+    }
+    // 严格去程状态：已出门、未到校、未保存；真实 morningOut 才算
+    function outboundTripId() {
+        if (!checkInData.morningOut) return null;
+        if (checkInData.morningIn || checkInData.morningSaved) return null;
+        return checkInData.morningOut;
     }
 
     function haversineM(lat1, lon1, lat2, lon2) {
@@ -3807,72 +4133,50 @@ body.theme-chase .path-scope.toast{background:rgba(255,255,255,.16);backdrop-fil
         }
     }
 
-    // 只检测主口岸；备选口岸与主口岸间距不足两倍判定半径时，不挂载（近距对消歧）
+    // 主/备口岸都参与；300m 内取最近的一个，避免近距口岸记错
     function portFenceTargets() {
         const main = userConfig.mainPort || '深圳湾口岸';
         const list = [];
-        if (!PORT_COORDS[main]) return list;
-        list.push(main);
+        if (PORT_COORDS[main]) list.push(main);
         const backup = userConfig.backupPort;
-        if (backup && backup !== main && PORT_COORDS[backup]) {
-            const mc = PORT_COORDS[main], bc = PORT_COORDS[backup];
-            const sep = haversineM(mc.lat, mc.lng, bc.lat, bc.lng);
-            if (sep > 2 * PORT_TRIGGER_M + 30) list.push(backup);
-        }
+        if (backup && backup !== main && PORT_COORDS[backup]) list.push(backup);
         return list;
-    }
-
-    // 去抖依据已落盘的样本时间戳，刷新页面后依然有效
-    function portLastSampleTs(port) {
-        for (let i = portSamples.length - 1; i >= 0; i--) {
-            const s = portSamples[i];
-            if (s && s.port === port && typeof s.ts === 'number') return s.ts;
-        }
-        return 0;
     }
 
     function checkPortGeofence(lat, lon, acc, speed, now) {
         // 口岸属于学习引擎的子引擎：总开关关闭时整条链路不工作
         if (!engineEnabled || !portFenceOn) return;
-        // 方向门：只采集去口岸的早间行程，晚间一律不进围栏
-        if (tripDir() !== 'morning') return;
-        // 时间窗门：本地钟点必须落在采集窗口内
-        const clock = new Date(now);
-        const mins = clock.getHours() * 60 + clock.getMinutes();
-        if (mins < PORT_WIN_START || mins >= PORT_WIN_END) return;
-        if (acc != null && acc > PORT_ACC_MAX) return;
+        // 必须有真实的去程起点；没有 morningOut 不记录
+        const tripId = outboundTripId();
+        if (!tripId) return;
+        // 精度门槛：300m
+        if (acc != null && acc >= PORT_ACC_MAX) return;
+        // 300m 内取最近的口岸；首帧满足即记录
+        let bestPort = null, bestDist = Infinity;
         portFenceTargets().forEach(function (port) {
             const c = PORT_COORDS[port];
+            if (!c) return;
             const d = haversineM(lat, lon, c.lat, c.lng);
-            const st = portGeo[port] || (portGeo[port] = { enterAt: 0, fixes: 0 });
-            if (d <= PORT_TRIGGER_M) {
-                if (!st.enterAt) st.enterAt = now;
-                st.fixes++;
-                const dwell = now - st.enterAt;
-                if (dwell >= PORT_DWELL_MS && st.fixes >= PORT_MIN_FIXES) {
-                    if (now - portLastSampleTs(port) >= PORT_DEBOUNCE_MS) {
-                        onPortArrival(port, now, acc);
-                    }
-                    st.enterAt = 0; st.fixes = 0;
-                }
-            } else {
-                st.enterAt = 0; st.fixes = 0;
-            }
+            if (d < PORT_TRIGGER_M && d < bestDist) { bestPort = port; bestDist = d; }
         });
+        if (!bestPort) return;
+        if (portSampledTrip(tripId)) return;
+        onPortArrival(bestPort, now, acc, tripId);
     }
 
-    function onPortArrival(port, now, acc) {
-        const dir = tripDir();
-        const start = portTripStart();
+    function onPortArrival(port, now, acc, tripId) {
+        const dir = 'morning';
+        const start = tripId;
         if (!start) return;
-        if (portSampledToday(port, now)) return;   // 一天一条：在口岸站着等也不会重复记账
+        if (portSampledTrip(tripId)) return;   // 一次去程一条：撤销后重新出门才会产生新 tripId
         const duration = Math.round((now - start) / 60000);
         if (!isFinite(duration) || duration <= 0 || duration > 300) return;
         let cong = portCongestionNow(port);
         if (cong == null) cong = portTidalFallback(port, new Date(now).getHours());
         portSamples.push({
             ts: now, port: port, dir: dir, duration: duration,
-            congestion: cong, accuracy: (acc == null ? null : Math.round(acc))
+            congestion: cong, accuracy: (acc == null ? null : Math.round(acc)),
+            tripId: tripId
         });
         if (portSamples.length > 200) portSamples = portSamples.slice(-200);
         try { localStorage.setItem(PORT_SAMPLES_KEY, JSON.stringify(portSamples)); } catch (e) {}
@@ -3882,28 +4186,74 @@ body.theme-chase .path-scope.toast{background:rgba(255,255,255,.16);backdrop-fil
             portEngine.train(portFeatureVec(port, cong, dir), duration);
             portEngine.saveWeights();
         } catch (e) {}
-        try { console.info('[PortETA] arrival', port, dir, duration + 'min', 'cong=' + cong); } catch (e) {}
+        try { console.info('[PortETA] arrival', port, dir, duration + 'min', 'trip=' + tripId, 'cong=' + cong); } catch (e) {}
         updatePortEta();
     }
 
     function startGlobalWatch() {
         if (globalWatchId != null || document.hidden) return;
         if (!navigator.geolocation) return;
+        // 通勤定位优先：关闭地图自己的定位 watch，避免双开
+        if (window.OmMap && window.OmMap.closeGpsWatch) { try { window.OmMap.closeGpsWatch(); } catch (e) {} }
+        if (globalWatchRetryTimer) { clearTimeout(globalWatchRetryTimer); globalWatchRetryTimer = null; }
         globalWatchId = navigator.geolocation.watchPosition(
-            onGlobalFix,
-            function () {
+            function (pos) {
+                globalWatchErrorAt = 0;
+                globalWatchRetryDelay = 5000;
+                onGlobalFix(pos);
+            },
+            function (err) {
                 globalWatchId = null;
                 var b = document.getElementById('omBtnStart');
                 if (b) b.textContent = '获取定位';
+                var code = err && err.code;
+                var now = Date.now();
+                // 权限被拒绝是永久错误：不自动重试，等用户手动恢复
+                if (code === 1) {
+                    if (now - globalWatchErrorAt > 30000) {
+                        globalWatchErrorAt = now;
+                        if (typeof showToast === 'function') showToast(T('定位权限被拒绝，请到浏览器设置开启','Location permission denied. Enable it in browser settings.'));
+                    }
+                    return;
+                }
+                if (now - globalWatchErrorAt > 30000) {
+                    globalWatchErrorAt = now;
+                    if (typeof showToast === 'function') showToast(T('定位暂不可用，正在重试','Location unavailable, retrying'));
+                }
+                if (globalWatchRetryTimer) return;
+                var delay = globalWatchRetryDelay;
+                globalWatchRetryDelay = Math.min(60000, delay * 2);
+                globalWatchRetryTimer = setTimeout(function () {
+                    globalWatchRetryTimer = null;
+                    if (typeof commuteGpsWanted === 'function' && commuteGpsWanted()) startGlobalWatch();
+                }, delay);
             },
             { enableHighAccuracy: true, timeout: 15000, maximumAge: 3000 }
         );
     }
     function stopGlobalWatch() {
+        if (globalWatchRetryTimer) { clearTimeout(globalWatchRetryTimer); globalWatchRetryTimer = null; }
         if (globalWatchId != null) {
             try { navigator.geolocation.clearWatch(globalWatchId); } catch (e) {}
             globalWatchId = null;
         }
+    }
+    function resetPortTripTracking() {
+        globalLastFix = null;
+        portSpeedHist = [];
+        var row = document.getElementById('portEtaRow');
+        var val = document.getElementById('portEta');
+        if (row) row.style.display = 'none';
+        if (val) val.textContent = '—';
+    }
+    // 只在通勤路上开定位：到校/到家（或撤销出门）后自动停
+    function commuteGpsWanted() {
+        if (!engineEnabled || portGpsOffToday() || document.hidden) return false;
+        return isCommuting();
+    }
+    function reconcileCommuteWatch() {
+        if (commuteGpsWanted()) startGlobalWatch();
+        else stopGlobalWatch();
     }
 
     function portQueuePrediction(dir, dateObj) {
@@ -3926,6 +4276,7 @@ body.theme-chase .path-scope.toast{background:rgba(255,255,255,.16);backdrop-fil
     function computePortEta() {
         if (!engineEnabled || !portFenceOn) return null;
         if (portGpsOffToday()) return null;          // 当天关过定位：全天不再推算
+        if (!isCommuting()) return null;             // 到校/到家后不再显示口岸 ETA
         if (portCount <= 0) return null;
 
         const dir = tripDir();
@@ -4013,6 +4364,10 @@ body.theme-chase .path-scope.toast{background:rgba(255,255,255,.16);backdrop-fil
     function updatePortEta() {
         const row = document.getElementById('portEtaRow');
         const val = document.getElementById('portEta');
+        if (!isCommuting()) {
+            if (row) row.style.display = 'none';
+            return;
+        }
         const t = computePortEta();
         let hhmm = null;
         if (t != null) {
@@ -4084,14 +4439,16 @@ body.theme-chase .path-scope.toast{background:rgba(255,255,255,.16);backdrop-fil
                 engine: engineEnabled,
                 count: portCount,
                 samples: portSamples.length,
-                last: last ? { port: last.port, dir: last.dir, duration: last.duration, ts: last.ts } : null,
+                last: last ? { port: last.port, dir: last.dir, duration: last.duration, ts: last.ts, tripId: last.tripId || null } : null,
+                trip: !!outboundTripId(),
+                tripId: outboundTripId(),
+                commuting: isCommuting(),
                 eta: eta == null ? null : new Date(eta).toTimeString().slice(0, 5)
             };
         },
         clear: function () {
             portSamples = [];
             portCount = 0;
-            portGeo = {};
             portDemoStart = null;
             try { localStorage.setItem(PORT_SAMPLES_KEY, '[]'); } catch (e) {}
             try { localStorage.setItem(PORT_COUNT_KEY, '0'); } catch (e) {}
@@ -4103,15 +4460,16 @@ body.theme-chase .path-scope.toast{background:rgba(255,255,255,.16);backdrop-fil
     };
 
     (function initPortEta() {
-        if (engineEnabled && !portGpsOffToday()) startGlobalWatch();
+        reconcileCommuteWatch();
         updatePortEta();
         var btn = document.getElementById('omBtnStart');
         if (btn && navigator.geolocation) btn.textContent = (globalWatchId != null) ? '关闭定位' : '获取定位';
         document.addEventListener('visibilitychange', function () {
             if (document.hidden) stopGlobalWatch();
-            else { if (engineEnabled && !portGpsOffToday()) startGlobalWatch(); updatePortEta(); }
+            else reconcileCommuteWatch();
+            updatePortEta();
         });
-        setInterval(function () { if (!document.hidden && engineEnabled) updatePortEta(); }, 30000);
+        setInterval(function () { if (!document.hidden && engineEnabled && isCommuting()) updatePortEta(); }, 30000);
     })();
 
     // ===== 特征工程：客观数据 → 0.0~1.0 =====
@@ -4175,8 +4533,8 @@ body.theme-chase .path-scope.toast{background:rgba(255,255,255,.16);backdrop-fil
     function toggleEngine() {
         engineEnabled = !engineEnabled;
         try { localStorage.setItem(EDGE_TOGGLE_KEY, engineEnabled ? '1' : '0'); } catch (e) {}
-        // 口岸子引擎跟随总开关：开则启动定位监听，关则停掉并立即清空展示
-        if (engineEnabled && !portGpsOffToday()) startGlobalWatch(); else stopGlobalWatch();
+        // 口岸子引擎跟随总开关；定位只在上/放学路上开启
+        reconcileCommuteWatch();
         updateEngineToggle();
         renderUI();
         updatePortEta();
@@ -4209,6 +4567,15 @@ body.theme-chase .path-scope.toast{background:rgba(255,255,255,.16);backdrop-fil
         const statusEl = document.getElementById('status-text');
         const titleEl = document.getElementById('hero-title-text');
         const checkinArea = document.getElementById('checkin-action-area');
+
+        // 跨日先重置并同步定位，避免昨天的行程继续占用 GPS
+        if (checkInData.date !== todayYMD()) {
+            checkInData = emptyCheckIn();
+            localStorage.setItem('terminus_checkin', JSON.stringify(checkInData));
+            if (typeof resetPortTripTracking === 'function') resetPortTripTracking();
+            if (typeof reconcileCommuteWatch === 'function') reconcileCommuteWatch();
+            if (typeof updatePortEta === 'function') updatePortEta();
+        }
 
         renderDayToggle();
 
@@ -4450,6 +4817,7 @@ body.theme-chase .path-scope.toast{background:rgba(255,255,255,.16);backdrop-fil
 
     function switchView(targetId) {
         if (targetId === currentViewId) return;
+        if (targetId !== 'view-fare' && window.FareCalc && window.FareCalc.close) window.FareCalc.close();
         currentViewId = targetId;
 
         document.querySelectorAll('.view').forEach(v => {
@@ -4486,6 +4854,8 @@ body.theme-chase .path-scope.toast{background:rgba(255,255,255,.16);backdrop-fil
             if (window.__gameChase) window.__gameChase.start();
         } else if (targetId === 'view-path') {
             if (window.PathApp) window.PathApp.enter();
+        } else if (targetId === 'view-fare') {
+            if (window.FareCalc) window.FareCalc.enter();
         }
 
         // 离开游戏页时暂停游戏循环，避免后台空转
@@ -4505,7 +4875,16 @@ body.theme-chase .path-scope.toast{background:rgba(255,255,255,.16);backdrop-fil
     }
 
     // ============ 港铁时刻表（多线，官方 Next Train） ============
-    const MTR_DATA = {"lines":{"EAL":{"code":"EAL","name":"东铁线","en":"East Rail Line","color":"#53B7E8","default":"ADM","stations":[{"code":"ADM","zh":"金钟","en":"Admiralty","id":"2"},{"code":"EXC","zh":"会展","en":"Exhibition Centre","id":"94"},{"code":"HUH","zh":"红磡","en":"Hung Hom","id":"64"},{"code":"MKK","zh":"旺角东","en":"Mong Kok East","id":"65"},{"code":"KOT","zh":"九龙塘","en":"Kowloon Tong","id":"8"},{"code":"TAW","zh":"大围","en":"Tai Wai","id":"67"},{"code":"SHT","zh":"沙田","en":"Sha Tin","id":"68"},{"code":"FOT","zh":"火炭","en":"Fo Tan","id":"69"},{"code":"RAC","zh":"马场","en":"Racecourse","id":"70"},{"code":"UNI","zh":"大学","en":"University","id":"71"},{"code":"TAP","zh":"大埔墟","en":"Tai Po Market","id":"72"},{"code":"TWO","zh":"太和","en":"Tai Wo","id":"73"},{"code":"FAN","zh":"粉岭","en":"Fanling","id":"74"},{"code":"SHS","zh":"上水","en":"Sheung Shui","id":"75"},{"code":"LOW","zh":"罗湖","en":"Lo Wu","id":"76"},{"code":"LMC","zh":"落马洲","en":"Lok Ma Chau","id":"78"}],"dirs":{"UP":{"label":"上行","terminals":["罗湖","落马洲"]},"DOWN":{"label":"下行","terminals":["金钟"]}}},"TML":{"code":"TML","name":"屯马线","en":"Tuen Ma Line","color":"#9A3B26","default":"HUH","stations":[{"code":"WKS","zh":"乌溪沙","en":"Wu Kai Sha","id":"103"},{"code":"MOS","zh":"马鞍山","en":"Ma On Shan","id":"102"},{"code":"HEO","zh":"恒安","en":"Heng On","id":"101"},{"code":"TSH","zh":"大水坑","en":"Tai Shui Hang","id":"100"},{"code":"SHM","zh":"石门","en":"Shek Mun","id":"99"},{"code":"CIO","zh":"第一城","en":"City One","id":"98"},{"code":"STW","zh":"沙田围","en":"Sha Tin Wai","id":"97"},{"code":"CKT","zh":"车公庙","en":"Che Kung Temple","id":"96"},{"code":"TAW","zh":"大围","en":"Tai Wai","id":"67"},{"code":"HIK","zh":"显径","en":"Hin Keng","id":"90"},{"code":"DIH","zh":"钻石山","en":"Diamond Hill","id":"11"},{"code":"KAT","zh":"启德","en":"Kai Tak","id":"91"},{"code":"SUW","zh":"宋皇台","en":"Sung Wong Toi","id":"92"},{"code":"TKW","zh":"土瓜湾","en":"To Kwa Wan","id":"93"},{"code":"HOM","zh":"何文田","en":"Ho Man Tin","id":"84"},{"code":"HUH","zh":"红磡","en":"Hung Hom","id":"64"},{"code":"ETS","zh":"尖东","en":"East Tsim Sha Tsui","id":"80"},{"code":"AUS","zh":"柯士甸","en":"Austin","id":"111"},{"code":"NAC","zh":"南昌","en":"Nam Cheong","id":"53"},{"code":"MEF","zh":"美孚","en":"Mei Foo","id":"20"},{"code":"TWW","zh":"荃湾西","en":"Tsuen Wan West","id":"114"},{"code":"KSR","zh":"锦上路","en":"Kam Sheung Road","id":"115"},{"code":"YUL","zh":"元朗","en":"Yuen Long","id":"116"},{"code":"LOP","zh":"朗屏","en":"Long Ping","id":"117"},{"code":"TIS","zh":"天水围","en":"Tin Shui Wai","id":"118"},{"code":"SIH","zh":"兆康","en":"Siu Hong","id":"119"},{"code":"TUM","zh":"屯门","en":"Tuen Mun","id":"120"}],"dirs":{"UP":{"label":"上行","terminals":["屯门"]},"DOWN":{"label":"下行","terminals":["乌溪沙"]}}},"TCL":{"code":"TCL","name":"东涌线","en":"Tung Chung Line","color":"#F7943E","default":"HOK","stations":[{"code":"HOK","zh":"香港","en":"Hong Kong","id":"39"},{"code":"KOW","zh":"九龙","en":"Kowloon","id":"40"},{"code":"OLY","zh":"奥运","en":"Olympic","id":"41"},{"code":"NAC","zh":"南昌","en":"Nam Cheong","id":"53"},{"code":"LAK","zh":"荔景","en":"Lai King","id":"21"},{"code":"TSY","zh":"青衣","en":"Tsing Yi","id":"42"},{"code":"SUN","zh":"欣澳","en":"Sunny Bay","id":"54"},{"code":"TUC","zh":"东涌","en":"Tung Chung","id":"43"}],"dirs":{"UP":{"label":"上行","terminals":["东涌"]},"DOWN":{"label":"下行","terminals":["香港"]}}},"AEL":{"code":"AEL","name":"机场快线","en":"Airport Express","color":"#00888E","default":"HOK","stations":[{"code":"HOK","zh":"香港","en":"Hong Kong","id":"44"},{"code":"KOW","zh":"九龙","en":"Kowloon","id":"45"},{"code":"TSY","zh":"青衣","en":"Tsing Yi","id":"46"},{"code":"AIR","zh":"机场","en":"Airport","id":"47"},{"code":"AWE","zh":"博览馆","en":"AsiaWorld-Expo","id":"56"}],"dirs":{"UP":{"label":"上行","terminals":["博览馆"]},"DOWN":{"label":"下行","terminals":["香港"]}}},"ISL":{"code":"ISL","name":"港岛线","en":"Island Line","color":"#0075C2","default":"CEN","stations":[{"code":"KET","zh":"坚尼地城","en":"Kennedy Town","id":"83"},{"code":"HKU","zh":"香港大学","en":"HKU","id":"82"},{"code":"SYP","zh":"西营盘","en":"Sai Ying Pun","id":"81"},{"code":"SHW","zh":"上环","en":"Sheung Wan","id":"26"},{"code":"CEN","zh":"中环","en":"Central","id":"1"},{"code":"ADM","zh":"金钟","en":"Admiralty","id":"2"},{"code":"WAC","zh":"湾仔","en":"Wan Chai","id":"27"},{"code":"CAB","zh":"铜锣湾","en":"Causeway Bay","id":"28"},{"code":"TIH","zh":"天后","en":"Tin Hau","id":"29"},{"code":"FOH","zh":"炮台山","en":"Fortress Hill","id":"30"},{"code":"NOP","zh":"北角","en":"North Point","id":"31"},{"code":"QUB","zh":"鲗鱼涌","en":"Quarry Bay","id":"32"},{"code":"TAK","zh":"太古","en":"Tai Koo","id":"33"},{"code":"SWH","zh":"西湾河","en":"Sai Wan Ho","id":"34"},{"code":"SKW","zh":"筲箕湾","en":"Shau Kei Wan","id":"35"},{"code":"HFC","zh":"杏花邨","en":"Heng Fa Chuen","id":"36"},{"code":"CHW","zh":"柴湾","en":"Chai Wan","id":"37"}],"dirs":{"UP":{"label":"上行","terminals":["柴湾"]},"DOWN":{"label":"下行","terminals":["坚尼地城"]}}},"TWL":{"code":"TWL","name":"荃湾线","en":"Tsuen Wan Line","color":"#E2231A","default":"CEN","stations":[{"code":"CEN","zh":"中环","en":"Central","id":"1"},{"code":"ADM","zh":"金钟","en":"Admiralty","id":"2"},{"code":"TST","zh":"尖沙咀","en":"Tsim Sha Tsui","id":"3"},{"code":"JOR","zh":"佐敦","en":"Jordan","id":"4"},{"code":"YMT","zh":"油麻地","en":"Yau Ma Tei","id":"5"},{"code":"MOK","zh":"旺角","en":"Mong Kok","id":"6"},{"code":"PRE","zh":"太子","en":"Prince Edward","id":"16"},{"code":"SSP","zh":"深水埗","en":"Sham Shui Po","id":"17"},{"code":"CSW","zh":"长沙湾","en":"Cheung Sha Wan","id":"18"},{"code":"LCK","zh":"荔枝角","en":"Lai Chi Kok","id":"19"},{"code":"MEF","zh":"美孚","en":"Mei Foo","id":"20"},{"code":"LAK","zh":"荔景","en":"Lai King","id":"21"},{"code":"KWF","zh":"葵芳","en":"Kwai Fong","id":"22"},{"code":"KWH","zh":"葵兴","en":"Kwai Hing","id":"23"},{"code":"TWH","zh":"大窝口","en":"Tai Wo Hau","id":"24"},{"code":"TSW","zh":"荃湾","en":"Tsuen Wan","id":"25"}],"dirs":{"UP":{"label":"上行","terminals":["荃湾"]},"DOWN":{"label":"下行","terminals":["中环"]}}},"KTL":{"code":"KTL","name":"观塘线","en":"Kwun Tong Line","color":"#00AB4E","default":"MOK","stations":[{"code":"WHA","zh":"黄埔","en":"Whampoa","id":"85"},{"code":"HOM","zh":"何文田","en":"Ho Man Tin","id":"84"},{"code":"YMT","zh":"油麻地","en":"Yau Ma Tei","id":"5"},{"code":"MOK","zh":"旺角","en":"Mong Kok","id":"6"},{"code":"PRE","zh":"太子","en":"Prince Edward","id":"16"},{"code":"SKM","zh":"石硖尾","en":"Shek Kip Mei","id":"7"},{"code":"KOT","zh":"九龙塘","en":"Kowloon Tong","id":"8"},{"code":"LOF","zh":"乐富","en":"Lok Fu","id":"9"},{"code":"WTS","zh":"黄大仙","en":"Wong Tai Sin","id":"10"},{"code":"DIH","zh":"钻石山","en":"Diamond Hill","id":"11"},{"code":"CHH","zh":"彩虹","en":"Choi Hung","id":"12"},{"code":"KOB","zh":"九龙湾","en":"Kowloon Bay","id":"13"},{"code":"NTK","zh":"牛头角","en":"Ngau Tau Kok","id":"14"},{"code":"KWT","zh":"观塘","en":"Kwun Tong","id":"15"},{"code":"LAT","zh":"蓝田","en":"Lam Tin","id":"38"},{"code":"YAT","zh":"油塘","en":"Yau Tong","id":"48"},{"code":"TIK","zh":"调景岭","en":"Tiu Keng Leng","id":"49"}],"dirs":{"UP":{"label":"上行","terminals":["调景岭"]},"DOWN":{"label":"下行","terminals":["黄埔"]}}},"TKL":{"code":"TKL","name":"将军澳线","en":"Tseung Kwan O Line","color":"#7D499D","default":"NOP","stations":[{"code":"NOP","zh":"北角","en":"North Point","id":"31"},{"code":"QUB","zh":"鲗鱼涌","en":"Quarry Bay","id":"32"},{"code":"YAT","zh":"油塘","en":"Yau Tong","id":"48"},{"code":"TIK","zh":"调景岭","en":"Tiu Keng Leng","id":"49"},{"code":"TKO","zh":"将军澳","en":"Tseung Kwan O","id":"50"},{"code":"HAH","zh":"坑口","en":"Hang Hau","id":"51"},{"code":"POA","zh":"宝琳","en":"Po Lam","id":"52"},{"code":"LHP","zh":"康城","en":"LOHAS Park","id":"57"}],"dirs":{"UP":{"label":"上行","terminals":["宝琳","康城"]},"DOWN":{"label":"下行","terminals":["北角"]}}},"SIL":{"code":"SIL","name":"南港岛线","en":"South Island Line","color":"#B5BD00","default":"ADM","stations":[{"code":"ADM","zh":"金钟","en":"Admiralty","id":"2"},{"code":"OCP","zh":"海洋公园","en":"Ocean Park","id":"86"},{"code":"WCH","zh":"黄竹坑","en":"Wong Chuk Hang","id":"87"},{"code":"LET","zh":"利东","en":"Lei Tung","id":"88"},{"code":"SOH","zh":"海怡半岛","en":"South Horizons","id":"89"}],"dirs":{"UP":{"label":"上行","terminals":["海怡半岛"]},"DOWN":{"label":"下行","terminals":["金钟"]}}},"DRL":{"code":"DRL","name":"迪士尼线","en":"Disneyland Resort Line","color":"#F173AC","default":"SUN","stations":[{"code":"DIS","zh":"迪士尼","en":"Disneyland Resort","id":"55"},{"code":"SUN","zh":"欣澳","en":"Sunny Bay","id":"54"}],"dirs":{"UP":{"label":"上行","terminals":["欣澳"]},"DOWN":{"label":"下行","terminals":["迪士尼"]}}}},"codeToStation":{"LOW":{"code":"LOW","zh":"罗湖","en":"Lo Wu","id":"76"},"SHS":{"code":"SHS","zh":"上水","en":"Sheung Shui","id":"75"},"FAN":{"code":"FAN","zh":"粉岭","en":"Fanling","id":"74"},"TWO":{"code":"TWO","zh":"太和","en":"Tai Wo","id":"73"},"TAP":{"code":"TAP","zh":"大埔墟","en":"Tai Po Market","id":"72"},"UNI":{"code":"UNI","zh":"大学","en":"University","id":"71"},"FOT":{"code":"FOT","zh":"火炭","en":"Fo Tan","id":"69"},"RAC":{"code":"RAC","zh":"马场","en":"Racecourse","id":"70"},"SHT":{"code":"SHT","zh":"沙田","en":"Sha Tin","id":"68"},"TAW":{"code":"TAW","zh":"大围","en":"Tai Wai","id":"67"},"KOT":{"code":"KOT","zh":"九龙塘","en":"Kowloon Tong","id":"8"},"MKK":{"code":"MKK","zh":"旺角东","en":"Mong Kok East","id":"65"},"HUH":{"code":"HUH","zh":"红磡","en":"Hung Hom","id":"64"},"EXC":{"code":"EXC","zh":"会展","en":"Exhibition Centre","id":"94"},"ADM":{"code":"ADM","zh":"金钟","en":"Admiralty","id":"2"},"LMC":{"code":"LMC","zh":"落马洲","en":"Lok Ma Chau","id":"78"},"WKS":{"code":"WKS","zh":"乌溪沙","en":"Wu Kai Sha","id":"103"},"MOS":{"code":"MOS","zh":"马鞍山","en":"Ma On Shan","id":"102"},"HEO":{"code":"HEO","zh":"恒安","en":"Heng On","id":"101"},"TSH":{"code":"TSH","zh":"大水坑","en":"Tai Shui Hang","id":"100"},"SHM":{"code":"SHM","zh":"石门","en":"Shek Mun","id":"99"},"CIO":{"code":"CIO","zh":"第一城","en":"City One","id":"98"},"STW":{"code":"STW","zh":"沙田围","en":"Sha Tin Wai","id":"97"},"CKT":{"code":"CKT","zh":"车公庙","en":"Che Kung Temple","id":"96"},"HIK":{"code":"HIK","zh":"显径","en":"Hin Keng","id":"90"},"DIH":{"code":"DIH","zh":"钻石山","en":"Diamond Hill","id":"11"},"KAT":{"code":"KAT","zh":"启德","en":"Kai Tak","id":"91"},"SUW":{"code":"SUW","zh":"宋皇台","en":"Sung Wong Toi","id":"92"},"TKW":{"code":"TKW","zh":"土瓜湾","en":"To Kwa Wan","id":"93"},"HOM":{"code":"HOM","zh":"何文田","en":"Ho Man Tin","id":"84"},"ETS":{"code":"ETS","zh":"尖东","en":"East Tsim Sha Tsui","id":"80"},"AUS":{"code":"AUS","zh":"柯士甸","en":"Austin","id":"111"},"NAC":{"code":"NAC","zh":"南昌","en":"Nam Cheong","id":"53"},"MEF":{"code":"MEF","zh":"美孚","en":"Mei Foo","id":"20"},"TWW":{"code":"TWW","zh":"荃湾西","en":"Tsuen Wan West","id":"114"},"KSR":{"code":"KSR","zh":"锦上路","en":"Kam Sheung Road","id":"115"},"YUL":{"code":"YUL","zh":"元朗","en":"Yuen Long","id":"116"},"LOP":{"code":"LOP","zh":"朗屏","en":"Long Ping","id":"117"},"TIS":{"code":"TIS","zh":"天水围","en":"Tin Shui Wai","id":"118"},"SIH":{"code":"SIH","zh":"兆康","en":"Siu Hong","id":"119"},"TUM":{"code":"TUM","zh":"屯门","en":"Tuen Mun","id":"120"},"TUC":{"code":"TUC","zh":"东涌","en":"Tung Chung","id":"43"},"SUN":{"code":"SUN","zh":"欣澳","en":"Sunny Bay","id":"54"},"TSY":{"code":"TSY","zh":"青衣","en":"Tsing Yi","id":"42"},"LAK":{"code":"LAK","zh":"荔景","en":"Lai King","id":"21"},"OLY":{"code":"OLY","zh":"奥运","en":"Olympic","id":"41"},"KOW":{"code":"KOW","zh":"九龙","en":"Kowloon","id":"40"},"HOK":{"code":"HOK","zh":"香港","en":"Hong Kong","id":"39"},"AWE":{"code":"AWE","zh":"博览馆","en":"AsiaWorld-Expo","id":"56"},"AIR":{"code":"AIR","zh":"机场","en":"Airport","id":"47"},"CHW":{"code":"CHW","zh":"柴湾","en":"Chai Wan","id":"37"},"HFC":{"code":"HFC","zh":"杏花邨","en":"Heng Fa Chuen","id":"36"},"SKW":{"code":"SKW","zh":"筲箕湾","en":"Shau Kei Wan","id":"35"},"SWH":{"code":"SWH","zh":"西湾河","en":"Sai Wan Ho","id":"34"},"TAK":{"code":"TAK","zh":"太古","en":"Tai Koo","id":"33"},"QUB":{"code":"QUB","zh":"鲗鱼涌","en":"Quarry Bay","id":"32"},"NOP":{"code":"NOP","zh":"北角","en":"North Point","id":"31"},"FOH":{"code":"FOH","zh":"炮台山","en":"Fortress Hill","id":"30"},"TIH":{"code":"TIH","zh":"天后","en":"Tin Hau","id":"29"},"CAB":{"code":"CAB","zh":"铜锣湾","en":"Causeway Bay","id":"28"},"WAC":{"code":"WAC","zh":"湾仔","en":"Wan Chai","id":"27"},"CEN":{"code":"CEN","zh":"中环","en":"Central","id":"1"},"SHW":{"code":"SHW","zh":"上环","en":"Sheung Wan","id":"26"},"SYP":{"code":"SYP","zh":"西营盘","en":"Sai Ying Pun","id":"81"},"HKU":{"code":"HKU","zh":"香港大学","en":"HKU","id":"82"},"KET":{"code":"KET","zh":"坚尼地城","en":"Kennedy Town","id":"83"},"TSW":{"code":"TSW","zh":"荃湾","en":"Tsuen Wan","id":"25"},"TWH":{"code":"TWH","zh":"大窝口","en":"Tai Wo Hau","id":"24"},"KWH":{"code":"KWH","zh":"葵兴","en":"Kwai Hing","id":"23"},"KWF":{"code":"KWF","zh":"葵芳","en":"Kwai Fong","id":"22"},"LCK":{"code":"LCK","zh":"荔枝角","en":"Lai Chi Kok","id":"19"},"CSW":{"code":"CSW","zh":"长沙湾","en":"Cheung Sha Wan","id":"18"},"SSP":{"code":"SSP","zh":"深水埗","en":"Sham Shui Po","id":"17"},"PRE":{"code":"PRE","zh":"太子","en":"Prince Edward","id":"16"},"MOK":{"code":"MOK","zh":"旺角","en":"Mong Kok","id":"6"},"YMT":{"code":"YMT","zh":"油麻地","en":"Yau Ma Tei","id":"5"},"JOR":{"code":"JOR","zh":"佐敦","en":"Jordan","id":"4"},"TST":{"code":"TST","zh":"尖沙咀","en":"Tsim Sha Tsui","id":"3"},"TIK":{"code":"TIK","zh":"调景岭","en":"Tiu Keng Leng","id":"49"},"YAT":{"code":"YAT","zh":"油塘","en":"Yau Tong","id":"48"},"LAT":{"code":"LAT","zh":"蓝田","en":"Lam Tin","id":"38"},"KWT":{"code":"KWT","zh":"观塘","en":"Kwun Tong","id":"15"},"NTK":{"code":"NTK","zh":"牛头角","en":"Ngau Tau Kok","id":"14"},"KOB":{"code":"KOB","zh":"九龙湾","en":"Kowloon Bay","id":"13"},"CHH":{"code":"CHH","zh":"彩虹","en":"Choi Hung","id":"12"},"WTS":{"code":"WTS","zh":"黄大仙","en":"Wong Tai Sin","id":"10"},"LOF":{"code":"LOF","zh":"乐富","en":"Lok Fu","id":"9"},"SKM":{"code":"SKM","zh":"石硖尾","en":"Shek Kip Mei","id":"7"},"WHA":{"code":"WHA","zh":"黄埔","en":"Whampoa","id":"85"},"POA":{"code":"POA","zh":"宝琳","en":"Po Lam","id":"52"},"HAH":{"code":"HAH","zh":"坑口","en":"Hang Hau","id":"51"},"TKO":{"code":"TKO","zh":"将军澳","en":"Tseung Kwan O","id":"50"},"LHP":{"code":"LHP","zh":"康城","en":"LOHAS Park","id":"57"},"OCP":{"code":"OCP","zh":"海洋公园","en":"Ocean Park","id":"86"},"WCH":{"code":"WCH","zh":"黄竹坑","en":"Wong Chuk Hang","id":"87"},"LET":{"code":"LET","zh":"利东","en":"Lei Tung","id":"88"},"SOH":{"code":"SOH","zh":"海怡半岛","en":"South Horizons","id":"89"},"DIS":{"code":"DIS","zh":"迪士尼","en":"Disneyland Resort","id":"55"}}};
+    const MTR_DATA = {"lines":{"EAL":{"code":"EAL","name":"东铁线","en":"East Rail Line","color":"#53B7E8","default":"ADM","stations":[{"code":"ADM","zh":"金钟","en":"Admiralty","id":"2"},{"code":"EXC","zh":"会展","en":"Exhibition Centre","id":"94"},{"code":"HUH","zh":"红磡","en":"Hung Hom","id":"64"},{"code":"MKK","zh":"旺角东","en":"Mong Kok East","id":"65"},{"code":"KOT","zh":"九龙塘","en":"Kowloon Tong","id":"8"},{"code":"TAW","zh":"大围","en":"Tai Wai","id":"67"},{"code":"SHT","zh":"沙田","en":"Sha Tin","id":"68"},{"code":"FOT","zh":"火炭","en":"Fo Tan","id":"69"},{"code":"RAC","zh":"马场","en":"Racecourse","id":"70"},{"code":"UNI","zh":"大学","en":"University","id":"71"},{"code":"TAP","zh":"大埔墟","en":"Tai Po Market","id":"72"},{"code":"TWO","zh":"太和","en":"Tai Wo","id":"73"},{"code":"FAN","zh":"粉岭","en":"Fanling","id":"74"},{"code":"SHS","zh":"上水","en":"Sheung Shui","id":"75"},{"code":"LOW","zh":"罗湖","en":"Lo Wu","id":"76"},{"code":"LMC","zh":"落马洲","en":"Lok Ma Chau","id":"78"}],"dirs":{"UP":{"label":"上行","terminals":["罗湖","落马洲"]},"DOWN":{"label":"下行","terminals":["金钟"]}}},"TML":{"code":"TML","name":"屯马线","en":"Tuen Ma Line","color":"#9A3B26","default":"HUH","stations":[{"code":"WKS","zh":"乌溪沙","en":"Wu Kai Sha","id":"103"},{"code":"MOS","zh":"马鞍山","en":"Ma On Shan","id":"102"},{"code":"HEO","zh":"恒安","en":"Heng On","id":"101"},{"code":"TSH","zh":"大水坑","en":"Tai Shui Hang","id":"100"},{"code":"SHM","zh":"石门","en":"Shek Mun","id":"99"},{"code":"CIO","zh":"第一城","en":"City One","id":"98"},{"code":"STW","zh":"沙田围","en":"Sha Tin Wai","id":"97"},{"code":"CKT","zh":"车公庙","en":"Che Kung Temple","id":"96"},{"code":"TAW","zh":"大围","en":"Tai Wai","id":"67"},{"code":"HIK","zh":"显径","en":"Hin Keng","id":"90"},{"code":"DIH","zh":"钻石山","en":"Diamond Hill","id":"11"},{"code":"KAT","zh":"启德","en":"Kai Tak","id":"91"},{"code":"SUW","zh":"宋皇台","en":"Sung Wong Toi","id":"92"},{"code":"TKW","zh":"土瓜湾","en":"To Kwa Wan","id":"93"},{"code":"HOM","zh":"何文田","en":"Ho Man Tin","id":"84"},{"code":"HUH","zh":"红磡","en":"Hung Hom","id":"64"},{"code":"ETS","zh":"尖东","en":"East Tsim Sha Tsui","id":"80"},{"code":"AUS","zh":"柯士甸","en":"Austin","id":"111"},{"code":"NAC","zh":"南昌","en":"Nam Cheong","id":"53"},{"code":"MEF","zh":"美孚","en":"Mei Foo","id":"20"},{"code":"TWW","zh":"荃湾西","en":"Tsuen Wan West","id":"114"},{"code":"KSR","zh":"锦上路","en":"Kam Sheung Road","id":"115"},{"code":"YUL","zh":"元朗","en":"Yuen Long","id":"116"},{"code":"LOP","zh":"朗屏","en":"Long Ping","id":"117"},{"code":"TIS","zh":"天水围","en":"Tin Shui Wai","id":"118"},{"code":"SIH","zh":"兆康","en":"Siu Hong","id":"119"},{"code":"TUM","zh":"屯门","en":"Tuen Mun","id":"120"}],"dirs":{"UP":{"label":"上行","terminals":["屯门"]},"DOWN":{"label":"下行","terminals":["乌溪沙"]}}},"TCL":{"code":"TCL","name":"东涌线","en":"Tung Chung Line","color":"#F7943E","default":"HOK","stations":[{"code":"HOK","zh":"香港","en":"Hong Kong","id":"39"},{"code":"KOW","zh":"九龙","en":"Kowloon","id":"40"},{"code":"OLY","zh":"奥运","en":"Olympic","id":"41"},{"code":"NAC","zh":"南昌","en":"Nam Cheong","id":"53"},{"code":"LAK","zh":"荔景","en":"Lai King","id":"21"},{"code":"TSY","zh":"青衣","en":"Tsing Yi","id":"42"},{"code":"SUN","zh":"欣澳","en":"Sunny Bay","id":"54"},{"code":"TUC","zh":"东涌","en":"Tung Chung","id":"43"}],"dirs":{"UP":{"label":"上行","terminals":["东涌"]},"DOWN":{"label":"下行","terminals":["香港"]}}},"AEL":{"code":"AEL","name":"机场快线","en":"Airport Express","color":"#00888E","default":"HOK","stations":[{"code":"HOK","zh":"香港","en":"Hong Kong","id":"44"},{"code":"KOW","zh":"九龙","en":"Kowloon","id":"45"},{"code":"TSY","zh":"青衣","en":"Tsing Yi","id":"46"},{"code":"AIR","zh":"机场","en":"Airport","id":"47"},{"code":"AWE","zh":"博览馆","en":"AsiaWorld-Expo","id":"56"}],"dirs":{"UP":{"label":"上行","terminals":["博览馆"]},"DOWN":{"label":"下行","terminals":["香港"]}}},"ISL":{"code":"ISL","name":"港岛线","en":"Island Line","color":"#0075C2","default":"CEN","stations":[{"code":"KET","zh":"坚尼地城","en":"Kennedy Town","id":"83"},{"code":"HKU","zh":"香港大学","en":"HKU","id":"82"},{"code":"SYP","zh":"西营盘","en":"Sai Ying Pun","id":"81"},{"code":"SHW","zh":"上环","en":"Sheung Wan","id":"26"},{"code":"CEN","zh":"中环","en":"Central","id":"1"},{"code":"ADM","zh":"金钟","en":"Admiralty","id":"2"},{"code":"WAC","zh":"湾仔","en":"Wan Chai","id":"27"},{"code":"CAB","zh":"铜锣湾","en":"Causeway Bay","id":"28"},{"code":"TIH","zh":"天后","en":"Tin Hau","id":"29"},{"code":"FOH","zh":"炮台山","en":"Fortress Hill","id":"30"},{"code":"NOP","zh":"北角","en":"North Point","id":"31"},{"code":"QUB","zh":"鲗鱼涌","en":"Quarry Bay","id":"32"},{"code":"TAK","zh":"太古","en":"Tai Koo","id":"33"},{"code":"SWH","zh":"西湾河","en":"Sai Wan Ho","id":"34"},{"code":"SKW","zh":"筲箕湾","en":"Shau Kei Wan","id":"35"},{"code":"HFC","zh":"杏花邨","en":"Heng Fa Chuen","id":"36"},{"code":"CHW","zh":"柴湾","en":"Chai Wan","id":"37"}],"dirs":{"UP":{"label":"上行","terminals":["柴湾"]},"DOWN":{"label":"下行","terminals":["坚尼地城"]}}},"TWL":{"code":"TWL","name":"荃湾线","en":"Tsuen Wan Line","color":"#E2231A","default":"CEN","stations":[{"code":"CEN","zh":"中环","en":"Central","id":"1"},{"code":"ADM","zh":"金钟","en":"Admiralty","id":"2"},{"code":"TST","zh":"尖沙咀","en":"Tsim Sha Tsui","id":"3"},{"code":"JOR","zh":"佐敦","en":"Jordan","id":"4"},{"code":"YMT","zh":"油麻地","en":"Yau Ma Tei","id":"5"},{"code":"MOK","zh":"旺角","en":"Mong Kok","id":"6"},{"code":"PRE","zh":"太子","en":"Prince Edward","id":"16"},{"code":"SSP","zh":"深水埗","en":"Sham Shui Po","id":"17"},{"code":"CSW","zh":"长沙湾","en":"Cheung Sha Wan","id":"18"},{"code":"LCK","zh":"荔枝角","en":"Lai Chi Kok","id":"19"},{"code":"MEF","zh":"美孚","en":"Mei Foo","id":"20"},{"code":"LAK","zh":"荔景","en":"Lai King","id":"21"},{"code":"KWF","zh":"葵芳","en":"Kwai Fong","id":"22"},{"code":"KWH","zh":"葵兴","en":"Kwai Hing","id":"23"},{"code":"TWH","zh":"大窝口","en":"Tai Wo Hau","id":"24"},{"code":"TSW","zh":"荃湾","en":"Tsuen Wan","id":"25"}],"dirs":{"UP":{"label":"上行","terminals":["荃湾"]},"DOWN":{"label":"下行","terminals":["中环"]}}},"KTL":{"code":"KTL","name":"观塘线","en":"Kwun Tong Line","color":"#00AB4E","default":"MOK","stations":[{"code":"WHA","zh":"黄埔","en":"Whampoa","id":"85"},{"code":"HOM","zh":"何文田","en":"Ho Man Tin","id":"84"},{"code":"YMT","zh":"油麻地","en":"Yau Ma Tei","id":"5"},{"code":"MOK","zh":"旺角","en":"Mong Kok","id":"6"},{"code":"PRE","zh":"太子","en":"Prince Edward","id":"16"},{"code":"SKM","zh":"石硖尾","en":"Shek Kip Mei","id":"7"},{"code":"KOT","zh":"九龙塘","en":"Kowloon Tong","id":"8"},{"code":"LOF","zh":"乐富","en":"Lok Fu","id":"9"},{"code":"WTS","zh":"黄大仙","en":"Wong Tai Sin","id":"10"},{"code":"DIH","zh":"钻石山","en":"Diamond Hill","id":"11"},{"code":"CHH","zh":"彩虹","en":"Choi Hung","id":"12"},{"code":"KOB","zh":"九龙湾","en":"Kowloon Bay","id":"13"},{"code":"NTK","zh":"牛头角","en":"Ngau Tau Kok","id":"14"},{"code":"KWT","zh":"观塘","en":"Kwun Tong","id":"15"},{"code":"LAT","zh":"蓝田","en":"Lam Tin","id":"38"},{"code":"YAT","zh":"油塘","en":"Yau Tong","id":"48"},{"code":"TIK","zh":"调景岭","en":"Tiu Keng Leng","id":"49"}],"dirs":{"UP":{"label":"上行","terminals":["调景岭"]},"DOWN":{"label":"下行","terminals":["黄埔"]}}},"TKL":{"code":"TKL","name":"将军澳线","en":"Tseung Kwan O Line","color":"#7D499D","default":"NOP","stations":[{"code":"NOP","zh":"北角","en":"North Point","id":"31"},{"code":"QUB","zh":"鲗鱼涌","en":"Quarry Bay","id":"32"},{"code":"YAT","zh":"油塘","en":"Yau Tong","id":"48"},{"code":"TIK","zh":"调景岭","en":"Tiu Keng Leng","id":"49"},{"code":"TKO","zh":"将军澳","en":"Tseung Kwan O","id":"50"},{"code":"HAH","zh":"坑口","en":"Hang Hau","id":"51"},{"code":"POA","zh":"宝琳","en":"Po Lam","id":"52"},{"code":"LHP","zh":"康城","en":"LOHAS Park","id":"57"}],"dirs":{"UP":{"label":"上行","terminals":["宝琳","康城"]},"DOWN":{"label":"下行","terminals":["北角"]}}},"SIL":{"code":"SIL","name":"南港岛线","en":"South Island Line","color":"#B5BD00","default":"ADM","stations":[{"code":"ADM","zh":"金钟","en":"Admiralty","id":"2"},{"code":"OCP","zh":"海洋公园","en":"Ocean Park","id":"86"},{"code":"WCH","zh":"黄竹坑","en":"Wong Chuk Hang","id":"87"},{"code":"LET","zh":"利东","en":"Lei Tung","id":"88"},{"code":"SOH","zh":"海怡半岛","en":"South Horizons","id":"89"}],"dirs":{"UP":{"label":"上行","terminals":["海怡半岛"]},"DOWN":{"label":"下行","terminals":["金钟"]}}},"DRL":{"code":"DRL","name":"迪士尼线","en":"Disneyland Resort Line","color":"#F173AC","default":"SUN","stations":[{"code":"DIS","zh":"迪士尼","en":"Disneyland Resort","id":"55"},{"code":"SUN","zh":"欣澳","en":"Sunny Bay","id":"54"}],"dirs":{"UP":{"label":"上行","terminals":["欣澳"]},"DOWN":{"label":"下行","terminals":["迪士尼"]}}}}};
+    MTR_DATA.codeToStation = (function () {
+        var out = {};
+        Object.keys(MTR_DATA.lines).forEach(function (lineCode) {
+            MTR_DATA.lines[lineCode].stations.forEach(function (st) {
+                if (!out[st.code]) out[st.code] = { code: st.code, zh: st.zh, en: st.en, id: st.id };
+            });
+        });
+        return out;
+    })();
 
     const mtrState = { line:'EAL', station:'ADM', dir:'UP', dirTouched:false, loading:true, error:false, trains:[], dirsAvail:null };
     let mtrReq = 0;
@@ -4523,7 +4902,7 @@ body.theme-chase .path-scope.toast{background:rgba(255,255,255,.16);backdrop-fil
         if (mtrTimer) { clearInterval(mtrTimer); mtrTimer = null; }
     }
 
-    function mtrT(zh, en) { return LANG === 'en' ? en : zh; }
+    function mtrT(zh, en) { return T(zh, en); }
     function mtrLineData() { return MTR_DATA.lines[mtrState.line]; }
     function mtrStationData(code) { return mtrLineData().stations.find(s => s.code === code); }
     function mtrDest(code) {
@@ -4555,8 +4934,8 @@ body.theme-chase .path-scope.toast{background:rgba(255,255,255,.16);backdrop-fil
         const st = mtrStationData(mtrState.station);
         const nameEl = document.getElementById('mtr-station-name');
         const enEl = document.getElementById('mtr-station-en');
-        if (nameEl) nameEl.textContent = st ? st.zh : '—';
-        if (enEl) enEl.textContent = st ? st.en : '—';
+        if (nameEl) nameEl.textContent = st ? (LANG === 'en' ? st.en : st.zh) : '—';
+        if (enEl) enEl.textContent = st ? (LANG === 'en' ? st.zh : st.en) : '—';
     }
     function renderMtrDirs() {
         const el = document.getElementById('mtr-dir-seg');
@@ -4665,7 +5044,6 @@ body.theme-chase .path-scope.toast{background:rgba(255,255,255,.16);backdrop-fil
         if (input) input.value = '';
         renderMtrStationList('');
         modal.classList.add('active');
-        if (input) setTimeout(() => input.focus(), 220);
     }
     function closeMtrStationModal() {
         const modal = document.getElementById('mtr-station-modal');
@@ -4676,9 +5054,11 @@ body.theme-chase .path-scope.toast{background:rgba(255,255,255,.16);backdrop-fil
         if (!box) return;
         const query = String(q || '').trim().toLowerCase();
         const list = mtrLineData().stations.filter(s => !query || s.zh.toLowerCase().includes(query) || s.en.toLowerCase().includes(query) || s.code.toLowerCase().includes(query));
-        box.innerHTML = list.length ? list.map(s =>
-            `<button class="mtr-st-row" onclick="mtrSelectStation('${s.code}')"><span class="zh">${escapeHtml(s.zh)}</span><span class="en">${escapeHtml(s.en)}</span><span class="check">${s.code===mtrState.station?'✓':''}</span></button>`
-        ).join('') : `<div class="bus-no-service">${mtrT('没有找到','No results')}</div>`;
+        box.innerHTML = list.length ? list.map(s => {
+            const name = LANG === 'en' ? s.en : s.zh;
+            const sub = LANG === 'en' ? s.zh : s.en;
+            return `<button class="mtr-st-row" onclick="mtrSelectStation('${s.code}')"><span class="zh">${escapeHtml(name)}</span><span class="en">${escapeHtml(sub)}</span><span class="check">${s.code===mtrState.station?'✓':''}</span></button>`;
+        }).join('') : `<div class="bus-no-service">${mtrT('没有找到','No results')}</div>`;
     }
     (function initRefreshPress(){
         document.querySelectorAll('.refresh-btn').forEach(function(btn){
@@ -5484,22 +5864,29 @@ body.theme-chase .path-scope.toast{background:rgba(255,255,255,.16);backdrop-fil
         }
         wantGps = true;
         el.btnStart.textContent = '关闭定位';
-        if (window.__portEta && window.__portEta.start) window.__portEta.start();
-        else openWatch();
+        var globalOn = !!(window.__portEta && window.__portEta.isOn && window.__portEta.isOn());
+        if (!globalOn) openWatch();
         if (document.hidden) { setStatus('已开启 · 回到页面后开始定位', false); return; }
-        setStatus('正在定位…', false);
+        setStatus(globalOn ? '已定位 · 通勤定位中' : '正在定位…', globalOn);
     }
 
     function stopGps() {
         wantGps = false;
         closeWatch();
-        if (window.__portEta && window.__portEta.stop) window.__portEta.stop();
         el.btnStart.textContent = '获取定位';
         setStatus('已停止定位', false);
     }
 
+    function closeGpsWatch() {
+        if (watchId == null && !wantGps) return;
+        wantGps = false;
+        closeWatch();
+        el.btnStart.textContent = '获取定位';
+        setStatus('已暂停 · 通勤定位接管', false);
+    }
+
     el.btnStart.addEventListener('click', function () {
-        var on = (window.__portEta && window.__portEta.isOn) ? window.__portEta.isOn() : wantGps;
+        var on = wantGps || watchId != null;
         (on ? stopGps() : startGps());
     });
 
@@ -5510,6 +5897,7 @@ body.theme-chase .path-scope.toast{background:rgba(255,255,255,.16);backdrop-fil
             footprintStop();   // 足迹同步暂停，省电
         } else {
             var globalOn = !!(window.__portEta && window.__portEta.isOn && window.__portEta.isOn());
+            if (wantGps && globalOn && watchId != null) closeWatch();
             if (wantGps && !globalOn) { setStatus('正在定位…', false); openWatch(); }
             if (typeof footprintSync === 'function') footprintSync(); // 仍在通勤且地图可见则恢复足迹
         }
@@ -5658,6 +6046,7 @@ body.theme-chase .path-scope.toast{background:rgba(255,255,255,.16);backdrop-fil
         zoneOf: zoneOf,
         setStatus: setStatus,
         setPos: function (lat, lon, acc) { paintFix(lat, lon, (acc == null) ? 300 : acc); },
+        closeGpsWatch: closeGpsWatch,
         footprintStart: footprintStart,
         footprintStop: footprintStop,
         footprintDissolve: footprintDissolve,
@@ -6893,6 +7282,30 @@ const SZ_METRO = {
   ]
 };
 
+const STATION_DB = (function () {
+  var szByName = {};
+  Object.keys(SZ_METRO).forEach(function (line) {
+    SZ_METRO[line].forEach(function (raw) {
+      var name = String(raw).replace(/\s+/g, '');
+      if (!szByName[name]) szByName[name] = { name: name, lines: [] };
+      if (szByName[name].lines.indexOf(line) < 0) szByName[name].lines.push(line);
+    });
+  });
+  var hkByName = {};
+  Object.keys(MTR_DATA.lines).forEach(function (code) {
+    MTR_DATA.lines[code].stations.forEach(function (st) {
+      if (!hkByName[st.zh]) hkByName[st.zh] = { zh: st.zh, en: st.en, codes: [], ids: [], lines: [] };
+      var rec = hkByName[st.zh];
+      if (!rec.en) rec.en = st.en;
+      if (rec.codes.indexOf(st.code) < 0) rec.codes.push(st.code);
+      if (rec.ids.indexOf(String(st.id)) < 0) rec.ids.push(String(st.id));
+      if (rec.lines.indexOf(code) < 0) rec.lines.push(code);
+    });
+  });
+  return { sz: { byName: szByName }, hk: { byName: hkByName } };
+})();
+window.STATION_DB = STATION_DB;
+
 const LINES = { sz: SZ_METRO, hk: buildHkMetro() };
 (function normalizeMetroStations(){
   Object.keys(LINES).forEach(function(region){
@@ -6987,7 +7400,7 @@ function segPlan(s){
   return s.plan ? `<span class="plan">${s.plan}<small>${pt('分钟','min')}</small></span>` : '<span class="marker">' + pt('未填','Not set') + '</span>';
 }
 const TYPE_EN = { '步行':'Walk', '地铁':'Metro', '公交':'Bus', '巴士':'Bus', '转乘':'Transfer', '到达口岸':'Arrive at port', '过关':'Crossing' };
-function pt(zh,en){ return window.LANG === 'en' ? en : zh; }
+function pt(zh,en){ return T(zh,en); }
 function typeHintText(type){
   return TYPE_META[type]?.hint || '';
 }
@@ -7312,7 +7725,6 @@ function openLineModal(){
   const inp = document.getElementById('lmSearch');
   inp.value = '';
   renderLineResults('');
-  setTimeout(()=>{ try{ inp.focus(); }catch(e){} }, 0);
 }
 function closeLineModal(){ document.getElementById('lineModal').classList.remove('show'); }
 function renderLineResults(q){
@@ -7431,7 +7843,6 @@ function openPickerFor(id){
     const h = pickerCard.getBoundingClientRect().height;
     if(h > 0) pickerCard.style.height = h + 'px';
   }
-  setTimeout(function(){ try{ document.getElementById('pickerSearch').focus(); }catch(e){} }, 0);
 }
 function renderPickerList(q){
   const list = document.getElementById('pickerList');
@@ -7717,6 +8128,312 @@ render();
 window.PathApp = { enter: function(){ render(); } };
 
 })();
+</script>
+<script>
+/* ===== 车费计算器（独立作用域） ===== */
+(function () {
+  var FARE_DATA = {"szNames":["上塘","上屋","上川","上李朗","上梅林","上水径","上沙","上芬","下梅林","下水径","下沙","世界之窗","东纵纪念馆","东角头","中大","中山公园","临海","丹竹头","五和","人才公园","人民南","仙湖路","会展中心","会展城","低碳城","体育中心","侨城东","侨城北","侨香","元芬","光明","光明城","光明大街","光雅园","八卦岭","公明广场","六和","六约","六约北","兴东","兴围","农林","冬瓜岭","凉帽山","凤凰城","前海湾","前湾","前湾公园","北大","华为","华侨城","华南城","华强北","华强南","华强路","华新","南光","南坑","南头古城","南山","南山书城","南油","南油西","南约","南联","双拥街","双龙","合水口","吉溪","吉祥","同乐南","后亭","后海","后瑞","向西村","四海","四联","回龙埔","园山","园山西坑","园岭","固戍","国展","国展北","国展南","国贸","圳美","坂田","坂田北","坑梓","坪地六联","坪山","坪山中心","坪山围","坪山广场","坪洲","坪环","坪西","坳背","塘坑","塘尾","塘朗","大剧院","大学城","大安","大康","大新","大梅沙","大芬","大运","大运中心","太子湾","太安","妈湾","孖岭","安托山","安良","官田","宝体","宝华","宝安","宝安中心","宝安客运站","宝田一路","宝龙","宝龙同乐","富坪","小梅沙","少年宫","尚景","岗厦","岗厦北","岗头","嶂背","左炮台东","市民中心","布吉","布心","平峦山","平湖","怀德","怡景","怡海","愉园","技术大学","文锦","新和","新塘围","新安","新安公园","新生","新秀","晒布","景田","朗下","木古","木棉湾","机场","机场东","机场北","杨美","松元厦","松岗","松岗公园","桂湾","桃园","桃源村","桥头","桥头西","梅景","梅村","梅林关","梦海","梧桐山南","梨园","楼村","横岗","步涌","民乐","民治","水湾","水贝","永湖","沙井","沙井古墟","沙壆","沙头角","沙尾","沙田","沙蚝","泥岗","洪浪北","洪湖","流塘","海上世界","海上田园东","海上田园南","海山","海月","深云","深圳北站","深圳湾公园","深圳湾口岸","深外高中","深大","深大丽湖","深大南","深康","深湾","深理工","清湖","清湖北","湖贝","湾厦","溪头","灵芝","燕南","燕子湖","爱联","牛湖","珠光","甘坑","田心","田贝","留仙洞","登良","白石塘","白石洲","白石龙","百鸽笼","皇岗口岸","皇岗村","益田","盐田墟","盐田港西","盐田路","盛平","石井","石厦","石芽岭","碧头","碧海湾","碧眼","福保","福围","福坑","福星","福民","福永","福海西","福田","福田口岸","禾花","科学公园","科学馆","科苑","竹子林","竹村","笋岗","粤海门","红山","红岭","红岭北","红岭南","红树湾","红树湾南","红花山","罗湖","罗湖北","翠竹","翰岭","翻身","老街","花果山","茜坑","茶光","草埔","荔林","荔湾","荷坳","莲塘","莲塘口岸","莲花北","莲花村","莲花西","薯田埔","虹桥公园","蚝乡","蛇口港","西丽","西丽湖","西乡","西乡桃源","观澜","观澜湖","贝尔路","购物公园","赤尾","赤湾","车公庙","通新岭","金源","钟屋南","铁路公园","银湖","锦龙","长圳","长岭陂","长湖","长龙","阳台山东","雅宝","雪象","香梅","香梅北","香蜜","香蜜湖","马安山","高新中","高新南","高新园","鲤鱼门","鸿安围","鹿丹村","黄木岗","黄田","黄贝岭","黄阁坑","龙东","龙井","龙华","龙园","龙城公园","龙城广场","龙胜"],"szN":335,"szFarePacked":"ZUVUQ1WWd2Y2V1aZZVZzZ1SXZnVFZXZXZFZVdWR3d4iGh2h4Z3eIWJeZdUSamZmWeYZThHhZd1dHhWV2ZoaZSVhFeFVmhnaolmiGVoVWeEiFaFaIRHOHdzhzdZl5pVlVdpl3JnZ4dWU3Y4dWeVWlVZc2VVWIiFqGd4VYhVhlV1dTJ1VldlZFVkdVd3dGVHh5VXdUVHVVd0dpQ0VEVVV5Z4ZVZ4gliCh3Zkdmd4uFeIWHhnp3R1RkVop4eHaDiGd3d3doiIiYiVmZd5iHmKmHiHhltquriqqIZ2eZqJeZh3YqeHiHqqqmZ5Zpd4h4mHuqeHpndpeIdmaIh2hWiFp4VXl4t3l8dnd4mHh1mHh4WGaHdrd5d3uHinV3p5m6d4d0mHeIdkeHZ4d1d4h1d3aHZoeIiGZndWmHeGd3eZeIplN3Y3Z3d4iIeoeXeqWZdXZmdkZbOXNGh2Z6VWWZaIeLKFR2OENkhWZ2ZDNEpIqKmXJUR6ipR2Z2aba7uzuriUZHqaOXWUdWejMkIqqrpmaWZXeDdaR7qyN6Z4dnZHZ3M1RlZoSKeFZ1aLdofCcndZZUVZREVJV2Rye3iXR8Q0t1ZqaZunZXaaVmZWaIR3VHdXdVeHcmRzdHlHhmdnk1NHNodlWXQ6dYd2ZnVWZENHk3l0qmmVZ1ZXWnmIhGeGeadneGiWSZd4dXgoh4c2JmhoWIiIiTiXiKeXiJaaiqh0Sqqamoead2hohqiGlYl4eHd5ipamk2mFaGk4eol4mXd6ZimVqniniZZoWYeVqFdqqKt2pnh6qIV4eJh3dpdqhniniiZphXZmaJmWqmiJdplmomaHhnWGZ2l2dnZ3hmiHdnZpmbdoh3ZJZniGiJdWU1ZmaKeJhneJhniWg1JDWUhmY1RSWJQzR0eDOYZnYkdWZWRDYzY2NmZoiGeGdZSGaIOJeZdESamZmXeJY0dWhYd0Yng2ZmZoeYKDhCd0J0hmSolGiGRZJWiEiWaUWIImSFaCljdJlpoyk2ZplmNGRXVlRYRZY2eValU5UlNDN3hzmVd4Q4gzljN0U1NTNThUQ0NlZFdlclMohqVXdmNHMzdydoZFVTMzNZVXYzR4dEeEdVJWZ4eDdzVZVHZlaIN4RIZGhVd3c2VkRFN3d3d2eHZpeHdXV2hJlJKIN4iHh4RVlVdodjhnNkZ3d3d3eIdVVkWDJnSGdYeHdXVFmTmGKZd5ZZRVeHlTQ3lYpWqWR0qGlnZHdnZ4ZVdWmEdlY5dmg0VXV3hzWJWHhVmVWGdWZ0RFRnWEN1dFZzWFVVlahYdmc3VVhkh3RHJjVUZZV3d1eEZGd1ZlVTMllZZUVUkkkzY5hYlGlWJ2NYZVVzMzNVVVWFeJiIlXRVh4h0iEhYpZmZaZlnWFSIhXVnZTR4VmZmmImDM4Y2VXZYhVqJVVg0eXWHdalVhDhTZZinVFWXmSaaVGWVeTU1dVQ0k2ZUWZN3ZFpFOVQjcneoYmo4hyOIModDYkRFRDRJRWVUR1V2VTOTmVVld1cyJnRnlFdXViYzkkRUR3OESIaIRVWWZ2Y2V1eZZVZiZ1SXZnVFVXZXZFZVdWR3d4iGh2h4Z3eIWJeZZUSamZmWeYZThHhZd1dHhWR2ZoaZSVhFiFVmhnaolmiGVoVWeEiFZ1aIRHOHdjhzdYh5pVhVdpl4JnZ4dWZHZIdWelalVZc2VVWIiFqGZ4VYhVhlVldUJ1VldlZGVldVd3dGVWd4VXdVVHVVd1dZUzVEVVV4Z4dVZ4g1iDg1lIZlRUU1mTMzdXg0mGZ1I3ZmVkU2Q1NTVWWIh4hoWUdmiDiXiYREmpmZlnmGRIVYWHdGJoNmZmaGmTg4U2hTdIdlqJVohkWSVndIlmlFiCJkhng5ZHSpaaM6RmaZVzNUV1VDWEWVRnlHpVSVNDUzeIc6lYeEOIM4Y0g1NkU0RIRENEZmVWZXJSOJaVV3djRkM3c2eWRVUyIyWVV1NFeIVIhYZXh4N3NVpUdmVog4hEdkWFV3d0ZmREU3d3dnZpdmp4d1dHaEmUk4g3h4eHhFWVRmh1OGg2Vnd3d3d4h1RWRYMmdIZ1h3d0dUaZKYcpl3lllVV4elRDelilapZHOnamdkd2dnhmV0eYR2Vjh2ZyRVdXaHNYpYeFSZVYZ0ZXRERGZIQ3V0ZnNYVUWVqGh2ZzdFWGSHdEcmRVRVlXd2V4RkZ3VmNVlZZUVVg0kzY5hYlGlWJ2NYVVVzMzNVRVSFeJiIlXRVh4h0iEhYpZmZaZlnWFSIhXVYZTR4VlVmmImDM4Y1VXZYhVqJVVk0eXV3dZlFgzhTZZiXVFWXmSaaVGWVeDQldFQ0k2ZEWaN4ZFpFOVQzg3eoY2k4hzOIModEckRFRDRZVWVUR1V2VTOTmVVldldDJXRnlFdXViYzgkRUR3SFSYaIppRDZlM2mCUylplWqXdlQ4dEVCZIRDU1M0OZmIlIOFZ0iVl1d5VmqqqqpYl3RYU5aYhlVZNHRFSVqUlJZFhkVnhGqaZJlFaUZ2ZniEkzd0RGlnlZRnaIerNYVEWIN1M0KDUyeVeTVIpIt1WjUkZEeJhKlpV0SXRHhEkiV2NVJZNVVVR0ZFRoRkSZSFRVhzZVU2hViXV2ZTMzOCODVVaYZIloy7uHmpleqJrKzIgtZsqZuburqYqYuLm7u0RKbbWunGtlh9ztyIhkIyIrZdaZarZ7VYubarq7uztjnJWZtXm42rg1KbRbiel6zY3bvavdmblJbJ65aO6iSY6Lu+66mrqqqqqsmtuLUqs5qFqamJmrW5LnzMmW2Z2pnJqKmompyomYi6uKy5WZmc2+qru7mbmJxYuyqaiZmZmtqruJjEWqZJVKdDd3hWpEdap6lotYVoZJRHaUZmZzMzOjmpqZhGMnqKlmiGd6t7u7W6uJaGappJcpR1aKVVVVqqulVpdTd5V3o3urRHpXiWd3l5k0dVd2dKqYdnKIuVicVleCiFJHk2NTpIgmWbaZhnwlS3dWlpi6dVlqp2aHZak2hTZnZjN6d1cmaDeTd2aVimJWlnllU5Y2pnl4eFdVhTNDaWaXWqeZl5mnmXiMmWhCg0icmZiIk6qImYiIiqmquptLu2mKqbq7iHeXgtjMzJzMmneJu8qpqqmYW5mZmcvMuIi4ipiYl7qdvJmbiZWIeJhVmXmHeKo7aneaasaabZiYeqeal7qamimIqZXImoidqJyXiLi725iWk7eId4g5qImoh4iZk5mYqYipqpqIWGOKmIiJiIqoqMh0iIaIiGiqmZuIuYu3uzdnY1enRlSXmWa4iFNlhzNTR2hmJiYyM5qomCk3dYOaanV3lma7urq0inhllCp5mXRkpDczM6O6Wlp1SXVHaDe5tzqiZ4V4VnaIOFJmZTaniWg2h4eLxWhjM3c4ZTQpNUR5Z4Nim0jHR7NjZ1WJqVuHlFZqZVaGaUNnY2Y2k3Z3Y3N0Q3lnVZhHRESIVkZlSWSKdXd2VVU3M5Jmdal1mmloc2e3V1WXmWa4iFNlhyJTR2hmNjdDM6qomDo3dISqemRnl2a8u7uym2h1pCp6mXRjpScyMqO7amp2WnZHWDfKtyqjd3Z4VXZ4KFNmZiaomWhGl3eLxXdzQ3dIZUU5RUV6d3Rim0jHR7RkZ2aZqWuIk1ZqZmaGaVR3Y3dHhHd3cnR0M4lnZphHREOIZ0ZlSXOLdXd3VVU2NJJndap1mmp0VaVXZmaYWJQndGlleIhXdlRFV3d3Z3WWVaeXdWVlhKpaSYV3d4dnNWplZYdChYNldoh4iGaHZVVVWDJ4SVhYZ3hWVGqSqXSqeKdqVViWo1U4pHpWuHV0qGpnZXd3Z5ZmdXp1hWdId2c1VXV3djWKaWlVqVWXdXZ0VVRnWUN1hHdzSFVVlbloh3hXVVhUiHVYN1ZlZqV3d1eEVHZmVWZllEhVRYcnhFhVV0NndyVWREUndnd3V4d3lnZ1dYd0mVknkoiIaIhWOEV3h2R3dFNXZmdmh5h0RHJHQ1ZYd1l4ZlhFWYSHYolmhUg0Z3eWI0eWiVeZVGWXeVdid1ZXhlR1aJVnNVl1aENVhYeXRXlXeESIVHVlVWRTVGZYVGR1VXRnVkSFl1d1ZyZUV3R3hDY1JFNVlWZ2WHR1WHR3ZFenNkOXmmapd2RUmENUN1hVJTYyM5mYmTkoZoOZanV3pnerqqqkinhmlTl5mGRUlEhERJWqWVl1SWVXeDa5pjmjZoV4ZnaIOFJ3VTeXiWg2hoiLtWhkNHgoZCMoJjR6Z4JUm1m3VqJjV1WJqFuHpWVZdVeFWUJoYmYmk2ZmZIN1Q3hWVak4VVWIV0VUWWSahnd2VEQnMpNWZal1mXk1ilNVhok1mWaHNYZ3d1U3M2NlZnaIh3l3aihneCiYmpNVmZmZl3imNnZoV3c3R4V3d3eHmDg4Y3dDhJd0mJJ4hzSkV5hZp3pWmUR0hWlKdWOqaaQ6N3eqZlVlZ2dVaTamN3lopmOWVUREZ4dJpYeUOJRJdDhWN1YyYpVDQyd3RndXREOZenaHd0VzJIc3iHVlZVVFamZ3MjiHZnhnpUlmdqlppGl2WXV5h2eGRERnd3eHiKh3t5d1hoiEqkppppmZiYlnenOHZ3WHg2WIiIiIiGmFRHZYRYg5h1qJdyhUi5WZhat3plpVJ5i2Zke3m1O6dYS3SmdmR3dnpndzi5SHd0p3aUZVVVSYVYtZiVSqVZh0dXRGRGZKRYV0eHR4IlWluXiHiGhFWHSIhGhYZ1dVpXd2RZRzaIeHlzhDU4hIg2lmN2JXZlZjIiJFVVWFeJh3lXVUhodzmThYlImZaYlnWVOHdXVnZDNoZmZmiImCInUmRHdIhkmJZkgjaXWIdZlWhDhDVoimQ0aWmiaaY2SWaUVEdWRFhGVTaZJ3ZUpVSVMicnaYUno4iCKYIodSY1M0M0Q4RGRjVmR2RSKSmFZld1cyJnNng1dWRTUzklVUN3N0SIV31YmIeXeZ5rtXmHp3h4mamXl5d3fM28Z8daW3za0lInqZ7u3t5r1LmMd8rcyol9hoZ2fW7Z2dmYypakt67Op916pZqkSUWnWHNJl527aUibpFvvmkp4Yji4iIfIiIl6pYl86L6nrXmJqZzNyeWnZJnTmTuZeHqpepimiqmqeop3esmpl1g4dWupmJmFyXfaiamZmYdXfHmqXcmM2cmJm5vIhcZsqJuburmIqIqKiqqjY6XLStnGpUhtvdyIgmVFVbUtaJWaZ7VYuLabq7u2ski4SItXi3yrhkWbMqiNl5zI3avardmbk5XJ24V92VeY6Ku96qiamqqqmcidqKRatpqCqah5iqOpbXy8mGyI2pjJqKmoioyXiIiqt6u5WImMy+qru6iLiJtYu1qZeYmZmtqqqIizWaU5NUVIhIklhlSGNnd1ZlIiJGZmZ2d5d3poVjdodymSlIlImIeIhWWVJ3dnR3c1Nod3d3iHhzM3U3NHc5dzmIZzhCaYSIdZlmlTkzV4imQzammkWqcnKmaVZUZmVWhWVjeZJ3ZTlmWEQzc2aYU3pIeDKZM4dSZFIkIlU4M3NiZmNnRCOTqGd2d1cjR3J4gldGRUVEk1ZlJ4JzWIV3NWOYWJR5Vzd0SFVlckRDVEREhIiYiIRjRYeYZYhIWaWamlmZd2hUiISGWFU0eVVVVZmZkzOGNVWGV4VamVVZNXl2d3aZNIQ4VGWZl1VVh6k3m1VVhXhENXRjM5R2RVmkiHVaRSllNIOHqWNZSYc0hzOXNHI1RVVDWVVVRFdFdVZEk4lVVXZoQyWEVpVoZ1Y2Q4IzQ1hkhUmWiCaGiVWpd2VDh1RVJkdVRUVERJmYiUg4VnSJWYZ4lWaqqqqliYdVhElpiGVFkldVVZWpSUlkWGRWeFapplmUVpNnd2eXSTN3Q1aWeVlVdph6s1lVVYhHUkQ4NUJpV5RViji3RaNSRkR4mEqWlXRJdEh0WTNXU1UllFVVVXRkVGhGNJlYRGWHRlVTaFWJdWZlMzI4M4RVVphjiWiGiUWZd3VChlVFNUdEVEVEVYiHiVhJV3WIWYaIhVWqqZmWeYdFhEhoiFU1kldVVZaZOThjaFNld1WolVmVVZJXd1eXWTSIM1WWeElVdZh6s0lVVYlHUkRHRUJpVpVFijemRZRDRkR4mDqWhnRIdDh0SDRWVFQ1lFVVVXVTZWdFNIlZRGZ3NWRDaEZ5dWVkIzJINIVFVphjiVhmRXV5Z2dldXdWZlVVR3d3h3h4iIaHdoeYdZlpRqSamnmZd0hWiJeGiHZlOWdndpmZlVWFWGV3aIdqmWdpVmiGmGR3d4ZYRXdphzRoh6hoi2Vmh4lnY4dnZ2dEdmelaFVqdXljVZaIqWV4ZohVmFVmdVZ1U2V3ZmZkdlV2d3dVdYZYdVdGZWiFd5VFVVJVVYV3d2l1hmmUiDNyOJyJh4eSmXiZiIh5mZm5mzuqWXmYubqId4dyx8zMjLyadni6uaiqmIdLmZmIu8y4iKeKiJiXuYy8iZuIhXh3h0WZaId3mStZd4pZxYpdiIhqpomXuYmJOXeohMiKiI2YnIeIuLrLiIWCt4h3iCmYeJiGiJmDiJeoiJiqmYdIYoqIiHiIiqiouHOIdYiIaJmZi4ipi7eqN4jEmYmJOaqamImZqKiqqru6tZummKq7jHh3OYjNzMzJrHqYuKucupuKuZWZmbnMjIuIu4iZeanbyZvJmWiZiIhZpZp3iKi6o3anqWat2YaZqXereamrqZmEmFqZvYnYicp5mZm8y51pKYmLeIeZk5qIeomZSZmJmYqYqqqJiCWmiJmZiLmJi4pMh2iIiJmnqrqJmMt5u3uHw5l4eCiZiYeIiJiXmZmquaSKlYiZq4t4dyh3zMvLyZtph6eai6qKebiUmYm4y3yLeKqHiHmYysibuIlYiHd3WJSJdneXuZJ1p5hWrNiGiKlmmmiYmpiYc4dZiKyIyIi5eYiIq7uMWCh4i3iHmIKJh2mImDmIeIh5iJmaeYckpoeIiIeoiIp5O4dYd4iIlpm5iIi6eKt6hFhVV0N3dyVVREQndnd3V4d3loZ1dod0mVknkomJeIhWSVV3h3R3dVNYZmdmiJh0RHNHVFdYd1mIZlhFWYSIYolnhUgzZ3iWI1eWmVeaZGSXeVdTd2ZWhlV1aZRnRVllaENEhYeYVHlXeESIRHVkVWRDVGZYVGR1VXRnVjOEl1d1ZyZEV3R3gzY1JUNUlWZ2WHR1WIR3hFhlSGNnd1ZlIiJGZmZ2d5d3poVjdYdymTlIlIiIeIhWWVJ3dmR3c0Jnd3d3h4hzM3U3M3c4djl4ZkgzaYSIdJlmlTkzV4emQzammkWpYnKmaVZUZmVWhWVjeZJ3VSlmWDQzc3aXQ3pIeDKZM4dSZFIkIlU4M3JiZmNnRCOTqGd2Z0cjR3J3gkdGNUVEk1ZlJ4JzWHV3xap4iUmImZiZmZmImZm7yrKLlJepu5xnZkmI3dzMyKxamLiLnLuZicmFiIjHzIyciKuYeWqZ28mMyJk4mWeGOYOZZYiYyqKEl6lEvemEmJhVm3mZm5mZhJg5mL2Z2ZnJeZmZvMudSTdpm2mGmZOZmHmZmSmZiZiJmJmqiphClZh3mZiZmXuJTJhpiJmZlZnImZfLibx7ZsqZuburqYqYuKiqu0RKXbWunGtlhtzdyIhTIiIrVdaJarZ7VYubabq7uztSm5SYtHm4yrg1KbNLiNl6zI3bvardmblJbJ64WO6iSY6Ku+6qmqqqqqqsituLU6tJqFqal5mrSpPXzMmG2Z2pjJqKmoioyomYi6uKu5WZmM2+qru6mLiJtYuyqaeZmZmtqruJjDWaVJR1aWaIiFd3VVVYiIhYdaVEuJeGVVWVultZdWdmhmYkanVUiEOEhHZ1iIiIZZZVVUZYQ3haWGdWiFVle6OphaqIp2pmaJWyVkize2e4hYW4e3h2eId3l3eFinWEZ1d3dkZmhod1RptpWWWqZpd1dnVWVXdZVIaFd4Q5VlamuXiHiFhWaEWZZWhHV2ZmpneHaJVVdVdUdml2iYhnd1VWWIiIWHWlRLiXhlJVlbpbWXVnZoZmU2p1VIg0hIV2dYiIiGWWVlZGaUN4WlhnVohVZXukqYWqiKdqZmiVtVZItHtnt4WFuHt4doiHeKd3hYp1hGdXh3ZGZoaHdTabaVllqmaXdXZ1VlV3WVSGhXeESWZWprl4h4lYVmlFmWVoSGdmZrZ3h2iVRXVXVFZlh0M0VmdmRjZERJmYmDlHdYSZamR3h1Wrqqqjimhkk0l6mHVklDdDM5OqamlmWWY3V0e5pzmid4V3VmZ3OENmZUWYiFhVh4eLtWdyU3dYVFVJRFVpdnVimze2J6RVZ2aJmWuHhVZpZlZ2aFRmVGZXhXdncnRzVHhnVohXMkN3VlZlSWR6dGZmVVVHRJNndKljmVmHiFVmaImIaFdlZru5plplg5a7i0NUiHfNzMzEq0mGtluLqpaGt1hlNbPMfHuHeoc5OWnbyVu1iWeJJXRZVmUzd2e5l3ZnqGWs14aEZFVqdmdqZmeIiGaErGnYWMZ2iHeru3xphiiLOHSYh3aIdohodoh4hYaFZpqJeIZlZTSZd2iHKoaMhoiId3dkZrWIgrt2q3t0WFVlc0NEVVVVhXiYiJV0VYeYZIhIWKWZmWmZd1hEiIV1aGUkeFZVZpiJgzOGNlV2V4VaiVVZNXl1d3WZRYM4U2WYl1RVh5kmmlRVlXglNXVUJJNmVFmkiGNaRDlVM4N3qGNpOIcziDOHRHJERUQzWVVVVEdVdlYzk5lFZHZXQyaEZpRYV1YmI4JEVEd0hTmGiFZnZkZkMiM2VmWGZ4h3loVkhodzmTlIlImZeYlmSVOHhnVndEJoZmZ3iImCInQnRGdIdkmJZkgzaYSIZJlWlTlCVoiWQ0aWmTaqYnOWaUVDdWVFhVVkaZN3VTpVWUMzc3aYU3k4iCKYMoZTU1M0M1VIRGNjVmR3RSKDqFZ2Z0YzN3N3gkdGNTUzk1VlN3J0WIV3hIh4c2NmhnSIiIiDiXiKeHiIaaiqhjSqmZmYeadlhohph2hYh3eHd5eZamg2mFaGk4aol3mXZ6ZSmUmniXiZVoWXeFqEdqqKtmpnh6qIV4d5h3dpdqhnimeiZphXZmaJmWqmiJZolmk2aHhmV2Z2l2dmZ3hmiHdXZYmKZoh3Y4ZmiFh5dWU0ZmaKd5hmeJhniViZiYd4iJeXmZmqqaSKloiZqnt4dzh3vLu7uZt5h6eai6mKeaiEmIiou3t6d6qHiHiYyriLuIhXiIh3WJWJd3eXqZNmlphmnMh2iJh3mmiYmpiIdIdZiKx4yHi5aIiIq7qMWDl4end3iIOJd2l4mDiIeIh5h5mZeHc0loeJiHeoeIp5K3ZXd3eIlpmpeIi6aKtqInWEZmZzIjOjioqZc1M3qKpGZnZ5x7u7O6uJVkapopdJJ1aKIiJDqqumZpdUd4R1onyrMnpXiFdVh4ciZWZmgpqIZnR5t1h8Nzd0h1NGk1NDpHdHN7aJdXw0O3Zmlpi6dThppWZmZZg2dTdmZkR4dyc2RzeTd2aGeUQ1hHhlU5Y1plh4d1dVdTMjeVaXWqepJ3WEZmZzMzOimoqqc1M3qKpHd3Z5x7u7O7uJV1eqophJJ1aKIzNEuqumZqdkd5R2onyrMnpniFdlh4gyZWZ2gpqJZnN5uGh8N0dzh1RWlFNTpHdHOLaJhXxES3Zmlpm6hjhppWZ2ZphGdTd2d0R5dzc3WCeSeGaGelM1hXhmU5Ylt2h4d1dVdUQkeVanWqepV1doZjY3MyOqqahKR3WTqnp0Z6d3vLu7s5t4dqU6ipl0YqU4M0Oku2pqdkp2V2knyrcqpHeGeFV2iChTZmYnqJl4RpeHi8Z4dDR3SWVFSTVVeneEY5tZyFe0ZGhmmqlsiKRmamZnhnlUeGR3R5R3d3ODdSKJZ2aoN1VUiGc3dVlym4Z3d2ZlR0SSd3Wqdap6VmdmVlVlZZmXmUlYdoaZanaHh1Wrqqqlinhkk1l6mHZllFdVVJWqamlmaWZXd1e5p1mkd4V3Z1eHWTV3VVWYiFllh4iKtWh0ZIhoVGZZYmRpdoZkmze2N6ZVZ2aJmVuXhmZpdld2aFZmVWZWlndnZHZzZXhnVoloIlV3VWZlWWZ6dGZmVVVXVpVndqljmVlGVVU3d3eHV4h3lod2hod1mVkokomJeYlmSVWHl3WHdWRod2d3iJmFVXJYVFdYd2mJZ2hVSYSYY5l3lllEd4iWNFeWmVeqZWWYeWdjh2dnhlV2aZV3NVp1aFRVhYeYVYlYiFWYVYR1VnVTVWZoVWV1VnV3ZkSFqFh1ZyZVWHV3hEdGNVJVlXd3WHV2aIV3dEREVDNDhIiZiIRjRZeYZYhXaaaamlqad1hUiIOGWFU0eVVVVZmalEOGNWaFV4RamkRZNXlmd4aZNHRHZGWZl1VUh6k3i1VVhHg0RXRTM5R3RUmkiHRaNSllRISHqWNZSZc0h0OYNHI1VlVCWVVVREdGhWZElIlVVXZoQyWFVpVoZ1c2NIMzQlhkhUmWiHZ3hoWImJmSiYiKeXmZeamql0Wrqqqoiad2h4lqiHlol4eIiJipamlGmGaGkoe5p4mYd6dimlqoiniqZoaYeWqVh7qKt2t3mKuJV4eJh4d5d6h3inizd6hodneamXqnmZd5p3oneXh3aGeHmGdneHlnmYhndpqbd4iHdJd3iGmKdnZFd3eKiJh3eZlniWkiYlRVZnd3eWdaOGZ3KJeZg1WJiIiHaJUldmdHdjY3dGZmdneIJydSd0J0h2OXg2iGM6NGiFiXaVWZM2R0aEplY6lZkzo2Z5lVRFRWVlRpNpYmeVeWY4VFJDNnhjmkh4MngilzKDU2VSJShTMzJmZFdkYzMolqZXd3JXIjdyd4dWRUMzNZVWYjN4dVeFcjRlZmdneXd6aFY3aHcpk5WJWJiXiIVllid3Z0Z3NDeGZmd4h4ciJ1J0R3OHY5iGY4M3qEiHWaVpU5Q1aIplQ2lpo1qmNzlmlFRGVlRZVmY2mSd2U5VlhEMnNmmFN6OHgimDKHUmNTJSNVODNjYlZkZ0Qjk6hWdndXIzdyd4NXR0Y1Q5NVZTdyc1iFdyVGVmV2d5h3poVjhodymSlYlYmJeYlmWWJ3dnVnc0N4ZmZ3iHmDInUnRHc4djmJZjgzeoSIdZpWlTlDRoimVDaWmjWqY3OWWUVEZWVFlWZjaZN3ZTpWSEQic2aYU3o4iCOYIodSY1MlI1U5M2NiVmR3NCOTqFZ2d1cyN3J3g1dHRjVDk1VkNnJzWIV3ZWRmZnd3eWdaOFZ3KJeZgkSJiIiHaJUldmdHdjYndHZmdneIJydSdzJzh2OXg2eGM6NGiFiXaVWZM2N1aDpkY6lYkyo2Z5lmRWRWVlRoNpYmeVeWY4VFJDNndjmkh4MnkzlzKEUmRSJShTMzJ2ZFdkY0MolqZXd3NXIjdid4ZWRUMzRZVXYiOIdVd1cnIiKZqZk5KHWCmmp1d5Z3u7q6tIp4ZZUpeZlzY6RIM0OkulpadTl1V2knubc6o2eFeGZ2iDhSd2U3p4loNoeHi8VoYyR3OGU0OSU0emeDY5tZuEeiY2dVialbh5RmanVXhmlCaGNmNpNmdmSCdUJ5Z1WoOFVUiFc2ZVljmoZ3dlVVNzOTZmWpdZp5ZnZ3V4h3loZ1dod0mVknkomJeIhmSVR3h3R3dVNYZmd2iJiDNHNHVFdYd1mIZlhFWYSYYplnhUhDZ4iWM1eWmVeaZGSXeVZTdmZWhlV1aZRnRUllaENEhIeYVHlXeESYRHVkVWRDRGZYVGR0VXRnVjOEqFd1ZyZEV3R3gzZGJUNElGZ2WHR1WIR3JCOTiYqZclI2qKlWd2dptqurS6qIV0aZkpdJN0Z6MzNDqqulVZdUd4R2k3uqI3pWiFdlh4gjZVZlc5qIZnN4uFiMNjZzh1NGg1JDo3c2OLaJdWs0OnZVlZi6dUhZplV2VZg2dCZmZjNpZjY2RzeEd1WFiUNFhHhlRJZEplh4Z1dVdTMjaVaWWqeZJiKZqZkpKGWCmWp1d5Z3u7qqpIp4ZZUpeZlzY6Q4M0OkqlpadTl1R2g3uac6o2eFeGV2iDhSd1U3p4loNoeHi8VoYzR3KGUzKCU0emeDY5tYuEaiY1dVialbh5RlWWVXhWlCZ2JmNpNmZmOCdUJ4V1WYOFRUiFc2ZFlkioZ3dlVVNzOSZmWpdZp5IpmpmTk4ZoKZanV3pne7urqkinhmlTl5mXNjpEhEVKWqWlp1OXVXeSe5p0qjZ4V4ZnaIOFJ3VTeniWg3h4iLxWhkNHg4ZTMoJjR6aINkm1m4VqNjV1WJqVuHpWVZdVeFakJocmY2k2ZmZIJ1QnhXVak4VVWYVzZkWWOahnd2VVU3MpNmZql1mnmimZqZg2InqKlWd2d6t6urS6uIZ1apkpc5N0aKNEREqqulVZdTd5V2knurM3pWiGdmh4gjdVd2cpqIZnJ4uFiMRkaCh1NGk2NCo3c2OLaZhXw1O3ZWlZi6dUhqplZ3ZZk2hCZnZjNpd0cmWCeTd1aVilNFhXhlU5Y1pml4Z1dVdTMzaVaXWqeZp5qamYNTJ6ipVndnere7u0uriWdWqaOXOTdWijMzVKqrpVaXU3eVdqJ7qzN6V4hnZoeII3VXdnKaiHZzeLhYjEZHc4dTRpNjQqSHN0i2mYV8NTt3VpaYunVIaqZmd2WZNoU2Z2YzeXc3Jlgnk3dmhYpTRYV5ZVOWNaZpeHdXVXUzM2lml1qnmUdZS6Sci0pFdcvMt3dlRENKRcV4SZVqM3qKWKmqqiplenWHomenuadUSKVad8hpu3zKrJnMiKhYS4ynR9yUaH15qs2ZiZmZmZibecl5NJpYl2mJhoiaWYXGurh1yIyYe4l5iXeXuXeHepppqoOHh7ytmaqph6d4o3qjmJaHiIicmZp4e1SJRYQpS6Kci0pDdcvMt3dFU0RKQ8V4SZRqM3qKWKmqqlpDenOHpGenuadTSKIqd8hpu3zKrJnMiKgoS4ynR9yFaH15qs2ZiZiZmZibecl5NZpol0mJhoiaOYXFurh1yIyYe4l5iXeXuWeHepppqoOHh7ytmaqph6d4o3qkmJaHiIicmZp3eySJQoKpmbiYl5ipl7t7WbWqqoqqiGp3mamHmZd2iYiJiKm6l3eVenYoepmLmoiKdyunqYariKh6Z4mZuGZ5uKt5u4eHuZuJhpmIiah3l4q3iUd7l4p2d6epuXebeZp3qneSh3eHdneIeneHl3eXiYh3p7l5l4lYd3mXmadoaGd0d7eImHqXl3qXmcc02rmoNVS3zHx7VzREpDRUjJdUqjakp5iVqqqqNbMoiEiKdpp8OoUjqnKHnMbLp8yayYyIirLUiHrUTYnWl6fanZmYmpmZuZmnrFejiXWZk3iIqKlSaL2LW4jMiLmYmJd4h5mLd6inmadLiIjI25qpqoqIikerR4ppiYiIyJmpirc3kigkuIuTl6m8nGdlSYjd3NzXrFqYuIycu5mJyYaIeMfcjZyJm5l5aonb2YzImjmZZoY5gphliIjKo4OYqUS96ZSYmFWbeZqbmZmFmDmYvZnpicmJmZm8zJ05R2mcWZapk5mYeZmZKZmJmJmZmauKmEKUmXeZmJmZe4lcmGmImZmVmciZl8uJvIuTnHtJJHPKzKd3ZmVVWjXEeCiSWjJqejiZqZlKVXp0d6NnprmXZFeUWXfHWLtryZyJu3ioSDuMlzbMhnh8aZnMmHiYmZmIi3jJeTaZeIZZeHZ3iUl2xaq4crd8h3qJeXl3h7hnd3mZaKlzd3e7rZiqmXeneKJ6lZiGd4h4nImZd3pTiDSDybmXRFOnzHx6Z0VVpUVDjIdDqSWjpoeUmZqpRKQ3dzd6Zpp7SnY0mnOHjLW7l8yZuIuHirPDeGnDXIjGl5fKjImHmZmJuIiXnFeiiWaYhGd3mJlTV6yKS3fLd6mXmJd3d4h7dpeXiZY6d3e324qpmnl3ijeqV4ppeIeIyJmZeac3kzgjeFM3qKpGdndpxru7O6uJVkapo5dJR1Z6MzQzqqumZpdUd4N1pHyrI3pXiGdlhocjZVZmhJqIZnR5uFh8Jzd0h1NFk1NDlHdHJ7aJdHwzO3Zmlpi6dVhppWZmZZg2dTdmZkR4dyY2RzeUd2aGeTQ0dGhlVJZEplh3Z1dVdTMzeUaXSqaphqW4za1WVVqZ7u3t5707qMh8rcyomNh3d2fW7Z2dmZypakt67Op916opqlWVKnOHQ5l527WTiboyzvmjp4dUjIiJjIiJlqkop86K6nrYmKqZzdyeOlZarUmVuqWYqYiqikiqmqeYqIi8m5lThIhmqpmKqWyYbah6mZmZg4jXqqXcmM2cZoOZanV3lnerqqqkinhWlSl5mGNUlEhERJSqWVl1SWVWaDa5pjmjZoV4ZnaIOFJ3VTaXiWg2hoh6tGhkNHgoZCMoJjR6Z4JUm1m3VqJjV1WJmFuHlWVZdVeFWUJoYmUmkmZmZIN1Q3hWVak4VVSIV0VUWGSahnd2REQnIoNWZal1mXloursoVIV418zMPMyaZGi7talqWHiLREVEy7y3d7h2mJSDtY28VIt4llhCmGZVRnR4lXtqd4ZaxnptWFhWpWZ3pmV2hohoVsiaho1lbJd4t6rbl2aIsnhDh3loh2iHiGaHiEhoaFmlmXhnaGY2lImHdqhTyHiJiHh3V2ZWizi4a7i7d4aIg6o5WaWZmXmJZ2pjh4d1d3RUeHd3h4iJhDR2R0V4SYcqiXdIQ3qFmXWqZ5ZZRFeYplVHp5pGunNzp2pWVXZ2VpZmc3qTh2Y6Z2lFRHR2mFSKWYlDqUSXY3VjJSNmOTR0c2d0d0U0lKlnh3hYNFdzeJNYV1ZWVaRmdieDhGiGh4aaanV3pne7u7u0mnhmlTp6mXJjpUhEVKW6amp2OXVXeTe6t0qjd4V4ZnaIOFJ3ZTeniWgnl4iLxWh0JHg4ZTQ5JkR6eINkm1nIV7NzZ2aJqVuHpWZqdleWalNoc2Y2k3d3ZIJ1MnlnVqkoVVWYVzZlWWOahneHVVU3M5Nmdql1mnlFZbm7lmVnZmZpJbVnR4RZM1lpV4iYiFhlaWVmlEaVqIV0ZoVYVrZHqlq4iniqZ4ZXSWuGRbt2dmtYiLuHZ4eIiHd6Z7hoNnh3dWhnZGZ4WGezmadlpmt2aXhXaFZ2p1ZlaIhXmGNmZpqch5mIZpZmk2mGhnRmd2eLeIhWWVR3RXRUt8x8e2dFVaVFVIyXVKo2o6eIlaqqqkWlKHhIinaaeyqGNKpzh5y2y6fMmsmMiIqz1Ih61F2J1pen2p2ZmJmZmbmZp6xXpIl2mZRoiKiZUmi9i1uHzIi5l5iXeIeZi3eop5mnSoh4yNuaqZp6eIo3qleKaYmIiMiZqYq3J5MoMzinzHx7d2ZmplZDjIciqTWjp4eSqqqqVaZXdzd6Zpp7SodWmnWHnLbLl8yayYyIirXEeGrDbYjXl6fanImHmZmJuZiXnGejiXeZlmiHmJllWKyLK3fLh7mXmJd4d5l7dpenmaY6eHfI25qpmnp3iieqV4ppeIiIyJmZeadHlVhDiNvduId3dnZ6RsWJOaJrRHqLKaqqqlp2i4WItXi3yad1aKVqiNhpvHzarJrMiKhYW42oV92XiI16qt2piamaqpmcicqKR5p4l2qJh4iaWofWu8iCyIyYi5p5iYiYyXiHipp5uoSIiLytmbuqiLiItIumqJeIiImtmap4i2WZRZWYmYJViYiIh2iVJXZnR3Y3N3V2d3d3iDc3U3dDc5dzl4N3hyOkR4hZl3lWmTRzdWhKdWOqWZQqJ3eqZkVlZmdVaTaWJ3lnlmKGRTNDZ4Y5pIeEN5M5cyhGJlYiUoUzMydmNnZGNDOJemaHdzVzJIcneHVkVEREalV2IjiHVXdXVYV4x8zMPLyaZVe6tKhqWGeLMzRVu7y3d6d2iJWEtYy8Q4t4hlhTh2ZUVnV3lIt5d4ZZxnltSEhllWVnpWVllodYRseahY1VXId3p6rLh1Z4s3dUd4lXhlh3iGaHiDdYWFiliHd3aFYlhXl3ZadUuGmId3hnV1VFikeoa7eqJ5KX6d3dbd27hHnMx7qMeomMZmZm3N3JmcmYqaWjx67NZq2JpEo0qVV2OJKJp2xLiKdL5Is+aWk3soeIx4eHeJl5Zemsl653faiZycvsqVWXw5kjmGp5mHmYmXeWqml5enq3qplZN3dnpZqYh8l12YeamYmISHdnnFnKfcnMKXmZ7u3d1r1LmMd8rcyol9hoZmbW3Z2cmYypWjt67Npt1ppJqkSTSmWHI5l52raUiLo1vviTpnYie4h4fHiIl5lXls566nrXh5qZvNyeWnVJnDmSqZaHmoeZiWiqmpanp3ermpl1g3dWqpl5mFyXfaiZmYiIdHfHmaXcl82ceZnu7d3WvUuYx2yszKeX2GhmZtbdjY2YjKhaO2rs2m3XmliqQ5NaZYczmGnatpR4ukW++JSXdiN7iHh7eHiXmVeWznvqedeHmoi83I5adUmcOYKpl4eah5l5Z5mZlqend6uaiXVzd1aqiXmYXJeNqJqZiIh0d8aZldyYzZxYlYmJeIhWWWJ3dnR3c1N4d3d3iHhzM3U3NHc5dzmIdzhCeoSYdapnlUlER5imVDemmkWqc3OnWlZVZnZWlWZiepJ3ZjlmWEUzdGaYVHpIeTOZM4didGMlIlUpJHNyZ3NnNDSUqWd2eFczR3J4g1dHRkZUpGZlJoNzWIZ3dtfMzJzMmnaIu8moqqmIW5mZicvMuIioipiYl7qdvJmbiJWId4dVmXiHeKk7WXeaasaKbZiYaqeal7qJmil3qZXImoiNqJyHiLi6y5iFgreId4gpmIiYh4iZk5iYqIioqpmISGOKmIh4iIqoqMhziIaIiGiZmYuIuYu3uieJiIiHaJVUdXdIZkc3dWV2ZnaISUc0hzR0hXWXhWd2VZU1iCiWeFeIRHN2VzlyZJl4lUlWdpl3NnZndmVYVZdWaFaUVIc2VFV4eFmUd4VXhVhVV1dVN1VlhkVFVldFd2ZFVHh5VXdmUnVVdkdoU1MyVVV5ZodVV3dFd0eZiIiHaJVUdXdId1c3hWV2ZoaISUckh0R1hXWXhWiGVZVEiCiWeFeIRHOGZzlyZZl5pUlWdpl3NnZodmVYVZdWeVaTVYc2VFV4iFmVd4VXhVhVV1dVN1VlhkVFVldFd2ZGVHh5VXdmUnVVd0doU1MiVVV5ZodVV4dFeEdHM8Njdq6pd8toxsmpt8zMzEXGaZlZnIi8nWylVLyWqb7Y7bnuvOuuqqzV55qM5k+q8rnJ/L6rqbu7q9u6ub5JxquVu7aKqbq7RorOrX2Z7anbubq5mpm7nZi5ybvIbJqZ6v28y7ycmaxpzEmsi5qqquq7u5vJabVaZlpWtjZmnalmu1e1uKmnu7u7VsJZmWmbh6uNW5dFu5OYrtfcuN272p2Zm8TmmYvmbprnubjrrqupq7qr2qq5vWm1moe6oomZubpkec6cbJndmcqpqaiZmKqciLm5qrhcmZnZ7Ku6vJuZnFnMaZuLmpmZ6aq6m8hYpEpFOSIrVNaJWaZ7VYubabq7u0tSi4SYtXi4yrhEKbNKiNl6zI3avardmbk5bJ24WO2TWY6Ku96qmqmqqqmcitqKQ6tJqFqal5mrSpPXy8mG2Z2pjJqKmoioyniYi6t6u5WYmM2+qru6mLiJtYuzqZeYmZmtqquIjCWaU5QiK2XWmWq2e1WLm2q6u7s7Y5yVmbV5uNq4RSm0W4npes2N272r3Zm5SWyeuWjuo0mOi7vuupq6qquqrJrbm1OrSahampiZq1uT58zJltmdqZyaipqJqcqJmIurisuVmZnNvqq7u5m5icWcsqmomZmZraq7iYxFqmSVslJlnahlule1uJmmu7u7M7VYiEmLh6uMW5Myu4SYrcfcuN2r2p2Zm8TWiYvVLprkqLjrraqZqqqayqqorSi1moSqpXmZuao0eb2cbJjdmcqoqaiJiKqMh7m4qrdbiYnZ7Ku6q4uJm1i7KJt6ipmZ2aq6ishYo0lFuVJlnahmu1e1uKmmu7u7M7VZmUmbh6uMW5NCu4WYrcfcuN2r2p2Zm8TmmYvmLprkqLjrrqqpqqqqyqq4vTi1moSqpYmZuao1ec6cbJndmcqoqaiJmKqciLm4qrhbmYnZ7Ku6u5uZm1i7KJt6mpmZ2aq6m8hYo0lVuZtodaQ6ipmFdKUoMjKku2tqdlp2SFg4yrcqo3d2eEV1eDdTVXY2qJhnVph2m8Z3c1NmWWVVSVVVeXd1c5tYx0e0ZXhmmqpseJRHelZlh3hUd2R3V4V3d3J1hESJeGeXV1RCiGdXdkl0i4V3d2ZmRkSjd3Wqdap6VdaJarZ7VYubabq7uztTm5WYtHm4yrg1KbRLiNl6zI3bvardmblJbJ65WO6iSY6Ku+6qmqqqqqqsituLUqs5qFqal5mrWpLnzMmG2Z2pjJqKmoipyomYi6uKu5WZmM2+qru6mLiJtYuyqaeZmZmtqruJjDWaVJVlnZhVuke1t5imq6u6RrI4iFiLd6uMS5Y0q4KYncfMqN2qyZyYm8LViXrVXZnWqKjbnZqYqqqayZmorVi0mnaqkniIqapTaL2bbIjciLqoqaiIiJmMh6iomqdbiIjI7Ju6q4qIm1i7WJt6iZiZ2aqqirhIozk1SXuGQ5glkpV3hJmZmVSVRmY3aVWJajl2RZlkdoulupa7ibh7d3mks2dZs2x3x4aWyYuId4iIeKiIhotmknhniIVXd5eIZEebekp2u3eohoeGZ2aIamWXloiVKWdnt8qJmIlpZ3kmmVZ5WGh3d7eImGimNoRHM6dXR4U5Q1hpV4iIiFhmaWVmlEaVp4V1ZoVYVrY3mlq4iniqZoZWKWuGJbt2dltYiLuHZ4d4iHd6V6hYR3h2dWhnZGZ4WGe1maZlpmp2aXhXZ1V2p0ZlWHhHmGNmZpqLd5mIZpZWk1mGhnRmZmeLd4hWWVR3RXSXx3ysu6iXyGhmVsXdnZyZjJlaOnrs2mzGmkiaRJM6ZHcymHjKtoSIulK96JWWdkV7iHh8d4iXmUeWvXrpeteHmpm8zJ5KZTmcKYOploeZh5l5WKqalpend6uaiWWFd1WqmXmYW5d9qImZiIhyd8aZpMyXzJwliJV1aGZUWFVWVZiZhVWEV2VlZ4ZqiUVpVml1dmSIVXRXNHV4lzNmh5lXmkVVhohGY4ZGVoZUZkmlaFNaY1lTVYWIqGVpV4dVd1V2ZVVlU1VmaGVUZTVldmdUhYc2U2VGVVZ1ZpUmVURVVYVmVlhlhkmEiGR3dnR3c1N4d3d3iHiDMnU3NHc5dzmIZzhCeoSIdZpmlUlER4imVDammjWqc3OmWVZVZnVWlWZiepJ3ZTlmWEQzY2WYU3pIeDKZM4dSZFMlIlUpJHNiZ2NnNDOTqGd2d1cjN3J4g1dHRkZEk1ZlJoJyWIZ3hVlpiGZVlEZURJSpWllVaGVWZ1aopkmUZ4VmZ1eGWDV3VVSXeEhkdoeKtVhjVHhYM1VYU2RYZYVjiie2JqVFVlWJmVqGhWZZdVd2aFVmRWZWhmZWZGViVXhXVYloIlV2VWZlWFV5Y1VVRVRXVZVmZZhTiViSWjJqejipqqlKZXp0d6NnprmndGilWXfIWLt7yZyJzHioSEuMlzbMhnh9eanMmHiYmZmIi3jJeTaaeJZZeHaHmVl2xbq4crd8l3qJeXl3l7hnd3mZaKmDd3e7rZiqmXeneKJ6pZiGd4iInJmZd3pTiTWEqTajp4iSqqqqVaZXd0h6dpp7SodWqnWHnLbLp8yayYyIirXEeHrEbYnXl6fanZmYmZmJuZmXnGejiXeZlmiIqJl1aKyLK4fMiLmXmJd4d5l7d6inmaY6eHjI25qpmnp4ijeqZ4ppeYiIyJmpibdHlVhEmJdJN0aKMzNEqqulVZdUd4R2k3uqMnpWiFdlh4giZVZ1c5qIZnN4uFiMNkZzh1NGg1JDo3c2OLaJhXs0OnZVlZi6dUhpplV2VZg2dDZmZjNpZjY2WDeTd1WFeVM1hXhlVJY1pmh4Z1dVdTMjaVaWWqeZh6l6iqiqqqqqu3J6l6p3t8qnyriqunbYiruM2q2ZzIiopZyNqZftW8h9eqrdlImYk5qYnHrZeqybyZe5iXeIQqOM2MrIeseMqHyJepl3l8mHh3qqeapphofNrZm6unmneLl6u6mYmIiInZk6d2u6maqaVThYZneHd2h3WFZUhSWDl3SGdXZnRKUmmTmnemeZVYVlSVp1Q6pnhUo3d6p2VnZ3d2ZpRqdHV3eFY3dWUlVnZ1ejiJVGlVplSFdGV0RlljVUR3c2h1RVVJmLdoh3VIRFhUh3dWJVVVZ6Z3dFSGVmVlWSloeDmZmZRKU3dyd5ZYlrOXZFmXR2jLW6lruZuHt3eaTDd2nCXHjHl5bJjImHiZiIuIiXm1eSeGaIhVd3l5hkV6x6One7d6iHh4Z3doh6ZZeWiJUqd3e3yomYmXl3eSaqV3lYeHd3t4iYeaY2hEgyl6aHlJmZmVSlN3c3emWKazl2RZl0d4y1upa8mbh7d3mkw3dpw2x4x5eWyYyJh5mYibiIl5xnkohmmIVnd5eYY1esekt3u3eol4iWd3eIe2aXl4iWKnd3t8qJqJp5d3onqld5WXh3h8eJmHmmJ4RIMnh0pVhVVaW7amqGKnZXeTfKt0qkd5aJdoeZSWN3Zkeomnknl5iLxnl1JYg5dkVJNkWLeJNlnGnIV7N0aGaaqWyYpXZqdmiWelR4dHdHpHd3dYJ2M4lnZqkoZmWZaDd1aXObl4eHZmZIRJR3dqqGqnpHdXd3h3iHR0dUdjSCl3KXhHd3I6U3mUmnemepRHR0WUp1UqpYlTond6p1VnVmZ2VpNqc3aGiWcoZWQlRWdkijiJVHlEp0OFYnViNjljNCN3cmh0ZDRJl7doh3RXQ1hjeIdWNVVVVqZmczKHdmZ2dXijMzVLqrpmanZIeVdqJ8q0N7Z4hYZoeIMnZndoKaiXdzechpjEdHc5dkVpRkVKWHR0jHmoV8RUuHZqaZyoZIaqZmdmaZR4VHd3dVeXc3N1g4knhmhopTRYV5dlKnJbdpiHdnZnZENHpXp1unqkdoZ2d3iImCInQnRGdIhkmJZkgzaYWIZJlmlCkyVoiWMkaWmTaqYmOWaUZDdmVFhVVkaZN3VTpVWUMzc3aYU3lIiDOYM3ZTVFMzM1VIRGNjVmR3VSKDqFZ1Z0YzN3N3gkdWNTQzk1VlN3N0WIV3lFdVVZWZOUljWFNld1WolVmVVZNnd1eXWSSIM1WWeUlVdZh6s0lVVYhHUkQ3REJpVpRFijemRZRDRkN4mDqWhnRIdDh0SDRWVFU1lFVVVXVjVWdFNJlZQ2Z3NVRCaEV5dWZlIzJINIRFVphjiVipqqpaZouFiKRop8mndWilWnjYabx8yqyazIioWFuNqEfdl4iNeqrdqYmpmZqZm4nKikeaeJdpiYeImlqH1ru4gsiMmIuJeYl4mLl4h3qaebqEiIi8rZmqqoioeLOLppiXiIiInJmqeHtVmUWFd3h3qaqWZpZpdnh4mHuad3pnd5eJdmeIh2hWiFl4VXh4p3h7dneImHh1mHh4V2WHdrd5ZnuGenV3p5m5dod1mGaIdleHZ4Z0dnd1d3aHZoeIeGZmdWiGeGd2eJaIplNmY2Z2d4iIeYaXepWZJSMzuqumZpdld4R1o3yrMnpnh1dkhncyVWZmg4p5ZnVpt2h8Nzd0llRWlFRUlXdHJ7eJdHxES3Zmppm6hkdppWZlZohHdUd2d1V4dydHRzeUeGZ2eUUkhGh2VJc0t1h3d2dWZkQ0eVenWqapNjKju2pqdll2R1g3yrcqond2eFVmeCdTZmY2qIhnRpd3i8Z3ckN3SVVFOUVVeXd0YptIxze0ZGdmmalreJRWalZmhmlUd2R3R4R3Z3J0dDOJZ2aYR0RDiGZGdUlzi3V3d1ZVRkSSZ3WqZZpqQ6S7amp2WnZXaTfKtzqkd3aIVHV4J1NmZjeomHdWl3aLxnd0RGZJZUVJRVV5d3RjnFnIV7R0aGaaqWx4kmZqVmaWeFR4ZHdHhXd3c4R1M4lnZphXVVSIZ0d1WXObhnd3ZmVGRJJ3dap1qnozqqumZpdld4N1o3yrInpnh1dlhncyZWZmg4p4ZnR5t2h8Jzd0l1RVlFNUlXdHJ7aJdHxDS3Zmlpm6dkdppWZlZohGdUd2d0R4dyZHRzeTeGaGeUQkdGhmVJc0t1h3Z2dVZUQkeUanSqapJrq7pmaXZYeChaSMqzOKZ4dnVIZ3RFVlZoSKeGaFabdpfCcnZZZVVZVUVZV3Vye3iXR8U1t2Z6apuoZXeaR3VXaIR3ZHdndVeHc2V0dHlYh3dnlFRIJodmWXU7dYd3dnZmZERHo3p1qmqaa7e3p3WnYoSEjKuDqjeHZ4RnV4R1RVdkaomGdWmHabxndzUmZZZVVJVVV5d3Vym0jHR7Vld3eaqmt4hUd6V2WHeGV3ZXdXhXd3c3WEVYl4Z5dXRCSIZ1d2KXWLdXd3ZmZWVaR3c6p1mmpki4WIo2inyadVOKVaeNhpvHzKrJrMiKhYW42oR92UWI16qt2piamZqpmcicqKRJpYl2mJh4iaWoTWu7iFyIyYi4l5iXiYuXiHepp5uoSIiLytmaqqiKiItIujqJeIiIidmap4e1WZRYW1SIhYi3erjEuUIquDmJ3H3KjdqtmdmJvD1Yl61T2Z5aio252amKqqmsmZqK1ItJp1qpR4iKmqQ2i9nGyI3Ii6qKmoiIiajIeoqKqnW4mIyOybuquKiJtYuzibeomYmdmqqoq4SKI5NblJmWmbh6uMW5ZFu4OYrcfcuN2r2p2Zm8PmmYvmbprnqLjrrqqpqqqqyqq4vWi1moeqonmZuapkec6cbJjdmcqoqaiJmKqciLm4qrhbmYnZ7Ku6u4uZm1i7aJt6mpmZ2aq6m8hYpElFiYuYqoi3y6fKuKu6d9iKzIzbrZrdiKi2nI6pl+1c2I56qt2lmamUmpmsetp6rJvKp7mZh4hDtIzoy8iKyI2ofImKmYeXyYeHeqqJummGiM2uqru7iah4uoq7qaiYiIidmTqIe7qZq5ooUmdCdIdkl5RohjSSRodIlmlFiCNkhWg5ZGSpaaM6NmaZVkRUV1ZEWDWVJnlXlVSFNCQyZ4cplYeDKIIpYjg1NkUzQ4QzMzZmRWZXJCKJaVV3diRjI3c2eGRUUzMjWUV1I0eHVHhXiEiKdpp8KoY0qoOHncbLp8yqyYyIirPViHrUXYnWp6fanZqYmpmZuZmorFekiXaZlHiIqKlSaL2LW4jMiLmYmJeIh5mLd6inmadLiIjI25qpqoqIikerV4p5iYiIyJmpircnkykzKHUmRHdIdkmJZkgzaXSIdZlWhDhDVoimQ0aWmiaqY2OWaUVEZWRFhGVTaZJ3VUlVSEQicnaYUno4iCKYIodSY1M0M0Q4M2RjVmR2RSKSmFZ1d1ciNnJng1dGNTUzklVUN3JzWIV3VWdCdIdkl4RohjSSRodIl2lFiDNkhWg6ZGSpaaM6NmaZVkRUVlZEWDaVJnlXlVOFNCQiZ4cppYeDJ4IpYig1NkUzQ4QzMzZmRWZWJCKJaVV3diRiI3c2eGRUUzMjWUV1IzeHVHhXh0V1hHWYlniGZpVUiTmWeWeZRXSHaEmDZal5pVpWh5p3NnZ4dmZYZZdWeWeiVZdGVVWIiFmViIZYhVlFWGdVR1V1hlZVVmdVh3dWVYmKZXd2UoVVd1d4ZFQjVVV5d4dVZ4dWeEd6Zpp7SnVFmXWHjLW7l8yZuIuHirTDeGnDXIjGl5fJjImHmZmJuIiXnFejiWaYhWd3mJlUV6yKS3fLd6mXmJd3d4h7dpeXiZY6d3e324qpmnl3ijeqR4ppeIeIyJmZeac3lUgzaIiWd6R8q1V7Z5l4d5iZRIZod4SqmXdyiclpnFdXgphjV5RkU7WIN1nHmoZ8NluHZqaZy4ZZeqdmh2apR4VHd3dVendXJ2k4lHhmlppiVpaJdmOnRrd5iXhoZoZERHpnp2uoqkh0h2SXlGiGNJJGh1iXaUWII2SFaDpkZKlpojk2ZplWRFRHVkRYNZUmeVelVIU0JCJnhymVh4MogilyODU2RTNDhDNENmZFZlckIolpVXZ2JWIydzZ4ZFRTMyNZRXUjR4dUeFdylnOGdXZ3NKUmiTmneWeZVXVlSFp0UqpohUo3d6p2RnZnd2ZpRpdHWGeFY3dWQlVnd1iiiJVGlEllSFY2VjRkhiRDR2cmh1VEVIl6Zod3RIRFhUh3dWJUVVVqZnc0OHZWZlZ4KXdIeHc3U2qTmXSqd6ZaREeXpVUnpYpVuXNyp1pnZWd2Z5Zmc3qEhmYpd2glVHVmhzWKWXlEqVSXY3VjNTNmOSN0c3dzWDRElblnh3hXRFhjiHNYN1ZVVaVmdjaDY2d2ZoaEpYyrNItnh2hTh3ZEVWVnhYp5ZoVpt2l8NyhlllVmpVVllXdXN8eKdYxUW4Z3p6nKh1d4pHdVd4hXdld2d1WIiDdXR1iViHd3aEVFgnh3ZZdSt1h4d2dmVlVFeieoW6eqp5e5p4mYd7dimlqoiniqZ5aYiWuVh7uat3t4mLuZaJiJiId6d6l4inizd6hod3eamnu3mZd5p3oneXh3aHeHmHd3eHl3mYhodpqbd4iIdZd3mHmKdnZFd3eKiKh3eZl3mWlp28lcxZlYmSSDWWV2IohoyqaFd6lUreiFlXVEend3a3d3h5hXhb1q2WnHd4mIu8uNWXUoiyiDmId3mXaZeWeZiZWXlmaqiYh1dWZEmYh4hzuGjJeJiHiHY2e2iZPLh7yLd0l4dydTepOZdKp3plpUR5elVTemi1W5c3KnWmdVV3ZWlnZyeoOGZilnaDVEZWWXRIpZeUSpRJdjdWM1M2Y5NHRzZ3NoI0SkuXeHeFhEV2N4g2g3VlZVpWZ2RoNyZ3Z3pnyrQ3pniFdlh4gydWd2gpqJZ3N5uFiMR0dzh1RGlFNTpHdHOLaZhXw1S3dmlpm6hkhqpmZ2Zpk2hTd2d0R5dzc3WCeTeGaGelNFhXhmU5Ylt2l4d1dVdTQkeVanWqepZ1ijSnfIabt8yayZzIioOEuMp0fchXh9earNmYmYmZmYm3nJeTaaaJdZiYaImimGxbq4dciMmHuJeYl3l7lnh3qaaaqDh4e8rZmqqYeneKN6pZiWh4iInJmad3tCiSOESsVbmeqL3Z7rzrvuqspafa7JaP6jWp+bzO+7mrq7u7qtm+ubYrwquWurmKq7a6Lo3NqX2Z66naubq5m524mZm7yLzKaZqd7Pu8zLmcmaxpzEuqipqqq+u7uZnFarZaaJd0hTepWZdqpnplpUV5inVUenm1a6c3OnamdVd3ZWlnZ0epOHdkpnaVVEdXaYVIpZiUSpRJdjdWM1I2Y5NHRzZ3R4RTSkqWeHeGhEV3N4k2hXVlZVpWZ2J4OEaIaHNruEmK3H3Ljdq9qdmZvE5omL5T6a5Ki4666qqaqqqsqqqK04tZqEqqV5mbmqNHnNnGyY3ZnKqKmoiYiqjIi5uKq4W5mJ2eyruquLiZtYuyibepqZmdmqupvIWKNJRakqeNhpvHzKrJrMiKgoW42oR92UWI16qt2piamZqpmcicqKNJpYlzqJh4iaKoXWu7iFyIyYi4l5iXiYuXiHipp5uoSIiLytmbqqiLiItIukqJeIiIidmap4eySZQoKjd3Z4VWZ4J1NmZiaomGhGl3eLxXdzQ3dIZUU5RUV5d3Rim0jHR7RkZ2aZqWt4k1ZqZmaGaVR3Y3dHhHd3cnR0M4lnZphHREOIZkZlSXOLdXd3VVU2NJJndap1mmp6V3dnZXZ3M2RmZoSKiFZ0eLdYfCcndIdUVZRDVJR2Rye2iXR8Q0t1ZpaZunZHaaVmZmaYNnU3ZXdEeHcmRzdHlHdmhnk0NHNoZlWWRKdYd2ZXVWUzM3lGl0qmmYaIncbLp82qyYyIirLViHrVXYnWqKfanZqYqqmayZmorVikmXapk3iIqKlTaL2LXIjMiLmomaeIiJmMd6iomadLiIjI25q5q4qIi0i7WIp6iYiY2JqpirdIkyk0OaVHmVmoemaqVXWDaVt2Y7pJpUs3d6p0VnVlZ2V5J6c3eWiXc4ZWQ0RWhUm1mJVHlEp0OVY3ZkNjlkNDN3dGhyZCRJp6doiHRnQ1h0eIdnRlVUVqZldEKIdmeGekR4hZp3pWmUR0dGlKdWKqWJQ6J3eqZVVlZmdVaSamJ3lolmKGVTNDZ3ZJpIeUN5M5dChGN1YiUpVCMid3NndGQ0OZemaHdzVzJIY3iHVkZERFamZmMziHZndnaXWHdZlVgyhSVoinQ1WXmTaaU2SWaTU0dVQ1hGVUWZN3ZEpVSVMzc3eYU2o4hzOIModTY1RERERIRGRURlV2VTOSmEZlZlcyJnNnk0dWRSUig0VUR3OESIWHpWpVqSKISZWZuE0riak74qwveXo5xJmYyZiYaZmacuqsqK6Ijaiq2sztqnKlxapVqVqKmYqoqpmkqnmKiYq4u5k6NYl4ppqqmMqG2Zaql6mZOYiIrWrKjdnMaJpap4p4qmaGmHlqlYa6irdrd5iriVeHiYeHaXeod4p4s3eoWHZ3mZl6ppmXaaZqJ3l4Z1hnh5hnZ3h5Z5iIZ3aam3eIh2SXZ4hpiXZmNXd3ioiYZ3iYZ4loiTmneWeZVXVlSFp0Q6pnhUo3d6p2VnZnd2ZpRqdHWGeFY3dWUlVnZ1ijiJVGlVllSFc2V0RkliRTR2cmh1VUVIl6Zoh3VIRFhUh3dWJUVVV6Znc0SGZmVlYkqGZVR3SIlXxqiJZa1XpeaGhWpHZ4pnZ2hploZtirl41mbJh4uLrclzaItIhDh3pol2iIiGaHiFhoeVmmmYhnWGZnlYqHdrhVyHiZiXl3R2ZWi1i4fMi7OJhlVTZzeJV7aneXSsV6XVhIVqR2d7ZmdoeIaFXImoadZWyXiLi625hmh7KIM4d5aIdoh4h2l5lYaGhpppmIZ1dnRpOJiHaoY8h4iYh4d0dmVosouWu4u5haVXYziGjKp4V4uVSt6JWWdUR6h3drd3eYmVeGvXrpedaHiYi7y41adDiMKIOoh3aZhph5Z5mZlpeXZpuJiHZ1d1WqiXiHW5aNqJmZiIdkZrWJlMyXvIyWeWeIRXR2WElzVJl4lUlGdpl3NnZ3dmZYVZdWaFaUVIc2U1V4d1iUd4VXhVlVV1dVN1VlhkVEVlc1d2ZFVIiKVXdmUoVVdkdoZFMzVVV5Z4dVV3dFZ0eaiKdqZoiKqFZ5qLp5rHeHuZp4hZh4eJgzl3q3KXd8h4t1d6epuneaeKl3qXeIhzeHdXeIeXeGl3OHmYh2l6h5hyhid3mXiKdncmZ2d6eIiHqHl3qkmSSHSJWZuEwriKk74ps+eXpIxJiYyIiYaZmKcuqsmK6Ijaiq2sztqnKlxZlUqUqKmYmoqZmkqnmKiYq4q5k5NYl4ppqpmMmG2YaZl5mZOYiIrGnKjcjMiJhUmYjLtIOYujO96ZOXl1SbiZmMmZmFqSmXvYrpidiJmZnMzJ4qV1qcWZWplJiZiJmZOaqal5moiKuamVKUiHepmZmZa5hdmHmZmZmEiMiZpsyJzIxSZmYmqIloRpd3i8V3c0N3SGVFOTVFeneEY5tYx0ezZGdmialriJNWamZWhmlTd2N2R5R3d3JzdDJ5Z2aYR1RDiFc2ZVlyi4V3d1VVNzOSZ3WqdZp6dVdlc5qIZnN4uFiMNjZzh0NGg1JDo3c2OLWJdWskOnZVlZi6dUhZllV2VZgmdCZmZjNpZjY2RzeEd1WFeUNFhHhlRJY1plh4Z1dFdSIiaVaWWqeZd0dUdZmXVWWIqUeLRVaFeCVFhUQ1lWZVSKV4cmtTSmVFhIepdGlYl0V3VIdFY0VVVVRpZkVVJ1aGZkWUiDZTdWdUNoVlpUdnVkYzhERUWGWWKZaYJYhoyqaFeLlTveiVlnVEe4d4e3d4l5lHlr166WnXh5mIvMyNSnU5nCmDqZaHmYeZeWeZiZaXl3ermol1dXdVqoh5mEuXfZeJmYiIcnfGmZTMh7yMiGjKpoV4uUS96JSWdTN7h3h7d3iXmVeWvXrpadeHmYi8zI1adTmcKYKpl4eZh5l5Z5mJlpeXd6uaiXV0d1WqiHmYS5d9l5mZiIhzd8aZlMyHvIxCZoiXQ0aXmjaaU2SWeTVEdVU1hFVUaZN3VEpVSVMzg3eoY3k4iDOIModUY1REQ0RYRWRkRmV2VTKSmFZlZ1czNnRnk0dWNSUik1VUR3OFSIWIRWaIljJGl5k2qmNjlnlFQ3VlNYVVZGmTd1VKVUlTM3N3mFN5SIgzmDN2U1NTM0NFSERjZFZkd1Uig6hWdWdGMzdzd5JHVjU1M5NVZUdzhEiFh3SGdzlzdJlppTlFdpl3JXZndWVIRYdGeValVJc2RVV4h1qVd4VIhEhlR1Y1NjRkdkQkRldVd1dFVHh5VXZlVHQ1dzdpU0VEVVV5ZnY0V4hFiDiomXg2l4eLxnhzNHdJZUU5NUV6d4Rjm1nIR7RkZ2aZqWyIlGZqZmeGaVN4Y3dHlHd3c4N1MolnZqg3VVSIZzZlWXKbhnd3VVVHQ5Jndap1qnqot2ZYt5tTuoWEuDtnZkeHZ6d3c4uUl3dKd3lWVVVDqFWLaopVqlWodIZ1R1V3WlWFhHiFeDJVpbp4h4loVWh0iZV5WGdnZrV3d1WVg3iHiLfViHrUXYnWqKfanZqYmqmZyZmorFijiXWZk3iIqKlSaL2LW4jMiLmYmJeIh5mLd6inmadLiIjI25qpqoqIiki7SIp5iYiIyJmpirc3kikkqHWnqVWs2IWIqGaqeambqZl0mEqIrInYiMp5iIi7u4xZOHmLaIeYgpmIeYiYKZmJiIqYmZqJiDOliIiYiKiIeolMh2iIiIiVmbmIl7t4q3t7hiW7dndrWJi7h2eHiIh3eme4aDaJd3VoZ2V2iFhmtZmnZKZrhml4WGhmdqdWZWiIV5hiZmaqnIeZiGaWZ5NplYd0Znd3i4iIVmlUeDV0mak74qwvino5w5mYyZiYaZmacuqsqK+Inamq2tztqnOl1apFqluKmYqoqpmkqomaiorIu5k6JYl4p5qqmcqH2Zaql6mZSoiIrWrKndnMKUeXmUeaU2SXeVZSdlZGdURlWJRnVUplWVJEhHeYVHlHh0SIQ3ZkVGRDQ1VXVWR0VXV3VjKEl0dlVkZDR3R3kzZVNDRDhGZlSHSFWISHc2WZeaVJVXaZdyV2aHVlR1SHVXlWlEWGJlRVeIhZlXd1WIVIVVdWVCZFZXZVNVVXVHdmNkR4eVRmZUN1VWdHaFJEM0RVaGaGRVeHNXg3l5iLxXh1JYgodTQ5NkWKeJJkm2nIV7N0Z2aJqWuYpXZqdleWalN4c3ZHpHd3dYJ2M3lnZqkoZVWZVyZlaXObhoeHVVVIQ5RndqqGmnqlilWpc3KnamdVZ3ZWlmZzeoOGZilnaDVEdWaHNIpYeUSpRIdjdWI1MmY5I3RzZ3JYRESUuWeHeFdEV2N4c1g3VlVVpWZ2N4NjZ3Zmtmx3x4aVyYt4doiIeKiHhotmk3hXiIVXdoeIZFebekpmunaohoeGZ2aIamWGloiVKWdmt8qJmIlpZnk2mVZ5WGd3d7eIiGiWNoVHM0e++aSnhlWMiIh8iIiWqTiXznvqetiYmpnM3J46ZkmdOZS5lYiqmKqKWKqap6ind7yamWSEh1aqmYmpXJdtqIqZmZiCiMeapdyYzZzO+aKnhzOMmYmNiZmWqTinzov6iuiYqqrN3a46Z1qtWqS6pZiqiKqaWaqap6ioiLybqmSSiHeqqYqpbKhtqYqpmZmEiNeqttyYzZya5bm4666rqbu6q9qqub0ptZqDuqaJmbm6JXnOnG2Z3ZnKqamomZiqnIi5uaq4bJmZ2eyrurybmZxZzDmbi5qZmemqupvIaaRaVmnLhpW4K3h3OId4t4iEi6WYh1uIeldmRjKpZpxqmmW6Zql1hnVXVXdaVoaFiIaJQ2a2yoiYmXlWaYWZlnlpeGd2tniHU5WEeZiIp0lGVplWU1NHVUNpRqU2eUemVJVEJSJ3hymlhoI4gihyOCRGVERElERERnVVZVc1M4lpVXZ3JWMyd0Z5dWVkMyNZRHU0R4hkeFivnMz/y6vLu8y7vqvsrHW8arl7q6mqvGyl+N3ap+quuq2rm6uautuaqZy8m9ynqqrez7vMzKrKqtetxLq5qqqqv7vMmp1Xu3amenoow5iZyIiYaJmKc+q8qK+Ijqmq2tztuWOm1apFqVuKqYqpqoilqnmKiorIu6pKJoh4ppqpmMqG6paqqJqZSYh4rWrajdncaXKnalZUdmZWhWVjeZN3VSlmWDNDdHaYVHpIeDOZQ4ZjZGIkIlU4M3JzZnNnRTOUqGd2Z0czR3J3gkdGNUVElGZlN4J0WIV3dUJ3SFRFSURVaXZ0Yps4tyekVGdmmalrd4RWaWZmdmhUd1R3V4V3Z3J0c0SIZ1aYVzMzd2ZWZUlkinRnZlVVRkSTZ3SpZJppd6plVWVmZ1VpNqY3aGeWYoZFQ0Rndkikh5U3lEl0OFYmViJjlUMyN2cmd0ZDQ4l6Zod3RXM0hid4dWNUVEVqZmczOHdmZ1dlllVVlVRUlXdXJ7eJdHxDW3Znppm6dld5pGdVdohHdUd2d1V4dyZXR0eViGZ2eUVEc2h2ZZdDt1h3Z2dWZkQ0ejeXSqaphohTR5RjU6SIJ0m2mYZ8NUt3ZpaZuoZZaqdmd2apNoU3Z3dEendHJ1g3k3hmlopSVpV5ZlKWNrdpeHhYVYU0NHlmp2qnqSeMmIiMiIinqkiXzov6euiYmpnN3J5KZlmdSZO5poiqmKqKWKqap6iod7yamWWCh2a6mYqpbKd9qIqpmZmFiMeqpdyYzZ2LiIh8iIiXqkiXzov6eteYmpnM3J5adkmdOZO5loeql6mKaKqap6ind6yamXWCh2a6mYmYXJd9qIqZmZh1d8eapdyYzZx4dyiIeLeIhZylmIhbiHpnZjYyqWaceppmu2aphYeGV2Z3a2aWhYmGiUNmtsqJmJl5ZmmFmaZ5aXh4d7aIh2OmhXmYmFg2gmNDo4cmSLaZhWslOnZVlZi6dVlallV3VagmhCZnZjNpZkY2WDeEd1WVilNVhXllQ5ZFpml4Z1dVhTMzaWaWWqeZV1RIREJpVpVUiii3NaRTRkR4mEqWlnRJdEd0WTRXVFU1lFVVVXVjZWhGNJlYM1V3RmVTaFaJdWZlMzJIRIVVVphiiWhlaGVlN1SHRXlGpEWWJkVUeIhJhXd1SIRIVEdWRCZEZXZVNVVHVHZnNkR4eURmVUN1RWdHaFI0Q0REaGaGRVeHNXg3g2NDkndFWaSIdVs1SWVEhIepZFlJl0SHQ5g0czVWVSRZVVVFV0aFZkSUmVVVdmhDNYVWlWhnVzZEgzNDWGSFWZaIhmNDo4c2SLaZhWslOnZVlZi6dVlal1V3VagmhCZnZjNpZkY2WDeFd1WVilRWhXllRJZVpml4Z1dVhTMzaWaWWqeZh4mIm1nIaZuKuIaoeHZ3IqJ7x7q3abd8l2t4aYhmhrh2dmmZaJlIdXe8nJipqXiWZ6lpqpiXh3d3jIgpZlqpiJmJJTN6Z4NTili3VqJiV1WJmFuHlGVZdEeFWTJnYmUmkmZmVINlQ3hWVZlIVVSIR0VTWGSKhnZ2REQnIoNWZZl0mXlWlmZnSbZ5c3tjWnVmlpm6dmlol2Z3ZodmdWd1dmV5d0ZnN2eGeGaViTZSdWdmVpZlpkdnZlZVhWZWeWaXOqaZRqN3Nki1mXVrJTp2VZWIunVZWpZVd1WoJYQmZ2YzaWZGNlgnhHdVlYpTVYV4VUOWRaZpeGdXRXQiMmllllqnmUdpVpRFiji2RZRTRkR4mEqWlnRJdDh0SDNXU1U1lFVVVXVjVWhGNJlZRGV3NlRTaEWJdWZlIzI4M4RFVphjiWh5V5NVili3VqNTRkR4mEqWlXVJdEiEWTNXYlU1klVVVXRlVGhGRJlIZWWIRlVTaFWJdnZ1QzQ4MoRVVph1iWmIqZXZm5mdqJyXmcm73JmWk7iZh5g5qYmpl5ialJmYqYipqpqIWXSLmZmJmJu5qMh0iIaImHmqqpyIuZzIuyeGaaZIZmt1emRmlpipZolnmGaYZXd2JnZjZndoZnWGUnaId1WGl1h2N1RmaIZ3lUZjVWVmlnd3aXaGaZKIYphmimS2ZqdHZmaJmWqWeIZplml2Z2diN2Z2h2ZWZyhmiHhXZYiKZXdDZYZmeFh5NFZVZmZ5d5dmeJgmiTimJ3lolmOGVTNDVoZJpZeUN5M5dClGN1YzU5VDQyd3Rnc2QkOZemaHdzVzNIc3iHVkZURFalZmMyiHZnhnSbaZhXslOnZVlZi6dVlqp1V3VagmhDZnZjNqZkY2WEeUd1WVilNWhXllU5ZGpml4aFdVhTMzaWaWWqeZd+msmK6IjaiZyszsqXKlxZlVmUqJmYmYqZmjqnmKiYq4q5kpNYl4lpqpmLmG2YWZl5mZOYiIrGnKjcjMaJs4tzekVGdmmalrd5RWalZmhmlUd1R3R4R3Z3J0c0SJZ2aYRzMzd2ZWdTlkinVnZlZVRkSTZ3SpZJppeVeWY4VFJDNnhjmlh4MnkylzKEU2VTJTlTMzJ2ZFdkYzMolqZXd3NXIjdzd4dWRUMzRZVWYjOIdVeFe2qoO6pomZubolec6sfZndmcq5qriZmaqdiLm5q7hsmZnZ7KvKvJuZnGnMOZuLmqmq6au6m8hppFpWmohmmIVnd5eYZFesekt3u3eol4iWd3eIe2aXl4iWKnd3t8qJqJp5d3onqld5WXh3h8eJmHmmN4Q4I3jHd7lod3eaqnuomZd6p3qHeXhzWHeHmHh4eDl3mYl4d5qbd4gidpd3mXmLNmd3d3eaiKh3iapXmlq2JqVUVlWJmFuHhmVZdUd1WEVmVWVGhWZWZGViVXhWRYloIlV3VWVUWFV6dGZlRENXRYVWZZlSmVlqdnlVZpaYqGaKaIlmmWaDdmZ2ZWZ3aGV1hmaFeHdVlqhodng3Zmh2iJVXV0ZiZqZ3d2mGhmmFiJW7toqqyrsmis6tfanuqtu5urmambudmcrJu8hsmprq/bzLvJyarGnMSayLm6qq6rvLrNl5tWpnaoZGQkRndkikiJU3lEp0OFYmViNjlTMyJ3cmd0ZDQ4l6doh3RXM1hjd4dWNUVUVqZmczOHdmZ1elRVZViZlah4VmWWVXdWhVZkVmVoVmVmNlYlV4V1WIWCJEd1VWZVhlemNWZUVUV1WUZmWZU4lZOnZVlYi6dVhallV3VaglhCZnZjNpZkY2WDeEd1WVilNVhXhVQ5ZFpml4Z1dFdCMzaWWWWqeZp3mZuapkeb2cbJjdmcqoqaiJiKqMh7m4qrdbiYnZ7Ku6q4uJm1i7WJt6ipmZ2aq6mshYpDlFWVZEeJhKlpVlWXRHhEkyV2JVJZNVVVR0ZFRoVkSZSFVViDZVU1hVinZ2dTQzKCKDVVaYdIlpRUR4iEmVd3VIhDhkR1ZFJkRUdVU1RldUd2c1Q3h5VGZlQ3REZzdpU0RDRERoZoZEV4g1eDhVdWaHNYpYaVSZVYZ0ZXNFQ2ZJM3RzZ3JYREWVqGeGeEdFWGSIdFcnRlVVpXd2R4RjZ3ZmJXJ2mFJ6OIgimCKHU2NTNTNFSURkY1Zld0Ujk6hWdndXIjZzd4NXV0Y1Q5NVZTdzdFiFdyVnhymlh4IogilyODVGVTNDhERENmZVZlc0IolpVXd3JWIzdzZ4dWVUMyNZRXUzR4dUeFh3hymlh4I4gilyODVGVUNElERERmZVZlc1I4lpVXd3JWMzd0Z5dWVkMyNZVXU0R4hVeFgjunete6t3zHe6l5iXeHeIfHenlpmXmlV3x9uZqaqKd3qXqqeKeomIiMeJmHK3loqpmSmpdpx6mma7ZqmFl4ZnZnhrZpaFiYaJRGa2y4mYmXlmeYaapoppeHh3t4iIY6aViZiYqHvXurd5t3yXa3h5iHaGuHZ2aZl4qVh1d7ydmaqqeJdnqXmqmJeHd3eMiCl3WqmImomF1rvIhciMmIuJeYl4mLl4h4qaebqEiIi8rZm6qoi4iLSLpaiXiIiInZmqeHszmTKDec6sfZntmcq5qrmZmaqdmLm5q7hsmZnZ/KzLvJuZrGnMOZuLmqmq6bu6m8lppFpWWmooiCOYIodTY1Q1NERIRGRjVlV2RSOSmFZld1ciJnNnk1dXRjUzklVUR3OESIWHpZiWVpVadVlnR1dFdZY1VEd4N4dVVVWZi3aId1WFVYVYh3VjVWZWend3RUhlZ1ZlV1qtWqW6pZipiKqaSaqap5moiLubqVOUiHeqqZqpbJhtqXqZmqmEiNiqptyZzZx4tXdVdolXhld3d1V4d0dXWEikiHd3aVVGlXl2ZadGt2mIeGhmZlU1emena7eqh7eId4gpmIiYh4iZk5iXqIioqpmISGKKiIh4iIqoqMhziHWIiGiZmYuIuYu3uoc4gjlzODVHVURUlFRURnZVdlc1M5lqZXd3JXNDd0eJdWVlMzRZVXZER4hliGiLKIOYh3aIdoh4Z5mJhZaWZpqJiHZ1ZjSZiGiHO4aMl4iIeHdkZrWJk8uGu4uHzIi5l5iXeIeZi3eop5mnSoh4yNuaqap6eIo3qmeKaYmIiMiZqYq3R5VYRCiYModSY1MlM0U4M2NjVmRnRCOTqFZ2d1ciN3J3g1dHRjUzk1VlN3JzWIV3hSlyODU2VTNDhERENmZVdlc0IolpVXd3JWIzdzZ4dWVUMyNZRXYzR4dVeFeCqJaHmYeZeWeZiZWXlnariYh1dHZFqYh5mEuWfJeJmIiIc3e2mZTLh7yLmHp5mHmYmXeWqWl5eXq3qploR3dXpZqYh7l12YiamYmISHdnnEnKfMnMKIdTY0M0M0RIRGRTVlR2RSKSmFZld1cyJnNng1dWRSUykkVUN3N0SIV3dTg1RlUzU5RERDZmVXZXNDKJamV3dyVyM3c3eXVlVDM0WUV2NEeHVXhYeXh3aHeHmHdneHlnmYhndpqbd4iIdZd3iGmKdnZFd3eKiKh3eZlniWmYiJiHiJmSiJeoiJipmYg4U4qIiHiIiqiYyHOIdYiIWJmZi3i5i7e6V2NSJSJVOTNzYlZkZzQjk6hmdndXMzdyd4JXR0ZFRJNVZSaCc1iFd0VnYmUmkmZmZIN1Q3hWValIVVWIV0VUWGSKhnd2REQnIoNWZql1mXlHVEQ0k1RVRXVUZVc1M5lZVWZ3JVRCZ0WJdWVlMiNINHREV5hkiGiGZGZ3eHd1hmKGiHdllqhodidTZmiGiKZXYlVmZpZ4d2mGl2mTmGMlIlU4I3NyZnNnRDOUqGd2eFczR2J4glc3RkVEpGZlJ4JzV3V3ZWUmkmZmZINlQ3hWVak4VVSIV0VUWGSKhnd2REQnIoNWZal1mXlFZXZVNVVHVHdnRlR3eVRmVUN1VWdHWUM0Q1RVaGaGRVeINXgoIlUoI3NiZmNnNCOTqGd2d1cjR3J4gldHRkVEk1ZlJoJzWIV3JVU4M3NiZmNnRDOTqGd2d1czR2J4gldGRkVElFZlJ4JzWHV3VZUzMyd3NnZGNDOJemaHdzVzJIc3eHVkVEREalZ2IjiHZXhXk2ZmVXRlVGhWRZlIVVWIRlVTaFWKhnZ2REM4IoRVZpl0iWlZVVVFV0aFZkSUiVRWhWhUNYVWlWhnVzdEgyNDWGWFWZeIlpmImYiZqZqIOFOKiIeJmJm4l8h0iIaIiFmZmZt4uZy3u0dCJ3c2d0dEQ5l6dod3RXMkhzeIdWRlVUVqZnczOIdmeGdER3c2d1VFQ5l6dod3RHM0hjeHdWJVVUVqZnc0SHZmZ2Z0cmdzZ0Q0lKlnd3hXNEdjeINYN1ZWVaRmdjeDc2d2d2ZzVXR3VTOEqFd1Z0Y0R3N3gkdWRUVElGZ2N3N0WIR3dHR0Q4lnZphXQzOHZkd1SXOKdXd2VmVGRJN3dKlkmml3NnZGMzOJemaHdzVzJIc3eHVkZEQ0alZmIiiHZXhXWCeTd2aWilJVhXllUpY1tml4eFhVhTMzeWanWqepZ4eIeGaWqGiGKFN2eIaIpldiVWZmpoiHeYaXeZOZY1V4V1WIaCJVd1VlZFhVemNWVUVEV1WVVmWZUolZh1VEVJl7doh3VIQ1hjh3dWJVVVV6Znc0OHZmZ1aTd2aGilNFhXllU5Y1tml4d1dVdTMzeVaXWqepl4h3lopTRYV5dmKnJbdpiHhoZnZENHpnp2u3qnd3dquciJmYdpZnkmmVh4V3d3eLiJlnakN4NHNSVZqLd4iIVoRFl1iJhnV2VVZ6d1dFOYh3eHhFpbl3h4hoRFhziIRoR1dWVaVmdkWEcmiHdyaDqFZ1Z0YyN3N3g0dWNTUzk1VlN3N0WIV3JIlqZXd2JGIjdzZ4ZFRTMzNZVXYjR4dVeFeJaVV2dyVjMnc2eWVlVCIiWUV1NEeHVHhYRIl5l4mZmbmHyYWZh5mZSZmJnGm6nMi7aIqYiImIiqioyHSIhoiIaJqZi4i5i7e6h4hnupqKqWyofqmKqpmZhYjXqqbdmN2dZWWZaCZ1aXObl4eHZlVIRJRndqqGqnpCZVdlRoZVlTdmVVVEdVVFaVaGKZWYVXVXZVaGVaZHZ1ZWRXVVVWlWlzmVmVWIZ1d2WnSLhnd3ZmZWVaN3dbp1qnqId2d2KnWLhnd3Z2ZVVaR4grp1q3pid3mXiKZXcmZ2d6eIiHqHl3qkmWR3eZeYp2hyZnd3p4iIepeYeqSpVYVVd0doZFQjVVV5Z4dVV4dFeEdjMnc2eGVlVDMjWUR1M0eHVHhXN3J3g1dHRkVEk1VlN4JzWIZ3Zacmt3mJeGhmhkREemena7iqN2dGeXVlZDIjSDR1NEeIY4hYdyd4dWRURDRZVWYiOIdVeFeqV3lZeHeHx4mYeaY3hEgyWLdpiHd3ZldVVYonqFu3qnebhniHZmZHRKN3drp2q3p4ZFRTRERpVXYjOIdVeFebeomYmdmqqoq4WKRJVWl3dHd3d4mIeoeoeqapVkVEVVVoZoVVZohEeDhmZmZ3ioiYZ3ipN5pJRlRVlWd2R4NkZ3VmVWVmhnd3aXaGaZSINEREaWaHRFeHVXhHVWV5d4dWaIdWeFgikkRUR3SFSIWIJYNEVEd0hTiFiDVIRHVFV5hTiFhINHU0R4hUeFh3d6xZyn3ZzCkyaFWWWpeZJ4NWZpl1mXmDVWWZdIl5aVaXWqeZd6eWiqmZODiHZXhXOHdVd1eoa7eqd2h2d0aJI4SZQpOWmJWIMoKDCA==","mtrNames":["中环","金钟","尖沙咀","佐敦","油麻地","旺角","石硖尾","九龙塘","乐富","黄大仙","钻石山","彩虹","九龙湾","牛头角","观塘","太子","深水埗","长沙湾","荔枝角","美孚","荔景","葵芳","葵兴","大窝口","荃湾","上环","湾仔","铜锣湾","天后","炮台山","北角","鲗鱼涌","太古","西湾河","筲箕湾","杏花邨","柴湾","蓝田","香港","九龙","奥运","青衣","东涌","油塘","调景岭","将军澳","坑口","宝琳","南昌","欣澳","迪士尼","康城","红磡","旺角东","大围","沙田","火炭","马场","大学","大埔墟","太和","粉岭","上水","罗湖","落马洲","尖东","西营盘","香港大学","坚尼地城","何文田","黄埔","海洋公园","黄竹坑","利东","海怡半岛","显径","启德","宋皇台","土瓜湾","会展","车公庙","沙田围","第一城","石门","大水坑","恒安","马鞍山","乌溪沙","柯士甸","荃湾西","锦上路","元朗","朗屏","天水围","兆康","屯门","机场","博览馆"],"mtrAdult":"001D2Y2Y3O3O3O3O4E4E4E4E4E4E4E3O3O3O4E4E4E4E4E4E4E1D1D1N1N1N2222222K2K2K2K4E002Y3O4E6R4E4E4E4E4E3O667R4E3I3L4R4R4W75545J5J6666EIEI2Y1D1N1N3O3O1N2222224R3O3O3O1D4S4S4S4S5S5S5S5S2Y4Y7S85858585851D002Y2Y3O3O3O3O4E4E4E4E4E4E4E3O3O3O4E4E4E4E4E4E4E1D1D1D1N1N2222222K2K2K2K4E1D2Y3O4E6R4E4E4E4E4E3O667R4E3I3L4R4R4W75545J5J6666EIEI2Y1N1N1N3O3O1N2222224R3O3O3O1D4S4S4S4S5S5S5S5S2Y4Y7S85858585852Y2Y001D1D1N22222K2K2K2K2K2K2K1N22222I2I32323232322Y2Y3O3O3O3O3O4E4E4E4E4E2K2Y1D1N32572K323232321Q4F66321B1N2T2T324V323Q3Q4545CBCB003O3O3O1N1N3O3O3O4E2T221N1N2Y333333333Y3Y3Y3Y1D315U65656565652Y2Y1D001D1D1N22222K2K2K2K2K2K1N1N22222I2K323232322Y2Y3O3O3O3O3O4E4E4E4E4E2K2Y1D1D32572K323232321N4F66321D1N2T2T324V323Q3Q4545CYCY1D3O3O3O1D1N3O3O3O4E2T221N1N2Y333333333P3P3P3P1D315U65656565653O3O1D1D001D1N1N22222K2K2K2K2K1D1N1N22222K2K3232323O3O3O3O3O3O3O4E4E4E4E4E2K3O1D1D32572K323232321N4F66321N1N2O2O2T4V303K3K3S3SCMCM1D3O3O3O1D1D3O3O3O4E2O1N1N1D3O2Q2Q2Q2Q3C3C3C3C1D2W5U65656565653O3O1N1D1D001D1N1N22222K2K2K2K1D1D1N1N22222K2K2K2K3O3O3O3O3O3O4E4E4E4E4E4E2K3O1D1D2K572K323232321D4F66321N1D2O2O2T4V303K3K3S3SCMCM1N3O3O3O1D1N3O3O4E4E2O221N1N3O2Q2Q2Q2Q3C3C3C3C1D2K595S5S5S5S5S3O3O221N1N1D001D1D1N1N22222K2K1D1D1D1N1N22222K2K2K3O3O3O3O4E4E4E4E4E4E4E4E2K3O1N1D2K572K323232321D4F66321N1N2E2E2K4R2Q39393I3ICCCC223O3O4E1N224E4E4E4E2E1N1N1N3O2F2F2F2F2Z2Z2Z2Z1N2F575R5R5R5R5R3O3O22221N1N1D001D1D1N1N2222221D1D1N1N22222K2K2K2K3O3O3O4E4E4E4E4E4E4E4E4E2K3O221N2K572K2K3232321D4F663214141V1V2247282R2R3333BJBJ223O4E4E22224E4E4E4E2E1N1N1N3O292929292Z2Z2Z2Z222K595S5S5S5S5S4E4E2K22221N1D1D001D1D1N1N22221N1N1N22222K2K2K32324E4E4E4E4E4E4E4E4E4E4E4E224E221N2K572K2K2K32321N4F66321N1N2E2E2K4R2Q39393I3ICCCC2K4E4E4E222K4E4E4E4E2E1N1N224E2F2F2F2F2Z2Z2Z2Z222S5R61616161614E4E2K2K22221N1D1D001D1D1N1N221N1N22222K2K2K3232324E4E4E4E4E3O3O3O4E4E4E4E224E2K2232572K2K2K2K321N4F66321N1N2E2E2K4R2Q39393I3ICCCC2K4E4E4E2K2K4E4E4E4E2E1D1N1N4E2F2F2F2F2Z2Z2Z2Z2K2U5R61616161614E4E2K2K2K221N1N1D1D001D1D1N1N2222222K2K2K323232324E4E4E4E3O3O3O3O3O4E4E4E224E2K253257222K2K2K2K254F662K221Z2O2O2T53303K3K3S3SCMCM2K4E4E4E2K2K4E4E4E4E2E1D1D1N4E2Q2Q2Q2Q3C3C3C3C2K315W67676767674E4E2K2K2K2K221N1N1D1D001D1D1D22222K2K2K32323232324E4E4E3O3O3O3O3O3O3O4E4E1N4E2K2K326622222K2K2K25576R2K221Z2O2O2T53303K3K3S3SCMCM2K4E4E4E2K2K4E4E4E4E2O1D1N1N4E2Q2Q2Q2Q3C3C3C3C2K315W67676767674E4E2K2K2K2K22221N1N1D1D001D1D2K2K2K2K3232323232324E4E3O3O3O3O3O3O3O3O3O4E1D4E2K2K32661N22222K2K2K576R2K2D2D3232395F3G3Q3Q4646CYCY2K4E4E4E2K2K4E4E4E4E321N1N224E333333333P3P3P3P2K3K6I6X6X6X6X6X4E4E2K2K2K2K2K22221N1N1D1D001D2K2K2K2K3232323232324E3O3O3O2Y2Y2Y2Y2Y3O3O3O1D4E2K2K32661N1N22222K2K576R2K2D2D3232395F3G3Q3Q4646CYCY2K4E4E4E2K2K4E4E4E4E321N22223O333333333P3P3P3P2K3K6I6X6X6X6X6X4E4E2K2K2K2K2K2222221N1D1D1D002K2K2K2K3232323232324E3O3O3O2Y2Y2Y2Y2Y3O3O3O1D4E2K2K32661D1N1N22222K576R222D2D3232395F3G3Q3Q4646CYCY2K4E4E4E2K2K4E4E4E4E322222223O333333333P3P3P3P2K3K6I6X6X6X6X6X3O3O1N1N1D1D1D1D1N1N22222K2K2K001D1D1N1N22222K2K2K3O3O3O3O3O4E4E4E4E4E4E4E2K3O1N1D2K572K323232321D4F66321N1D2E2E2K4R2Q39393I3ICCCC1N3O3O3O1N1N3O4E4E4E2E1N1N1N3O2F2F2F2F2Z2Z2Z2Z1N2F575R5R5R5R5R3O3O221N1N1D1D1D1N1N22222K2K2K1D001D1D1N1N22222K2K3O3O3O3O4E4E4E4E4E4E4E4E2K3O1N1D224F32323232321D3O57321N1N2E2E2K4R2Q39393I3ICCCC223O3O4E1N224E4E4E4E2E2222223O2F2F2F2F2Z2Z2Z2Z1N2F575R5R5R5R5R3O3O22221N1N1D1N1N22222K2K2K2K1D1D001D1D1N1N22222K3O3O3O4E4E4E4E4E4E4E4E4E2K3O221N224F32323232321D3O57321Z1Z2O2O2T53303K3K3S3SCMCM223O4E4E22224E4E4E4E2O2222223O2Q2Q2Q2Q3C3C3C3C22234V59595959594E4E2I22221N1N1N22222K2K2K2K2K1N1D1D001D1D1N1N22224E4E4E4E4E4E4E4E4E4E4E4E2K4E221N1N4F32323232321D3O57321Z1Z2O2O2T53303K3K3S3SCMCM2I4E4E4E222I4E4E4E4E2O2I2I2I4E2Q2Q2Q2Q3C3C3C3C22234V59595959594E4E2I2I22221N22222K2K2K3232321N1N1D1D001D1D1N1N224E4E4E4E4E4E4E4E4E4E4E4E324E2K221N4F32323232321N3O57322I2I3232395F3G3Q3Q4646CYCY2I4E4E4E2I2I4E4E4E4E322I2I2I4E333333333U3U3U3U2I204E4O4O4O4O4O4E4E322K2K2222222K2K2K32323232221N1N1D1D001D1D1N1N4E4E4E4E4E4E4E4E4E4E4E4E324E2K221D4F323232323O1N3O573O2D2D3232395F3G3Q3Q4646CYCY324E4E4E2K324E4E4E4E322K2K2K4E333333333U3U3U3U2K1N4V59595959594E4E32322K2K222K2K2K323232323222221N1N1D1D001D1D1N4E4E4E4E4E4E4E4E4E4E4E4E324E322K1D4F3232323O3O223O573O2S2S3F3F3I623P46464U4UDEDE324E4E4E32324E4E4E4E3F3232324E3F3F3F3F4F4F4F4F321N4V59595959594E4E3232322K2K2K2K3232323232322K22221N1N1D1D001D1D4E4E4E4E4E4E4E4E4E4E4E4E324E322K1D4F32323O3O3O223O573O2S2S3F3F3I623P46464U4UDEDE324E4E4E32324E4E4E4E3F3232324E3F3F3F3F4F4F4F4F321N575R5R5R5R5R4E4E3232322K2K2K323232323232322K2K22221N1N1D1D001D4E4E4E4E4E4E4E4E4E4E4E4E324E322K1D4F323O3O3O3O2K3O573O2S2S3F3F3I623P46464U4UDEDE324E4E4E32324E4E4E4E3F3232324E3F3F3F3F4F4F4F4F321D575R5R5R5R5R4E4E3232322K2K2K323232323232322K2K2K22221N1N1D1D004E4E4E4E4E4E4E4E4E4E4E4E324E322K1D4F3O3O3O3O3O2K3O573O2S2S3F3F3I623P46464U4UDEDE324E4E4E32324E4E4E4E3F3232324E3F3F3F3F4F4F4F4F321D5S62626262621D1D2Y2Y3O3O3O3O4E4E4E4E4E4E4E3O3O3O4E4E4E4E4E4E4E001N1N1N2222222K2K2K2K2K4E1D2Y3O4E6R4E4E4E4E4E3O667R4E3I3L4R4R4W75545J5J6666EIEI2Y1D1D1N3O3O2222222K4R3O3O3O1N4S4S4S4S5S5S5S5S2Y4Y7S85858585851D1D2Y2Y3O3O3O3O4E4E4E4E4E3O3O3O3O3O4E4E4E4E4E4E4E1N001D1D1N1N22222K2K2K2K3O1D2Y3O4E6R3O4E4E4E4E3O667R4E3I3L4R4R4W75545J5J6666EIEI2Y1N1N223O3O1N2222224R3O3O3O1D4S4S4S4S5S5S5S5S2Y4Y7S85858585851N1D3O3O3O3O3O3O4E4E4E4E3O3O3O3O3O3O4E4E4E4E4E4E4E1N1D001D1D1N1N22222K2K2K3O1N3O3O4E6R3O3O4E4E4E3O667R4E3O3O4R4R4W75545J5J6666EIEI3O1N22223O3O1N2222224R3O3O3O1D4S4S4S4S5S5S5S5S3O4Y7S85858585851N1N3O3O3O3O3O4E4E4E4E3O3O3O3O3O3O4E4E4E4E4E4E4E4E1N1D1D001D1D1N1N22222K2K3O1N3O3O4E6R3O3O3O4E4E3O667R4E444E5F5F5J7R5T6E6E6T6TF4F43O2222223O3O2222222K5F3O3O3O1D5O5O5O5O6D6D6D6D3O4Y7S85858585851N1N3O3O3O3O4E4E4E4E3O3O3O2Y2Y3O4E4E4E4E4E4E4E4E4E221N1D1D001D1D1N1N2222222Y1N3O3O4E7R2Y3O3O3O4E4E6R7R4E444E5F5F5J7R5T6E6E6T6TF4F43O22222K3O3O22222K2K5F3O3O3O1N5O5O5O5O6D6D6D6D3O57858E8E8E8E8E22223O3O3O3O4E4E4E3O3O3O3O2Y2Y4E4E4E4E4E4E4E4E4E4E221N1N1D1D001D1D1N1N22222Y223O3O4E7R2Y3O3O3O3O4E6R7R3O444H5F5F5J7R5T6E6E6T6TF4F43O222K2K3O4E222K2K2K5F3O3O3O1N5O5O5O5O6D6D6D6D3O57858E8E8E8E8E22223O3O3O4E4E4E4E3O3O3O3O2Y2Y4E4E4E4E4E4E4E4E4E4E22221N1N1D1D001D1D1N1N222Y223O4E4E7R2Y3O3O3O3O4E6R7R3O444H5F5F5J7R5T6E6E6T6TF4F43O2K2K2K4E4E2K2K2K2K5F3O3O4E225O5O5O5O6D6D6D6D3O57858E8E8E8E8E22224E4E4E4E4E4E4E3O3O3O3O2Y2Y4E4E4E4E4E4E4E4E4E4E2K22221N1N1D1D001D1D1N1N2Y224E4E4E7R2Y3O3O3O3O4E6R7R3O4Q4Q5F5F5J7R5T6E6E6T6TF4F44E2K2K2K4E4E2K2K2K2K5F3O4E4E225O5O5O5O6D6D6D6D4E57858E8E8E8E8E2K2K4E4E4E4E4E4E4E4E3O3O3O2Y2Y4E4E4E4E4E4E4E4E4E4E2K2K22221N1N1D1D001D1D1D2Y2K4E4E4E7R2Y3O3O3O4E4E6R7R4E4Q4Q5F5F5J7R5T6E6E6T6TF4F44E2K2K2K4E4E2K2K2K325F4E4E4E2K5O5O5O5O6D6D6D6D4E57858E8E8E8E8E2K2K4E4E4E4E4E4E4E4E4E3O3O3O3O4E4E4E4E4E4E4E4E4E4E2K2K2K22221N1N1D1D001D1D3O2K4E4E4E7R3O3O3O4E4E4E6R7R4E4Q4Q5F5F5J7R5T6E6E6T6TF4F44E2K2K324E4E2K2K32325F4E4E4E2K5O5O5O5O6D6D6D6D4E57858E8E8E8E8E2K2K4E4E4E4E4E4E4E4E4E4E3O3O3O4E4E4E4E4E4E4E4E4E4E2K2K2K2K22221N1N1D1D001D3O2K4E4E4E7R3O3O4E4E4E4E6R7R4E4Q4Q5F5F5J7R5T6E6E6T6TF4F44E2K32324E4E2K3232325F4E4E4E2K5O5O5O5O6D6D6D6D4E57858E8E8E8E8E2K2K4E4E4E4E4E4E4E4E4E4E4E3O3O4E4E4E4E4E4E4E4E4E4E2K2K2K2K2222221N1D1D1D003O2K4E4E4E7R3O4E4E4E4E4E6R7R4E4Q4Q5F5F5J7R5T6E6E6T6TF4F44E3232324E4E323232325F4E4E4E2K5O5O5O5O6D6D6D6D4E57858E8E8E8E8E4E4E2K2K2K2K2K2K2222221N1D1D1D2K2K2K2K3232323232324E3O3O3O2Y2Y2Y2Y2Y3O3O3O004E2K2K32661D1D1N1N222K576R222S2S3F3F3I623P46464U4UDEDE2K4E4E4E2K2K4E4E4E4E3F22222K3O3F3F3F3F4F4F4F4F2K3K6I6X6X6X6X6X001D2Y2Y3O3O3O3O4E4E4E4E4E4E4E3O3O3O4E4E4E4E4E4E4E1D1D1N1N1N2222222K2K2K2K4E002Y3O4E6R4E4E4E4E4E3O667R4E3I3L4R4R4W75545J5J6666EIEI2Y1D1N1N3O3O1N2222224R3O3O3O1D4S4S4S4S5S5S5S5S2Y4Y7S85858585852Y2Y1D1D1D1D1N22222K2K2K2K2K2K1N1N22222K2K323232322Y2Y3O3O3O3O3O4E4E4E4E4E2K2Y001D32572K323232321N4F66321X253232395F3G3Q3Q4646CYCY1D3O3O3O1Q1Q3O3O3O4E321Q1Q1Q2Y333333333U3U3U3U1D2W5U65656565653O3O1N1D1D1D1D1N1N22252K2K2K2K1D1D1N1N22222K2K2K2K3O3O3O3O3O3O4E4E4E4E4E4E2K3O1D002K572K323232321D4F66321Z1Z2O2O2T53303K3K3S3SCMCM1N3O3O3O1Q1Q3O3O4E4E321Q1Q1Q3O2Q2Q2Q2Q3C3C3C3C1D2K595S5S5S5S5S4E4E3232322K2K2K2K3232323232322K22221N1N1D1D1D1D1D4E4E4E4E4E4E4E4E4E4E4E4E324E322K004F32323O3O3O223O4F3O2S2S3F3F3I623P46464U4UDEDE324E4E4E32324E4E4E4E3F3232324E3F3F3F3F4F4F4F4F321N575R5R5R5R5R6R6R57575757575757575766666666574F4F4F4F4F4F4F4F4F6R6R6R6R7R7R7R7R7R7R7R7R666R57574F006R6R6R6R6R4F324F6R65656R6R6W8Q727K7K7V7VFZFZ576R6R7R57577R7R7R7R6R5757576R6Y6Y6Y6Y7Q7Q7Q7Q575O8D8M8M8M8M8M4E4E2K2K2K2K2K2K2K2K22221N1N1D2K32323232323232323O4E3O3O3O2Y2Y2Y2Y2Y3O3O3O1D4E2K2K326R001D1D1N1N32667R1N2S2S3F3F3I623P46464U4UDEDE2K4E4E4E2K2K4E4E4E4E3F2K2K2K3O3F3F3F3F4F4F4F4F2K3M6N73737373734E4E32323232322K2K2K2K22221N1N32323232323232323O3O4E4E3O3O3O3O3O3O3O3O3O4E1D4E3232326R1D001D1D1N32667R1N2S2S3F3F3I623P46464U4UDEDE324E4E4E32324E4E4E4E3F2K2K2K4E3F3F3F3F4F4F4F4F323M6N73737373734E4E3232323232322K2K2K2K22221N323232323232323O3O3O4E4E4E3O3O3O3O3O3O3O4E4E1N4E32323O6R1D1D001D1D32667R1D3D3D3U3U3Z6K484W4W5D5DDXDX324E4E4E32324E4E4E4E3U2K2K324E3V3V3V3V4V4V4V4V323M6N73737373734E4E323232323232322K2K2K2K22223232323232323O3O3O3O4E4E4E4E3O3O3O3O3O4E4E4E1N4E32323O6R1N1D1D001D32667R1D3D3D3U3U3Z6K484W4W5D5DDXDX324E4E4E32324E4E4E4E3U2K32324E3V3V3V3V4V4V4V4V323M6N73737373734E4E32323232323232322K2K2K2K2232323232323O3O3O3O3O4E4E4E4E4E3O3O3O4E4E4E4E224E32323O6R1N1N1D1D0032667R1D3D3D3U3U3Z6K484W4W5D5DDXDX324E4E4E32324E4E4E4E3U3232324E3V3V3V3V4V4V4V4V323M6N73737373733O3O1Q1N1N1D1D1D1N1N25252K2K2K1D1D1D1D1N1N22222K2K3O3O3O3O4E4E4E4E4E4E4E4E2K3O1N1D224F3232323232003O57321Q1P2H2H2M4T2S3A3A3J3JCCCC1Q3O3O4E1Q1Q4E4E4E4E32221Q1Q3O2I2I2I2I343434341N2H4O4Y4Y4Y4Y4Y66664F4F4F4F4F4F4F4F4F575757574F3O3O3O3O3O3O3O3O3O666666666R6R6R6R6R6R6R6R57664F4F3O3266666666663O00226652525S5S6281696O6O7272F5F54F66666R4F4F6R6R6R6R5S4F4F4F665Y5Y5Y5Y6N6N6N6N4F4K7I7S7S7S7S7S7R7R6666666666666666666R6R6R6R665757575757575757577R7R7R7R7R7R7R7R7R7R7R7R6R7R66664F4F7R7R7R7R7R5722007R75757S7S7W9M828E8E8S8SGWGW667R7R7R66667R7R7R7R7S6666667R858585858P8P8P8P666K949E9E9E9E9E4E4E32323232323232322K2K2K2K2232323232323O3O3O3O3O4E4E4E4E4E3O3O3O4E4E4E4E224E32323O6R1N1N1D1D1D32667R003D3D3U3U3Z6K484W4W5D5DDXDX324E4E4E32324E4E4E4E3U3232324E3V3V3V3V4V4V4V4V323M6N73737373733I3I1B1D1N1N1N141N1N22222D2D2D1N1N1Z1Z2I2D2S2S2S2S3I3I3O444444444Q4Q4Q4Q4Q2S3I1X1Z2S652S2S3D3D3D1Q52753D00141V1V2A4C2A2S2S3434BKBK1B3O44441D1D4444444Q2T1N1N1D2Y2E2E2E2E373737371Q315U65656565653L3L1N1N1N1D1N141N1N1Z1Z2D2D2D1D1N1Z1Z2I2D2S2S2S2S3L3L3O4E4E4H4H4Q4Q4Q4Q4Q2S3L251Z2S652S2S3D3D3D1P52753D14001V1V22472A2S2S3434BKBK1N3O4E4E1N1N4E4H4H4Q2E1N1N1N3L2E2E2E2E37373737262L5A5T5T5T5T5T4R4R2T2T2O2O2E1V2E2E2O2O3232322E2E2O2O32323F3F3F3F4R4R4R5F5F5F5F5F5F5F5F5F3F4R322O3F6R3F3F3U3U3U2H5S7S3U1V1V001414281A1T1T252596962T4R5F5F2T2T5F5F5F5F142O2T2T4R141N1N1N2525252532375S64646464644R4R2T2T2O2O2E1V2E2E2O2O3232322E2E2O2O32323F3F3F3F4R4R4R5F5F5F5F5F5F5F5F5F3F4R322O3F6R3F3F3U3U3U2H5S7S3U1V1V140014281A1T1T252596962T4R5F5F2T2T5F5F5F5F1N2O2T2T4R1N1N1N1N2525252532375S64646464644W4W32322T2T2K222K2K2T2T3939392K2K2T2T39393I3I3I3I4W4W4W5J5J5J5J5J5J5J5J5J3I4W392T3I6W3I3I3Z3Z3Z2M627W3Z2A2214140025141T1T25258F8F324W5J5J32325J5J5J5J1N2T32324W1N1N1N1N252525253B3B5S646464646475754V4V4V4V4R474R4R53535F5F5F4R4R53535F5F626262627575757R7R7R7R7R7R7R7R7R62755F53628Q62626K6K6K4T819M6K4C4728282500252B2B3F3F7U7U4V757R7R4V4V7R7R7R7R2R535353752R2R2R2R333333335G5G7P7Z7Z7Z7Z7Z5454323230302Q282Q2Q30303G3G3G2Q2Q30303G3G3P3P3P3P5454545T5T5T5T5T5T5T5T5T3P543G303P723P3P4848482S6982482A2A1A1A1425001A1A1T1T8E8E32545T5T32325T5T5T5T1N303232541N1N1N1N252525253H3H5Y69696969695J5J3Q3Q3K3K392R39393K3K3Q3Q3Q39393K3K3Q3Q464646465J5J5J6E6E6E6E6E6E6E6E6E465J3Q3K467K46464W4W4W3A6O8E4W2S2S1T1T1T2B1A00141A1A80803Q5J6E6E3Q3Q6E6E6E6E253K3Q3Q5J25252525252525253R3R6A6L6L6L6L6L5J5J3Q3Q3K3K392R39393K3K3Q3Q3Q39393K3K3Q3Q464646465J5J5J6E6E6E6E6E6E6E6E6E465J3Q3K467K46464W4W4W3A6O8E4W2S2S1T1T1T2B1A14001A1A80803Q5J6E6E3Q3Q6E6E6E6E253K3Q3Q5J25252525252525253R3R6A6L6L6L6L6L666645453S3S3I333I3I3S3S4646463I3I3S3S46464U4U4U4U6666666T6T6T6T6T6T6T6T6T4U66463S4U7V4U4U5D5D5D3J728S5D34342525253F1T1A1A00147D7D45666T6T45456T6T6T6T253S454566252525252525252548486O6Y6Y6Y6Y6Y666645453S3S3I333I3I3S3S4646463I3I3S3S46464U4U4U4U6666666T6T6T6T6T6T6T6T6T4U66463S4U7V4U4U5D5D5D3J728S5D34342525253F1T1A1A14007D7D45666T6T45456T6T6T6T253S454566252525252525252548486O6Y6Y6Y6Y6YEIEICBCYCMCMCCBJCCCCCMCMCYCYCYCCCCCMCMCYCYDEDEDEDEEIEIEIF4F4F4F4F4F4F4F4F4DEEICYCMDEFZDEDEDXDXDXCCF5GWDXBKBK96968F7U8E80807D7D007DCBEIF4F4CYCYF4F4F4F496CMCYCYEI9696969696969696CZDJG0GGGGGGGGGGEIEICBCYCMCMCCBJCCCCCMCMCYCYCYCCCCCMCMCYCYDEDEDEDEEIEIEIF4F4F4F4F4F4F4F4F4DEEICYCMDEFZDEDEDXDXDXCCF5GWDXBKBK96968F7U8E80807D7D7D00CBEIF4F4CYCYF4F4F4F496CMCYCYEI9696969696969696CZDJG0GGGGGGGGGG2Y2Y001D1D1N22222K2K2K2K2K2K2K1N22222I2I32323232322Y2Y3O3O3O3O3O4E4E4E4E4E2K2Y1D1N32572K323232321Q4F66321B1N2T2T324V323Q3Q4545CBCB003O3O3O1N1N3O3O3O4E2T221N1N2Y333333333Y3Y3Y3Y1D315U65656565651D1N3O3O3O3O3O3O4E4E4E4E4E4E4E3O3O3O4E4E4E4E4E4E4E1D1N1N2222222K2K2K2K2K324E1D3O3O4E6R4E4E4E4E4E3O667R4E3O3O4R4R4W75545J5J6666EIEI3O001D1D3O3O22222K2K4R3O3O3O1N4S4S4S4S5S5S5S5S3O4Y7S85858585851N1N3O3O3O3O3O4E4E4E4E4E4E4E4E3O3O4E4E4E4E4E4E4E4E1D1N2222222K2K2K2K2K32324E1N3O3O4E6R4E4E4E4E4E3O667R4E444E5F5F5J7R5T6E6E6T6TF4F43O1D001D3O3O222K2K2K5F4E3O3O1N5O5O5O5O6D6D6D6D3O4Y7S85858585851N1N3O3O3O3O4E4E4E4E4E4E4E4E4E3O4E4E4E4E4E4E4E4E4E1N2222222K2K2K2K2K3232324E1N3O3O4E7R4E4E4E4E4E4E6R7R4E444E5F5F5J7R5T6E6E6T6TF4F43O1D1D003O3O2K2K2K2K5F4E4E3O225O5O5O5O6D6D6D6D3O57858E8E8E8E8E3O3O1N1D1D1D1N22222K2K2K2K2K2K1N1N22222I2K323232323O3O3O3O3O3O4E4E4E4E4E4E2K3O1Q1Q32572K323232321Q4F66321D1N2T2T324V323Q3Q4545CYCY1N3O3O3O001D3O3O4E4E2T1N1D1D3O333333333P3P3P3P1Q315U65656565653O3O1N1N1D1N22222K2K2K2K2K2K2K1N22222I2I32323232323O3O3O3O3O4E4E4E4E4E4E4E2K3O1Q1Q32572K323232321Q4F66321D1N2T2T324V323Q3Q4545CYCY1N3O3O3O1D003O4E4E4E2T1N1N1D3O333333333Y3Y3Y3Y1Q315U65656565651N1N3O3O3O3O4E4E4E4E4E4E4E4E4E3O4E4E4E4E4E4E4E4E4E221N1N2222222K2K2K2K2K324E1N3O3O4E7R4E4E4E4E4E4E6R7R4E444E5F5F5J7R5T6E6E6T6TF4F43O22222K3O3O001D1D1N5F4E3O3O1N5O5O5O5O6D6D6D6D3O57858E8E8E8E8E22223O3O3O3O4E4E4E4E4E4E4E4E4E4E4E4E4E4E4E4E4E4E4E22222222222K2K2K2K2K32324E223O3O4E7R4E4E4E4E4E4E6R7R4E444H5F5F5J7R5T6E6E6T6TF4F43O222K2K3O4E1D001D1D5F4E4E3O225O5O5O5O6D6D6D6D3O57858E8E8E8E8E22223O3O3O4E4E4E4E4E4E4E4E4E4E4E4E4E4E4E4E4E4E4E4E222222222K2K2K2K2K3232324E223O4E4E7R4E4E4E4E4E4E6R7R4E444H5F5F5J7R5T6E6E6T6TF4F43O2K2K2K4E4E1D1D001D5F4E4E4E225O5O5O5O6D6D6D6D3O57858E8E8E8E8E22224E4E4E4E4E4E4E4E4E4E4E4E4E4E4E4E4E4E4E4E4E4E4E2K22222K2K2K2K2K323232324E224E4E4E7R4E4E4E4E4E4E6R7R4E4Q4Q5F5F5J7R5T6E6E6T6TF4F44E2K2K2K4E4E1N1D1D005F4E4E4E225O5O5O5O6D6D6D6D4E57858E8E8E8E8E4R4R2T2T2O2O2E2E2E2E2E2O3232322E2E2O2O32323F3F3F3F4R4R4R5F5F5F5F5F5F5F5F5F3F4R32323F6R3F3F3U3U3U325S7S3U2T2E141N1N2R1N2525252596962T4R5F5F2T2T5F5F5F5F002O2T2T4R1N1N1N1N2525252532375S64646464643O3O22221N221N1N1N1D1D1D1N1N221N22222I2I2K323232323O3O3O3O3O3O3O3O4E4E4E4E223O1Q1Q32572K2K2K2K32224F66321N1N2O2O2T53303K3K3S3SCMCM223O4E4E1N1N4E4E4E4E2O001D1D3O2Q2Q2Q2Q3C3C3C3C22315W67676767673O3O1N1N1N1N1N1N1N1N1D1N1N22221N22222I2I2K323232323O3O3O3O3O3O3O4E4E4E4E4E223O1Q1Q32572K2K2K32321Q4F66321N1N2T2T3253323Q3Q4545CYCY1N3O3O4E1D1N3O4E4E4E2T1D001D3O333333333P3P3P3P1Q315W67676767673O3O1N1N1D1N1N1N221N1N1N2222221N22222I2I2K323232323O3O3O3O3O3O4E4E4E4E4E4E2K3O1Q1Q32572K2K3232321Q4F66321D1N2T2T3253323Q3Q4545CYCY1N3O3O3O1D1D3O3O4E4E2T1D1D003O333333333P3P3P3P1Q315W67676767671D1D2Y2Y3O3O3O3O4E4E4E4E4E3O3O3O3O3O4E4E4E4E4E4E4E1N1D1D1D1N1N22222K2K2K2K3O1D2Y3O4E6R3O4E4E4E4E3O667R4E2Y3L4R4R4W75545J5J6666EIEI2Y1N1N223O3O1N2222224R3O3O3O004S4S4S4S5S5S5S5S2Y4Y7S85858585854S4S33332Q2Q2F292F2F2Q2Q3333332F2F2Q2Q33333F3F3F3F4S4S4S5O5O5O5O5O5O5O5O5O3F4S332Q3F6Y3F3F3V3V3V2I5Y853V2E2E141N1N2R1N252525259696334S5O5O33335O5O5O5O1N2Q33334S00141A1A1N1N1N1N333B5Y69696969694S4S33332Q2Q2F292F2F2Q2Q3333332F2F2Q2Q33333F3F3F3F4S4S4S5O5O5O5O5O5O5O5O5O3F4S332Q3F6Y3F3F3V3V3V2I5Y853V2E2E1N1N1N2R1N252525259696334S5O5O33335O5O5O5O1N2Q33334S1400141A1N1N1N1N333B5Y69696969694S4S33332Q2Q2F292F2F2Q2Q3333332F2F2Q2Q33333F3F3F3F4S4S4S5O5O5O5O5O5O5O5O5O3F4S332Q3F6Y3F3F3V3V3V2I5Y853V2E2E1N1N1N2R1N252525259696334S5O5O33335O5O5O5O1N2Q33334S1A1400141N1N1N1N333B5Y69696969694S4S33332Q2Q2F292F2F2Q2Q3333332F2F2Q2Q33333F3F3F3F4S4S4S5O5O5O5O5O5O5O5O5O3F4S332Q3F6Y3F3F3V3V3V2I5Y853V2E2E1N1N1N2R1N252525259696334S5O5O33335O5O5O5O1N2Q33334S1A1A1400141N1N1N333B5Y69696969695S5S3Y3P3C3C2Z2Z2Z2Z3C3C3P3P3P2Z2Z3C3C3U3U4F4F4F4F5S5S5S6D6D6D6D6D6D6D6D6D4F5S3U3C4F7Q4F4F4V4V4V346N8P4V373725252533252525252596963Y5S6D6D3P3Y6D6D6D6D253C3P3P5S1N1N1N1400141A1A3U3Z6L6V6V6V6V6V5S5S3Y3P3C3C2Z2Z2Z2Z3C3C3P3P3P2Z2Z3C3C3U3U4F4F4F4F5S5S5S6D6D6D6D6D6D6D6D6D4F5S3U3C4F7Q4F4F4V4V4V346N8P4V373725252533252525252596963Y5S6D6D3P3Y6D6D6D6D253C3P3P5S1N1N1N1N1400141A3U3Z6L6V6V6V6V6V5S5S3Y3P3C3C2Z2Z2Z2Z3C3C3P3P3P2Z2Z3C3C3U3U4F4F4F4F5S5S5S6D6D6D6D6D6D6D6D6D4F5S3U3C4F7Q4F4F4V4V4V346N8P4V373725252533252525252596963Y5S6D6D3P3Y6D6D6D6D253C3P3P5S1N1N1N1N1A1400143U3Z6L6V6V6V6V6V5S5S3Y3P3C3C2Z2Z2Z2Z3C3C3P3P3P2Z2Z3C3C3U3U4F4F4F4F5S5S5S6D6D6D6D6D6D6D6D6D4F5S3U3C4F7Q4F4F4V4V4V346N8P4V373725252533252525252596963Y5S6D6D3P3Y6D6D6D6D253C3P3P5S1N1N1N1N1A1A14003U3Z6L6V6V6V6V6V2Y2Y1D1D1D1D1N22222K2K2K2K2K2K1N1N22222I2K323232322Y2Y3O3O3O3O3O4E4E4E4E4E2K2Y1D1D32572K323232321N4F66321Q2632323B5G3H3R3R4848CZCZ1D3O3O3O1Q1Q3O3O3O4E32221Q1Q2Y333333333U3U3U3U002W5U65656565654Y4Y31312W2K2F2K2S2U31313K3K3K2F2F2323201N1N1N1D1D4Y4Y4Y4Y57575757575757573K4Y2W2K1N5O3M3M3M3M3M2H4K6K3M312L37373B5G3H3R3R4848DJDJ314Y4Y57313157575757373131314Y3B3B3B3B3Z3Z3Z3Z2W003S45454545457S7S5U5U5U5957595R5R5W5W6I6I6I57574V4V4E4V4V57575S7S7S7S7S85858585858585856I7S5U59578D6N6N6N6N6N4O7I946N5U5A5S5S5S7P5Y6A6A6O6OG0G05U7S7S855U5U858585855S5W5W5W7S5Y5Y5Y5Y6L6L6L6L5U3S001H1S1T202B85856565655S5R5S616167676X6X6X5R5R59594O59595R5R62858585858E8E8E8E8E8E8E8E6X85655S5R8M73737373734Y7S9E73655T6464647Z696L6L6Y6YGGGG6585858E65658E8E8E8E6467676785696969696V6V6V6V65451H001H1I1M1Z85856565655S5R5S616167676X6X6X5R5R59594O59595R5R62858585858E8E8E8E8E8E8E8E6X85655S5R8M73737373734Y7S9E73655T6464647Z696L6L6Y6YGGGG6585858E65658E8E8E8E6467676785696969696V6V6V6V65451S1H001H1M1S85856565655S5R5S616167676X6X6X5R5R59594O59595R5R62858585858E8E8E8E8E8E8E8E6X85655S5R8M73737373734Y7S9E73655T6464647Z696L6L6Y6YGGGG6585858E65658E8E8E8E6467676785696969696V6V6V6V65451T1I1H001I1M85856565655S5R5S616167676X6X6X5R5R59594O59595R5R62858585858E8E8E8E8E8E8E8E6X85655S5R8M73737373734Y7S9E73655T6464647Z696L6L6Y6YGGGG6585858E65658E8E8E8E6467676785696969696V6V6V6V6545201M1M1I001H85856565655S5R5S616167676X6X6X5R5R59594O59595R5R62858585858E8E8E8E8E8E8E8E6X85655S5R8M73737373734Y7S9E73655T6464647Z696L6L6Y6YGGGG6585858E65658E8E8E8E6467676785696969696V6V6V6V65452B1Z1S1M1H00","mtrStudent":"000W1I1I1T1T1T1T222222222222221T1T1T222222222222220W0W0W0W0W1111111818181822001I1T223H22222222221T333Y221N1S2E2E2J3Q2K2T2T3838CSCS1I0W0W0W1T1T0W1111112E1T1T1T0W2F2F2F2F2W2W2W2W1I2J3Z48484848480W001I1I1T1T1T1T222222222222221T1T1T222222222222220W0W0W0W0W11111118181818220W1I1T223H22222222221T333Y221N1S2E2E2J3Q2K2T2T3838CSCS1I0W0W0W1T1T0W1111112E1T1T1T0W2F2F2F2F2W2W2W2W1I2J3Z48484848481I1I000W0W0W1111181818181818180W111113131D1D1D1D1D1I1I1T1T1T1T1T2222222222181I0W0W1D2M181D1D1D1D0Y25331D0M0S1F1F1I2E1I1T1T2121C6C6001T1T1T0W0W1T1T1T221F110W0W1I1J1J1J1J202020200W1L3237373737371I1I0W000W0W0W11111818181818180W0W111113181D1D1D1D1I1I1T1T1T1T1T2222222222181I0W0W1D2M181D1D1D1D0W25331D0S0W1F1F1K2J1K1X1X2121C5C50W1T1T1T0W0W1T1T1T221F110W0W1I1J1J1J1J1T1T1T1T0W1L3237373737371T1T0W0W000W0W0W111118181818180W0W0W111118181D1D1D1T1T1T1T1T1T1T2222222222181T0W0W1D2M181D1D1D1D0W25331D0S0S1A1A1H2J1I1S1S1Z1ZBZBZ0W1T1T1T0W0W1T1T1T221A0W0W0W1T1D1D1D1D1O1O1O1O0W1H3237373737371T1T0W0W0W000W0W0W1111181818180W0W0W0W1111181818181T1T1T1T1T1T222222222222181T0W0W182M181D1D1D1D0W25331D0S0M1A1A1H2J1I1S1S1Z1ZBZBZ0W1T1T1T0W0W1T1T22221A110W0W1T1D1D1D1D1O1O1O1O0W1F2S32323232321T1T110W0W0W000W0W0W0W111118180W0W0W0W0W11111818181T1T1T1T2222222222222222181T0W0W182M181D1D1D1D0W25331D0Y0Y1A1A1H2K1I1S1S1Z1ZBZBZ111T1T220W11222222221A0W0W0W1T1D1D1D1D1O1O1O1O0W172M2W2W2W2W2W1T1T11110W0W0W000W0W0W0W1111110W0W0W0W1111181818181T1T1T222222222222222222181T110W182M18181D1D1D0W25331D0E0E0X0X1124131E1E1J1JBJBJ111T22221111222222221A0W0W0W1T141414141I1I1I1I111F2S323232323222221811110W0W0W000W0W0W0W11110W0W0W11111818181D1D2222222222222222222222221122110W182M1818181D1D0W25331D0Y0Y1A1A1H2K1I1S1S1Z1ZBZBZ182222221118222222221A0W0W11221D1D1D1D1O1O1O1O111F2W32323232322222181811110W0W0W000W0W0W0W110W0W11111818181D1D1D22222222221T1T1T22222222112218111D2M181818181D0W25331D0Y0Y1A1A1H2K1I1S1S1Z1ZBZBZ182222221818222222221A0W0W0W221D1D1D1D1O1O1O1O181H2W32323232322222181818110W0W0W0W000W0W0W0W1111111818181D1D1D1D222222221T1T1T1T1T222222112218121D2M1118181818122533180Z0Y1A1A1H2K1I1S1S1Z1ZBZBZ182222221818222222221A0W0W0W221D1D1D1D1O1O1O1O181L343939393939222218181818110W0W0W0W000W0W0W11111818181D1D1D1D1D2222221T1T1T1T1T1T1T22220W2218181D331111181818122M3H180Z0Y1A1A1H2K1I1S1S1Z1ZBZBZ182222221818222222221A0W0W0W221D1D1D1D1O1O1O1O181L35393939393922221818181811110W0W0W0W000W0W181818181D1D1D1D1D1D22221T1T1T1T1T1T1T1T1T220W2218181D330W11111818182M3H1813131I1I1N2R1P1X1X2424C5C5182222221818222222221I0W0W11221K1K1K1K1T1T1T1T181N393I3I3I3I3I2222181818181811110W0W0W0W000W181818181D1D1D1D1D1D221T1T1T1I1I1I1I1I1T1T1T0W2218181D330W0W111118182M3H1813131I1I1N2R1P1X1X2424C5C5182222221818222222221I0W11111T1K1K1K1K1T1T1T1T181N393I3I3I3I3I222218181818181111110W0W0W0W00181818181D1D1D1D1D1D221T1T1T1I1I1I1I1I1T1T1T0W2218181D330W0W0W1111182M3H1113131I1I1N2R1P1X1X2424C5C5182222221818222222221I1111111T1K1K1K1K1T1T1T1T181N393I3I3I3I3I1T1T0W0W0W0W0W0W0W0W1111181818000W0W0W0W11111818181T1T1T1T1T22222222222222181T0W0W182M181D1D1D1D0W25331D0Y0S1A1A1H2K1I1S1S1Z1ZBZBZ0W1T1T1T0W0W1T2222221A0W0W0W1T1D1D1D1D1O1O1O1O0W172M2W2W2W2W2W1T1T110W0W0W0W0W0W0W11111818180W000W0W0W0W111118181T1T1T1T2222222222222222181T0W0W11251D1D1D1D1D0W1T2M1D0Y0Y1A1A1H2K1I1S1S1Z1ZBZBZ111T1T220W11222222221A1111111T1D1D1D1D1O1O1O1O0W172M2W2W2W2W2W1T1T11110W0W0W0W0W1111181818180W0W000W0W0W0W1111181T1T1T222222222222222222181T110W11251D1D1D1D1D0W1T2M1D0Y0Y1A1A1H2K1I1S1S1Z1ZBZBZ111T22221111222222221A1111111T1D1D1D1D1O1O1O1O11172M2S2S2S2S2S22221311110W0W0W111118181818180W0W0W000W0W0W0W11112222222222222222222222221822110W0W251D1D1D1D1D0W1T2M1D0Y0Y1A1A1H2K1I1S1S1Z1ZBZBZ132222221113222222221A131313221D1D1D1D1O1O1O1O11172M2S2S2S2S2S2222131311110W11111818181D1D1D0W0W0W0W000W0W0W0W112222222222222222222222221D2218110W251D1D1D1D1D0S1T2M1D13131I1I1N2R1P1X1X2424C5C5132222221313222222221I131313221K1K1K1K1V1V1V1V130Z242D2D2D2D2D22221D18181111111818181D1D1D1D110W0W0W0W000W0W0W0W2222222222222222222222221D2218110W251D1D1D1D1T0W1T2M1T13131I1I1N2R1P1X1X2424C5C51D222222181D222222221I181818221K1K1K1K1V1V1V1V18112M2S2S2S2S2S22221D1D1818111818181D1D1D1D1D11110W0W0W0W000W0W0W2222222222222222222222221D221D180W251D1D1D1T1T111T2M1T1A1A1N1N1Q321T23232F2FCBCB1D2222221D1D222222221N1D1D1D221O1O1O1O242424241D112M2S2S2S2S2S22221D1D1D181818181D1D1D1D1D1D1811110W0W0W0W000W0W2222222222222222222222221D221D180W251D1D1T1T1T111T2M1T1A1A1N1N1Q321T23232F2FCBCB1D2222221D1D222222221N1D1D1D221O1O1O1O242424241D0W2M2W2W2W2W2W22221D1D1D1818181D1D1D1D1D1D1D181811110W0W0W0W000W2222222222222222222222221D221D180W251D1T1T1T1T181T2M1T1A1A1N1N1Q321T23232F2FCBCB1D2222221D1D222222221N1D1D1D221O1O1O1O242424241D0Q2M2W2W2W2W2W22221D1D1D1818181D1D1D1D1D1D1D18181811110W0W0W0W002222222222222222222222221D221D180W251T1T1T1T1T181T2M1T1A1A1N1N1Q321T23232F2FCBCB1D2222221D1D222222221N1D1D1D221O1O1O1O242424241D0M2W33333333330W0W1I1I1T1T1T1T222222222222221T1T1T22222222222222000W0W0W1111111818181818220W1I1T223H22222222221T333Y221N1S2E2E2J3Q2K2T2T3838CSCS1I0W0W0W1T1T111111182E1T1T1T0W2F2F2F2F2W2W2W2W1I2J3Z48484848480W0W1I1I1T1T1T1T22222222221T1T1T1T1T222222222222220W000W0W0W0W1111181818181T0W1I1T223H1T222222221T333Y221N1S2E2E2J3Q2K2T2T3838CSCS1I0W0W111T1T0W1111112E1T1T1T0W2F2F2F2F2W2W2W2W1I2J3Z48484848480W0W1T1T1T1T1T1T222222221T1T1T1T1T1T222222222222220W0W000W0W0W0W11111818181T0W1T1T223H1T1T2222221T333Y221S1S2E2E2J3Q2K2T2T3838CSCS1T0W11111T1T0W1111112E1T1T1T0W2F2F2F2F2W2W2W2W1T2J3Z48484848480W0W1T1T1T1T1T222222221T1T1T1T1T1T22222222222222220W0W0W000W0W0W0W111118181T0W1T1T223H1T1T1T22221T333Y2220222M2M2Q3V2S38383G3GCZCZ1T1111111T1T111111182M1T1T1T0W2R2R2R2R363636361T2J3Z48484848480W0W1T1T1T1T222222221T1T1T1I1I1T222222222222222222110W0W0W000W0W0W0W1111111I0W1T1T223Y1I1T1T1T22223H3Y2220222M2M2Q3V2S38383G3GCZCZ1T1111181T1T111118182M1T1T1T0W2R2R2R2R363636361T2J444E4E4E4E4E11111T1T1T1T2222221T1T1T1T1I1I22222222222222222222110W0W0W0W000W0W0W0W11111I111T1T223Y1I1T1T1T1T223H3Y1T20242M2M2Q3V2S38383G3GCZCZ1T1118181T22111818182M1T1T1T0W2R2R2R2R363636361T2J444E4E4E4E4E11111T1T1T222222221T1T1T1T1I1I2222222222222222222211110W0W0W0W000W0W0W0W111I111T22223Y1I1T1T1T1T223H3Y1T20242M2M2Q3V2S38383G3GCZCZ1T1818182222181818182M1T1T22112R2R2R2R363636361T2J444E4E4E4E4E1111222222222222221T1T1T1T1I1I222222222222222222221811110W0W0W0W000W0W0W0W1I112222223Y1I1T1T1T1T223H3Y1T26262M2M2Q3V2S38383G3GCZCZ221818182222181818182M1T2222112R2R2R2R36363636222J444E4E4E4E4E181822222222222222221T1T1T1I1I22222222222222222222181811110W0W0W0W000W0W0W1I182222223Y1I1T1T1T22223H3Y2226262M2M2Q3V2S38383G3GCZCZ2218181822221818181D2M222222182R2R2R2R36363636222J444E4E4E4E4E18182222222222222222221T1T1T1T2222222222222222222218181811110W0W0W0W000W0W1T182222223Y1T1T1T2222223H3Y2226262M2M2Q3V2S38383G3GCZCZ2218181D222218181D1D2M222222182R2R2R2R36363636222J444E4E4E4E4E1818222222222222222222221T1T1T222222222222222222221818181811110W0W0W0W000W1T182222223Y1T1T222222223H3Y2226262M2M2Q3V2S38383G3GCZCZ22181D1D2222181D1D1D2M222222182R2R2R2R36363636222J444E4E4E4E4E181822222222222222222222221T1T22222222222222222222181818181111110W0W0W0W001T182222223Y1T22222222223H3Y2226262M2M2Q3V2S38383G3GCZCZ221D1D1D22221D1D1D1D2M222222182R2R2R2R36363636222J444E4E4E4E4E22221818181818181111110W0W0W0W181818181D1D1D1D1D1D221T1T1T1I1I1I1I1I1T1T1T002218181D330W0W0W0W11182M3H111A1A1N1N1Q321T23232F2FCBCB182222221818222222221N1111181T1O1O1O1O24242424181N393I3I3I3I3I000W1I1I1T1T1T1T222222222222221T1T1T222222222222220W0W0W0W0W1111111818181822001I1T223H22222222221T333Y221N1S2E2E2J3Q2K2T2T3838CSCS1I0W0W0W1T1T0W1111112E1T1T1T0W2F2F2F2F2W2W2W2W1I2J3Z48484848481I1I0W0W0W0W0W11111818181818180W0W111118181D1D1D1D1I1I1T1T1T1T1T2222222222181I000W1D2M181D1D1D1D0W25331D11131I1I1N2R1P1X1X2424C5C50W1T1T1T10101T1T1T221I1010101I1K1K1K1K1V1V1V1V0W1H3137373737371T1T0W0W0W0W0W0W0W1112181818180W0W0W0W1111181818181T1T1T1T1T1T222222222222181T0W00182M181D1D1D1D0W25331D0Y0Y1A1A1H2K1I1S1S1Z1ZBZBZ0W1T1T1T10101T1T22221I1010101T1D1D1D1D1O1O1O1O0W1F2S323232323222221D1D1D181818181D1D1D1D1D1D1811110W0W0W0W0W0W0W2222222222222222222222221D221D1800251D1D1T1T1T111T251T1A1A1N1N1Q321T23232F2FCBCB1D2222221D1D222222221N1D1D1D221O1O1O1O242424241D0W2M2W2W2W2W2W3H3H2M2M2M2M2M2M2M2M2M333333332M2525252525252525253H3H3H3H3Y3Y3Y3Y3Y3Y3Y3Y333H2M2M25003H3H3H3H3H251D253H32323H3H3L4M3O3U3U4444DJDJ2M3H3H3Y2M2M3Y3Y3Y3Y3H2M2M2M3H3L3L3L3L3W3W3W3W2M2U4H4L4L4L4L4L2222181818181818181811110W0W0W181D1D1D1D1D1D1D1D1T221T1T1T1I1I1I1I1I1T1T1T0W2218181D3H000W0W0W0W1D333Y0W1A1A1N1N1Q321T23232F2FCBCB182222221818222222221N1818181T1O1O1O1O24242424181N393I3I3I3I3I22221D1D1D1D1D1818181811110W0W1D1D1D1D1D1D1D1D1T1T22221T1T1T1T1T1T1T1T1T220W221D1D1D3H0W000W0W0W1D333Y0W1A1A1N1N1Q321T23232F2FCBCB1D2222221D1D222222221N181818221O1O1O1O242424241D1N393I3I3I3I3I22221D1D1D1D1D1D1818181811110W1D1D1D1D1D1D1D1T1T1T2222221T1T1T1T1T1T1T22220W221D1D1T3H0W0W000W0W1D333Y0W1H1H1Q1Q1T381Z29292K2KCECE1D2222221D1D222222221Q18181D221S1S1S1S282828281D1N393I3I3I3I3I22221D1D1D1D1D1D1D1818181811111D1D1D1D1D1D1T1T1T1T222222221T1T1T1T1T2222220W221D1D1T3H0W0W0W000W1D333Y0W1H1H1Q1Q1T381Z29292K2KCECE1D2222221D1D222222221Q181D1D221S1S1S1S282828281D1N393I3I3I3I3I22221D1D1D1D1D1D1D1D18181818111D1D1D1D1D1T1T1T1T1T22222222221T1T1T2222222211221D1D1T3H0W0W0W0W001D333Y0W1H1H1Q1Q1T381Z29292K2KCECE1D2222221D1D222222221Q1D1D1D221S1S1S1S282828281D1N393I3I3I3I3I1T1T0Y0W0W0W0W0W0W0W12121818180W0W0W0W0S0W111118181T1T1T1T2222222222222222181T0W0W11251D1D1D1D1D001T2M1D100Y1C1C1I2L1K1T1T2020BZBZ0Y1T1T221010222222221I1110101T1F1F1F1F1Q1Q1Q1Q0W162D2H2H2H2H2H33332525252525252525252M2M2M2M251T1T1T1T1T1T1T1T1T333333333H3H3H3H3H3H3H3H2M3325251T1D33333333331T0011332J2J2U2U3346383H3H3P3PD4D42533333H25253H3H3H3H2U25252533303030303G3G3G3G25283T3Z3Z3Z3Z3Z3Y3Y3333333333333333333H3H3H3H332M2M2M2M2M2M2M2M2M3Y3Y3Y3Y3Y3Y3Y3Y3Y3Y3Y3Y3H3Y333325253Y3Y3Y3Y3Y2M11003Y3O3O3Y3Y4454454I4I4M4MDZDZ333Y3Y3Y33333Y3Y3Y3Y3Y3333333Y464646464L4L4L4L333D4S4Y4Y4Y4Y4Y22221D1D1D1D1D1D1D1D18181818111D1D1D1D1D1T1T1T1T1T22222222221T1T1T2222222211221D1D1T3H0W0W0W0W0W1D333Y001H1H1Q1Q1T381Z29292K2KCECE1D2222221D1D222222221Q1D1D1D221S1S1S1S282828281D1N393I3I3I3I3I1N1N0M0S0S0S0Y0E0Y0Y0Z0Z1313130Y0Y0Y0Y13131A1A1A1A1N1N1S2020202026262626261A1N110Y1A321A1A1H1H1H102J3O1H000E0Y0Y1426141G1G1J1JBKBK0M1S20200W0W202020261F0W0W0W1I151515151K1K1K1K101L3237373737371S1S0S0W0S0M0Y0E0Y0Y0Y0Y1313130S0Y0Y0Y13131A1A1A1A1S1S1S2222242426262626261A1S130Y1A321A1A1H1H1H0Y2J3O1H0E000Y0Y1124141G1G1J1JBKBK0S1S22220W0W222424261A0W0W0W1S151515151K1K1K1K141F2S32323232322E2E1F1F1A1A1A0X1A1A1A1A1I1I1I1A1A1A1A1I1I1N1N1N1N2E2E2E2M2M2M2M2M2M2M2M2M1N2E1I1A1N3H1N1N1Q1Q1Q1C2U3Y1Q0Y0Y000E0E130M0X0X121296961F2E2M2M1F1F2M2M2M2M0J1A1F1F2E0J0S0S0S121212121I1P363A3A3A3A3A2E2E1F1F1A1A1A0X1A1A1A1A1I1I1I1A1A1A1A1I1I1N1N1N1N2E2E2E2M2M2M2M2M2M2M2M2M1N2E1I1A1N3H1N1N1Q1Q1Q1C2U3Y1Q0Y0Y0E000E130M0X0X121296961F2E2M2M1F1F2M2M2M2M0S1A1F1F2E0S0S0S0S121212121I1P363A3A3A3A3A2J2J1I1K1H1H1H111H1H1H1H1N1N1N1H1H1H1H1N1N1Q1Q1Q1Q2J2J2J2Q2Q2Q2Q2Q2Q2Q2Q2Q1Q2J1N1H1Q3L1Q1Q1T1T1T1I33441T14110E0E00120E0X0X12128F8F1I2J2Q2Q1K1K2Q2Q2Q2Q0S1H1K1K2J0S0S0S0S121212121N1S363A3A3A3A3A3Q3Q2E2J2J2J2K242K2K2K2K2R2R2R2K2K2K2K2R2R323232323Q3Q3Q3V3V3V3V3V3V3V3V3V323Q2R2K324M32323838382L4654382624131312001214141N1N7U7U2E3Q3V3V2J2J3V3V3V3V1F2K2K2K3Q1F1F1F1F1I1I1I1I2S2W464F4F4F4F4F2K2K1I1K1I1I1I131I1I1I1I1P1P1P1I1I1I1I1P1P1T1T1T1T2K2K2K2S2S2S2S2S2S2S2S2S1T2K1P1I1T3O1T1T1Z1Z1Z1K38451Z14140M0M0E12000M0M0W0W8E8E1I2K2S2S1K1K2S2S2S2S0S1I1K1K2K0S0S0S0S121212121Q1T383D3D3D3D3D2T2T1T1X1S1S1S1E1S1S1S1S1X1X1X1S1S1S1S1X1X232323232T2T2T383838383838383838232T1X1S233U23232929291T3H4I291G1G0X0X0X140M000E0M0M80801T2T38381X1X38383838121S1X1X2T12121212121212121Z203G3L3L3L3L3L2T2T1T1X1S1S1S1E1S1S1S1S1X1X1X1S1S1S1S1X1X232323232T2T2T383838383838383838232T1X1S233U23232929291T3H4I291G1G0X0X0X140M0E000M0M80801T2T38381X1X38383838121S1X1X2T12121212121212121Z203G3L3L3L3L3L383821211Z1Z1Z1J1Z1Z1Z1Z2424241Z1Z1Z1Z24242F2F2F2F3838383G3G3G3G3G3G3G3G3G2F38241Z2F442F2F2K2K2K203P4M2K1J1J1212121N0W0M0M000E7D7D21383G3G21213G3G3G3G121Z212138121212121212121225293N3S3S3S3S3S383821211Z1Z1Z1J1Z1Z1Z1Z2424241Z1Z1Z1Z24242F2F2F2F3838383G3G3G3G3G3G3G3G3G2F38241Z2F442F2F2K2K2K203P4M2K1J1J1212121N0W0M0M0E007D7D21383G3G21213G3G3G3G121Z212138121212121212121225293N3S3S3S3S3SCSCSC6C5BZBZBZBJBZBZBZBZC5C5C5BZBZBZBZC5C5CBCBCBCBCSCSCSCZCZCZCZCZCZCZCZCZCBCSC5BZCBDJCBCBCECECEBZD4DZCEBKBK96968F7U8E80807D7D007DC6CSCZCZC5C5CZCZCZCZ96BZC5C5CS9696969696969696C6CZFHG0G0G0G0G0CSCSC6C5BZBZBZBJBZBZBZBZC5C5C5BZBZBZBZC5C5CBCBCBCBCSCSCSCZCZCZCZCZCZCZCZCZCBCSC5BZCBDJCBCBCECECEBZD4DZCEBKBK96968F7U8E80807D7D7D00C6CSCZCZC5C5CZCZCZCZ96BZC5C5CS9696969696969696C6CZFHG0G0G0G0G01I1I000W0W0W1111181818181818180W111113131D1D1D1D1D1I1I1T1T1T1T1T2222222222181I0W0W1D2M181D1D1D1D0Y25331D0M0S1F1F1I2E1I1T1T2121C6C6001T1T1T0W0W1T1T1T221F110W0W1I1J1J1J1J202020200W1L3237373737370W0W1T1T1T1T1T1T222222222222221T1T1T222222222222220W0W0W11111118181818181D220W1T1T223H22222222221T333Y221S1S2E2E2J3Q2K2T2T3838CSCS1T000W0W1T1T111118182E1T1T1T0W2F2F2F2F2W2W2W2W1T2J3Z48484848480W0W1T1T1T1T1T22222222222222221T1T22222222222222220W0W11111118181818181D1D220W1T1T223H22222222221T333Y2220222M2M2Q3V2S38383G3GCZCZ1T0W000W1T1T111818182M221T1T0W2R2R2R2R363636361T2J3Z48484848480W0W1T1T1T1T2222222222222222221T2222222222222222220W11111118181818181D1D1D220W1T1T223Y2222222222223H3Y2220222M2M2Q3V2S38383G3GCZCZ1T0W0W001T1T181818182M22221T112R2R2R2R363636361T2J444E4E4E4E4E1T1T0W0W0W0W0W11111818181818180W0W111113181D1D1D1D1T1T1T1T1T1T222222222222181T10101D2M181D1D1D1D1025331D0W0W1F1F1K2J1K1X1X2121C5C50W1T1T1T000W1T1T22221F0W0W0W1T1J1J1J1J1T1T1T1T101L3237373737371T1T0W0W0W0W1111181818181818180W111113131D1D1D1D1D1T1T1T1T1T22222222222222181T10101D2M181D1D1D1D1025331D0W0W1F1F1K2J1K1X1X2121C5C50W1T1T1T0W001T2222221F0W0W0W1T1J1J1J1J20202020101L3237373737370W0W1T1T1T1T2222222222222222221T222222222222222222110W0W11111118181818181D220W1T1T223Y2222222222223H3Y2220222M2M2Q3V2S38383G3GCZCZ1T1111181T1T000W0W0W2M221T1T0W2R2R2R2R363636361T2J444E4E4E4E4E11111T1T1T1T22222222222222222222222222222222222222111111111118181818181D1D22111T1T223Y2222222222223H3Y2220242M2M2Q3V2S38383G3GCZCZ1T1118181T220W000W0W2M22221T112R2R2R2R363636361T2J444E4E4E4E4E11111T1T1T22222222222222222222222222222222222222221111111118181818181D1D1D22111T22223Y2222222222223H3Y2220242M2M2Q3V2S38383G3GCZCZ1T18181822220W0W000W2M222222112R2R2R2R363636361T2J444E4E4E4E4E1111222222222222222222222222222222222222222222222218111118181818181D1D1D1D22112222223Y2222222222223H3Y2226262M2M2Q3V2S38383G3GCZCZ2218181822220W0W0W002M222222112R2R2R2R36363636222J444E4E4E4E4E2E2E1F1F1A1A1A1A1A1A1A1A1I1I1I1A1A1A1A1I1I1N1N1N1N2E2E2E2M2M2M2M2M2M2M2M2M1N2E1I1I1N3H1N1N1Q1Q1Q1I2U3Y1Q1F1A0J0S0S1F0S1212121296961F2E2M2M1F1F2M2M2M2M001A1F1F2E0S0S0S0S121212121I1P363A3A3A3A3A1T1T11110W110W0W0W0W0W0W0W0W110W11111313181D1D1D1D1T1T1T1T1T1T1T1T22222222111T10101D2M181818181D1125331D0W0W1A1A1H2K1I1S1S1Z1ZBZBZ111T22220W0W222222221A000W0W1T1D1D1D1D1O1O1O1O111L3439393939391T1T0W0W0W0W0W0W0W0W0W0W0W11110W11111313181D1D1D1D1T1T1T1T1T1T1T2222222222111T10101D2M1818181D1D1025331D0W0W1F1F1K2K1K1X1X2121C5C50W1T1T220W0W1T2222221F0W000W1T1J1J1J1J1T1T1T1T101L3439393939391T1T0W0W0W0W0W0W110W0W0W1111110W11111313181D1D1D1D1T1T1T1T1T1T222222222222181T10101D2M18181D1D1D1025331D0W0W1F1F1K2K1K1X1X2121C5C50W1T1T1T0W0W1T1T22221F0W0W001T1J1J1J1J1T1T1T1T101L3439393939390W0W1I1I1T1T1T1T22222222221T1T1T1T1T222222222222220W0W0W0W0W0W1111181818181T0W1I1T223H1T222222221T333Y221I1S2E2E2J3Q2K2T2T3838CSCS1I0W0W111T1T0W1111112E1T1T1T002F2F2F2F2W2W2W2W1I2J3Z48484848482F2F1J1J1D1D1D141D1D1D1D1K1K1K1D1D1D1D1K1K1O1O1O1O2F2F2F2R2R2R2R2R2R2R2R2R1O2F1K1D1O3L1O1O1S1S1S1F30461S15150J0S0S1F0S1212121296961J2F2R2R1J1J2R2R2R2R0S1D1J1J2F000J0M0M0S0S0S0S1J1S383D3D3D3D3D2F2F1J1J1D1D1D141D1D1D1D1K1K1K1D1D1D1D1K1K1O1O1O1O2F2F2F2R2R2R2R2R2R2R2R2R1O2F1K1D1O3L1O1O1S1S1S1F30461S15150S0S0S1F0S1212121296961J2F2R2R1J1J2R2R2R2R0S1D1J1J2F0J000J0M0S0S0S0S1J1S383D3D3D3D3D2F2F1J1J1D1D1D141D1D1D1D1K1K1K1D1D1D1D1K1K1O1O1O1O2F2F2F2R2R2R2R2R2R2R2R2R1O2F1K1D1O3L1O1O1S1S1S1F30461S15150S0S0S1F0S1212121296961J2F2R2R1J1J2R2R2R2R0S1D1J1J2F0M0J000J0S0S0S0S1J1S383D3D3D3D3D2F2F1J1J1D1D1D141D1D1D1D1K1K1K1D1D1D1D1K1K1O1O1O1O2F2F2F2R2R2R2R2R2R2R2R2R1O2F1K1D1O3L1O1O1S1S1S1F30461S15150S0S0S1F0S1212121296961J2F2R2R1J1J2R2R2R2R0S1D1J1J2F0M0M0J000J0S0S0S1J1S383D3D3D3D3D2W2W201T1O1O1O1I1O1O1O1O1T1T1T1O1O1O1O1V1V242424242W2W2W363636363636363636242W1V1O243W24242828281Q3G4L281K1K1212121I12121212129696202W36361T2036363636121O1T1T2W0S0S0S0J000J0M0M1V253L3Q3Q3Q3Q3Q2W2W201T1O1O1O1I1O1O1O1O1T1T1T1O1O1O1O1V1V242424242W2W2W363636363636363636242W1V1O243W24242828281Q3G4L281K1K1212121I12121212129696202W36361T2036363636121O1T1T2W0S0S0S0S0J000J0M1V253L3Q3Q3Q3Q3Q2W2W201T1O1O1O1I1O1O1O1O1T1T1T1O1O1O1O1V1V242424242W2W2W363636363636363636242W1V1O243W24242828281Q3G4L281K1K1212121I12121212129696202W36361T2036363636121O1T1T2W0S0S0S0S0M0J000J1V253L3Q3Q3Q3Q3Q2W2W201T1O1O1O1I1O1O1O1O1T1T1T1O1O1O1O1V1V242424242W2W2W363636363636363636242W1V1O243W24242828281Q3G4L281K1K1212121I12121212129696202W36361T2036363636121O1T1T2W0S0S0S0S0M0M0J001V253L3Q3Q3Q3Q3Q1I1I0W0W0W0W0W11111818181818180W0W111113181D1D1D1D1I1I1T1T1T1T1T2222222222181I0W0W1D2M181D1D1D1D0W25331D10141I1I1N2S1Q1Z1Z2525C6C60W1T1T1T10101T1T1T221I1110101I1J1J1J1J1V1V1V1V001H3237373737372J2J1L1L1H1F171F1F1H1L1L1N1N1N171717170Z11110W0Q0M2J2J2J2J2J2J2J2J2J2J2J2J1N2J1H1F0W2U1N1N1N1N1N16283D1N1L1F1P1P1S2W1T20202929CZCZ1L2J2J2J1L1L2J2J2J2J1P1L1L1L2J1S1S1S1S252525251H001T23232323233Z3Z3232322S2M2S2W2W34353939392M2M2M2M242M2M2M2M2W3Z3Z3Z3Z4444444444444444393Z312S2M4H39393939392D3T4S39322S36363646383G3G3N3NFHFH323Z3Z44323244444444363434343Z383838383L3L3L3L321T000Q0X0Z10144848373737322W32323239393I3I3I2W2W2S2S2D2S2S2W2W33484848484E4E4E4E4E4E4E4E3I4837322W4L3I3I3I3I3I2H3Z4Y3I37323A3A3A4F3D3L3L3S3SG0G03748484E37374E4E4E4E3A393939483D3D3D3D3Q3Q3Q3Q37230Q000Q0S0S0Z4848373737322W32323239393I3I3I2W2W2S2S2D2S2S2W2W33484848484E4E4E4E4E4E4E4E3I4837322W4L3I3I3I3I3I2H3Z4Y3I37323A3A3A4F3D3L3L3S3SG0G03748484E37374E4E4E4E3A393939483D3D3D3D3Q3Q3Q3Q37230X0Q000Q0S0X4848373737322W32323239393I3I3I2W2W2S2S2D2S2S2W2W33484848484E4E4E4E4E4E4E4E3I4837322W4L3I3I3I3I3I2H3Z4Y3I37323A3A3A4F3D3L3L3S3SG0G03748484E37374E4E4E4E3A393939483D3D3D3D3Q3Q3Q3Q37230Z0S0Q000S0S4848373737322W32323239393I3I3I2W2W2S2S2D2S2S2W2W33484848484E4E4E4E4E4E4E4E3I4837322W4L3I3I3I3I3I2H3Z4Y3I37323A3A3A4F3D3L3L3S3SG0G03748484E37374E4E4E4E3A393939483D3D3D3D3Q3Q3Q3Q3723100S0S0S000Q4848373737322W32323239393I3I3I2W2W2S2S2D2S2S2W2W33484848484E4E4E4E4E4E4E4E3I4837322W4L3I3I3I3I3I2H3Z4Y3I37323A3A3A4F3D3L3L3S3SG0G03748484E37374E4E4E4E3A393939483D3D3D3D3Q3Q3Q3Q3723140Z0X0S0Q00","aelNames":["香港","九龙","青衣","机场","博览馆"],"aelFares":[0,0,0,1200,1200,0,0,0,1050,1050,0,0,0,730,730,1200,1050,730,0,65,1200,1050,730,65,0]};
+    FARE_DATA.szFareBits = 4;
+    FARE_DATA.szFareMax = 15;
+  var ALPHA = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  /* 深圳地铁官方线路标志色 */
+  var SZ_COLORS = {'1号线':'#00AB39','2号线':'#DB6D1C','3号线':'#00A2E1','4号线':'#DC241F','5号线':'#9950B2','6号线':'#3ABCA8','6支号线':'#037776','6号线支线':'#037776','7号线':'#0035AD','8号线':'#DB6D1C','9号线':'#846E74','10号线':'#F8779E','11号线':'#6A1D44','12号线':'#A192B2','13号线':'#DE7C00','14号线':'#F2C75C','16号线':'#1E22AA','20号线':'#88DBDF'};
+  var AEL_NAMES = FARE_DATA.aelNames;
+  var AEL_FARES = FARE_DATA.aelFares;
+  var FARE_DATA_ERROR = null;
+  var SDB = window.STATION_DB;
+  if (!SDB || !SDB.sz || !SDB.hk) {
+    FARE_DATA_ERROR = new Error('STATION_DB missing or invalid');
+    SDB = { sz: { byName: {} }, hk: { byName: {} } };
+  }
+  var SZ_FARE_BYTES = (function(){
+    try {
+      if (!FARE_DATA || typeof FARE_DATA.szFarePacked !== 'string' || !FARE_DATA.szFarePacked) throw new Error('missing szFarePacked');
+      var bits = Number(FARE_DATA.szFareBits == null ? 4 : FARE_DATA.szFareBits);
+      var max = Number(FARE_DATA.szFareMax == null ? 15 : FARE_DATA.szFareMax);
+      if (bits !== 4) throw new Error('unsupported fare bits: ' + bits);
+      if (!isFinite(max) || max > 15) throw new Error('fare exceeds 4-bit: ' + max);
+      var bin = atob(FARE_DATA.szFarePacked);
+      var out = new Uint8Array(bin.length);
+      for (var i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
+      var n = Number(FARE_DATA.szN);
+      var expected = Math.ceil(n * (n - 1) / 2 / 2);
+      if (out.length !== expected) throw new Error('fare bytes ' + out.length + ' != ' + expected);
+      return out;
+    } catch (e) {
+      if (!FARE_DATA_ERROR) FARE_DATA_ERROR = e;
+      try { console.error('[FareCalc] fare data error:', e); } catch (_) {}
+      return new Uint8Array(0);
+    }
+  })();
+  function szStationLines(name){
+    var st = SDB.sz.byName[name];
+    return st && st.lines ? st.lines : [];
+  }
+  function mtrStationInfo(name){
+    return SDB.hk.byName[name] || {};
+  }
+  function fareMtrLines(name, st){
+    if (name === '机场' || name === '博览馆') return ['AEL'];
+    return (st.lines || []).filter(function (l) { return l !== 'AEL'; });
+  }
+  var state = { network:'sz', from:'车公庙', to:'后海', passenger:'adult', first:false, pickerSide:null };
+  function $(id){ return document.getElementById(id); }
+
+  function currentStations(){
+    if (state.network === 'sz') {
+      return FARE_DATA.szNames.map(function(name){ return { name:name, en:'', lines:szStationLines(name) }; });
+    }
+    return FARE_DATA.mtrNames.map(function(name){
+      var st = mtrStationInfo(name);
+      return { name:name, en:st.en || '', lines:fareMtrLines(name, st) };
+    });
+  }
+  function byName(name){ return currentStations().find(function(s){ return s.name === name; }); }
+  function mtrLine(code){
+    var L = (typeof MTR_DATA !== 'undefined' && MTR_DATA.lines && MTR_DATA.lines[code]) || null;
+    return L ? {name:isEn() ? (L.en || L.name) : L.name,color:L.color} : {name:code,color:'#888'};
+  }
+  function lineBadge(name,color){
+    return '<span class="fare-line"><span class="fare-line-dot" style="--c:' + (color||'#888') + '"></span>' + name + '</span>';
+  }
+  function stationBadges(st){
+    if(!st) return '';
+    if(state.network === 'sz'){
+      return st.lines.map(function(l){ return lineBadge(szLineName(l), SZ_COLORS[l]||'#888'); }).join('');
+    }
+    return st.lines.map(function(code){ var L=mtrLine(code); return lineBadge(L.name, L.color); }).join('');
+  }
+  function fmt(n){ n = Math.round(n*10)/10; return (n%1 ? n.toFixed(1) : String(n)); }
+  function szFare(a,b){
+    if(FARE_DATA_ERROR || !SZ_FARE_BYTES.length) return null;
+    var i = FARE_DATA.szNames.indexOf(a);
+    var j = FARE_DATA.szNames.indexOf(b);
+    if(i<0 || j<0) return null;
+    if(i===j) return 0;
+    var n = FARE_DATA.szN;
+    if(i>j){ var t=i; i=j; j=t; }
+    var k = i*n - i*(i+1)/2 + (j-i-1);
+    var byte = SZ_FARE_BYTES[k>>1];
+    if(byte == null) return null;
+    var v = (k & 1) ? ((byte >> 4) & 15) : (byte & 15);
+    return v;
+  }
+  function isAelExclusive(name){ return name === '机场' || name === '博览馆'; }
+  function aelFare(a,b){
+    var i = AEL_NAMES.indexOf(a), j = AEL_NAMES.indexOf(b);
+    if(i<0 || j<0) return null;
+    var v = AEL_FARES[i*AEL_NAMES.length+j];
+    return v > 0 ? v/10 : null;
+  }
+  function mtrFare(a,b,type){
+    if(a === b) return 0;
+    /* 机场快线：机场/博览馆只走 AEL；AEL 不设学生优惠 */
+    if(isAelExclusive(a) || isAelExclusive(b)){
+      return aelFare(a,b);
+    }
+    var i = FARE_DATA.mtrNames.indexOf(a);
+    var j = FARE_DATA.mtrNames.indexOf(b);
+    if(i<0 || j<0) return null;
+    var n = 96; /* 普通港铁站数量；AEL 站追加在末尾 */
+    if(i >= n || j >= n) return null;
+    var s = (type === 'student' ? FARE_DATA.mtrStudent : FARE_DATA.mtrAdult);
+    var k = (i*n+j)*2;
+    var v = ALPHA.indexOf(s[k])*36 + ALPHA.indexOf(s[k+1]);
+    return v > 0 ? v/10 : null;
+  }
+  function isEAL(name){
+    return !!(typeof MTR_DATA !== 'undefined' && MTR_DATA.lines && MTR_DATA.lines.EAL && MTR_DATA.lines.EAL.stations.some(function(s){ return s.zh===name; }));
+  }
+
+  function isEn(){ return window.LANG === 'en'; }
+    function szLineName(line){
+    if(!isEn()) return line;
+    var s = String(line || '');
+    var m = s.match(/^(\d+)号线(支线)?$/);
+    if(!m) return s;
+    return 'Line ' + m[1] + (m[2] ? ' Branch' : '');
+  }
+  function stationDisplay(name){
+    var st = byName(name);
+    if(!st) return name;
+    return (isEn() && st.en) ? st.en : st.name;
+  }
+  function setTitle(){
+    var el = $('fareTitle');
+    if(!el) return;
+    el.innerHTML = isEn()
+      ? 'How much will<br>this trip cost?'
+      : (state.network === 'mtr' ? '今日呢一程，<br>大概幾多錢？' : '今天这一程，<br>大概多少钱？');
+  }
+  function calculate(){
+    if(FARE_DATA_ERROR){ renderDataError(); return; }
+    if(!state.from || !state.to || state.from === state.to){ renderEmpty(); return; }
+    var total=0, rows=[], adultFare=0, studentFare=0, firstExtra=0, first=false;
+    var unit = state.network === 'sz' ? 'CN ¥' : 'HK $';
+    var ael = false;
+    if(state.network === 'sz'){
+      adultFare = szFare(state.from, state.to);
+      if(adultFare == null){ renderEmpty(); return; }
+      studentFare = adultFare * 0.5;
+      total = state.passenger === 'student' ? studentFare : adultFare;
+      rows.push({k:T('普通车厢票价','Ordinary fare'),v:unit+fmt(adultFare)});
+      if(state.passenger === 'student') rows.push({k:T('学生半价优惠','Student half fare'),v:'− '+unit+fmt(adultFare-total)});
+    } else {
+      ael = isAelExclusive(state.from) || isAelExclusive(state.to);
+      adultFare = mtrFare(state.from, state.to, 'adult');
+      studentFare = mtrFare(state.from, state.to, 'student');
+      if(adultFare == null){ renderEmpty(); return; }
+      first = state.first && isEAL(state.from) && isEAL(state.to);
+      total = state.passenger === 'student' ? studentFare : adultFare;
+      rows.push({k: ael ? T('机场快线票价','Airport Express fare') : T('普通车厢票价','Ordinary fare'), v: unit+fmt(adultFare)});
+      if(state.passenger === 'student' && studentFare != null && studentFare !== adultFare){
+        rows.push({k:T('学生优惠','Student concession'),v:'− '+unit+fmt(adultFare-studentFare)});
+      }
+      if(first){
+        firstExtra = adultFare;
+        total = state.passenger === 'student' ? studentFare + adultFare : adultFare + firstExtra;
+        rows.push({k:T('东铁线头等车厢附加费','East Rail first class premium'),v:'+ '+unit+fmt(firstExtra)});
+      }
+    }
+    if(total == null){ renderEmpty(); return; }
+    $('fareAmount').innerHTML = '<small>'+unit+'</small>'+fmt(total);
+    var f = byName(state.from), t = byName(state.to);
+    if(ael){
+      var AL = mtrLine('AEL');
+      var ab = lineBadge(AL.name, AL.color);
+      $('fareRoute').innerHTML = '<span>'+stationDisplay(state.from)+'</span>'+ab+'<span class="arrow">→</span>'+ab+'<span>'+stationDisplay(state.to)+'</span>';
+    } else {
+      $('fareRoute').innerHTML = '<span>'+stationDisplay(state.from)+'</span>'+stationBadges(f)+'<span class="arrow">→</span>'+stationBadges(t)+'<span>'+stationDisplay(state.to)+'</span>';
+    }
+    rows.push({k:T('应付','Total'),v:unit+fmt(total),total:true});
+    $('fareBreakdown').innerHTML = rows.map(function(r){
+      return '<div class="fare-break-row'+(r.total?' total':'')+'"><span>'+r.k+'</span><b>'+r.v+'</b></div>';
+    }).join('');
+  }
+  function renderEmpty(){
+    if(FARE_DATA_ERROR){ renderDataError(); return; }
+    var unit = state.network === 'sz' ? 'CN ¥' : 'HK $';
+    $('fareAmount').innerHTML = '<small>'+unit+'</small>—';
+    $('fareRoute').textContent = T('选择起点和终点后计算','Choose origin and destination');
+    $('fareBreakdown').innerHTML = '';
+  }
+  function renderDataError(){
+    var unit = state.network === 'sz' ? 'CN ¥' : 'HK $';
+    $('fareAmount').innerHTML = '<small>'+unit+'</small>—';
+    $('fareRoute').textContent = T('票价数据不可用，请刷新页面','Fare data unavailable. Please refresh.');
+    $('fareBreakdown').innerHTML = '';
+  }
+  function renderFields(){
+    var f = byName(state.from), t = byName(state.to);
+    $('fareFromName').textContent = f ? stationDisplay(state.from) : T('选择车站','Choose station');
+    $('fareFromName').classList.toggle('placeholder', !f);
+    $('fareToName').textContent = t ? stationDisplay(state.to) : T('选择车站','Choose station');
+    $('fareToName').classList.toggle('placeholder', !t);
+    $('fareFirstRow').style.display = (state.network === 'mtr') ? 'flex' : 'none';
+    var ealPair = state.network === 'mtr' && isEAL(state.from) && isEAL(state.to) && state.from !== state.to;
+    $('fareFirstClass').disabled = !ealPair;
+    if(!ealPair) state.first = false;
+    $('fareFirstClass').checked = state.first;
+    calculate();
+  }
+  function switchNetwork(net){
+    state.network = net;
+    state.first = false;
+    var defaults = net === 'sz' ? ['车公庙','后海'] : ['罗湖','大围'];
+    state.from = defaults[0]; state.to = defaults[1];
+    document.querySelectorAll('#fareNetTabs button').forEach(function(b){ b.classList.toggle('on', b.dataset.network === net); });
+    setTitle();
+    renderFields();
+  }
+  function openPicker(side){
+    state.pickerSide = side;
+    $('farePickerTitle').textContent = side === 'from' ? T('选择起点','Choose origin') : T('选择终点','Choose destination');
+    $('fareSearch').value = '';
+    renderPickerList('');
+    $('farePickerOverlay').classList.add('show');
+  }
+  function closePicker(){
+    $('farePickerOverlay').classList.remove('show');
+    state.pickerSide = null;
+  }
+  function renderPickerList(q){
+    var query = String(q||'').trim().toLowerCase();
+    var list = currentStations().filter(function(s){
+      return !query || s.name.toLowerCase().indexOf(query) >= 0 || String(s.en||'').toLowerCase().indexOf(query) >= 0;
+    });
+    if(!list.length){ $('fareList').innerHTML = '<div class="fare-empty">'+T('没有找到车站','No stations found')+'</div>'; return; }
+    $('fareList').innerHTML = list.map(function(s){
+      var on = (state.pickerSide === 'from' ? state.from : state.to) === s.name;
+      var main = (isEn() && s.en) ? s.en : s.name;
+      var sub = isEn() ? (s.en ? s.name : '') : String(s.en||'');
+      return '<button type="button" class="lm-row" data-name="'+s.name+'"><span class="fare-pick-main"><b>'+main+'</b><small>'+sub+'</small></span><span class="fare-pick-lines">'+stationBadges(s)+'</span>'+(on?'<span class="picker-check">✓</span>':'')+'</button>';
+    }).join('');
+    $('fareList').querySelectorAll('.lm-row').forEach(function(row){
+      row.onclick = function(){
+        if(state.pickerSide === 'from') state.from = row.dataset.name; else state.to = row.dataset.name;
+        closePicker(); renderFields();
+      };
+    });
+  }
+
+  function applyFareLang(){
+    if(!$('view-fare')) return;
+    var en = isEn();
+    var sub = document.querySelector('#view-fare .subview-title');
+    if(sub) sub.textContent = en ? 'Fare calculator' : '车费计算器';
+    var tabs = document.querySelectorAll('#fareNetTabs button');
+    if(tabs[0]) tabs[0].textContent = en ? 'Shenzhen Metro' : '深圳地铁';
+    if(tabs[1]) tabs[1].textContent = en ? 'MTR' : '香港地铁';
+    if($('fareFromLabel')) $('fareFromLabel').textContent = en ? 'From' : '出发';
+    if($('fareToLabel')) $('fareToLabel').textContent = en ? 'To' : '抵达';
+    var opts = document.querySelectorAll('#view-fare .fare-option-label');
+    if(opts[0]) opts[0].textContent = en ? 'Passenger' : '乘客类型';
+    if(opts[1]) opts[1].textContent = en ? 'East Rail first class' : '东铁线头等车厢';
+    var passBtns = document.querySelectorAll('#farePassengerSeg button');
+    if(passBtns[0]) passBtns[0].textContent = en ? 'Adult' : '成人';
+    if(passBtns[1]) passBtns[1].textContent = en ? 'Student' : '学生';
+    var resultLabel = document.querySelector('#view-fare .fare-result-label');
+    if(resultLabel) resultLabel.textContent = en ? 'Estimated fare' : '预计车费';
+    if($('fareSwapBtn')) $('fareSwapBtn').title = en ? 'Swap origin and destination' : '交换起终点';
+    if($('farePickerClose')) $('farePickerClose').setAttribute('aria-label', en ? 'Close' : '关闭');
+    if($('fareSearch')) $('fareSearch').placeholder = en ? 'Search stations' : '搜索车站';
+    if($('farePickerTitle')) {
+      $('farePickerTitle').textContent = state.pickerSide === 'to'
+        ? (en ? 'Choose destination' : '选择终点')
+        : (en ? 'Choose origin' : '选择起点');
+    }
+    setTitle();
+    renderFields();
+    if(state.pickerSide) renderPickerList($('fareSearch') ? $('fareSearch').value : '');
+  }
+
+  function init(){
+    if(!$('view-fare')) return;
+    $('fareNetTabs').addEventListener('click', function(e){
+      var b = e.target.closest('button[data-network]'); if(!b) return;
+      switchNetwork(b.dataset.network);
+    });
+    $('fareFromBtn').onclick = function(){ openPicker('from'); };
+    $('fareToBtn').onclick = function(){ openPicker('to'); };
+    $('fareSwapBtn').onclick = function(){ var a=state.from; state.from=state.to; state.to=a; state.first=false; renderFields(); };
+    $('farePassengerSeg').addEventListener('click', function(e){
+      var b = e.target.closest('button[data-pass]'); if(!b) return;
+      state.passenger = b.dataset.pass;
+      document.querySelectorAll('#farePassengerSeg button').forEach(function(x){ x.classList.toggle('on', x.dataset.pass === state.passenger); });
+      calculate();
+    });
+    $('fareFirstClass').addEventListener('change', function(e){ state.first = e.target.checked; calculate(); });
+    $('farePickerClose').onclick = closePicker;
+    $('farePickerOverlay').addEventListener('click', function(e){ if(e.target === e.currentTarget) closePicker(); });
+    $('fareSearch').addEventListener('input', function(e){ renderPickerList(e.target.value); });
+    switchNetwork('sz');
+    applyFareLang();
+    window.FareCalc = { enter: function(){ applyFareLang(); }, close: closePicker, applyLang: applyFareLang };
+  }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+})();
+
 </script>
 </body>
 </html>
