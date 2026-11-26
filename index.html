@@ -646,6 +646,10 @@ body.theme-chase .path-scope .line-trigger{background:rgba(255,255,255,.06)}
 .path-scope .line-trigger .ph{color:var(--text-sub)}
 .path-scope.lm-overlay{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:210;display:flex;align-items:flex-end;justify-content:center;padding-bottom:var(--kb,0px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .22s var(--ease),visibility .22s}
 .path-scope.lm-overlay.show{opacity:1;visibility:visible;pointer-events:auto}
+/* 站点/线路选择：键盘打开时弹层保持原位，键盘覆盖下半部分 */
+#pathPicker.lm-overlay,#farePickerOverlay.lm-overlay{padding-bottom:0}
+/* 统一站点/线路选择弹层高度：结果只剩一条时也不缩小，保留下方空白 */
+#pathPicker .lm-card,#farePickerOverlay .lm-card,#lineModal .lm-card{height:min(78vh,660px);max-height:78vh}
 .path-scope .lm-card{width:min(100vw,400px);max-height:78vh;background:var(--glass-float-bg); backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%); border-radius:26px 26px 0 0;border:1px solid var(--glass-border); box-shadow:0 -20px 60px rgba(0,0,0,.18);padding:18px 18px calc(20px + env(safe-area-inset-bottom)); display:flex;flex-direction:column;gap:14px;transform:translateY(20px);opacity:0;transition:transform .3s var(--ease),opacity .24s var(--ease)}
 .path-scope.lm-overlay.show .lm-card{transform:none;opacity:1}
 .path-scope.lm-overlay.tall{padding-bottom:0;align-items:flex-end}
@@ -754,6 +758,26 @@ body.theme-chase #view-fare .card{border-color:rgba(255,255,255,.10)!important}
 .path-scope .line-trigger{padding-left:14px;padding-right:12px}
 #lineModal .lm-card{gap:14px}
 #lineModal .lm-head{padding-left:2px}
+
+/* ===== 动效层：时间 / 页面 / 状态 / 按压 ===== */
+:root{--dur-press:120ms;--dur-fast:180ms;--dur-base:240ms;--dur-slow:360ms;--ease-out:cubic-bezier(.22,1,.36,1)}
+.hero-time.time-in{animation:time-in .28s var(--ease-out) both}
+@keyframes time-in{from{opacity:.35;transform:translateY(7px);filter:blur(2px)}to{opacity:1;transform:none;filter:blur(0)}}
+.view-enter-tab{animation:view-tab-in .24s var(--ease-out) both}
+.view-enter-tab-back{animation:view-tab-back-in .24s var(--ease-out) both}
+.view-enter-sub{animation:view-sub-in .26s var(--ease-out) both}
+.view-enter-sub-back{animation:view-sub-back-in .24s var(--ease-out) both}
+@keyframes view-tab-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@keyframes view-tab-back-in{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+@keyframes view-sub-in{from{opacity:0;transform:translateX(14px)}to{opacity:1;transform:none}}
+@keyframes view-sub-back-in{from{opacity:0;transform:translateX(-12px)}to{opacity:1;transform:none}}
+#checkin-action-area.checkin-enter{animation:checkin-in .22s var(--ease-out) both}
+@keyframes checkin-in{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+.tab-btn,.tool-btn,.action-card,.lm-row,.setting-row,.btn-save,.back-btn,.glass-btn{transition:transform var(--dur-press) var(--ease-out),opacity var(--dur-press) var(--ease-out)}
+.tab-btn:active,.tool-btn:active,.action-card:active,.lm-row:active,.setting-row:active,.btn-save:active,.back-btn:active,.glass-btn:active{transform:scale(.98)}
+@media (prefers-reduced-motion: reduce){
+  .hero-time.time-in,.view-enter-tab,.view-enter-tab-back,.view-enter-sub,.view-enter-sub-back,#checkin-action-area.checkin-enter{animation:none!important}
+}
 </style>
 </head>
 <body>
@@ -1533,13 +1557,24 @@ body.theme-chase #view-fare .card{border-color:rgba(255,255,255,.10)!important}
 
         <div class="changelog">
              <div class="changelog-entry">
+                <div class="changelog-version">Version 1.13 稳定版｜2026.11.26</div>
+                <ul class="changelog-list">
+                    <li><b>中英文补全</b><br>车费计算器、港铁站点与全局语言切换补齐英文；港铁站名英文优先、中文副标题，深圳站名保留中文。</li>
+                    <li><b>车费稳定性</b><br>票价数据增加解包校验与 4bit 上限元信息；异常时显示明确提示；清理重复英文键与 i18n 静态缓存。</li>
+                    <li><b>键盘与弹层</b><br>站点 / 线路选择弹层在键盘打开时保持原位，不再整体上移；搜索框、行高与间距统一放大。</li>
+                    <li><b>口岸 ETA</b><br>到口岸后立即隐藏，不再持续后移；返程不显示口岸 ETA，进入深圳后切换为到家距离。</li>
+                    <li><b>定位状态</b><br>地图按钮与实际定位状态同步；关闭定位可一次关闭全部；权限拒绝不再自动重试，临时失败改为指数退避；地图与通勤不再双开。</li>
+                    <li><b>动效</b><br>时间变化、页面切换方向、打卡状态、按钮按压与地图足迹绘制加入轻动效，支持“减少动态效果”。</li>
+                </ul>
+             </div>
+             <div class="changelog-entry">
                 <div class="changelog-version">Version 1.13 · 归并与呼吸｜2026.11.24</div>
                 <ul class="changelog-list">
                     <li><b>车费计算器</b><br>新增车费计算器，覆盖深圳地铁与港铁；选择起终点并切换成人 / 学生后，按官方票价表计算，并拆分普通票价、学生优惠、东铁线头等车厢附加费与机场快线票价。</li>
                     <li><b>票价口径</b><br>深圳地铁使用官方票价表，港铁使用官方票价与机场快线数据；按最短路径 / 官方站对价计算，暂不含商务车厢；机场快线不设学生优惠。</li>
                     <li><b>双主题下线</b><br>为了方便后续改进调整，减少重复适配与工作量；同时统一设计风格，去掉过于花哨的视觉分支。基于以上考虑，正式下线深色与轻简主题。</li>
                     <li><b>口岸预测简化</b><br>MLP-B 只在真实去程状态下触发；GPS 精度 &lt;300m 且距最近口岸 &lt;300m 时，首帧即记录；一次去程只记一条（以 morningOut 作为 tripId），撤销出门不删除已记录样本；取消 8 秒停留、3 帧定位与 05:00–11:30 时间窗。</li>
-                    <li><b>通勤定位省电</b><br>GPS 只在上学 / 放学路上开启，到校 / 到家打卡后自动暂停，撤销到校 / 到家后恢复；地图可单独获取定位，通勤期间由通勤定位接管，避免重复定位。</li>
+                    <li><b>通勤定位省电</b><br>GPS 只在上学 / 放学路上开启，到校 / 到家打卡后自动暂停，撤销到校 / 到家后恢复。</li>
                 </ul>
              </div>
              <div class="changelog-entry">
@@ -2312,12 +2347,20 @@ JOIE 乐行	JOIE
 
 
     var EN_CHANGELOG = [
+        '<div class="changelog-entry"><div class="changelog-version">Version 1.13 stable｜Nov 26, 2026</div><ul class="changelog-list">',
+        '<li><b>English coverage</b><br>Fare calculator, MTR stations and the global language switch are fully bilingual; MTR station names lead in English with Chinese subtitles, while Shenzhen station names stay in Chinese.</li>',
+        '<li><b>Fare stability</b><br>Fare data now validates unpacking and 4-bit limits, shows a clear error when data is invalid, and removes duplicate English keys and stale i18n caches.</li>',
+        '<li><b>Keyboard &amp; sheets</b><br>Station and line pickers stay in place when the keyboard opens instead of lifting the whole sheet; search fields, row height and spacing are enlarged.</li>',
+        '<li><b>Port ETA</b><br>Hides immediately after port arrival instead of drifting later; return trips no longer show a port ETA and switch to home distance once in Shenzhen.</li>',
+        '<li><b>Location state</b><br>The map button now reflects the real GPS state; closing location stops everything; permission denial is not retried automatically, transient failures use exponential backoff, and map/commute watches no longer run together.</li>',
+        '<li><b>Motion</b><br>Subtle motion for time changes, page direction, check-in state, press feedback and map footprints, with reduced-motion support.</li>',
+        '</ul></div>',
         '<div class="changelog-entry"><div class="changelog-version">Version 1.13 · Consolidation &amp; breath｜Nov 24, 2026</div><ul class="changelog-list">',
         '<li><b>Fare calculator</b><br>A new fare calculator covers Shenzhen Metro and MTR. Choose origin/destination and adult/student to calculate fares from official tables, with itemised ordinary fare, student concession, East Rail first class and Airport Express.</li>',
         '<li><b>Fare sources</b><br>Shenzhen Metro uses the official fare table; MTR uses official fares and Airport Express data. Pricing follows the shortest path / official station pairs, business carriage is excluded, and Airport Express has no student concession.</li>',
         '<li><b>Two themes retired</b><br>To simplify future iteration and reduce duplicate adaptation work, the visual language is also being unified and made less decorative. After review, Dark and Lite are officially retired.</li>',
         '<li><b>Port model simplified</b><br>MLP-B triggers only during a real outbound trip. The first fix within &lt;300m accuracy and &lt;300m of the nearest port is recorded, one record per trip using morningOut as tripId, and undoing departure keeps the sample. The 8-second dwell, 3-fix minimum and 05:00–11:30 window are removed.</li>',
-        '<li><b>Commute-only GPS</b><br>Location runs only on the way to/from school, pauses after arrival check-in and resumes after undoing arrival. The map can locate on its own; during a commute the commuter watch takes over to avoid duplicate tracking.</li>',
+        '<li><b>Commute-only GPS</b><br>Location runs only on the way to/from school, pauses after arrival check-in and resumes after undoing arrival.</li>',
         '</ul></div>',
         '<div class="changelog-entry"><div class="changelog-version">Version 1.12 · Commute path & multi-line timetable｜Nov 21, 2026</div><ul class="changelog-list">',
         '<li><b>Commute path</b><br>A new Commute path row in Settings records the outbound route leg by leg with a total; it is a personal record and does not change the suggested departure time.</li>',
@@ -3399,6 +3442,12 @@ JOIE 乐行	JOIE
     function persistCheckIn() {
         localStorage.setItem('terminus_checkin', JSON.stringify(checkInData));
         renderUI();
+        var area = document.getElementById('checkin-action-area');
+        if (area) {
+            area.classList.remove('checkin-enter');
+            void area.offsetWidth;
+            area.classList.add('checkin-enter');
+        }
         if (typeof reconcileCommuteWatch === 'function') reconcileCommuteWatch();
         if (typeof updatePortEta === 'function') updatePortEta();
     }
@@ -3999,6 +4048,7 @@ JOIE 乐行	JOIE
     })();
     let portFenceOn = true;
     let portDemoStart = null; // 仅演示用：未打卡时提供行程起点，不写入真实打卡档案
+    let portReachedTrip = null; // 本次去程已经到过口岸，之后不再显示口岸 ETA
 
     let globalWatchId = null;
     let globalWatchErrorAt = 0;
@@ -4181,6 +4231,7 @@ JOIE 乐行	JOIE
         if (portSamples.length > 200) portSamples = portSamples.slice(-200);
         try { localStorage.setItem(PORT_SAMPLES_KEY, JSON.stringify(portSamples)); } catch (e) {}
         portCount += 1;
+        portReachedTrip = tripId;
         try { localStorage.setItem(PORT_COUNT_KEY, String(portCount)); } catch (e) {}
         try {
             portEngine.train(portFeatureVec(port, cong, dir), duration);
@@ -4206,6 +4257,7 @@ JOIE 乐行	JOIE
                 globalWatchId = null;
                 var b = document.getElementById('omBtnStart');
                 if (b) b.textContent = '获取定位';
+                if (window.OmMap && window.OmMap.syncGpsState) { try { window.OmMap.syncGpsState(); } catch (e) {} }
                 var code = err && err.code;
                 var now = Date.now();
                 // 权限被拒绝是永久错误：不自动重试，等用户手动恢复
@@ -4230,6 +4282,7 @@ JOIE 乐行	JOIE
             },
             { enableHighAccuracy: true, timeout: 15000, maximumAge: 3000 }
         );
+        if (window.OmMap && window.OmMap.syncGpsState) { try { window.OmMap.syncGpsState(); } catch (e) {} }
     }
     function stopGlobalWatch() {
         if (globalWatchRetryTimer) { clearTimeout(globalWatchRetryTimer); globalWatchRetryTimer = null; }
@@ -4237,10 +4290,12 @@ JOIE 乐行	JOIE
             try { navigator.geolocation.clearWatch(globalWatchId); } catch (e) {}
             globalWatchId = null;
         }
+        if (window.OmMap && window.OmMap.syncGpsState) { try { window.OmMap.syncGpsState(); } catch (e) {} }
     }
     function resetPortTripTracking() {
         globalLastFix = null;
         portSpeedHist = [];
+        portReachedTrip = null;
         var row = document.getElementById('portEtaRow');
         var val = document.getElementById('portEta');
         if (row) row.style.display = 'none';
@@ -4280,6 +4335,10 @@ JOIE 乐行	JOIE
         if (portCount <= 0) return null;
 
         const dir = tripDir();
+        if (dir === 'evening') return null;          // 返程不显示口岸 ETA
+        const tripId = outboundTripId();
+        if (tripId && portReachedTrip === tripId) return null;
+        if (tripId && portSampledTrip(tripId)) return null;
         const fix = globalLastFix;
         const port = userConfig.mainPort || '深圳湾口岸';
         if (!PORT_COORDS[port]) return null;
@@ -4299,8 +4358,8 @@ JOIE 乐行	JOIE
 
         const now = Date.now();
 
-        // 已经站在口岸门口：ETA 就是现在，不再算剩余路程（与是否打卡无关）
-        if (distToPort != null && distToPort <= 60) return now;
+        // 已经站在口岸门口：不再显示 ETA
+        if (distToPort != null && distToPort <= 60) return null;
 
         const start = portTripStart();
         if (start == null) return null;
@@ -4382,6 +4441,11 @@ JOIE 乐行	JOIE
 
     window.__portEta = {
         start: function () { portMarkGpsOff(false); startGlobalWatch(); return true; },
+        resume: function () {
+            portMarkGpsOff(false);
+            if (typeof reconcileCommuteWatch === 'function') reconcileCommuteWatch();
+            return true;
+        },
         // 手动关一次定位：当天全天停止推算，切后台回来也不会自己开
         stop: function () { stopGlobalWatch(); portMarkGpsOff(true); updatePortEta(); return true; },
         isOn: function () { return globalWatchId != null; },
@@ -4810,15 +4874,20 @@ JOIE 乐行	JOIE
 
     var currentViewId = 'view-home';
     var lastMainTab = 'home';
+    var navDirection = 'forward';
 
     function goBack() {
+        navDirection = 'back';
         switchView('view-' + lastMainTab);
     }
 
     function switchView(targetId) {
-        if (targetId === currentViewId) return;
+        if (targetId === currentViewId) { navDirection = 'forward'; return; }
         if (targetId !== 'view-fare' && window.FareCalc && window.FareCalc.close) window.FareCalc.close();
         currentViewId = targetId;
+
+        var MAIN_TABS = ['view-home', 'view-map', 'view-commute', 'view-settings'];
+        var isMain = MAIN_TABS.indexOf(targetId) > -1;
 
         document.querySelectorAll('.view').forEach(v => {
             if (v.id === targetId) {
@@ -4827,9 +4896,6 @@ JOIE 乐行	JOIE
                 v.style.display = 'none';
             }
         });
-
-        var MAIN_TABS = ['view-home', 'view-map', 'view-commute', 'view-settings'];
-        var isMain = MAIN_TABS.indexOf(targetId) > -1;
         if (isMain) lastMainTab = targetId.replace('view-', '');
         document.body.classList.toggle('subview', !isMain);
         document.querySelectorAll('.tab-btn').forEach(function (b) {
@@ -4867,10 +4933,14 @@ JOIE 乐行	JOIE
 
         const target = document.getElementById(targetId);
         if (target) {
-            target.classList.remove('view-enter');
+            var enterClass = isMain
+                ? (navDirection === 'back' ? 'view-enter-tab-back' : 'view-enter-tab')
+                : (navDirection === 'back' ? 'view-enter-sub-back' : 'view-enter-sub');
+            target.classList.remove('view-enter', 'view-enter-tab', 'view-enter-tab-back', 'view-enter-sub', 'view-enter-sub-back');
             void target.offsetWidth;
-            target.classList.add('view-enter');
+            target.classList.add(enterClass);
         }
+        navDirection = 'forward';
         placeSegIndicator();
     }
 
@@ -5300,10 +5370,12 @@ JOIE 乐行	JOIE
     }
 
     function setTimeWithAnimation(el, newText) {
-        // 暴力防抖：如果文字没变，直接返回
+        // 文字没变不触发动画
         if (el.innerText === newText) return;
-        // 直接瞬间赋值，绝不使用 setTimeout 延迟
+        el.classList.remove('time-in');
         el.innerText = newText;
+        void el.offsetWidth;
+        el.classList.add('time-in');
     }
 
     function renderDate() {
@@ -5840,13 +5912,14 @@ JOIE 乐行	JOIE
                 var c = pos.coords;
                 paintFix(c.latitude, c.longitude, c.accuracy);
                 setStatus('已定位 · 精度 ' + Math.round(c.accuracy) + ' m', true);
+                syncMapGpsButton();
             },
             function (err) {
                 var map = { 1: '定位权限被拒绝', 2: '暂时无法获取位置', 3: '定位超时' };
                 setStatus(map[err.code] || '定位失败', false);
                 watchId = null;
                 wantGps = false;
-                el.btnStart.textContent = '获取定位';
+                syncMapGpsState();
             },
             { enableHighAccuracy: true, timeout: 15000, maximumAge: 3000 }
         );
@@ -5856,37 +5929,52 @@ JOIE 乐行	JOIE
         if (watchId != null) { navigator.geolocation.clearWatch(watchId); watchId = null; }
     }
 
+    function syncMapGpsButton() {
+        var globalOn = !!(window.__portEta && window.__portEta.isOn && window.__portEta.isOn());
+        var on = globalOn || wantGps || watchId != null;
+        el.btnStart.textContent = on ? '关闭定位' : '获取定位';
+    }
+    function syncMapGpsState() {
+        var globalOn = !!(window.__portEta && window.__portEta.isOn && window.__portEta.isOn());
+        syncMapGpsButton();
+        if (globalOn) setStatus('通勤定位中', true);
+        else if (watchId != null) setStatus('已定位', true);
+        else if (wantGps) setStatus('正在定位…', false);
+        else setStatus(LAST ? '已停止定位' : '尚未获取定位', false);
+    }
     function startGps() {
         if (!navigator.geolocation) { setStatus('当前浏览器不支持定位', false); return; }
         if (location.protocol === 'file:') {
             setStatus('本地文件无法调用定位，需 https 或 localhost', false);
             return;
         }
+        if (window.__portEta && window.__portEta.resume) window.__portEta.resume();
         wantGps = true;
-        el.btnStart.textContent = '关闭定位';
         var globalOn = !!(window.__portEta && window.__portEta.isOn && window.__portEta.isOn());
         if (!globalOn) openWatch();
+        syncMapGpsState();
         if (document.hidden) { setStatus('已开启 · 回到页面后开始定位', false); return; }
-        setStatus(globalOn ? '已定位 · 通勤定位中' : '正在定位…', globalOn);
     }
 
     function stopGps() {
+        var globalOn = !!(window.__portEta && window.__portEta.isOn && window.__portEta.isOn());
         wantGps = false;
         closeWatch();
-        el.btnStart.textContent = '获取定位';
+        if (globalOn && window.__portEta && window.__portEta.stop) window.__portEta.stop();
+        syncMapGpsButton();
         setStatus('已停止定位', false);
     }
 
     function closeGpsWatch() {
-        if (watchId == null && !wantGps) return;
+        if (watchId == null && !wantGps) { syncMapGpsState(); return; }
         wantGps = false;
         closeWatch();
-        el.btnStart.textContent = '获取定位';
-        setStatus('已暂停 · 通勤定位接管', false);
+        syncMapGpsState();
     }
 
     el.btnStart.addEventListener('click', function () {
-        var on = wantGps || watchId != null;
+        var globalOn = !!(window.__portEta && window.__portEta.isOn && window.__portEta.isOn());
+        var on = globalOn || wantGps || watchId != null;
         (on ? stopGps() : startGps());
     });
 
@@ -5979,6 +6067,37 @@ JOIE 乐行	JOIE
             + '<polyline points="' + pts + '" fill="none" stroke="' + FP_COLOR + '" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"/>';
     }
 
+    /* 新足迹段：在既有折线上叠一条动画线，从起点画到终点 */
+    function fpAnimateSegment(a, b) {
+        if (!a || !b) return;
+        try {
+            if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            var g = fpGroupEl();
+            if (!g) return;
+            var p1 = geoToPx(a.lat, a.lon), p2 = geoToPx(b.lat, b.lon);
+            var len = Math.hypot(p2.x - p1.x, p2.y - p1.y);
+            if (!len) return;
+            [[6, .25], [3, .85]].forEach(function (style) {
+                var line = document.createElementNS(NS, 'line');
+                line.setAttribute('x1', p1.x.toFixed(2));
+                line.setAttribute('y1', p1.y.toFixed(2));
+                line.setAttribute('x2', p2.x.toFixed(2));
+                line.setAttribute('y2', p2.y.toFixed(2));
+                line.setAttribute('stroke', FP_COLOR);
+                line.setAttribute('stroke-width', style[0]);
+                line.setAttribute('stroke-linecap', 'round');
+                line.setAttribute('opacity', style[1]);
+                line.style.strokeDasharray = len;
+                line.style.strokeDashoffset = len;
+                line.style.transition = 'stroke-dashoffset .48s cubic-bezier(.22,1,.36,1)';
+                g.appendChild(line);
+                void line.getBoundingClientRect();
+                line.style.strokeDashoffset = '0';
+                setTimeout(function () { if (line.parentNode) line.parentNode.removeChild(line); }, 520);
+            });
+        } catch (e) {}
+    }
+
     function footprintStart() {
         if (footprintWatchId !== null) return;          // 已在监听
         if (footprintPoints.length >= FP_MAX) return;   // 已达上限
@@ -5991,9 +6110,11 @@ JOIE 乐行	JOIE
                 var lat = c.latitude, lon = c.longitude;
                 if (fpLast && distM(fpLast.lat, fpLast.lon, lat, lon) < FP_MIN_DIST) return; // 节流：<200m 不记录
                 if (!fpAccept(lat, lon)) return;        // 超出视口/海里丢弃
+                var prevPoint = fpLast;
                 fpLast = { lat: lat, lon: lon };
                 footprintPoints.push({ lat: lat, lon: lon });
                 fpRenderLine();
+                fpAnimateSegment(prevPoint, fpLast);
                 fpSave();
             },
             function () { footprintStop(); },
@@ -6041,12 +6162,13 @@ JOIE 乐行	JOIE
     placeLabels(null);
 
     window.OmMap = {
-        onShow: function () { syncConfig(); },
+        onShow: function () { syncConfig(); syncMapGpsState(); },
         syncConfig: syncConfig,
         zoneOf: zoneOf,
         setStatus: setStatus,
         setPos: function (lat, lon, acc) { paintFix(lat, lon, (acc == null) ? 300 : acc); },
         closeGpsWatch: closeGpsWatch,
+        syncGpsState: syncMapGpsState,
         footprintStart: footprintStart,
         footprintStop: footprintStop,
         footprintDissolve: footprintDissolve,
@@ -7839,10 +7961,6 @@ function openPickerFor(id){
   document.getElementById('pickerSearch').placeholder = pt('搜索','Search');
   renderPickerList('');
   picker.classList.add('show');
-  if(!isLinePicker){
-    const h = pickerCard.getBoundingClientRect().height;
-    if(h > 0) pickerCard.style.height = h + 'px';
-  }
 }
 function renderPickerList(q){
   const list = document.getElementById('pickerList');
