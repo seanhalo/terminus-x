@@ -1740,17 +1740,28 @@ body.theme-chase .segment-action:active{background:rgba(255,255,255,.12)}
         <div style="text-align:center;margin-top:8px;">
             <button type="button" class="engine-reset" onclick="resetEngine()">重置推理引擎模型</button>
         </div>
-        <div class="version-text">Version 1.13</div>
+        <div class="version-text">Version 1.14</div>
     </div>
 </div>
 
 <div class="modal-overlay" id="info-modal">
     <div class="modal-content">
         <div class="info-title">更新日志</div>
-        <div class="info-version">Version 1.13</div>
+        <div class="info-version">Version 1.14</div>
         <div class="info-divider"></div>
 
         <div class="changelog">
+             <div class="changelog-entry">
+                <div class="changelog-version">Version 1.14｜2026.11.29</div>
+                <ul class="changelog-list">
+                    <li><b>行程记录合并</b><br>打卡、历史、学习记录和口岸样本现在归到同一段行程里；旧数据会自动迁移，备注、返程和口岸信息也不再分散。</li>
+                    <li><b>出门时间更稳</b><br>预测会参考平时同一时段的实际耗时，只在样本足够时做小幅修正；样本不够就继续按路线计划，不硬给一个看似精确的时间。</li>
+                    <li><b>口岸预测修正</b><br>口岸等待改用出发时的排队情况判断，不再用到达时的拥堵倒推；返程按出境方向计算。</li>
+                    <li><b>编辑行程快捷入口</b><br>编辑已保存的地铁段时，预计用时下方可以直接查看时刻表或车费；深圳地铁只提供车费，香港港铁两项都有，并自动带入线路、站点和方向。添加行程时不显示。</li>
+                    <li><b>香港假期</b><br>内置 2026–2027 假期，接口改走代理更新；超出已覆盖年份时显示“假期数据待更新”，避免把未知日期当成正常上课。</li>
+                    <li><b>界面</b><br>弹窗统一为居中卡片和轻液态玻璃；逐光主题删去固定高度光层和底部光晕，修复清晨背景横线。</li>
+                </ul>
+             </div>
              <div class="changelog-entry">
                 <div class="changelog-version">Version 1.13 稳定版｜2026.11.26</div>
                 <ul class="changelog-list">
@@ -2554,6 +2565,14 @@ JOIE 乐行	JOIE
 
 
     var EN_CHANGELOG = [
+        '<div class="changelog-entry"><div class="changelog-version">Version 1.14｜Nov 29, 2026</div><ul class="changelog-list">',
+        '<li><b>Unified trip records</b><br>Check-ins, history, learning records and port samples now live in one trip. Legacy data migrates automatically, and notes, return trips and port details stay together.</li>',
+        '<li><b>Steadier departure prediction</b><br>Predictions use the usual travel time for the same time of day and only make small corrections when enough samples exist. With too little data, the route plan is used instead of a falsely precise number.</li>',
+        '<li><b>Port prediction corrected</b><br>Port waiting is based on the queue at departure, not the congestion seen on arrival. Return trips use the departure queue.</li>',
+        '<li><b>Leg shortcuts</b><br>When editing a saved metro leg, you can open the timetable or fare below the estimated duration. Shenzhen Metro offers fare only; Hong Kong MTR offers both and fills in the line, station and direction. New legs do not show these shortcuts.</li>',
+        '<li><b>Hong Kong holidays</b><br>2026–2027 holidays are built in, and the feed now updates through a proxy. Beyond covered years the app shows that holiday data needs updating instead of treating unknown dates as school days.</li>',
+        '<li><b>Interface</b><br>Dialogs now use centered cards and light liquid glass. The Chase theme drops the fixed-height glow layer and lower glow, removing the morning background line.</li>',
+        '</ul></div>',
         '<div class="changelog-entry"><div class="changelog-version">Version 1.13 stable｜Nov 26, 2026</div><ul class="changelog-list">',
         '<li><b>English coverage</b><br>Fare calculator, MTR stations and the global language switch are fully bilingual; MTR station names lead in English with Chinese subtitles, while Shenzhen station names stay in Chinese.</li>',
         '<li><b>Fare stability</b><br>Fare data now validates unpacking and 4-bit limits, shows a clear error when data is invalid, and removes duplicate English keys and stale i18n caches.</li>',
