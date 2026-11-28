@@ -92,8 +92,6 @@
             --glass-bg: rgba(20, 24, 34, 0.55);
             --seg-bg: rgba(20, 24, 34, 0.55);
             background: linear-gradient(180deg, var(--chase-a, #101726), var(--chase-b, #0A0E18));
-        }body.theme-chase::before {
-            background: radial-gradient(circle at 50% 0%, rgba(70, 100, 160, 0.16) 0%, transparent 55%);
         }body.theme-chase #view-home .card:not(.hero-card), body.theme-chase #view-mtr .card, body.theme-chase #view-bus .card, body.theme-chase #view-weather .card, body.theme-chase #view-map .card, body.theme-chase .sz-port-link, body.theme-chase .action-card:not(.secondary) {
             background: rgba(20, 24, 34, 0.55) !important;
             border-color: rgba(255, 255, 255, 0.12) !important;
@@ -138,11 +136,10 @@ input[type="time"] {
         }body.theme-chase::before {
             content: "";
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 300px;
-            background: radial-gradient(circle at 50% 0%, rgba(40, 60, 120, 0.25) 0%, transparent 50%), radial-gradient(circle at 50% 100%, rgba(30, 40, 80, 0.15) 0%, transparent 50%);
+            inset: 0;
+            height: 100vh;
+            height: 100dvh;
+            background: radial-gradient(circle at 50% 0%, rgba(70, 100, 160, 0.16) 0%, transparent 60%);
             pointer-events: none;
             z-index: -1;
         }/* ===== 深色模式：切换按钮（今日/明日 + 外观） ===== */
@@ -654,6 +651,18 @@ body.theme-chase .path-scope .line-trigger{background:rgba(255,255,255,.06)}
 .path-scope.lm-overlay.show .lm-card{transform:none;opacity:1}
 .path-scope.lm-overlay.tall{padding-bottom:0;align-items:flex-end}
 .path-scope.lm-overlay.tall .lm-card{height:min(78vh,660px);max-height:78vh;border-radius:26px 26px 0 0}
+/* ===== 居中弹层统一（添加路径 / 选择 / 时间） ===== */
+#overlay.center-modal{display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(0,0,0,.4);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
+#sheet.center-modal{left:50%;top:50%;bottom:auto;width:min(92vw,340px);max-width:340px;max-height:90dvh;overflow-y:auto;padding:22px;border-radius:24px;transform:translate(-50%,-50%) translateY(12px) scale(.985);opacity:0;transition:transform .24s var(--ease-out),opacity .22s var(--ease-out),visibility .24s}
+#sheet.center-modal.show{transform:translate(-50%,-50%) scale(1);opacity:1;visibility:visible;pointer-events:auto}
+#lineModal.center-modal,#pathPicker.center-modal,#farePickerOverlay.center-modal{align-items:center;padding:20px;padding-bottom:20px;background:rgba(0,0,0,.4);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
+#lineModal.center-modal .lm-card,#pathPicker.center-modal .lm-card,#farePickerOverlay.center-modal .lm-card{width:min(92vw,340px);height:min(78vh,660px);max-height:90dvh;border-radius:24px;padding:20px;transform:translateY(12px) scale(.985);opacity:0;transition:transform .24s var(--ease-out),opacity .22s var(--ease-out)}
+#lineModal.center-modal.show .lm-card,#pathPicker.center-modal.show .lm-card,#farePickerOverlay.center-modal.show .lm-card{transform:none;opacity:1}
+#timePicker.center-modal{align-items:center;padding:20px;padding-bottom:20px;background:rgba(0,0,0,.4);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
+#timePicker.center-modal .lm-card{width:min(92vw,340px);max-width:340px;height:auto;max-height:90dvh;border-radius:24px;padding:20px;transform:translateY(12px) scale(.985);opacity:0;transition:transform .24s var(--ease-out),opacity .22s var(--ease-out)}
+#timePicker.center-modal.show .lm-card{transform:none;opacity:1}
+#lineModal.center-modal .lm-head,#pathPicker.center-modal .lm-head,#farePickerOverlay.center-modal .lm-head,#timePicker.center-modal .lm-head{justify-content:center;text-align:center;font-size:18px;padding:0}
+#sheet.center-modal h2{font-size:18px;font-weight:650;text-align:center;margin:0 0 18px}
 body.theme-chase .path-scope .lm-card{box-shadow:0 -20px 60px rgba(0,0,0,.55)}
 
 .path-scope .lm-head{display:flex;align-items:center;justify-content:space-between;font-size:17px;font-weight:650;line-height:1.25;flex:0 0 auto;padding:0 2px}
@@ -665,9 +674,11 @@ body.theme-chase .path-scope .lm-card{box-shadow:0 -20px 60px rgba(0,0,0,.55)}
 .path-scope #lmSearch{width:100%;height:44px;flex:0 0 auto;border-radius:12px;border:1px solid var(--line);background:rgba(150,150,150,.06); padding:0 14px;font-size:16px;color:var(--text-main);font-family:inherit;outline:none}
 body.theme-chase .path-scope #lmSearch{background:rgba(255,255,255,.06)}
 .path-scope #lmSearch:focus{border-color:var(--text-main);background:var(--card-bg)}
-.path-scope .lm-list{overflow-y:auto;flex:1 1 auto;min-height:0;padding:4px 0 8px}
+.path-scope .lm-list{overflow-y:auto;flex:1 1 auto;min-height:0;padding:0}
 .path-scope .lm-group{font-size:11px;font-weight:650;color:var(--text-sub);padding:12px 2px 8px;letter-spacing:.03em}
-.path-scope .lm-row{display:flex;align-items:center;justify-content:flex-start;gap:8px;width:100%;padding:13px 14px; border-radius:14px;border:1px solid var(--glass-border);background:var(--glass-bg); font-size:15px;font-weight:550;color:var(--text-main);margin-bottom:9px;cursor:pointer;font-family:inherit;text-align:left}
+.path-scope .lm-row{display:flex;align-items:center;justify-content:flex-start;gap:8px;width:100%;padding:13px 2px;border:0;border-bottom:1px solid rgba(128,128,128,.18);border-radius:0;background:transparent;font-size:15px;font-weight:550;color:var(--text-main);margin:0;cursor:pointer;font-family:inherit;text-align:left;transition:background .15s ease}
+.path-scope .lm-row:last-child{border-bottom:none}
+.path-scope .lm-row:active{background:rgba(128,128,128,.08);transform:none}
 .path-scope .lm-row .op{font-size:11px;font-weight:600;color:var(--text-sub)}
 .path-scope .lm-empty{padding:26px 8px;text-align:center;font-size:13px;color:var(--text-sub)}
 .path-scope .chips{display:flex;gap:6px;flex-wrap:wrap}
@@ -778,6 +789,186 @@ body.theme-chase #view-fare .card{border-color:rgba(255,255,255,.10)!important}
 @media (prefers-reduced-motion: reduce){
   .hero-time.time-in,.view-enter-tab,.view-enter-tab-back,.view-enter-sub,.view-enter-sub-back,#checkin-action-area.checkin-enter{animation:none!important}
 }
+
+/* ===== 轻液态玻璃：所有弹窗统一材质 ===== */
+:root{
+  --liquid-overlay: rgba(0,0,0,.24);
+  --liquid-bg: rgba(255,255,255,.46);
+  --liquid-border: rgba(255,255,255,.64);
+  --liquid-highlight: rgba(255,255,255,.58);
+  --liquid-shine: rgba(255,255,255,.16);
+  --liquid-shadow: 0 28px 80px rgba(40,25,10,.16), inset 0 1px 0 rgba(255,255,255,.72), inset 0 -1px 0 rgba(255,255,255,.18);
+}
+body.theme-chase{
+  --liquid-overlay: rgba(0,0,0,.50);
+  --liquid-bg: rgba(20,24,34,.50);
+  --liquid-border: rgba(255,255,255,.20);
+  --liquid-highlight: rgba(255,255,255,.22);
+  --liquid-shine: rgba(255,255,255,.07);
+  --liquid-shadow: 0 28px 80px rgba(0,0,0,.60), inset 0 1px 0 rgba(255,255,255,.16), inset 0 -1px 0 rgba(0,0,0,.35);
+}
+.modal-overlay,
+.lm-overlay.center-modal,
+#overlay.center-modal{
+  background: radial-gradient(ellipse at 50% 10%, rgba(255,255,255,.14), transparent 58%), var(--liquid-overlay);
+  backdrop-filter: blur(8px) saturate(120%);
+  -webkit-backdrop-filter: blur(8px) saturate(120%);
+}
+body.theme-chase .modal-overlay,
+body.theme-chase .lm-overlay.center-modal,
+body.theme-chase #overlay.center-modal{
+  background: radial-gradient(ellipse at 50% 10%, rgba(95,140,210,.13), transparent 58%), var(--liquid-overlay);
+}
+body:not(.theme-chase) .modal-content,
+body.theme-chase .modal-content,
+body:not(.theme-chase) .lm-overlay.center-modal .lm-card,
+body.theme-chase .lm-overlay.center-modal .lm-card,
+body:not(.theme-chase) #sheet.center-modal,
+body.theme-chase #sheet.center-modal{
+  background: linear-gradient(135deg, var(--liquid-highlight), transparent 30%, transparent 68%, var(--liquid-shine)), var(--liquid-bg) !important;
+  border: 1px solid var(--liquid-border) !important;
+  box-shadow: var(--liquid-shadow), inset 0 0 0 1px rgba(255,255,255,.08) !important;
+  backdrop-filter: blur(52px) saturate(200%) contrast(1.02) !important;
+  -webkit-backdrop-filter: blur(52px) saturate(200%) contrast(1.02) !important;
+}
+
+/* ===== 弹窗内部控件也走轻液态玻璃 ===== */
+body:not(.theme-chase) .modal-content .input-group input,
+body:not(.theme-chase) .modal-content .time-trigger,
+body:not(.theme-chase) .modal-content .locate-btn,
+body:not(.theme-chase) .modal-content .line-trigger,
+body:not(.theme-chase) .modal-content .picker-trigger{
+  background: rgba(255,255,255,.28) !important;
+  border: 1px solid rgba(255,255,255,.58) !important;
+  backdrop-filter: blur(14px) saturate(150%);
+  -webkit-backdrop-filter: blur(14px) saturate(150%);
+}
+body.theme-chase .modal-content .input-group input,
+body.theme-chase .modal-content .time-trigger,
+body.theme-chase .modal-content .locate-btn,
+body.theme-chase .modal-content .line-trigger,
+body.theme-chase .modal-content .picker-trigger{
+  background: rgba(255,255,255,.06) !important;
+  border: 1px solid rgba(255,255,255,.14) !important;
+  backdrop-filter: blur(14px) saturate(150%);
+  -webkit-backdrop-filter: blur(14px) saturate(150%);
+}
+body:not(.theme-chase) .modal-content .chip{
+  background: rgba(255,255,255,.34) !important;
+  border: 1px solid rgba(255,255,255,.58) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+body.theme-chase .modal-content .chip{
+  background: rgba(255,255,255,.08) !important;
+  border: 1px solid rgba(255,255,255,.16) !important;
+}
+body:not(.theme-chase) .modal-content .chip.selected,
+body.theme-chase .modal-content .chip.selected{
+  background: var(--text-main) !important;
+  color: var(--bg-color) !important;
+  border-color: var(--text-main) !important;
+}
+
+/* ===== 居中弹窗内部控件：轻液态玻璃 ===== */
+body:not(.theme-chase) .lm-overlay.center-modal .lm-card input,
+body:not(.theme-chase) #sheet.center-modal .field input,
+body:not(.theme-chase) #sheet.center-modal .field select,
+body:not(.theme-chase) #sheet.center-modal .field .picker-trigger,
+body:not(.theme-chase) #sheet.center-modal .field .line-trigger,
+body:not(.theme-chase) #sheet.center-modal .chip,
+body:not(.theme-chase) #timePicker.center-modal .time-col{
+  background: rgba(255,255,255,.26) !important;
+  border: 1px solid rgba(255,255,255,.52) !important;
+  backdrop-filter: blur(14px) saturate(150%);
+  -webkit-backdrop-filter: blur(14px) saturate(150%);
+}
+body.theme-chase .lm-overlay.center-modal .lm-card input,
+body.theme-chase #sheet.center-modal .field input,
+body.theme-chase #sheet.center-modal .field select,
+body.theme-chase #sheet.center-modal .field .picker-trigger,
+body.theme-chase #sheet.center-modal .field .line-trigger,
+body.theme-chase #sheet.center-modal .chip,
+body.theme-chase #timePicker.center-modal .time-col{
+  background: rgba(255,255,255,.06) !important;
+  border: 1px solid rgba(255,255,255,.12) !important;
+  backdrop-filter: blur(14px) saturate(150%);
+  -webkit-backdrop-filter: blur(14px) saturate(150%);
+}
+body:not(.theme-chase) #sheet.center-modal .chip.selected,
+body.theme-chase #sheet.center-modal .chip.selected{
+  background: var(--text-main) !important;
+  color: var(--bg-color) !important;
+  border-color: var(--text-main) !important;
+}
+
+/* 选中态保持实心高对比，避免玻璃底吞掉文字 */
+body:not(.theme-chase) #sheet.center-modal .chip.on,
+body.theme-chase #sheet.center-modal .chip.on,
+body:not(.theme-chase) .modal-content .chip.on,
+body.theme-chase .modal-content .chip.on{
+  background: var(--text-main) !important;
+  color: var(--bg-color) !important;
+  border-color: var(--text-main) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* 覆盖自定义/旧主题遮罩，确保所有弹窗都是液态玻璃 */
+body:not(.theme-chase) .modal-overlay,
+body.theme-chase .modal-overlay,
+body:not(.theme-chase) .lm-overlay.center-modal,
+body.theme-chase .lm-overlay.center-modal,
+body:not(.theme-chase) #overlay.center-modal,
+body.theme-chase #overlay.center-modal,
+body:not(.theme-chase) #checklist-action-modal,
+body.theme-chase #checklist-action-modal{
+  background: radial-gradient(ellipse at 50% 10%, rgba(255,255,255,.14), transparent 58%), var(--liquid-overlay) !important;
+  backdrop-filter: blur(8px) saturate(120%) !important;
+  -webkit-backdrop-filter: blur(8px) saturate(120%) !important;
+}
+body.theme-chase .modal-overlay,
+body.theme-chase .lm-overlay.center-modal,
+body.theme-chase #overlay.center-modal,
+body.theme-chase #checklist-action-modal{
+  background: radial-gradient(ellipse at 50% 10%, rgba(95,140,210,.13), transparent 58%), var(--liquid-overlay) !important;
+}
+body:not(.theme-chase) .modal-content .history-card,
+body.theme-chase .modal-content .history-card{
+  background: rgba(255,255,255,.22) !important;
+  border: 1px solid rgba(255,255,255,.5) !important;
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+}
+body.theme-chase .modal-content .history-card{
+  background: rgba(255,255,255,.06) !important;
+  border-color: rgba(255,255,255,.12) !important;
+}
+body:not(.theme-chase) .modal-content .cl-chip{
+  background: rgba(255,255,255,.26) !important;
+  border: 1px solid rgba(255,255,255,.52) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+body.theme-chase .modal-content .cl-chip{
+  background: rgba(255,255,255,.07) !important;
+  border: 1px solid rgba(255,255,255,.14) !important;
+}
+body:not(.theme-chase) .modal-content .cl-chip.selected,
+body.theme-chase .modal-content .cl-chip.selected{
+  background: var(--text-main) !important;
+  color: var(--bg-color) !important;
+  border-color: var(--text-main) !important;
+}
+
+/* ===== 编辑行程快捷入口 ===== */
+.segment-actions{display:flex;gap:8px;margin-top:10px}
+.segment-action{flex:1 1 0;min-width:0;height:44px;border:1px solid var(--line);border-radius:12px;background:rgba(150,150,150,.08);color:var(--text-main);font-family:inherit;font-size:16px;font-weight:400;line-height:1;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:background .16s,transform .16s}
+.segment-action:active{transform:scale(.98);background:rgba(150,150,150,.14)}
+body:not(.theme-chase) .segment-action{background:rgba(255,255,255,.26);border-color:rgba(255,255,255,.52);backdrop-filter:blur(14px) saturate(150%);-webkit-backdrop-filter:blur(14px) saturate(150%)}
+body:not(.theme-chase) .segment-action:active{background:rgba(255,255,255,.38)}
+body.theme-chase .segment-action{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12);backdrop-filter:blur(14px) saturate(150%);-webkit-backdrop-filter:blur(14px) saturate(150%)}
+body.theme-chase .segment-action:active{background:rgba(255,255,255,.12)}
 </style>
 </head>
 <body>
@@ -1349,8 +1540,8 @@ body.theme-chase #view-fare .card{border-color:rgba(255,255,255,.10)!important}
     </button>
 </nav>
 
-<div class="sheet-overlay path-scope" id="overlay"></div>
-<div class="sheet path-scope" id="sheet">
+<div class="sheet-overlay path-scope center-modal" id="overlay"></div>
+<div class="sheet path-scope center-modal" id="sheet">
   <h2 id="sheetTitle">编辑这一段</h2>
   <div class="field">
     <label>出行方式</label>
@@ -1411,6 +1602,10 @@ body.theme-chase #view-fare .card{border-color:rgba(255,255,255,.10)!important}
   <div class="field" id="planField">
     <label>预计用时（分钟）</label>
     <input id="planInput" type="number" inputmode="numeric" min="1" max="240" placeholder="例如：12">
+    <div class="segment-actions" id="segmentActions" style="display:none">
+      <button type="button" class="segment-action" id="segmentTimetableBtn">查看时刻表</button>
+      <button type="button" class="segment-action" id="segmentFareBtn">查看车费</button>
+    </div>
   </div>
   <div class="hint" id="typeHint"></div>
   <div class="err" id="errBox"></div>
@@ -1421,31 +1616,31 @@ body.theme-chase #view-fare .card{border-color:rgba(255,255,255,.10)!important}
   </div>
 </div>
 
-<div class="lm-overlay path-scope tall" id="lineModal">
+<div class="lm-overlay path-scope tall center-modal" id="lineModal">
   <div class="lm-card">
-    <div class="lm-head"><span>选择线路</span><button id="lmClose" aria-label="关闭">×</button></div>
+    <div class="lm-head"><span>选择线路</span></div>
     <input id="lmSearch" type="text" placeholder="输入线路号搜索" autocomplete="off">
     <div class="lm-list" id="lmList"></div>
   </div>
 </div>
-<div class="lm-overlay path-scope" id="pathPicker" role="dialog" aria-modal="true" aria-labelledby="pickerTitle">
+<div class="lm-overlay path-scope center-modal" id="pathPicker" role="dialog" aria-modal="true" aria-labelledby="pickerTitle">
   <div class="lm-card">
-    <div class="lm-head"><span id="pickerTitle">选择</span><button type="button" id="pickerClose" aria-label="关闭">×</button></div>
+    <div class="lm-head"><span id="pickerTitle">选择</span></div>
     <input id="pickerSearch" type="text" placeholder="搜索" autocomplete="off">
     <div class="lm-list" id="pickerList"></div>
   </div>
 </div>
-        <div class="lm-overlay path-scope" id="farePickerOverlay">
+        <div class="lm-overlay path-scope center-modal" id="farePickerOverlay">
             <div class="lm-card">
-                <div class="lm-head"><span id="farePickerTitle">选择起点</span><button type="button" id="farePickerClose" aria-label="关闭">×</button></div>
+                <div class="lm-head"><span id="farePickerTitle">选择起点</span></div>
                 <input id="fareSearch" type="text" placeholder="搜索车站" autocomplete="off">
                 <div class="lm-list" id="fareList"></div>
             </div>
         </div>
 
-<div class="lm-overlay path-scope" id="timePicker" role="dialog" aria-modal="true" aria-labelledby="timePickerTitle">
+<div class="lm-overlay path-scope center-modal" id="timePicker" role="dialog" aria-modal="true" aria-labelledby="timePickerTitle">
   <div class="lm-card time-card">
-    <div class="lm-head"><span id="timePickerTitle">选择上课时间</span><button type="button" id="timePickerClose" aria-label="关闭">×</button></div>
+    <div class="lm-head"><span id="timePickerTitle">选择上课时间</span></div>
     <div class="time-cols">
       <div class="time-col" id="timeHourCol"></div>
       <div class="time-col" id="timeMinuteCol"></div>
@@ -1768,7 +1963,19 @@ body.theme-chase #view-fare .card{border-color:rgba(255,255,255,.10)!important}
         "2026-09-26",
         "2026-10-01",
         "2026-10-19",
-        "2026-12-25", "2026-12-26"
+        "2026-12-25", "2026-12-26",
+        "2027-01-01",
+        "2027-02-06", "2027-02-08", "2027-02-09",
+        "2027-03-26", "2027-03-27", "2027-03-29",
+        "2027-04-05",
+        "2027-05-01",
+        "2027-05-13",
+        "2027-06-09",
+        "2027-07-01",
+        "2027-09-16",
+        "2027-10-01",
+        "2027-10-08",
+        "2027-12-25", "2027-12-27"
     ];
     // 降雨分档：0 无雨 / 1 小雨 / 2 中雨 / 3 大雨暴雨
     const RAIN_TIER_PENALTY = [0, 5, 9, 15];
@@ -2621,7 +2828,7 @@ JOIE 乐行	JOIE
     let userConfig = { ...defaultConfig };
 
     let weatherData = { loading: true, szHourly: null, shenzhen: { temp: null, error: false, feelsLike: null, humidity: null, windSpeed: null }, hongkong: { temp: null, error: false }, szRain: false, hkRain: false, szTomorrowRainProb: null };
-    let holidayData = { loading: true, list: [] };
+    let holidayData = { loading: true, list: [], source: 'fallback', stale: false, coverageMax: 2027 };
     let portData = { loading: true, main: null, backup: null, raw: null };
     let busData = { loading: true, cards: null };
     let dayMode = 'auto'; // 'auto' | 'today' | 'tomorrow'
@@ -2674,6 +2881,200 @@ JOIE 乐行	JOIE
         historyData = Array.isArray(parsedHistory) ? parsedHistory : [];
     } catch (e) { historyData = []; }
 
+    // ============ 统一 trip 数据层（v1） ============
+    // 一条记录 = 一天一个方向；checkin / history / MLP log / port sample 都汇总到这里。
+    const TRIPS_KEY = 'terminus_trips_v1';
+    const TRIPS_MIGRATED_KEY = 'terminus_trips_migrated_v1';
+    let trips = (function(){
+        try {
+            const a = JSON.parse(localStorage.getItem(TRIPS_KEY) || '[]');
+            return Array.isArray(a) ? a : [];
+        } catch (e) { return []; }
+    })();
+
+    function tripDateFromTs(ts){
+        if (!ts) return null;
+        const d = new Date(ts);
+        if (isNaN(d.getTime())) return null;
+        return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+    }
+    function tripKey(date, dir){ return String(date) + '-' + (dir === 'evening' ? 'evening' : 'morning'); }
+    function findTrip(date, dir){
+        const key = tripKey(date, dir);
+        return trips.find(function(t){ return t && (t.id === key || (t.date === date && t.dir === dir)); }) || null;
+    }
+    function saveTrips(){
+        trips.sort(function(a,b){ return (a.outTs || 0) - (b.outTs || 0); });
+        while (trips.length > 730) trips.shift();
+        try { localStorage.setItem(TRIPS_KEY, JSON.stringify(trips)); } catch (e) {}
+    }
+    function upsertTrip(patch){
+        if (!patch || !patch.date || !patch.dir) return null;
+        const dir = patch.dir === 'evening' ? 'evening' : 'morning';
+        let t = findTrip(patch.date, dir);
+        if (!t) {
+            t = { version: 1, id: tripKey(patch.date, dir), date: patch.date, dir: dir, createdAt: Date.now() };
+            trips.push(t);
+        }
+        Object.keys(patch).forEach(function(k){
+            const v = patch[k];
+            if (v !== undefined) t[k] = v;
+        });
+        t.updatedAt = Date.now();
+        saveTrips();
+        return t;
+    }
+    function deleteTrip(date, dir){
+        const t = findTrip(date, dir);
+        if (!t) return;
+        trips = trips.filter(function(x){ return x !== t; });
+        saveTrips();
+    }
+    function mergeLogIntoStruct(t, entry){
+        if (!t || !entry) return;
+        if (entry.outTs && !t.outTs) t.outTs = entry.outTs;
+        if (entry.inTs) t.inTs = entry.inTs;
+        if (isFinite(entry.actual)) t.actual = entry.actual;
+        if (entry.context) t.context = Object.assign({}, t.context || {}, entry.context);
+        if (entry.baseline !== undefined) t.baseline = entry.baseline;
+        if (entry.baselineLevel !== undefined) t.baselineLevel = entry.baselineLevel;
+        if (entry.baselineSamples !== undefined) t.baselineSamples = entry.baselineSamples;
+        if (entry.mlpResidual !== undefined) t.mlpResidual = entry.mlpResidual;
+        if (entry.alpha !== undefined) t.alpha = entry.alpha;
+        if (entry.final !== undefined) t.final = entry.final;
+        if (entry.modelVersion !== undefined) t.modelVersion = entry.modelVersion;
+        if (entry.createdAt) t.loggedAt = entry.createdAt;
+    }
+    function mergeTripLog(entry){
+        if (!entry) return null;
+        let dir = entry.dir === 'evening' ? 'evening' : 'morning';
+        let date = tripDateFromTs(entry.outTs) || tripDateFromTs(entry.inTs);
+        if (!date) return null;
+        let t = null;
+        if (entry.outTs) {
+            t = trips.find(function(x){ return x && x.dir === dir && x.outTs === entry.outTs; }) || null;
+        }
+        if (!t) t = findTrip(date, dir);
+        if (!t) {
+            t = upsertTrip({ date: date, dir: dir, outTs: entry.outTs || null, status: 'open' });
+        }
+        if (!t) return null;
+        if (entry.kind === 'port') {
+            t.port = Object.assign({}, t.port || {}, {
+                arrivedAt: entry.inTs,
+                name: entry.port || null,
+                duration: entry.actual,
+                accuracy: entry.accuracy == null ? null : entry.accuracy,
+                queue: entry.queue == null ? null : entry.queue,
+                queueSide: entry.context ? entry.context.queueSide : null,
+                tripId: entry.tripId
+            });
+        } else {
+            mergeLogIntoStruct(t, entry);
+            if (entry.inTs) t.status = 'saved';
+        }
+        t.updatedAt = Date.now();
+        saveTrips();
+        return t;
+    }
+    function historyTrip(item, dir){
+        if (!item || !item.date) return null;
+        const out = dir === 'morning'
+            ? (item.morningOut != null ? item.morningOut : item.outTime)
+            : item.eveningOut;
+        const inTs = dir === 'morning'
+            ? (item.morningIn != null ? item.morningIn : item.inTime)
+            : item.eveningIn;
+        const saved = dir === 'morning'
+            ? (item.morningSaved === true || (out != null && inTs != null))
+            : (item.eveningSaved === true || (out != null && inTs != null));
+        if (out == null && inTs == null && !saved) return null;
+        return {
+            date: item.date, dir: dir, outTs: out || null, inTs: inTs || null,
+            actual: (out != null && inTs != null) ? Math.max(1, Math.round((inTs-out)/60000)) : null,
+            status: saved ? 'saved' : (out != null ? 'open' : 'cancelled'),
+            note: item.note || '',
+            source: 'history'
+        };
+    }
+    function syncTripsFromCheckIn(){
+        try {
+            const ci = checkInData;
+            if (!ci || !ci.date) return;
+            ['morning','evening'].forEach(function(dir){
+                const out = dir === 'morning' ? ci.morningOut : ci.eveningOut;
+                const inTs = dir === 'morning' ? ci.morningIn : ci.eveningIn;
+                const saved = dir === 'morning' ? ci.morningSaved : ci.eveningSaved;
+                const existing = findTrip(ci.date, dir);
+                if (out != null || inTs != null || saved) {
+                    const actual = (out != null && inTs != null) ? Math.max(1, Math.round((inTs-out)/60000)) : null;
+                    upsertTrip({
+                        date: ci.date, dir: dir, outTs: out || null, inTs: inTs || null,
+                        actual: actual, status: saved ? 'saved' : (out != null ? 'open' : 'cancelled'),
+                        autoIn: dir === 'morning' ? !!ci.autoIn : undefined,
+                        autoLate: dir === 'morning' ? !!ci.autoLate : undefined,
+                        source: existing && existing.source ? existing.source : 'checkin'
+                    });
+                } else if (existing && existing.status !== 'saved' && !existing.port) {
+                    deleteTrip(ci.date, dir);
+                }
+            });
+        } catch (e) {}
+    }
+    function migrateTrips(){
+        try {
+            // 旧历史
+            historyData.forEach(function(item){
+                ['morning','evening'].forEach(function(dir){
+                    const rec = historyTrip(item, dir);
+                    if (!rec) return;
+                    const existing = findTrip(rec.date, dir);
+                    if (!existing) upsertTrip(rec);
+                    else {
+                        if (existing.outTs == null && rec.outTs != null) existing.outTs = rec.outTs;
+                        if (existing.inTs == null && rec.inTs != null) existing.inTs = rec.inTs;
+                        if (existing.actual == null && rec.actual != null) existing.actual = rec.actual;
+                        if (!existing.status || existing.status === 'open') existing.status = rec.status;
+                        if (!existing.note && rec.note) existing.note = rec.note;
+                    }
+                });
+            });
+            // MLP commute / port logs
+            if (typeof tripLogs !== 'undefined' && Array.isArray(tripLogs)) {
+                tripLogs.forEach(function(entry){ mergeTripLog(entry); });
+            }
+            // 口岸样本（补上 trip 上的 port 节点）
+            if (typeof portSamples !== 'undefined' && Array.isArray(portSamples)) {
+                portSamples.forEach(function(sample){
+                    if (!sample || !sample.tripId) return;
+                    mergeTripLog({
+                        kind: 'port', dir: sample.dir || 'morning', tripId: sample.tripId,
+                        outTs: sample.tripId, inTs: sample.ts, actual: sample.duration,
+                        port: sample.port, accuracy: sample.accuracy, queue: sample.congestion,
+                        context: { queueSide: sample.queueSide || (sample.dir === 'evening' ? 'dep' : 'arr') },
+                        createdAt: sample.ts
+                    });
+                });
+            }
+            syncTripsFromCheckIn();
+            try { localStorage.setItem(TRIPS_MIGRATED_KEY, '1'); } catch (e) {}
+            saveTrips();
+        } catch (e) {}
+    }
+    function updateTripNote(date, note){
+        trips.forEach(function(t){ if (t && t.date === date) t.note = note; });
+        saveTrips();
+    }
+    window.Trips = {
+        all: function(){ return trips.map(function(t){ return Object.assign({}, t); }); },
+        get: function(date, dir){ const t = findTrip(date, dir); return t ? Object.assign({}, t) : null; },
+        summary: function(){
+            return trips.map(function(t){
+                return { date:t.date, dir:t.dir, status:t.status, actual:t.actual, baseline:t.baseline, alpha:t.alpha, hasPort:!!t.port };
+            });
+        }
+    };
+
     // ============ 统一直连请求（公交/港铁/天气，无代理） ============
     async function fetchJSON(url, options = {}, timeoutMs = 8000) {
         const ctrl = new AbortController();
@@ -2703,6 +3104,7 @@ JOIE 乐行	JOIE
         renderDate();
         renderDayToggle();
         updateEngineToggle();
+        if (typeof migrateTrips === 'function') migrateTrips();
         warmStartEngine();
         fetchWeather();
         fetchHoliday();
@@ -3008,39 +3410,107 @@ JOIE 乐行	JOIE
     })();
 
     // ============ 香港公众假期 ============
-    const HOLIDAY_CACHE_KEY = 'terminus_holidays_v1';
+    const HOLIDAY_CACHE_KEY = 'terminus_holidays_v2';
+    const HOLIDAY_CACHE_KEY_OLD = 'terminus_holidays_v1';
+    const HOLIDAY_YEAR_MIN = 2024;
+    const HOLIDAY_YEAR_MAX = 2035;
 
-    /* 成功拉取过的假期写入本地，断网重开仍能判断红日 */
+    function normalizeHolidayDates(arr) {
+        const out = [];
+        const seen = Object.create(null);
+        (Array.isArray(arr) ? arr : []).forEach(function(v){
+            const s = String(v || '');
+            if (!/^\d{4}-\d{2}-\d{2}$/.test(s)) return;
+            const y = parseInt(s.slice(0, 4), 10);
+            if (y < HOLIDAY_YEAR_MIN || y > HOLIDAY_YEAR_MAX) return;
+            if (seen[s]) return;
+            seen[s] = 1;
+            out.push(s);
+        });
+        out.sort();
+        return out;
+    }
+    function mergeHolidayDates() {
+        const all = [];
+        for (var i = 0; i < arguments.length; i++) all.push.apply(all, Array.isArray(arguments[i]) ? arguments[i] : []);
+        return normalizeHolidayDates(all);
+    }
+    function holidayPayloadDates(data) {
+        const vc = data && data.vcalendar;
+        const vevents = vc && vc[0] && vc[0].vevent;
+        if (!Array.isArray(vevents)) return [];
+        const dates = [];
+        vevents.forEach(function(ev){
+            const dt = (ev && Array.isArray(ev.dtstart) && ev.dtstart[0]) ? String(ev.dtstart[0]) : '';
+            if (dt) dates.push(compactToYMD(dt));
+        });
+        return normalizeHolidayDates(dates);
+    }
     function loadCachedHolidays() {
         try {
-            const arr = JSON.parse(localStorage.getItem(HOLIDAY_CACHE_KEY) || 'null');
-            return (Array.isArray(arr) && arr.length) ? arr : null;
-        } catch (e) { return null; }
+            const raw = localStorage.getItem(HOLIDAY_CACHE_KEY) || localStorage.getItem(HOLIDAY_CACHE_KEY_OLD);
+            if (!raw) return null;
+            const parsed = JSON.parse(raw);
+            if (Array.isArray(parsed)) {
+                const dates = normalizeHolidayDates(parsed);
+                return dates.length ? { dates: dates, fetchedAt: 0, source: 'v1' } : null;
+            }
+            if (parsed && Array.isArray(parsed.dates)) {
+                const dates = normalizeHolidayDates(parsed.dates);
+                return dates.length ? { dates: dates, fetchedAt: parsed.fetchedAt || 0, source: parsed.source || 'cache' } : null;
+            }
+        } catch (e) {}
+        return null;
     }
-
+    function saveCachedHolidays(dates, source) {
+        try {
+            localStorage.setItem(HOLIDAY_CACHE_KEY, JSON.stringify({
+                dates: normalizeHolidayDates(dates),
+                fetchedAt: Date.now(),
+                source: source || 'proxy'
+            }));
+        } catch (e) {}
+    }
+    function holidayCoverageMax(dates) {
+        let max = 0;
+        (dates || []).forEach(function(s){
+            const y = parseInt(String(s).slice(0, 4), 10);
+            if (y > max) max = y;
+        });
+        return max;
+    }
+    async function fetchHolidayViaProxy() {
+        if (typeof PORT_CORS_PROXIES === 'undefined' || !PORT_CORS_PROXIES.length) return [];
+        const tasks = PORT_CORS_PROXIES.map(function(p){
+            return fetchJSON(p + encodeURIComponent(HOLIDAY_API), {}, 6000).then(function(j){
+                const dates = holidayPayloadDates(j);
+                if (!dates.length) throw new Error('invalid holiday payload');
+                return dates;
+            });
+        });
+        return await withDeadline(Promise.any(tasks), 6000);
+    }
     async function fetchHoliday() {
         holidayData.loading = true;
         const cached = loadCachedHolidays();
-        if (cached) { holidayData.list = cached; holidayData.loading = false; }
+        const base = mergeHolidayDates(HOLIDAY_FALLBACK, cached && cached.dates);
+        holidayData.list = base;
+        holidayData.loading = false;
+        holidayData.source = cached ? 'cache+fallback' : 'fallback';
         renderHoliday();
 
         try {
-            const data = await fetchJSON(HOLIDAY_API);
-            const vevents = data && data.vcalendar && data.vcalendar[0] && data.vcalendar[0].vevent;
-            const holidays = [];
-            if (Array.isArray(vevents)) {
-                vevents.forEach(ev => {
-                    const dt = (Array.isArray(ev.dtstart) && ev.dtstart[0]) ? String(ev.dtstart[0]) : '';
-                    if (dt) holidays.push(compactToYMD(dt));
-                });
-            }
-            holidayData.list = holidays;
-            holidayData.loading = false;
-            try { localStorage.setItem(HOLIDAY_CACHE_KEY, JSON.stringify(holidays)); } catch (e) {}
+            const proxied = await fetchHolidayViaProxy();
+            const merged = mergeHolidayDates(base, proxied);
+            holidayData.list = merged;
+            holidayData.source = 'proxy+fallback';
+            saveCachedHolidays(merged, 'proxy');
         } catch (e) {
-            holidayData.list = cached || HOLIDAY_FALLBACK;
-            holidayData.loading = false;
+            holidayData.list = base;
         }
+        holidayData.coverageMax = holidayCoverageMax(holidayData.list);
+        holidayData.stale = new Date().getFullYear() > holidayData.coverageMax;
+        holidayData.loading = false;
         renderHoliday();
         renderUI();
     }
@@ -3091,6 +3561,11 @@ JOIE 乐行	JOIE
         if (holidayData.loading) {
             text.textContent = '查询香港假期中…';
             setDot(dot, 'gray');
+            return;
+        }
+        if (holidayData.stale) {
+            text.textContent = '假期数据待更新';
+            setDot(dot, 'yellow');
             return;
         }
 
@@ -3441,6 +3916,7 @@ JOIE 乐行	JOIE
     /* ============ 打卡动作：手动时间戳来自按钮点击；自动到校按上课时间推定 ============ */
     function persistCheckIn() {
         localStorage.setItem('terminus_checkin', JSON.stringify(checkInData));
+        if (typeof syncTripsFromCheckIn === 'function') syncTripsFromCheckIn();
         renderUI();
         var area = document.getElementById('checkin-action-area');
         if (area) {
@@ -3493,7 +3969,7 @@ JOIE 乐行	JOIE
     }
 
     function isTodaySchoolDay() {
-        if (holidayData.loading || warningData.loading) return false;
+        if (holidayData.loading || warningData.loading || holidayData.stale) return false;
         if (getRestStatus(new Date(), holidayData.list).isRest) return false;
         return !warningData.suspended;
     }
@@ -3609,6 +4085,8 @@ JOIE 乐行	JOIE
             checkInData.eveningSaved = false;
             departurePort = portData.main;   // 离校时刻快照口岸
             if (typeof resetPortTripTracking === 'function') resetPortTripTracking();
+            if (typeof captureCommuteDeparture === 'function') captureCommuteDeparture('evening');
+            if (typeof capturePortDeparture === 'function') capturePortDeparture('evening');
             fetchPortQueue();
         } else if (action === 'eveningIn') {
             checkInData.eveningIn = Date.now();
@@ -3793,16 +4271,18 @@ JOIE 乐行	JOIE
         checkInData.date = todayYMD();
         departurePort = portData.main;   // 出门时刻快照口岸，作为「过境」代理
         if (typeof resetPortTripTracking === 'function') resetPortTripTracking();
+        if (typeof captureCommuteDeparture === 'function') captureCommuteDeparture('morning');
+        if (typeof capturePortDeparture === 'function') capturePortDeparture('morning');
         fetchPortQueue();
         closeChecklistAction();
         persistCheckIn();
     }
 
     // ============ 自学习端侧推理引擎（LocalInferenceEngine / Tiny MLP）============
-    const EDGE_WEIGHTS_KEY = 'terminus_edge_weights';
-    const EDGE_META_KEY = 'terminus_edge_meta';
+    const EDGE_WEIGHTS_KEY = 'terminus_edge_weights_v2';
+    const EDGE_META_KEY = 'terminus_edge_meta_v2';
     const EDGE_TOGGLE_KEY = 'terminus_edge_enabled';
-    const EDGE_IN = 4, EDGE_HIDDEN = 6, EDGE_LR = 0.01;
+    const EDGE_IN = 8, EDGE_HIDDEN = 6, EDGE_LR = 0.01;
 
     let engineEnabled = (localStorage.getItem(EDGE_TOGGLE_KEY) === '1');
     let engineSamples = loadEngineSamples();
@@ -3816,39 +4296,8 @@ JOIE 乐行	JOIE
     }
 
     /* 冷启动时用历史档案批量回放预热：攒了几天档案的人，开引擎就已是「已学习 N 次」 */
-    function warmStartEngine() {
-        if (engineSamples > 0) return;
-        if (!historyData || !historyData.length) return;
-        const base = Number(userConfig.baseTime);
-        if (!isFinite(base) || base <= 0) return;
-        let replayed = 0;
-        historyData.forEach(function (item) {
-            if (!item) return;
-            const mOut = item.morningOut != null ? item.morningOut : item.outTime;
-            const mIn = item.morningIn != null ? item.morningIn : item.inTime;
-            if (mOut && mIn) {
-                const dur = Math.round((mIn - mOut) / 60000);
-                if (dur > 0 && dur < 600) {
-                    const target = dur - base;
-                    const features = [0, 0, dayOfWeekFeature(new Date(mOut)), 0]; // 历史无天气/口岸，填中性 0
-                    if (Math.abs(target - engine.predict(features)) <= 45) { engine.train(features, target); replayed++; }
-                }
-            }
-            if (item.eveningOut && item.eveningIn) {
-                const dur = Math.round((item.eveningIn - item.eveningOut) / 60000);
-                if (dur > 0 && dur < 600) {
-                    const target = dur - base;
-                    const features = [0, 0, dayOfWeekFeature(new Date(item.eveningOut)), 1];
-                    if (Math.abs(target - engine.predict(features)) <= 45) { engine.train(features, target); replayed++; }
-                }
-            }
-        });
-        if (replayed > 0) {
-            engineSamples = replayed;
-            engine.saveWeights();
-            try { localStorage.setItem(EDGE_META_KEY, JSON.stringify({ samples: engineSamples })); } catch (e) {}
-        }
-    }
+    // v2 使用本地 trip log 冷启动；旧档案没有特征快照，不回放。
+    function warmStartEngine() { return; }
 
     class LocalInferenceEngine {
         constructor() { this.initWeights(); }
@@ -3941,9 +4390,165 @@ JOIE 乐行	JOIE
     const engine = new LocalInferenceEngine();
     engine.loadWeights();
 
+    // ============ 共享：trip log / 条件中位数 / 残差特征 ============
+    const TRIP_LOG_KEY = 'terminus_mlp_trip_log_v1';
+    let tripLogs = (function(){
+        try { const a = JSON.parse(localStorage.getItem(TRIP_LOG_KEY) || '[]'); return Array.isArray(a) ? a : []; }
+        catch(e) { return []; }
+    })();
+    let pendingCommute = null;
+    let pendingPort = null;
+
+    function persistTripLogs(){
+        try { localStorage.setItem(TRIP_LOG_KEY, JSON.stringify(tripLogs.slice(-730))); } catch(e) {}
+    }
+    function appendTripLog(entry){
+        try {
+            const key = entry.kind + '|' + entry.dir + '|' + entry.tripId;
+            tripLogs = tripLogs.filter(function(x){ return !(x && (x.kind + '|' + x.dir + '|' + x.tripId) === key); });
+            tripLogs.push(entry);
+            if (tripLogs.length > 730) tripLogs = tripLogs.slice(-730);
+            persistTripLogs();
+            if (typeof mergeTripLog === 'function') mergeTripLog(entry);
+        } catch(e) {}
+    }
+    function weatherTierNow(){
+        try {
+            const code = weatherData.shenzhen && weatherData.shenzhen.weatherCode;
+            if (code !== null && code !== undefined) return rainTier(code);
+            return (weatherData.szRain || weatherData.hkRain) ? 1 : 0;
+        } catch(e) { return 0; }
+    }
+    function dayTypeFor(d){
+        try {
+            if (getRestStatus(d, holidayData.list).isRest) return 1;
+            if (warningData.suspended) return 1;
+        } catch(e) {}
+        return (d.getDay() === 0 || d.getDay() === 6) ? 2 : 0;
+    }
+    function halfHourBucket(hour){ return Math.round(hour * 2) / 2; }
+    function buildCommuteContext(dir, dateObj){
+        const d = dateObj || new Date();
+        const hour = d.getHours() + d.getMinutes() / 60;
+        return {
+            dir: dir || 'morning',
+            hour: hour,
+            hourBucket: halfHourBucket(hour),
+            weekday: d.getDay(),
+            dayType: dayTypeFor(d),
+            weatherTier: weatherTierNow(),
+            portLevel: (portData && typeof portData.main === 'number') ? portData.main : null
+        };
+    }
+    function buildPortContext(dir, port, dateObj, queueLevel){
+        const d = dateObj || new Date();
+        const hour = d.getHours() + d.getMinutes() / 60;
+        return {
+            dir: dir || 'morning',
+            port: port || (userConfig.mainPort || '深圳湾口岸'),
+            hour: hour,
+            hourBucket: halfHourBucket(hour),
+            weekday: d.getDay(),
+            dayType: dayTypeFor(d),
+            weatherTier: weatherTierNow(),
+            queueLevel: (typeof queueLevel === 'number') ? queueLevel : null,
+            queueSide: (dir === 'evening') ? 'dep' : 'arr'
+        };
+    }
+    function weightedMedian(rows){
+        if (!rows.length) return null;
+        const now = Date.now();
+        const arr = rows.map(function(l){
+            const ts = l.createdAt || l.ts || now;
+            const days = Math.max(0, (now - ts) / 86400000);
+            return { v: Number(l.actual), w: Math.pow(0.95, days) };
+        }).filter(function(x){ return isFinite(x.v) && x.v > 0 && x.v <= 300 && isFinite(x.w) && x.w > 0; });
+        if (!arr.length) return null;
+        arr.sort(function(a,b){ return a.v - b.v; });
+        const total = arr.reduce(function(a,x){ return a + x.w; }, 0);
+        let acc = 0;
+        for (let i=0;i<arr.length;i++){
+            acc += arr[i].w;
+            if (acc >= total / 2) return arr[i].v;
+        }
+        return arr[arr.length - 1].v;
+    }
+    function conditionalMedian(kind, ctx){
+        if (!ctx) return null;
+        const valid = tripLogs.filter(function(l){
+            return l && l.kind === kind && l.context && isFinite(l.actual) && l.actual > 0 && l.actual <= 300;
+        });
+        const commuteLevels = [
+            ['dir','dayType','hourBucket','weatherTier','portLevel'],
+            ['dir','dayType','hourBucket','weatherTier'],
+            ['dir','dayType','hourBucket'],
+            ['dir','dayType'],
+            ['dir']
+        ];
+        const portLevels = [
+            ['dir','port','hourBucket','weatherTier','queueLevel'],
+            ['dir','port','hourBucket','weatherTier'],
+            ['dir','port','hourBucket'],
+            ['dir','port'],
+            ['dir']
+        ];
+        const levels = kind === 'port' ? portLevels : commuteLevels;
+        for (let i=0;i<levels.length;i++){
+            const fields = levels[i];
+            const rows = valid.filter(function(l){
+                return fields.every(function(f){ return l.context[f] === ctx[f]; });
+            });
+            if (rows.length >= 3) {
+                const value = weightedMedian(rows);
+                if (value != null) return { value: value, level: i, sampleCount: rows.length };
+            }
+        }
+        return null;
+    }
+    function captureCommuteDeparture(dir){
+        try {
+            const ctx = buildCommuteContext(dir, new Date());
+            pendingCommute = { dir: dir, outTs: Date.now(), context: ctx, baseline: conditionalMedian('commute', ctx) };
+        } catch(e) { pendingCommute = null; }
+    }
+    function capturePortDeparture(dir){
+        try {
+            const port = userConfig.mainPort || '深圳湾口岸';
+            const queue = (typeof portQueueLevel === 'function') ? portQueueLevel(port, dir) : null;
+            const ctx = buildPortContext(dir, port, new Date(), queue);
+            pendingPort = { dir: dir, outTs: Date.now(), port: port, queue: queue, context: ctx, baseline: conditionalMedian('port', ctx) };
+        } catch(e) { pendingPort = null; }
+    }
+    function recentCommuteResidual(dir){
+        const rows = tripLogs.filter(function(l){ return l && l.kind === 'commute' && l.dir === dir && isFinite(l.actual) && isFinite(l.baseline); }).slice(-5);
+        if (!rows.length) return 0;
+        return rows.reduce(function(a,l){ return a + (l.actual - l.baseline); }, 0) / rows.length;
+    }
+    function buildAFeatures(ctx, baseline){
+        return [
+            Math.max(0, Math.min(1, (ctx.weatherTier || 0) / 3)),
+            ctx.portLevel == null ? 0 : (ctx.portLevel === 1 ? 0.5 : ctx.portLevel === 2 ? 1 : 0),
+            (ctx.weekday || 0) / 7,
+            ctx.dir === 'evening' ? 1 : 0,
+            Math.max(0, Math.min(1, (ctx.hour || 0) / 24)),
+            Math.max(0, Math.min(2, (baseline || 60) / 120)),
+            ctx.dayType === 1 ? 1 : 0,
+            Math.max(-1, Math.min(1, recentCommuteResidual(ctx.dir) / 30))
+        ];
+    }
+    function alphaFor(n){
+        return n > 0 ? Math.min(0.45, 0.45 * (1 - Math.exp(-n / 20))) : 0;
+    }
+    function predictA(ctx, baseline){
+        const features = buildAFeatures(ctx, baseline);
+        const residual = engine.predict(features);
+        const alpha = alphaFor(engineSamples);
+        return { residual: residual, alpha: alpha, final: baseline + alpha * residual, features: features };
+    }
+
     // ============ MLP-B：口岸分段模型 + GPS 围栏（与 MLP-A 完全独立） ============
-    const PORT_WEIGHTS_KEY = 'terminus_mlp_port_weights';
-    const PORT_SAMPLES_KEY = 'terminus_mlp_port_samples';
+    const PORT_WEIGHTS_KEY = 'terminus_mlp_port_weights_v2';
+    const PORT_SAMPLES_KEY = 'terminus_mlp_port_samples_v2';
     const PORT_COUNT_KEY = 'terminus_mlp_port_count';
     const PORT_IN = 7, PORT_HIDDEN = 6;
     // 原 0.01 相对 20–30 分钟的目标尺度过小，b2 每步只增约 0.5，几十条样本都追不上
@@ -4042,10 +4647,7 @@ JOIE 乐行	JOIE
             return Array.isArray(a) ? a : [];
         } catch (e) { return []; }
     })();
-    let portCount = (function () {
-        const n = parseInt(localStorage.getItem(PORT_COUNT_KEY) || '0', 10);
-        return isFinite(n) && n > 0 ? n : 0;
-    })();
+    let portCount = portSamples.length;
     let portFenceOn = true;
     let portDemoStart = null; // 仅演示用：未打卡时提供行程起点，不写入真实打卡档案
     let portReachedTrip = null; // 本次去程已经到过口岸，之后不再显示口岸 ETA
@@ -4076,30 +4678,26 @@ JOIE 乐行	JOIE
             else localStorage.removeItem(PORT_GPS_OFF_KEY);
         } catch (e) {}
     }
-    // 一次去程只留一条：以 morningOut 作为 tripId
-    function portSampledTrip(tripId) {
+    // 每个方向每个 tripId 只留一条
+    function portSampledTrip(tripId, dir) {
         if (!tripId) return false;
         for (let i = portSamples.length - 1; i >= 0; i--) {
             const s = portSamples[i];
-            if (s && s.tripId === tripId) return true;
+            if (s && s.tripId === tripId && (!dir || !s.dir || s.dir === dir)) return true;
         }
         return false;
     }
-    // 严格去程状态：已出门、未到校、未保存；真实 morningOut 才算
+    // 严格去程状态：已出门、未到校、未保存
     function outboundTripId() {
         if (!checkInData.morningOut) return null;
         if (checkInData.morningIn || checkInData.morningSaved) return null;
         return checkInData.morningOut;
     }
-
-    function haversineM(lat1, lon1, lat2, lon2) {
-        const R = 6371000, rad = Math.PI / 180;
-        const dLat = (lat2 - lat1) * rad, dLon = (lon2 - lon1) * rad;
-        const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-                  Math.cos(lat1 * rad) * Math.cos(lat2 * rad) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
-        return 2 * R * Math.asin(Math.min(1, Math.sqrt(a)));
+    function returnTripId() {
+        if (!checkInData.eveningOut) return null;
+        if (checkInData.eveningIn || checkInData.eveningSaved) return null;
+        return checkInData.eveningOut;
     }
-
     function tripDir() {
         if (checkInData.eveningOut && !checkInData.eveningIn) return 'evening';
         return 'morning';
@@ -4110,6 +4708,29 @@ JOIE 乐行	JOIE
     // 口岸链路专用起点：真实打卡优先，未打卡时才回落到演示注入值
     function portTripStart() {
         return tripStartTs() || portDemoStart;
+    }
+    function activePortTrip() {
+        const m = outboundTripId();
+        if (m) return { id: m, dir: 'morning' };
+        const e = returnTripId();
+        if (e) return { id: e, dir: 'evening' };
+        return null;
+    }
+    function portQueueLevel(port, dir) {
+        const meta = PORT_MAP[port];
+        const src = fetchPortData._cache;
+        if (!meta || !src || !src[meta.apiKey]) return null;
+        const key = (dir === 'evening') ? 'depQueue' : 'arrQueue';
+        const v = src[meta.apiKey][key];
+        return (typeof v === 'number') ? v : null;
+    }
+
+    function haversineM(lat1, lon1, lat2, lon2) {
+        const R = 6371000, rad = Math.PI / 180;
+        const dLat = (lat2 - lat1) * rad, dLon = (lon2 - lon1) * rad;
+        const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                  Math.cos(lat1 * rad) * Math.cos(lat2 * rad) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+        return 2 * R * Math.asin(Math.min(1, Math.sqrt(a)));
     }
     function portIndex(port) {
         const keys = Object.keys(PORT_MAP);
@@ -4122,17 +4743,13 @@ JOIE 乐行	JOIE
         if (code === 2) return 1;
         return 0.25;
     }
-    function portCongestionNow(port) {
-        const meta = PORT_MAP[port];
-        const src = fetchPortData._cache;
-        if (meta && src && src[meta.apiKey] && typeof src[meta.apiKey].arrQueue === 'number') {
-            return src[meta.apiKey].arrQueue;
-        }
-        return null;
+    function portCongestionNow(port, dir) {
+        return portQueueLevel(port, dir || 'morning');
     }
-    function portTidalFallback(port, hour) {
+    function portTidalFallback(port, hour, dir) {
         const rows = portSamples.filter(function (s) {
             if (!s || s.port !== port || typeof s.ts !== 'number') return false;
+            if (dir && s.dir && s.dir !== dir) return false;
             const h = new Date(s.ts).getHours();
             return Math.abs(h - hour) <= 1;
         });
@@ -4196,12 +4813,10 @@ JOIE 乐行	JOIE
     function checkPortGeofence(lat, lon, acc, speed, now) {
         // 口岸属于学习引擎的子引擎：总开关关闭时整条链路不工作
         if (!engineEnabled || !portFenceOn) return;
-        // 必须有真实的去程起点；没有 morningOut 不记录
-        const tripId = outboundTripId();
-        if (!tripId) return;
-        // 精度门槛：300m
-        if (acc != null && acc >= PORT_ACC_MAX) return;
-        // 300m 内取最近的口岸；首帧满足即记录
+        const trip = activePortTrip();
+        if (!trip) return;
+        // 精度必须是有效数字且 <300m；null 不再放行
+        if (typeof acc !== 'number' || !isFinite(acc) || acc >= PORT_ACC_MAX) return;
         let bestPort = null, bestDist = Infinity;
         portFenceTargets().forEach(function (port) {
             const c = PORT_COORDS[port];
@@ -4210,33 +4825,57 @@ JOIE 乐行	JOIE
             if (d < PORT_TRIGGER_M && d < bestDist) { bestPort = port; bestDist = d; }
         });
         if (!bestPort) return;
-        if (portSampledTrip(tripId)) return;
-        onPortArrival(bestPort, now, acc, tripId);
+        if (portSampledTrip(trip.id, trip.dir)) return;
+        onPortArrival(bestPort, now, acc, trip.id, trip.dir);
     }
 
-    function onPortArrival(port, now, acc, tripId) {
-        const dir = 'morning';
+    function onPortArrival(port, now, acc, tripId, dir) {
         const start = tripId;
         if (!start) return;
-        if (portSampledTrip(tripId)) return;   // 一次去程一条：撤销后重新出门才会产生新 tripId
+        if (portSampledTrip(tripId, dir)) return;
         const duration = Math.round((now - start) / 60000);
         if (!isFinite(duration) || duration <= 0 || duration > 300) return;
-        let cong = portCongestionNow(port);
-        if (cong == null) cong = portTidalFallback(port, new Date(now).getHours());
+        const pending = (pendingPort && pendingPort.dir === dir) ? pendingPort : null;
+        const ctx = pending ? pending.context : buildPortContext(dir, port, new Date(start), portQueueLevel(port, dir));
+        let cong = pending ? pending.queue : portQueueLevel(port, dir);
+        if (cong == null) cong = portTidalFallback(port, new Date(start).getHours(), dir);
+        let baseObj = pending ? pending.baseline : conditionalMedian('port', ctx);
+        let baseline = baseObj ? baseObj.value : portColdEstimate(dir);
+        const features = portFeatureVec(port, cong, dir, new Date(start));
+        const predicted = portEngine.predict(features);
+        const alpha = alphaFor(portSamples.length);
+        const final = (baseline == null) ? null : baseline + alpha * predicted;
         portSamples.push({
-            ts: now, port: port, dir: dir, duration: duration,
-            congestion: cong, accuracy: (acc == null ? null : Math.round(acc)),
-            tripId: tripId
+            version: 2, ts: now, port: port, dir: dir, duration: duration,
+            congestion: cong, accuracy: Number.isFinite(acc) ? Math.round(acc) : null,
+            tripId: tripId, baseline: baseline,
+            baselineLevel: baseObj ? baseObj.level : -1,
+            baselineSamples: baseObj ? baseObj.sampleCount : 0,
+            queueSide: (dir === 'evening') ? 'dep' : 'arr'
         });
         if (portSamples.length > 200) portSamples = portSamples.slice(-200);
+        portCount = portSamples.length;
         try { localStorage.setItem(PORT_SAMPLES_KEY, JSON.stringify(portSamples)); } catch (e) {}
-        portCount += 1;
         portReachedTrip = tripId;
-        try { localStorage.setItem(PORT_COUNT_KEY, String(portCount)); } catch (e) {}
-        try {
-            portEngine.train(portFeatureVec(port, cong, dir), duration);
-            portEngine.saveWeights();
-        } catch (e) {}
+        let trained = false;
+        if (baseline != null) {
+            const target = duration - baseline;
+            if (Math.abs(target - predicted) <= 45) {
+                try { portEngine.train(features, target); portEngine.saveWeights(); trained = true; } catch (e) {}
+            }
+        }
+        appendTripLog({
+            version: 1, kind: 'port', tripId: tripId, dir: dir,
+            outTs: start, inTs: now, actual: duration,
+            context: ctx, baseline: baseline,
+            baselineLevel: baseObj ? baseObj.level : -1,
+            baselineSamples: baseObj ? baseObj.sampleCount : 0,
+            mlpResidual: predicted, alpha: alpha,
+            final: final, modelVersion: 2,
+            port: port, queue: cong, accuracy: Number.isFinite(acc) ? Math.round(acc) : null,
+            trained: trained, createdAt: now
+        });
+        pendingPort = null;
         try { console.info('[PortETA] arrival', port, dir, duration + 'min', 'trip=' + tripId, 'cong=' + cong); } catch (e) {}
         updatePortEta();
     }
@@ -4313,9 +4952,13 @@ JOIE 乐行	JOIE
 
     function portQueuePrediction(dir, dateObj) {
         const port = userConfig.mainPort || '深圳湾口岸';
-        let cong = portCongestionNow(port);
-        if (cong == null) cong = portTidalFallback(port, (dateObj || new Date()).getHours());
-        return portEngine.predict(portFeatureVec(port, cong, dir, dateObj));
+        let cong = portCongestionNow(port, dir);
+        if (cong == null) cong = portTidalFallback(port, (dateObj || new Date()).getHours(), dir);
+        const ctx = buildPortContext(dir, port, dateObj || new Date(), cong);
+        const baseObj = conditionalMedian('port', ctx);
+        const baseline = baseObj ? baseObj.value : portColdEstimate(dir);
+        if (baseline == null) return null;
+        return baseline + alphaFor(portSamples.length) * portEngine.predict(portFeatureVec(port, cong, dir, dateObj));
     }
     // 冷启动估值：只取「同口岸 + 同方向」的样本中位数，不足则返回 null
     function portColdEstimate(dir) {
@@ -4332,13 +4975,12 @@ JOIE 乐行	JOIE
         if (!engineEnabled || !portFenceOn) return null;
         if (portGpsOffToday()) return null;          // 当天关过定位：全天不再推算
         if (!isCommuting()) return null;             // 到校/到家后不再显示口岸 ETA
-        if (portCount <= 0) return null;
-
-        const dir = tripDir();
-        if (dir === 'evening') return null;          // 返程不显示口岸 ETA
-        const tripId = outboundTripId();
-        if (tripId && portReachedTrip === tripId) return null;
-        if (tripId && portSampledTrip(tripId)) return null;
+        const active = activePortTrip();
+        if (!active) return null;
+        const dir = active.dir;
+        const tripId = active.id;
+        if (portReachedTrip === tripId) return null;
+        if (portSampledTrip(tripId, dir)) return null;
         const fix = globalLastFix;
         const port = userConfig.mainPort || '深圳湾口岸';
         if (!PORT_COORDS[port]) return null;
@@ -4365,22 +5007,14 @@ JOIE 乐行	JOIE
         if (start == null) return null;
         const elapsedMin = Math.max(0, (now - start) / 60000);
 
-        // 全程时长只当先验：模型与中位数混合（α 逻辑沿用原来的）
-        let totalMin = null;
-        if (portCount >= 3) {
-            const cold = portColdEstimate(dir);
-            const modelMin = portEngine.predict(portFeatureVec(port, portCongestionNow(port), dir));
-            if (cold == null) {
-                totalMin = modelMin;
-            } else {
-                const alpha = Math.min(PORT_BLEND_MAX, Math.max(0, (portCount - 3) / PORT_BLEND_STEP));
-                const modelSafe = Math.max(0.6 * cold, Math.min(1.4 * cold, modelMin));
-                totalMin = alpha * modelSafe + (1 - alpha) * cold;
-            }
-        } else {
-            totalMin = portColdEstimate(dir);        // 不足 3 条：只复用中位数
-        }
-        if (totalMin != null && (!isFinite(totalMin) || totalMin <= 0)) totalMin = null;
+        const queue = portCongestionNow(port, dir);
+        const ctx = buildPortContext(dir, port, new Date(), queue);
+        const baseObj = conditionalMedian('port', ctx);
+        const baseline = baseObj ? baseObj.value : portColdEstimate(dir);
+        if (baseline == null) return null;
+        const alpha = alphaFor(portSamples.length);
+        let totalMin = baseline + alpha * portEngine.predict(portFeatureVec(port, queue, dir, new Date()));
+        if (!isFinite(totalMin) || totalMin <= 0) totalMin = null;
 
         // 剩余时间：以「还剩多远」为主，先验做兜底与平滑
         const speed = portSpeedMedian();
@@ -4504,8 +5138,8 @@ JOIE 乐行	JOIE
                 count: portCount,
                 samples: portSamples.length,
                 last: last ? { port: last.port, dir: last.dir, duration: last.duration, ts: last.ts, tripId: last.tripId || null } : null,
-                trip: !!outboundTripId(),
-                tripId: outboundTripId(),
+                trip: !!activePortTrip(),
+                tripId: (activePortTrip() || {}).id || null,
                 commuting: isCommuting(),
                 eta: eta == null ? null : new Date(eta).toTimeString().slice(0, 5)
             };
@@ -4573,21 +5207,43 @@ JOIE 乐行	JOIE
     function trainEngineOnTrip(duration, dateObj, isReturn, silent) {
         try {
             if (!isFinite(duration) || duration <= 0) return;
-            const base = Number(userConfig.baseTime);
-            if (!isFinite(base) || base <= 0) return;
-            if (weatherData.loading || portData.loading) return;   // 关键数据未就绪 → 不学
-            const target = duration - base;
-            const features = [weatherFeatureNow(), departurePortFeature(), dayOfWeekFeature(dateObj), isReturn ? 1 : 0];
-            departurePort = null;   // 快照用完即弃
-            const predicted = engine.predict(features);
-            if (Math.abs(target - predicted) > 45) {
-                if (!silent) showToast('误差过大，推理引擎已忽略本次学习');
-                return;
+            const dir = isReturn ? 'evening' : 'morning';
+            const pending = (pendingCommute && pendingCommute.dir === dir) ? pendingCommute : null;
+            const ctx = pending ? pending.context : buildCommuteContext(dir, dateObj || new Date());
+            const baseObj = pending ? pending.baseline : conditionalMedian('commute', ctx);
+            const outTs = pending ? pending.outTs : ((dateObj ? dateObj.getTime() : Date.now()));
+            const inTs = outTs + Math.max(1, duration) * 60000;
+            let entry = {
+                version: 1, kind: 'commute', tripId: outTs, dir: dir,
+                outTs: outTs, inTs: inTs, actual: duration,
+                context: ctx, baseline: baseObj ? baseObj.value : null,
+                baselineLevel: baseObj ? baseObj.level : -1,
+                baselineSamples: baseObj ? baseObj.sampleCount : 0,
+                mlpResidual: null, alpha: 0,
+                final: baseObj ? baseObj.value : null,
+                modelVersion: 2, createdAt: inTs
+            };
+            if (baseObj) {
+                const features = buildAFeatures(ctx, baseObj.value);
+                const predicted = engine.predict(features);
+                const target = duration - baseObj.value;
+                const alpha = alphaFor(engineSamples);
+                entry.mlpResidual = predicted;
+                entry.alpha = alpha;
+                entry.final = baseObj.value + alpha * predicted;
+                if (Math.abs(target - predicted) <= 45) {
+                    engine.train(features, target);
+                    engine.saveWeights();
+                    engineSamples += 1;
+                    entry.trained = true;
+                    try { localStorage.setItem(EDGE_META_KEY, JSON.stringify({ samples: engineSamples })); } catch (e) {}
+                } else if (!silent) {
+                    showToast('误差过大，推理引擎已忽略本次学习');
+                }
             }
-            engine.train(features, target);
-            engine.saveWeights();
-            engineSamples += 1;
-            try { localStorage.setItem(EDGE_META_KEY, JSON.stringify({ samples: engineSamples })); } catch (e) {}
+            if (entry.trained === undefined) entry.trained = false;
+            appendTripLog(entry);
+            pendingCommute = null;
         } catch (e) {
             // 任何异常静默吞掉，不影响打卡主流程
         }
@@ -4762,20 +5418,25 @@ JOIE 乐行	JOIE
             return;
         }
 
-        // 明日只用明日的数据：改看次日降水概率，且不叠加此刻的口岸排队
+        // 条件中位数 + 45% MLP 残差；无基线时回退静态公式
         const isTodayPlan = getEffectiveDay() === 'today';
         const weatherPenalty = isTodayPlan
             ? RAIN_TIER_PENALTY[rainTier(weatherData.shenzhen && weatherData.shenzhen.weatherCode)]
             : RAIN_TIER_PENALTY[rainTierFromProb(weatherData.szTomorrowRainProb)];
         const portPenalty = isTodayPlan ? getPortPenalty() : 0;
-        // 自学习引擎：随样本数渐进接管（0 次=纯静态，≥5 次=完全接管）
         const staticPenalty = weatherPenalty + portPenalty;
-        const alpha = Math.min(engineSamples / 5, 1);
-        let aiDelta = null;
+        const ctxA = buildCommuteContext('morning', targetDate);
+        const baseObj = conditionalMedian('commute', ctxA);
+        let aiResidual = null;
         let totalCommuteTime;
-        if (engineEnabled && alpha > 0) {
-            aiDelta = engine.predict(buildEngineFeatures(targetDate, isTodayPlan));
-            totalCommuteTime = Number(userConfig.baseTime) + (1 - alpha) * staticPenalty + alpha * aiDelta;
+        if (baseObj) {
+            if (engineEnabled && engineSamples > 0) {
+                const pred = predictA(ctxA, baseObj.value);
+                aiResidual = pred.residual;
+                totalCommuteTime = pred.final;
+            } else {
+                totalCommuteTime = baseObj.value;
+            }
         } else {
             totalCommuteTime = Number(userConfig.baseTime) + staticPenalty;
         }
@@ -4795,7 +5456,7 @@ JOIE 乐行	JOIE
         const leaveMin = String(targetLeaveDate.getMinutes()).padStart(2, '0');
         setTimeWithAnimation(timeEl, `${leaveHour}:${leaveMin}`);
 
-        statusEl.innerHTML = renderEngineStatus(aiDelta);
+        statusEl.innerHTML = renderEngineStatus(aiResidual);
 
         renderNavLinks();
     }
@@ -5107,6 +5768,24 @@ JOIE 乐行	JOIE
         mtrState.dir = dir; mtrState.dirTouched = true;
         fetchMtrData();
     }
+
+    window.MtrApp = {
+        focus: function (lineCode, stationCode, dir) {
+            const line = MTR_DATA.lines[lineCode];
+            if (!line) return false;
+            const station = line.stations.some(function(s){ return s.code === stationCode; })
+                ? stationCode : line.default;
+            mtrState.line = lineCode;
+            mtrState.station = station;
+            mtrState.dir = (dir === 'DOWN') ? 'DOWN' : 'UP';
+            mtrState.dirTouched = true;
+            mtrState.loading = true;
+            mtrState.error = false;
+            renderMtr();
+            fetchMtrData();
+            return true;
+        }
+    };
     function openMtrStationModal() {
         const modal = document.getElementById('mtr-station-modal');
         if (!modal) return;
@@ -5557,6 +6236,7 @@ JOIE 乐行	JOIE
         if (item) {
             item.note = input ? input.value : '';
             localStorage.setItem('terminus_history', JSON.stringify(historyData));
+            if (typeof updateTripNote === 'function') updateTripNote(currentNoteDate, item.note);
             renderHistory();
         }
         closeNoteModal();
@@ -7567,6 +8247,7 @@ let sheetHeightFrame = null;
 function animateSheetHeight(){
   const sheet = document.getElementById('sheet');
   if(!sheet || !sheet.classList.contains('show')) return;
+  if(sheet.classList.contains('center-modal')){ sheet.style.height=''; return; }
   if(sheetHeightFrame) cancelAnimationFrame(sheetHeightFrame);
   sheetHeightFrame = requestAnimationFrame(function(){
     sheetHeightFrame = null;
@@ -7611,6 +8292,138 @@ function closeSheet(){
   document.getElementById('overlay').classList.remove('show');
   document.getElementById('sheet').classList.remove('show');
   editingId = null;
+  var actions = document.getElementById('segmentActions');
+  if (actions) actions.style.display = 'none';
+}
+
+/* ---------- 编辑已保存行程：查看时刻表 / 查看车费 ---------- */
+function editingSegmentObj(){
+  if (!editingId) return null;
+  return segments.find(function(x){ return x.id === editingId; }) || null;
+}
+function segmentFormType(){
+  return document.querySelector('#typeChips .chip.on')?.dataset.type || 'walk';
+}
+function segmentFormRegion(){
+  var type = segmentFormType();
+  if (type === 'portArrive' || type === 'port') return 'port';
+  return document.querySelector('#regionChips .chip.on')?.dataset.region || 'sz';
+}
+function segmentFormValue(id, fallback){
+  var el = document.getElementById(id);
+  var v = el ? String(el.value || '').trim() : '';
+  if (!v || v === '加载中…') return fallback || '';
+  return v;
+}
+function mtrCodeForLineName(name){
+  try {
+    var keys = Object.keys(MTR_DATA.lines);
+    for (var i = 0; i < keys.length; i++) {
+      var l = MTR_DATA.lines[keys[i]];
+      if (l.name === name || l.en === name) return l.code;
+    }
+  } catch (e) {}
+  return null;
+}
+function mtrStationCodeForName(lineCode, name){
+  try {
+    var line = MTR_DATA.lines[lineCode];
+    var st = line && line.stations.find(function(x){ return x.zh === name || x.en === name; });
+    return st ? st.code : null;
+  } catch (e) { return null; }
+}
+function fareSupports(network, from, to){
+  try {
+    var names = network === 'mtr' ? FARE_DATA.mtrNames : FARE_DATA.szNames;
+    return Array.isArray(names) && names.indexOf(from) >= 0 && names.indexOf(to) >= 0;
+  } catch (e) { return true; }
+}
+function segmentShortcutInfo(){
+  var s = editingSegmentObj();
+  if (!s || segmentFormType() !== 'metro') return null;
+  var region = segmentFormRegion();
+  if (region !== 'sz' && region !== 'hk') return null;
+  var line = segmentFormValue('lineSel', s.line);
+  var from = segmentFormValue('fromSel', s.from);
+  var to = segmentFormValue('toSel', s.to);
+  if (!line || !from || !to || from === to) return null;
+  var network = region === 'hk' ? 'mtr' : 'sz';
+  var out = { network: network, line: line, from: from, to: to, canFare: fareSupports(network, from, to) };
+  if (region === 'hk') {
+    var code = mtrCodeForLineName(line);
+    if (code) {
+      var lineData = MTR_DATA.lines[code];
+      var station = mtrStationCodeForName(code, from);
+      var toStation = mtrStationCodeForName(code, to);
+      if (station && toStation) {
+        var fromIdx = lineData.stations.findIndex(function(x){ return x.code === station; });
+        var toIdx = lineData.stations.findIndex(function(x){ return x.code === toStation; });
+        out.code = code;
+        out.station = station;
+        out.dir = toIdx > fromIdx ? 'UP' : 'DOWN';
+      }
+    }
+  }
+  return out;
+}
+function updateSegmentActions(){
+  var box = document.getElementById('segmentActions');
+  var tableBtn = document.getElementById('segmentTimetableBtn');
+  var fareBtn = document.getElementById('segmentFareBtn');
+  if (!box || !tableBtn || !fareBtn) return;
+  var s = editingSegmentObj();
+  var info = segmentShortcutInfo();
+  var showTable = !!(s && info && info.code && info.station && info.dir);
+  var showFare = !!(s && info && info.canFare);
+  tableBtn.textContent = T('查看时刻表', 'Timetable');
+  fareBtn.textContent = T('查看车费', 'Fare');
+  tableBtn.style.display = showTable ? '' : 'none';
+  fareBtn.style.display = showFare ? '' : 'none';
+  box.style.display = (showTable || showFare) ? 'flex' : 'none';
+}
+function segmentHasUnsavedChanges(s){
+  if (!s) return false;
+  var type = segmentFormType();
+  if (type !== s.type) return true;
+  var region = segmentFormRegion();
+  var savedRegion = s.region || 'sz';
+  if (type !== 'portArrive' && type !== 'port' && region !== savedRegion) return true;
+  var planRaw = document.getElementById('planInput')?.value || '';
+  var plan = type === 'portArrive' ? null : (parseInt(planRaw, 10) || null);
+  if ((Number(s.plan) || null) !== plan) return true;
+  if (type === 'metro') {
+    if (segmentFormValue('lineSel', s.line) !== (s.line || '')) return true;
+    if (segmentFormValue('fromSel', s.from) !== (s.from || '')) return true;
+    if (segmentFormValue('toSel', s.to) !== (s.to || '')) return true;
+  }
+  return false;
+}
+function ensureSegmentUnchanged(){
+  var s = editingSegmentObj();
+  if (!s) { toast(pt('请先保存这段行程', 'Save this leg first')); return false; }
+  if (segmentHasUnsavedChanges(s)) { toast(pt('请先保存当前修改', 'Save changes first')); return false; }
+  return true;
+}
+function openSegmentTimetable(){
+  if (!ensureSegmentUnchanged()) return;
+  var info = segmentShortcutInfo();
+  if (!info || !info.code || !info.station) { toast(pt('这段行程暂不支持时刻表', 'Timetable unavailable for this leg')); return; }
+  closeSheet();
+  if (typeof window.switchView === 'function') window.switchView('view-mtr');
+  setTimeout(function(){
+    if (window.MtrApp && window.MtrApp.focus) window.MtrApp.focus(info.code, info.station, info.dir);
+  }, 0);
+}
+function openSegmentFare(){
+  if (!ensureSegmentUnchanged()) return;
+  var info = segmentShortcutInfo();
+  if (!info || !info.canFare) { toast(pt('这段行程暂不支持车费', 'Fare unavailable for this leg')); return; }
+  closeSheet();
+  if (typeof window.switchView === 'function') window.switchView('view-fare');
+  setTimeout(function(){
+    var ok = window.FareCalc && window.FareCalc.setRoute && window.FareCalc.setRoute(info.network, info.from, info.to);
+    if (!ok) toast(pt('该站点暂不支持车费', 'Fare unavailable for these stations'));
+  }, 0);
 }
 function renderTypeChips(type, region){
   document.getElementById('typeChips').innerHTML = Object.keys(TYPE_META).map(k => {
@@ -7681,6 +8494,7 @@ function syncTypeFields(s){
     fillTransferStations(region, fromLine, toLine, s.station, s.toStation);
   }
   syncPickerTriggers();
+  if (typeof updateSegmentActions === 'function') updateSegmentActions();
   animateSheetHeight();
 }
 const HK_TRANSFER_PAIRS = [['中环','香港'], ['尖沙咀','尖东']];
@@ -7724,6 +8538,7 @@ async function loadStations(region, type, line, from, to){
   fromSel.innerHTML = stations.map(x=>`<option value="${esc(x)}"${x===fv?' selected':''}>${esc(x)}</option>`).join('');
   toSel.innerHTML = stations.map(x=>`<option value="${esc(x)}"${x===tv?' selected':''}>${esc(x)}</option>`).join('');
   syncPickerTriggers();
+  if (typeof updateSegmentActions === 'function') updateSegmentActions();
 }
 function fetchStations(region, type, line){
   // 正式版替换为真实站点 API；这里用静态表模拟异步返回
@@ -7906,7 +8721,6 @@ function chooseTime(){
   closeTimePicker();
 }
 document.getElementById('schoolTimeTrigger').addEventListener('click', openTimePicker);
-document.getElementById('timePickerClose').addEventListener('click', closeTimePicker);
 document.getElementById('timeCancel').addEventListener('click', closeTimePicker);
 document.getElementById('timeOk').addEventListener('click', chooseTime);
 document.getElementById('timePicker').addEventListener('click', function(e){ if(e.target === this) closeTimePicker(); });
@@ -7994,7 +8808,6 @@ function closePicker(){
 document.querySelectorAll('.picker-trigger').forEach(function(btn){
   btn.addEventListener('click', function(){ openPickerFor(btn.dataset.select); });
 });
-document.getElementById('pickerClose').addEventListener('click', closePicker);
 document.getElementById('pathPicker').addEventListener('click', function(e){ if(e.target === this) closePicker(); });
 document.getElementById('pickerSearch').addEventListener('input', function(e){ renderPickerList(e.target.value); });
 document.getElementById('pickerList').addEventListener('click', function(e){
@@ -8007,7 +8820,6 @@ document.getElementById('lineTrigger').addEventListener('click', function(){
   if(type === 'bus') openLineModal();
   else openPickerFor('lineSel');
 });
-document.getElementById('lmClose').addEventListener('click', closeLineModal);
 document.getElementById('lineModal').addEventListener('click', e => { if(e.target === e.currentTarget) closeLineModal(); });
 document.getElementById('lmSearch').addEventListener('input', e => renderLineResults(e.target.value));
 document.getElementById('lmList').addEventListener('click', e => {
@@ -8222,7 +9034,6 @@ document.getElementById('toLineSel').addEventListener('change', ()=>{
   fillTransferStations(region, document.getElementById('fromLineSel').value, document.getElementById('toLineSel').value,
     document.getElementById('transferStation').value, document.getElementById('transferToStation').value);
 });
-document.getElementById('overlay').addEventListener('click', closeSheet);
 document.getElementById('cancelBtn').addEventListener('click', closeSheet);
 document.getElementById('okBtn').addEventListener('click', validateAndSave);
 document.getElementById('delBtn').addEventListener('click', deleteSegment);
@@ -8230,6 +9041,8 @@ document.getElementById('saveBtn').addEventListener('click', ()=>{ saveTemplate(
 document.getElementById('startBtn').addEventListener('click', startLive);
 document.getElementById('arriveBtn').addEventListener('click', arriveLive);
 document.getElementById('skipBtn').addEventListener('click', skipLive);
+document.getElementById('segmentTimetableBtn').addEventListener('click', openSegmentTimetable);
+document.getElementById('segmentFareBtn').addEventListener('click', openSegmentFare);
 document.getElementById('backBtn').addEventListener('click', ()=>{ if(window.switchView) window.switchView('view-settings'); });
 let toastTimer = null;
 function toast(msg){
@@ -8514,7 +9327,6 @@ window.PathApp = { enter: function(){ render(); } };
     var resultLabel = document.querySelector('#view-fare .fare-result-label');
     if(resultLabel) resultLabel.textContent = en ? 'Estimated fare' : '预计车费';
     if($('fareSwapBtn')) $('fareSwapBtn').title = en ? 'Swap origin and destination' : '交换起终点';
-    if($('farePickerClose')) $('farePickerClose').setAttribute('aria-label', en ? 'Close' : '关闭');
     if($('fareSearch')) $('fareSearch').placeholder = en ? 'Search stations' : '搜索车站';
     if($('farePickerTitle')) {
       $('farePickerTitle').textContent = state.pickerSide === 'to'
@@ -8542,12 +9354,26 @@ window.PathApp = { enter: function(){ render(); } };
       calculate();
     });
     $('fareFirstClass').addEventListener('change', function(e){ state.first = e.target.checked; calculate(); });
-    $('farePickerClose').onclick = closePicker;
     $('farePickerOverlay').addEventListener('click', function(e){ if(e.target === e.currentTarget) closePicker(); });
     $('fareSearch').addEventListener('input', function(e){ renderPickerList(e.target.value); });
     switchNetwork('sz');
     applyFareLang();
-    window.FareCalc = { enter: function(){ applyFareLang(); }, close: closePicker, applyLang: applyFareLang };
+    window.FareCalc = {
+        enter: function(){ applyFareLang(); },
+        close: closePicker,
+        applyLang: applyFareLang,
+        setRoute: function(network, from, to){
+            try {
+                switchNetwork(network === 'mtr' ? 'mtr' : 'sz');
+                var okFrom = true, okTo = true;
+                if (from) { if (byName(from)) state.from = from; else okFrom = false; }
+                if (to) { if (byName(to)) state.to = to; else okTo = false; }
+                state.first = false;
+                renderFields();
+                return okFrom && okTo;
+            } catch (e) { return false; }
+        }
+    };
   }
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();
